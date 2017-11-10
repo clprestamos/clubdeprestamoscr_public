@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
 
@@ -29,13 +30,19 @@ let plugins = [
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   // > Minimize JS
-  new webpack.optimize.UglifyJsPlugin({
-    sourceMap: false,
-    mangle: false,
-    compress: {
-      warnings: false,
+  // new webpack.optimize.UglifyJsPlugin({
+  //   sourceMap: false,
+  //   mangle: false,
+  //   compress: {
+  //     warnings: false,
+  //   },
+  //   minimize: true,
+  // }),
+  new MinifyPlugin({}, {
+    parserOpts: {
+      sourceMap: false,
+      comments: false,
     },
-    minimize: true,
   }),
   // > CSS Bundle
   new ExtractTextPlugin({
@@ -148,13 +155,12 @@ if (DEVELOPMENT) {
 }
 
 module.exports = {
-	// > JS Input / Output
+  // > JS Input / Output
   entry: {
     app: [SRC_FILE_JS_APP],
     vendor: [
       'enzyme',
       'lodash',
-      'material-ui',
       'moment',
       'prop-types',
       'react',
@@ -198,7 +204,7 @@ module.exports = {
         include: [APP_FOLDER],
         exclude: /(node_modules)/,
         options: {
-          presets: ['es2015', 'react', 'stage-2'],
+          presets: ['env', 'react', 'stage-2'],
         },
       },
       // > CSS / SCSS
