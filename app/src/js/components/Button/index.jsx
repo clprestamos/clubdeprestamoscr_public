@@ -6,7 +6,7 @@ import {
 
 const Button = props => (
   <Link
-    className={`btn ${props.type}`}
+    className={`btn ${props.buttonType}`}
     to={props.to}
     onClick={props.onClick}
   >
@@ -15,9 +15,10 @@ const Button = props => (
 );
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
+  buttonType: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Button;

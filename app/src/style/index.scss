@@ -16,6 +16,33 @@ a, a:focus, a:hover, a:visited {
   text-decoration: none;
 }
 
+ul {
+  display: flex;
+  list-style: none;
+}
+
+.pointer-menu {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  z-index: 9999;
+  right: 4vw;
+  top: 45vh;
+}
+
+.oval {
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  border: solid 1px #e0e0e0;
+  border-radius: 50%;
+  opacity: 0.6;
+  margin-bottom: 11px;
+  &.filled {
+    background-color: rgba(139, 197, 63, 0.97);
+  }
+}
+
 .btn {
   cursor: pointer;
   border-color: transparent;
@@ -26,19 +53,22 @@ a, a:focus, a:hover, a:visited {
   font-weight: bold;
   font-size: 11px;
   text-transform: uppercase;
+  border-radius: 73px;
+  background-image: linear-gradient(to right, #006838, rgba(139, 197, 63, 0.97));
   &.default {
     width: 142px;
     height: 38px;
-    border-radius: 73px;
-    background-image: linear-gradient(to right, #006838, rgba(139, 197, 63, 0.97));
+  }
+  &.large {
+    font-size: 14px;
+    width: 259px;
+    height: 55px;
   }
 }
 
 .menu {
   flex-grow: 2;
   ul {
-    display: flex;
-    list-style: none;
     justify-content: flex-end;
     li > a {
       color: rgba(255, 255, 255, 0.97);
@@ -70,4 +100,40 @@ a, a:focus, a:hover, a:visited {
   align-items: center;
   position: fixed;
   width: 100vw;
+  height: 15vh;
+  z-index: 9999;
+}
+
+.home-section {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-top: 35vh;
+  height: 65vh;
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.18;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  p {
+    margin-bottom: 5vh;
+  }
+}
+
+.divider {
+  display: flex;
+  width: 300px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  div {
+    width: 150px;
+    height: 3px;
+    &.left-middle {
+      background-color: rgba(139, 197, 63, 0.97);
+    }
+    &.right-middle {
+      background-color: #006838;
+    }
+  }
 }
