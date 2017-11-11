@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 import Divider from '../../Divider';
 import Button from '../../Button';
+import ScrollTo from './ScrollTo';
 
 const Section = props => (
   <section
     className="home-section"
-    style={{ background: `url(${props.bgImg})` }}
+    style={{ backgroundImage: `url(${props.bgImg})` }}
     id={props.itemId}
   >
     <h2>{props.title}</h2>
@@ -19,6 +20,7 @@ const Section = props => (
       buttonType={props.buttonType}
       to={props.buttonTo}
     />
+    <ScrollTo handleScroll={props.scrollToOnClick} />
   </section>
 );
 
@@ -30,6 +32,7 @@ Section.propTypes = {
   buttonText: PropTypes.string.isRequired,
   buttonType: PropTypes.string.isRequired,
   buttonTo: PropTypes.string.isRequired,
+  scrollToOnClick: PropTypes.func.isRequired,
 };
 
 export default Section;

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Hind');
+@import 'variables';
 
 * {
   margin: 0;
@@ -13,6 +14,7 @@ body {
 }
 
 a, a:focus, a:hover, a:visited {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -39,7 +41,7 @@ ul {
   opacity: 0.6;
   margin-bottom: 11px;
   &.filled {
-    background-color: rgba(139, 197, 63, 0.97);
+    background-color: $green;
   }
 }
 
@@ -54,7 +56,7 @@ ul {
   font-size: 11px;
   text-transform: uppercase;
   border-radius: 73px;
-  background-image: linear-gradient(to right, #006838, rgba(139, 197, 63, 0.97));
+  background-image: linear-gradient(to right, #006838, $green);
   &.default {
     width: 142px;
     height: 38px;
@@ -78,7 +80,7 @@ ul {
       text-decoration: none;
       padding-left: 20px;
     }
-    li:last-child > a{
+    li:last-child > a {
       padding-right: 40px;
     }
   }
@@ -105,10 +107,17 @@ ul {
 }
 
 .home-section {
+  display: flex;
+  flex-direction: column;
   padding-left: 20vw;
   padding-right: 20vw;
   padding-top: 35vh;
   height: 65vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: content-box;
   h2 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -118,6 +127,32 @@ ul {
   }
   p {
     margin-bottom: 5vh;
+  }
+  .scroll-icon {
+    cursor: pointer;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:focus, &:hover, &:visited {
+      outline: none;
+    }
+  }
+  .scroll-to {
+    width: 47px;
+    height: 47px;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11px;
+    margin-top: 20px;
+    > i.small.icon {
+      color: $green;
+      font-size: 1.6rem;
+    }
   }
 }
 
@@ -130,7 +165,7 @@ ul {
     width: 150px;
     height: 3px;
     &.left-middle {
-      background-color: rgba(139, 197, 63, 0.97);
+      background-color: $green;
     }
     &.right-middle {
       background-color: #006838;

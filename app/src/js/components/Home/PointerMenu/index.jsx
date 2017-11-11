@@ -4,7 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 const PointerMenu = (props) => {
   const menu = props.menuItems.map(item => (
-    <Link to={item.anchor} className={`oval ${item.isSelected ? 'filled' : ''}`} key={item.id} />
+    <Link to={item.anchor} className={`oval ${item.isSelected ? 'filled' : ''}`} key={item.id} onClick={item.onClick} />
   ));
   return (
     <div className="pointer-menu">
