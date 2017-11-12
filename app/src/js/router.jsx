@@ -6,11 +6,14 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Header from './components/Header';
+
 import Main from './containers/Main';
 
 const Routes = () => (
   <Router>
     <div>
+      <Header />
       <Switch>
         <Route exact path="/" component={Main} />
         <Redirect from="*" to="/" />

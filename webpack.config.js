@@ -30,14 +30,6 @@ let plugins = [
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   // > Minimize JS
-  // new webpack.optimize.UglifyJsPlugin({
-  //   sourceMap: false,
-  //   mangle: false,
-  //   compress: {
-  //     warnings: false,
-  //   },
-  //   minimize: true,
-  // }),
   new MinifyPlugin({}, {
     parserOpts: {
       sourceMap: false,
@@ -172,6 +164,7 @@ module.exports = {
       'redux-devtools-extension',
       'redux-mock-store',
       'redux-thunk',
+      'semantic-ui-react',
       'superagent',
     ],
   },
