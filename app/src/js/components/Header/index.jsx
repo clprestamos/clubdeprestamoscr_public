@@ -9,7 +9,7 @@ const Header = () => (
     <Logo />
     <Menu />
     <div className="action-btn">
-      <Button to="/login" type="default" text="Iniciar Sesión" />
+      <Button to="/login" buttonType="default" text="Iniciar Sesión" />
     </div>
   </header>
 );

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Hind');
+@import 'variables';
 
 * {
   margin: 0;
@@ -13,7 +14,35 @@ body {
 }
 
 a, a:focus, a:hover, a:visited {
+  color: #fff;
   text-decoration: none;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+.pointer-menu {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  z-index: 9999;
+  right: 4vw;
+  top: 45vh;
+}
+
+.oval {
+  cursor: pointer;
+  width: 11px;
+  height: 11px;
+  border: solid 1px #e0e0e0;
+  border-radius: 50%;
+  opacity: 0.6;
+  margin-bottom: 11px;
+  &.filled {
+    background-color: $green;
+  }
 }
 
 .btn {
@@ -26,19 +55,22 @@ a, a:focus, a:hover, a:visited {
   font-weight: bold;
   font-size: 11px;
   text-transform: uppercase;
+  border-radius: 73px;
+  background-image: linear-gradient(to right, #006838, $green);
   &.default {
     width: 142px;
     height: 38px;
-    border-radius: 73px;
-    background-image: linear-gradient(to right, #006838, rgba(139, 197, 63, 0.97));
+  }
+  &.large {
+    font-size: 14px;
+    width: 259px;
+    height: 55px;
   }
 }
 
 .menu {
   flex-grow: 2;
   ul {
-    display: flex;
-    list-style: none;
     justify-content: flex-end;
     li > a {
       color: rgba(255, 255, 255, 0.97);
@@ -48,7 +80,7 @@ a, a:focus, a:hover, a:visited {
       text-decoration: none;
       padding-left: 20px;
     }
-    li:last-child > a{
+    li:last-child > a {
       padding-right: 40px;
     }
   }
@@ -70,4 +102,73 @@ a, a:focus, a:hover, a:visited {
   align-items: center;
   position: fixed;
   width: 100vw;
+  height: 15vh;
+  z-index: 9999;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-top: 35vh;
+  height: 65vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: content-box;
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.18;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  p {
+    margin-bottom: 5vh;
+  }
+  .scroll-icon {
+    cursor: pointer;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:focus, &:hover, &:visited {
+      outline: none;
+    }
+  }
+  .scroll-to {
+    width: 47px;
+    height: 47px;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 11px;
+    margin-top: 20px;
+    > i.small.icon {
+      color: $green;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.divider {
+  display: flex;
+  width: 300px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  div {
+    width: 150px;
+    height: 3px;
+    &.left-middle {
+      background-color: $green;
+    }
+    &.right-middle {
+      background-color: #006838;
+    }
+  }
 }
