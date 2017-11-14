@@ -1,0 +1,23 @@
+.formInput {
+  background-color: transparent;
+  border: solid 1px #fff;
+  border-radius: inherit;
+  color: #fff;
+}
+
+.ui.input {
+  input[type="text"],
+  input[type="text"]:focus,
+  input[type="email"],
+  input[type="email"]:focus,
+  input[type="tel"],
+  input[type="tel"]:focus {
+    @extend .formInput;
+  }
+}
+
+.ui.form textarea,
+.ui.form textarea:focus {
+  @extend .formInput;
+  width: 27.8vw;
+}

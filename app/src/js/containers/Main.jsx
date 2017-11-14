@@ -4,6 +4,7 @@ import scrollToComponent from 'react-scroll-to-component';
 
 import Section from '../components/Home/Section';
 import PointerMenu from '../components/Home/PointerMenu';
+import ContactUs from '../components/ContactUs';
 
 import '../../style/animate.min.css'; // eslint-disable-line
 
@@ -20,10 +21,55 @@ class Main extends Component {
       acercaNosotrosSelected: true,
       invertirSelected: false,
       solicitudCreditoSelected: false,
+      contactenosSelected: false,
     };
+  }
+  componentWillMount() {
+    window.addEventListener('scroll', () => {
+      this.last_known_scroll_position = window.pageYOffset;
+      this.changeBulletState(this.last_known_scroll_position);
+    });
   }
   componentDidMount() {
     scrollToComponent(this.acercaNosotros, this.state.scrollAnimation);
+  }
+  changeBulletState(windowScrollPos) {
+    const aboutScrollPos = document.querySelector('#acerca-de-nosotros');
+    const investScrollPos = document.querySelector('#invertir');
+    const creditRequestScrollPos = document.querySelector('#solicitud-de-credito');
+    const contactUsScrollPos = document.querySelector('#contactenos');
+    if ((windowScrollPos >= aboutScrollPos.offsetTop ||
+      windowScrollPos === aboutScrollPos.offsetTop) && windowScrollPos < investScrollPos.offsetTop) {
+      this.setState({
+        acercaNosotrosSelected: true,
+        invertirSelected: false,
+        solicitudCreditoSelected: false,
+        contactenosSelected: false,
+      });
+    } else if ((windowScrollPos >= investScrollPos.offsetTop ||
+      windowScrollPos === investScrollPos.offsetTop) && windowScrollPos <= creditRequestScrollPos.offsetTop - 1) {
+      this.setState({
+        acercaNosotrosSelected: false,
+        invertirSelected: true,
+        solicitudCreditoSelected: false,
+        contactenosSelected: false,
+      });
+    } else if ((windowScrollPos >= creditRequestScrollPos.offsetTop ||
+      windowScrollPos === creditRequestScrollPos.offsetTop) && windowScrollPos <= contactUsScrollPos.offsetTop - 1) {
+      this.setState({
+        acercaNosotrosSelected: false,
+        invertirSelected: false,
+        solicitudCreditoSelected: true,
+        contactenosSelected: false,
+      });
+    } else if (windowScrollPos >= contactUsScrollPos.offsetTop || windowScrollPos === contactUsScrollPos.offsetTop) {
+      this.setState({
+        acercaNosotrosSelected: false,
+        invertirSelected: false,
+        solicitudCreditoSelected: false,
+        contactenosSelected: true,
+      });
+    }
   }
   menuItemsOnClick(reference, id) {
     scrollToComponent(reference, this.state.scrollAnimation);
@@ -32,18 +78,28 @@ class Main extends Component {
         acercaNosotrosSelected: true,
         invertirSelected: false,
         solicitudCreditoSelected: false,
+        contactenosSelected: false,
       });
     } else if (id === 2) {
       this.setState({
         acercaNosotrosSelected: false,
         invertirSelected: true,
         solicitudCreditoSelected: false,
+        contactenosSelected: false,
       });
     } else if (id === 3) {
       this.setState({
         acercaNosotrosSelected: false,
         invertirSelected: false,
         solicitudCreditoSelected: true,
+        contactenosSelected: false,
+      });
+    } else if (id === 4) {
+      this.setState({
+        acercaNosotrosSelected: false,
+        invertirSelected: false,
+        solicitudCreditoSelected: false,
+        contactenosSelected: true,
       });
     }
   }
@@ -66,6 +122,12 @@ class Main extends Component {
         id: 3,
         isSelected: this.state.solicitudCreditoSelected,
         onClick: () => this.menuItemsOnClick(this.solicitudCredito, 3),
+      },
+      {
+        anchor: '/#contactenos',
+        id: 4,
+        isSelected: this.state.contactenosSelected,
+        onClick: () => this.menuItemsOnClick(this.contactenos, 4),
       },
     ];
     return (
@@ -109,6 +171,20 @@ class Main extends Component {
               itemId="solicitud-de-credito"
               scrollToOnClick={menuItems[0].onClick}
             />
+          </div>
+          <div ref={(section) => { this.contactenos = section; }}>
+            <section
+              className="home-section"
+              style={{ backgroundImage: 'url("images/portada-revista-costa-rica-ef-elfima-20131008-0015-4.jpg")' }}
+              id="contactenos"
+            >
+              <ContactUs
+                buttonType="default"
+                buttonText="Enviar"
+                btnOnClick={() => {}}
+                buttonTo="/"
+              />
+            </section>
           </div>
         </Container>
       </div>
