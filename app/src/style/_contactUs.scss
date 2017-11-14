@@ -1,0 +1,19 @@
+.contact-us {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &> div {
+      margin-bottom: 1rem;
+    }
+  }
+}
+#contactenos {
+  padding-top: 25vh;
+  padding-left: 35vw;
+  padding-right: 35vw;
+  height: 75vh;
+}
