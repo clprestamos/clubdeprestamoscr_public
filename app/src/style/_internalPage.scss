@@ -1,0 +1,60 @@
+.internal-page {
+  background: linear-gradient(180deg, $dark 66.4vh, #FFFFFF 33.6vh);
+  display: flex;
+  justify-content: center;
+  padding-top: 28vh;
+  .divider {
+    display: block;
+    width: 246px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(139, 197, 63, 0.97) 103px, #006838 143px);
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: left;
+    text-transform: uppercase;
+    padding-top: 13px;
+    padding-bottom: 20px;
+  }
+  .content {
+    width: 69.25vw;
+  }
+  .sub-header {
+    display: flex;
+    flex-direction: row;
+    .left-content {
+      width: 19vw;
+      margin-right: 3vw;
+      p {
+        padding-top: 10vh;
+        font-weight: bold;
+        line-height: 1.39;
+        letter-spacing: 0.3px;
+        text-align: left;
+        color: #006838;
+        font-size: 18px;
+      }
+    }
+  }
+  .main-content {
+    padding-top: 5vh;
+    column-count: 2;
+    padding-bottom: 20vh;
+    p {
+      color: $dark;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left;
+      &.list-item {
+        font-weight: bold;
+        color: #006838;
+        font-size: 17px;
+      }
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}

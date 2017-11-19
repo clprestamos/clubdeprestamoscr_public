@@ -4,7 +4,6 @@
 }
 
 body {
-  background-color: #000;
   color: #FFF;
   font-family: 'Hind', sans-serif;
   font-size: 16px;
@@ -86,7 +85,6 @@ ul {
 .logo {
   flex-grow: 1;
   padding-left: 76px;
-  padding-top: 17px;
 }
 
 .action-btn {
@@ -101,6 +99,9 @@ ul {
   width: 100vw;
   height: 15vh;
   z-index: 9999;
+  &.secondary-page {
+    background-color: $dark;
+  }
 }
 
 .home-section {

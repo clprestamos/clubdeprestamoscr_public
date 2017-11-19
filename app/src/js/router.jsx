@@ -7,8 +7,10 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 import Main from './containers/Main';
+import HowWorks from './containers/HowWorks';
 
 const Routes = () => (
   <Router>
@@ -16,8 +18,10 @@ const Routes = () => (
       <Header />
       <Switch>
         <Route exact path="/" component={Main} />
+        <Route path="/comofunciona" component={HowWorks} />
         <Redirect from="*" to="/" />
       </Switch>
+      <Footer />
     </div>
   </Router>
 );
