@@ -1,0 +1,42 @@
+footer {
+  background-color: $dark;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 8.3vw;
+  padding-right: 21.3vw;
+  height: 12vh;
+  width: 100vw;
+  align-items: center;
+  p {
+    margin: 0;
+    &.copyright {
+      color: #FFFFFF;
+      opacity: 0.44;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    &.footer-links {
+      color: #e0e0e0;
+      line-height: 1.36;
+      font-size: 11px;
+    }
+  }
+  a {
+    .icon.circle {
+      color: #FFFFFF;
+    }
+    .icon.twitter, .icon.facebook, .icon.youtube {
+      color: $dark;
+    }
+  }
+  ul {
+    align-items: center;
+    li:first-child {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    li {
+      padding-right: 2vw;
+    }
+  }
+}

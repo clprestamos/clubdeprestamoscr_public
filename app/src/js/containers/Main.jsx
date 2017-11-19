@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import scrollToComponent from 'react-scroll-to-component';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
 import Section from '../components/Home/Section';
 import PointerMenu from '../components/Home/PointerMenu';
 import ContactUs from '../components/ContactUs';
+
+import { toggleMenuState } from '../actions';
 
 import '../../style/animate.min.css'; // eslint-disable-line
 
@@ -24,21 +29,25 @@ class Main extends Component {
       contactenosSelected: false,
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('scroll', () => {
       this.last_known_scroll_position = window.pageYOffset;
-      this.changeBulletState(this.last_known_scroll_position);
+      if (this.changeBulletState) {
+        this.changeBulletState(this.last_known_scroll_position);
+      }
     });
-  }
-  componentDidMount() {
+    this.props.toggleMenuState(true);
     scrollToComponent(this.acercaNosotros, this.state.scrollAnimation);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', () => {});
   }
   changeBulletState(windowScrollPos) {
     const aboutScrollPos = document.querySelector('#acerca-de-nosotros');
     const investScrollPos = document.querySelector('#invertir');
     const creditRequestScrollPos = document.querySelector('#solicitud-de-credito');
     const contactUsScrollPos = document.querySelector('#contactenos');
-    if ((windowScrollPos >= aboutScrollPos.offsetTop ||
+    if (aboutScrollPos && (windowScrollPos >= aboutScrollPos.offsetTop ||
       windowScrollPos === aboutScrollPos.offsetTop) && windowScrollPos < investScrollPos.offsetTop) {
       this.setState({
         acercaNosotrosSelected: true,
@@ -46,7 +55,7 @@ class Main extends Component {
         solicitudCreditoSelected: false,
         contactenosSelected: false,
       });
-    } else if ((windowScrollPos >= investScrollPos.offsetTop ||
+    } else if (investScrollPos && (windowScrollPos >= investScrollPos.offsetTop ||
       windowScrollPos === investScrollPos.offsetTop) && windowScrollPos <= creditRequestScrollPos.offsetTop - 1) {
       this.setState({
         acercaNosotrosSelected: false,
@@ -54,7 +63,7 @@ class Main extends Component {
         solicitudCreditoSelected: false,
         contactenosSelected: false,
       });
-    } else if ((windowScrollPos >= creditRequestScrollPos.offsetTop ||
+    } else if (creditRequestScrollPos && (windowScrollPos >= creditRequestScrollPos.offsetTop ||
       windowScrollPos === creditRequestScrollPos.offsetTop) && windowScrollPos <= contactUsScrollPos.offsetTop - 1) {
       this.setState({
         acercaNosotrosSelected: false,
@@ -62,7 +71,7 @@ class Main extends Component {
         solicitudCreditoSelected: true,
         contactenosSelected: false,
       });
-    } else if (windowScrollPos >= contactUsScrollPos.offsetTop || windowScrollPos === contactUsScrollPos.offsetTop) {
+    } else if (contactUsScrollPos && (windowScrollPos >= contactUsScrollPos.offsetTop || windowScrollPos === contactUsScrollPos.offsetTop)) {
       this.setState({
         acercaNosotrosSelected: false,
         invertirSelected: false,
@@ -192,4 +201,9 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    toggleMenuState,
+  }, dispatch);
+
+export default withRouter(connect(null, mapDispatchToProps)(Main));

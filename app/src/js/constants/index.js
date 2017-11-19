@@ -1,0 +1,4 @@
+export const LOADING_INIT = 'LOADING_INIT';
+export const LOADING_SUCCESS = 'LOADING_SUCCESS';
+
+export const TOGGLE_MENU_STATE = 'TOGGLE_MENU_STATE';

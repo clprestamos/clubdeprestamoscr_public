@@ -1,13 +1,15 @@
-import * as types from '../actions/';
+import * as types from '../constants';
 
 const initialState = {
   isLoading: false,
+  isHomeMenu: false,
 };
 
 function Main(state = initialState, action) {
   switch (action.type) {
     case types.LOADING_INIT:
     case types.LOADING_SUCCESS:
+    case types.TOGGLE_MENU_STATE:
       return {
         ...state,
         ...action.payload,
