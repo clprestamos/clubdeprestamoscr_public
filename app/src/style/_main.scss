@@ -7,6 +7,7 @@ body {
   color: #FFF;
   font-family: 'Hind', sans-serif;
   font-size: 16px;
+  background-color: $light;
 }
 
 a, a:focus, a:hover, a:visited {
@@ -17,6 +18,12 @@ a, a:focus, a:hover, a:visited {
 ul {
   display: flex;
   list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .pointer-menu {
@@ -37,7 +44,7 @@ ul {
   opacity: 0.6;
   margin-bottom: 11px;
   &.filled {
-    background-color: $green;
+    background-color: $light-green;
   }
 }
 
@@ -52,7 +59,7 @@ ul {
   font-size: 11px;
   text-transform: uppercase;
   border-radius: 73px;
-  background-image: linear-gradient(to right, #006838, $green);
+  background-image: linear-gradient(to right, $light-green, $dark-green);
   &.default {
     width: 142px;
     height: 38px;
@@ -148,7 +155,7 @@ ul {
     margin-bottom: 11px;
     margin-top: 20px;
     > i.small.icon {
-      color: $green;
+      color: $light-green;
       font-size: 1.6rem;
       margin: 0;
     }
@@ -164,10 +171,10 @@ ul {
     width: 150px;
     height: 3px;
     &.left-middle {
-      background-color: $green;
+      background-color: $light-green;
     }
     &.right-middle {
-      background-color: #006838;
+      background-color: $dark-green;
     }
   }
 }
