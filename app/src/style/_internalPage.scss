@@ -7,7 +7,7 @@
     display: block;
     width: 246px;
     height: 3px;
-    background: linear-gradient(90deg, rgba(139, 197, 63, 0.97) 103px, #006838 143px);
+    background: linear-gradient(90deg, $light-green 103px, $dark-green 143px);
   }
   h2 {
     font-weight: bold;
@@ -33,7 +33,7 @@
         line-height: 1.39;
         letter-spacing: 0.3px;
         text-align: left;
-        color: #006838;
+        color: $light-green;
         font-size: 18px;
       }
     }
@@ -49,7 +49,7 @@
       text-align: left;
       &.list-item {
         font-weight: bold;
-        color: #006838;
+        color: $light-green;
         font-size: 17px;
       }
       span {
