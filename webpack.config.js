@@ -94,6 +94,7 @@ if (DEVELOPMENT) {
       __HOST__: 'http://localhost:7070',
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
+        SITE_KEY: JSON.stringify('6LdLCTsUAAAAALL-9p_C181biMLzELJIioMOsQzp'),
       },
     }),
     // > Configure CSS Bundle file
@@ -213,6 +214,10 @@ module.exports = {
           },
         },
       ],
+    },
+    {
+      test: /\.(png|woff|woff2|eot|ttf|otf|ottf|svg)$/,
+      loader: 'file-loader',
     }],
     rules: [
       // > ESLINT
@@ -250,6 +255,10 @@ module.exports = {
       {
         test: /\.ico$/,
         loader: 'file-loader?name=[name].[ext]',
+      },
+      {
+        test: /\.(png|woff|woff2|eot|otf|ttf|svg)$/,
+        use: ['url-loader?limit=100000'],
       },
     ], // rules
   }, // module

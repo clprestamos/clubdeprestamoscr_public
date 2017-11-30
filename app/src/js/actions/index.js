@@ -26,3 +26,55 @@ export function toggleMenuState(isHomeMenu) {
     },
   });
 }
+
+export function changeCurrentStep(currentStep) {
+  return (dispatch) => {
+    let payload = {
+      currentStep,
+    };
+    if (currentStep === 1) {
+      payload = {
+        ...payload,
+        step1: {
+          isActive: true,
+        },
+        step2: {
+          isActive: false,
+        },
+        step3: {
+          isActive: false,
+        },
+      };
+    } else if (currentStep === 2) {
+      payload = {
+        ...payload,
+        step1: {
+          isActive: false,
+        },
+        step2: {
+          isActive: true,
+        },
+        step3: {
+          isActive: false,
+        },
+      };
+    } else if (currentStep === 3) {
+      payload = {
+        ...payload,
+        step1: {
+          isActive: false,
+        },
+        step2: {
+          isActive: false,
+        },
+        step3: {
+          isActive: true,
+        },
+      };
+    }
+    return dispatch({
+      type: types.CHANGE_CURRENT_STEP,
+      payload,
+    });
+  };
+}

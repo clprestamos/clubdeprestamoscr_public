@@ -5,7 +5,7 @@ footer {
   padding-left: 8.3vw;
   padding-right: 21.3vw;
   height: 12vh;
-  width: 100vw;
+  max-width: 100vw;
   align-items: center;
   p {
     margin: 0;
@@ -36,6 +36,7 @@ footer {
       font-weight: 500;
     }
     li {
+      color: #FFF;
       padding-right: 2vw;
     }
   }

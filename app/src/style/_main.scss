@@ -4,10 +4,14 @@
 }
 
 body {
-  color: #FFF;
+  color: #1f1f1f;
   font-family: 'Hind', sans-serif;
   font-size: 16px;
   background-color: $light;
+}
+
+h1, h2 {
+  color: #FFF;
 }
 
 a, a:focus, a:hover, a:visited {
@@ -131,6 +135,7 @@ button {
     text-transform: uppercase;
   }
   p {
+    color: #FFF;
     margin-bottom: 5vh;
   }
   .scroll-icon {
@@ -169,7 +174,6 @@ button {
   margin-bottom: 3vh;
   div {
     width: 150px;
-    height: 3px;
     &.left-middle {
       background-color: $light-green;
     }

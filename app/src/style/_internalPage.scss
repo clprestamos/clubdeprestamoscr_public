@@ -3,11 +3,17 @@
   display: flex;
   justify-content: center;
   padding-top: 28vh;
+  &.request-loan {
+    background: none;
+    justify-content: flex-start;
+    padding-top: 15vh;
+    min-height: 88vh;
+  }
   .divider {
     display: block;
     width: 246px;
     height: 3px;
-    background: linear-gradient(90deg, $light-green 103px, $dark-green 143px);
+    background: linear-gradient(90deg, $light-green 150px, $dark-green 0);
   }
   h2 {
     font-weight: bold;

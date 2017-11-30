@@ -2,47 +2,54 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
-import Button from '../Button';
-import InputField from '../InputField';
+import InputField from '../../InputField';
+import Button from '../../Button';
 
-const ContactUs = (props) => {
+const Step1 = (props) => {
   const inputFields = [{
     id: 1,
-    placeholder: 'Nombre Completo',
+    placeholder: 'Nombre *',
     hasError: false,
     errorMessage: 'Campo requerido',
     customClass: 'name',
   },
   {
     id: 2,
-    placeholder: 'Email',
+    placeholder: 'Apellido *',
     hasError: false,
     errorMessage: 'Campo requerido',
-    inputType: 'email',
   },
   {
     id: 3,
-    placeholder: 'Teléfono',
+    placeholder: 'Cédula *',
+    hasError: false,
+    errorMessage: 'Campo requerido',
+  },
+  {
+    id: 4,
+    placeholder: 'Teléfono *',
     hasError: false,
     errorMessage: 'Campo requerido',
     inputType: 'tel',
   },
   {
-    id: 4,
-    placeholder: 'Asunto',
+    id: 5,
+    placeholder: 'Teléfono de referencia',
     hasError: false,
     errorMessage: 'Campo requerido',
+    inputType: 'tel',
   },
   {
-    id: 5,
-    placeholder: 'Mensaje',
+    id: 6,
+    placeholder: 'Email',
     hasError: false,
     errorMessage: 'Campo requerido',
-    inputType: 'textarea',
+    inputType: 'email',
+    customClass: 'email',
   }];
+
   return (
-    <div className="contact-us">
-      <h2>¡Contáctenos!</h2>
+    <div className="client-subscription step1">
       <Form>
         {
           inputFields.map(inputField => (
@@ -58,20 +65,19 @@ const ContactUs = (props) => {
         }
         <Button
           onClick={props.btnOnClick}
-          text={props.buttonText}
-          buttonType={props.buttonType}
-          to={props.buttonTo}
+          text={props.btnText}
+          buttonType={props.btnType}
         />
+        <span>Campos obligatorios **</span>
       </Form>
     </div>
   );
 };
 
-ContactUs.propTypes = {
+Step1.propTypes = {
   btnOnClick: PropTypes.func.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  buttonType: PropTypes.string.isRequired,
-  buttonTo: PropTypes.string.isRequired,
+  btnText: PropTypes.string.isRequired,
+  btnType: PropTypes.string.isRequired,
 };
 
-export default ContactUs;
+export default Step1;

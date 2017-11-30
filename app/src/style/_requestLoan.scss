@@ -1,0 +1,35 @@
+.request-loan {
+  .static-content {
+    width: 46.32vw;
+    background-image: url('/images/request-loan.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .title {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .title, .divider, .content {
+      width: 25vw;
+    }
+    .content {
+      p {
+        color: #FFF;
+        font-size: 20px;
+        line-height: 30px;
+        span {
+          color: #f9ec31;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  h1 {
+    font-size: 45px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.18;
+  }
+}

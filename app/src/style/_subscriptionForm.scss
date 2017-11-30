@@ -1,0 +1,68 @@
+.subscription-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 53.68vw;
+  padding: 10vh 0;
+
+  &> div, .divider {
+    width: 35vw;
+  }
+
+  .divider {
+    background: linear-gradient(90deg, $light-green 215px, $dark-green 0);
+  }
+
+  h3 {
+    color: $h3Color;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.23;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  p {
+    opacity: 0.95;
+    font-size: 15px;
+    text-align: center;
+    &> span {
+      color: $dark-green;
+      font-weight: bold;
+      font-size: inherit;
+    }
+  }
+  .ui.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .field {
+      width: 48%;
+    }
+    .field.name, .field.email, .field.address, .field.familyPhone, .field.reason, .field.password, .field.recaptcha {
+      width: 100%;
+    }
+    .ui.input {
+      input[type="text"],
+      input[type="text"]:focus,
+      input[type="email"],
+      input[type="email"]:focus,
+      input[type="tel"],
+      input[type="tel"]:focus {
+        @include input-field(#C2C2C2, #000);
+      }
+    }
+  }
+  span {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.36;
+    color: $light-gray;
+  }
+  .btn {
+    margin-top: 11px;
+  }
+  .ui.selection.active.dropdown .menu {
+    max-height: 10vh;
+  }
+}

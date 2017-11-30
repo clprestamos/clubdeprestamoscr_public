@@ -1,8 +1,5 @@
 .formInput {
-  background-color: transparent;
-  border: solid 1px #fff;
-  border-radius: inherit;
-  color: #fff;
+  @include input-field(#fff, #fff);
 }
 
 .ui.input {
