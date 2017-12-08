@@ -14,6 +14,7 @@ import HowWorks from './containers/HowWorks';
 import AboutUs from './containers/AboutUs';
 import Faqs from './containers/Faqs';
 import RequestLoan from './containers/RequestLoan';
+import InvestorRegister from './containers/InvestorRegister';
 
 const Routes = () => (
   <Router>
@@ -25,6 +26,7 @@ const Routes = () => (
         <Route path="/acercadenosotros" component={AboutUs} />
         <Route path="/preguntasfrecuentes" component={Faqs} />
         <Route path="/prestamos" component={RequestLoan} />
+        <Route path="/invierta" component={InvestorRegister} />
         <Redirect from="*" to="/" />
       </Switch>
       <Footer />

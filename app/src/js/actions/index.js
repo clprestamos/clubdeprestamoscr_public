@@ -27,7 +27,40 @@ export function toggleMenuState(isHomeMenu) {
   });
 }
 
-export function changeCurrentStep(currentStep) {
+export function investorChangeCurrentStep(currentStep) {
+  return (dispatch) => {
+    let payload = {
+      currentStep,
+    };
+    if (currentStep === 1) {
+      payload = {
+        ...payload,
+        step1: {
+          isActive: true,
+        },
+        step2: {
+          isActive: false,
+        },
+      };
+    } else if (currentStep === 2) {
+      payload = {
+        ...payload,
+        step1: {
+          isActive: false,
+        },
+        step2: {
+          isActive: true,
+        },
+      };
+    }
+    return dispatch({
+      type: types.INVESTOR_CHANGE_CURRENT_STEP,
+      payload,
+    });
+  };
+}
+
+export function clientChangeCurrentStep(currentStep) {
   return (dispatch) => {
     let payload = {
       currentStep,
@@ -73,7 +106,7 @@ export function changeCurrentStep(currentStep) {
       };
     }
     return dispatch({
-      type: types.CHANGE_CURRENT_STEP,
+      type: types.CLIENT_CHANGE_CURRENT_STEP,
       payload,
     });
   };
