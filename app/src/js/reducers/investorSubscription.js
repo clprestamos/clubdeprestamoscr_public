@@ -7,16 +7,8 @@ const initialState = {
   lastNames: '',
   identification: 0,
   phone: 0,
-  referencePhone: 0,
-  familyPhone: 0,
+  aditionalPhone: 0,
   email: '',
-  address: '',
-  province: '',
-  canton: '',
-  district: '',
-  amount: 0,
-  term: '',
-  reason: '',
   step1: {
     isActive: true,
     isComplete: false,
@@ -25,15 +17,11 @@ const initialState = {
     isActive: false,
     isComplete: false,
   },
-  step3: {
-    isActive: false,
-    isComplete: false,
-  },
 };
 
-function ClientSubscription(state = initialState, action) {
+function InvestorSubscription(state = initialState, action) {
   switch (action.type) {
-    case types.CLIENT_CHANGE_CURRENT_STEP:
+    case types.INVESTOR_CHANGE_CURRENT_STEP:
       return {
         ...state,
         ...action.payload,
@@ -43,4 +31,4 @@ function ClientSubscription(state = initialState, action) {
   }
 }
 
-export default ClientSubscription;
+export default InvestorSubscription;

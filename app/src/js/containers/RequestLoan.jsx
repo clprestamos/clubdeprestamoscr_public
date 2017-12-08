@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { toggleMenuState, changeCurrentStep } from '../actions';
+import { toggleMenuState, clientChangeCurrentStep } from '../actions';
 
 import Hero from '../components/Subscription/Hero';
-import SubscriptionForm from '../components/Subscription/SubscriptionForm';
+import SubscriptionFormClient from '../components/Subscription/SubscriptionForm/SubscriptionFormClient';
 
 const RequestLoan = (props) => {
   props.toggleMenuState(false);
@@ -27,21 +27,21 @@ const RequestLoan = (props) => {
   const step1 = {
     ...props.step1,
     handleClick: () => {
-      props.changeCurrentStep(1);
+      props.clientChangeCurrentStep(1);
       console.log('Step 1 clicked!');
     },
     handleNextOnclick: () => {
-      props.changeCurrentStep(2);
+      props.clientChangeCurrentStep(2);
     },
   };
   const step2 = {
     ...props.step2,
     handleClick: () => {
-      props.changeCurrentStep(2);
+      props.clientChangeCurrentStep(2);
       console.log('Step 2 clicked!');
     },
     handleNextOnclick: () => {
-      props.changeCurrentStep(3);
+      props.clientChangeCurrentStep(3);
     },
   };
   const step3 = {
@@ -55,12 +55,12 @@ const RequestLoan = (props) => {
     },
   };
   return (
-    <div className="internal-page request-loan">
+    <div className="internal-page register client">
       <Hero
         title="Solicite su préstamo"
         content={<p><span>Haga realidad ese proyecto con el que tanto ha soñado</span>, enfrente un imprevisto en su vehículo, herramientas de trabajo o una emergencia personal que no puede esperar más, todo con nuestro Club de Préstamos especializado en crear soluciones donde otros simplemente cierran la puerta.</p>}
       />
-      <SubscriptionForm
+      <SubscriptionFormClient
         currentStep={currentStep}
         maxSteps="tres"
         steps={{
@@ -68,7 +68,6 @@ const RequestLoan = (props) => {
           step2,
           step3,
         }}
-        isClientSteps
       />
     </div>
   );
@@ -85,7 +84,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     toggleMenuState,
-    changeCurrentStep,
+    clientChangeCurrentStep,
   }, dispatch);
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestLoan));

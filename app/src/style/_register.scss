@@ -1,7 +1,16 @@
-.request-loan {
+.register {
+  &.client {
+    .static-content {
+      background-image: url('/images/request-loan.jpg');
+    }
+  }
+  &.investor {
+    .static-content {
+      background-image: url('/images/investor-register.jpg');
+    }
+  }
   .static-content {
     width: 46.32vw;
-    background-image: url('/images/request-loan.jpg');
     background-size: cover;
     display: flex;
     align-items: center;

@@ -19,8 +19,10 @@ const Steps = (props) => {
         <li><button className={`${step1.isActive ? 'active' : ''} ${step1.isComplete ? 'complete' : ''}`} onClick={step1.handleClick}>1</button></li>
         {ovals}
         <li><button className={`${step2.isActive ? 'active' : ''} ${step2.isComplete ? 'complete' : ''}`} onClick={step2.handleClick}>2</button></li>
-        {ovals}
-        <li><button className={`${step3.isActive ? 'active' : ''} ${step3.isComplete ? 'complete' : ''}`} onClick={step3.handleClick}>3</button></li>
+        {step3 ? ovals : ''}
+        {step3 ? (
+          <li><button className={`${step3.isActive ? 'active' : ''} ${step3.isComplete ? 'complete' : ''}`} onClick={step3.handleClick}>3</button></li>
+        ) : ''}
       </ul>
     </div>
   );
