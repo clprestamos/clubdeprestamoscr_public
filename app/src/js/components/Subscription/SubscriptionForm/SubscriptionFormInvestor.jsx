@@ -12,10 +12,10 @@ const SubscriptionFormInvestor = props => (
       <Divider />
       <Steps
         title={<p><b>¡Ya casi está listo!</b> Continuar con el paso <span>{props.currentStep}</span> de {props.maxSteps}</p>}
-        step1={props.steps.step1}
-        step2={props.steps.step2}
+        step1={props.investorInfo.step1}
+        step2={props.investorInfo.step2}
       />
-      <InvestorSteps steps={props.steps} />
+      <InvestorSteps investorInfo={props.investorInfo} captcha={props.captcha} />
     </div>
   </div>
 );
@@ -23,7 +23,8 @@ const SubscriptionFormInvestor = props => (
 SubscriptionFormInvestor.propTypes = {
   currentStep: PropTypes.string.isRequired,
   maxSteps: PropTypes.string.isRequired,
-  steps: PropTypes.object.isRequired,
+  investorInfo: PropTypes.object.isRequired,
+  captcha: PropTypes.string.isRequired,
 };
 
 export default SubscriptionFormInvestor;

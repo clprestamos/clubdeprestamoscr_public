@@ -25,6 +25,9 @@ class Recaptcha extends Component {
     const { dispatch } = this.props;
     dispatch(RecaptchaActionCreators.setRecaptchaValue(value));
   }
+  onExpired() {
+    this.clearRecaptchaValue();
+  }
   clearRecaptchaValue() {
     const { dispatch } = this.props;
     dispatch(RecaptchaActionCreators.clearRecaptchaValue());
@@ -36,6 +39,7 @@ class Recaptcha extends Component {
         ref={(c) => { this.recaptcha = c; }}
         sitekey={SITE_KEY}
         onChange={this.onChange}
+        onExpired={this.onExpired}
       />
     );
   }
