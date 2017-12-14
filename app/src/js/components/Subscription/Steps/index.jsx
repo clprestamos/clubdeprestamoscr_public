@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from 'semantic-ui-react';
 
 const Steps = (props) => {
   const { step1, step2, step3 } = props;
@@ -12,16 +13,34 @@ const Steps = (props) => {
       </ul>
     </li>
   );
+  const buttonStep1 = step1.isComplete ? (
+    <button className="complete" onClick={step1.handleClick}><Icon name="check" /></button>
+  ) : (
+    <button className={`${step1.isActive ? 'active' : ''}`}>1</button>
+  );
+  const buttonStep2 = step2.isComplete ? (
+    <button className="complete" onClick={step2.handleClick}><Icon name="check" /></button>
+  ) : (
+    <button className={`${step2.isActive ? 'active' : ''}`}>2</button>
+  );
+  let buttonStep3 = '';
+  if (step3) {
+    buttonStep3 = step3.isComplete ? (
+      <button className="complete" onClick={step3.handleClick}><Icon name="check" /></button>
+    ) : (
+      <button className={`${step3.isActive ? 'active' : ''}`}>3</button>
+    );
+  }
   return (
     <div className="steps">
       {props.title}
       <ul className="numbers">
-        <li><button className={`${step1.isActive ? 'active' : ''} ${step1.isComplete ? 'complete' : ''}`} onClick={step1.handleClick}>1</button></li>
+        <li>{buttonStep1}</li>
         {ovals}
-        <li><button className={`${step2.isActive ? 'active' : ''} ${step2.isComplete ? 'complete' : ''}`} onClick={step2.handleClick}>2</button></li>
-        {step3 ? ovals : ''}
-        {step3 ? (
-          <li><button className={`${step3.isActive ? 'active' : ''} ${step3.isComplete ? 'complete' : ''}`} onClick={step3.handleClick}>3</button></li>
+        <li>{buttonStep2}</li>
+        {buttonStep3 ? ovals : ''}
+        {buttonStep3 ? (
+          <li>{buttonStep3}</li>
         ) : ''}
       </ul>
     </div>

@@ -1,40 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
+import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
-import { Input, TextArea, Message } from 'semantic-ui-react';
+import { Input, TextArea, Label } from 'semantic-ui-react';
 
-const InputField = (props) => {
-  const errorMessage = props.hasError ?
-    (
-      <Message negative size="mini">
-        <p>{props.errorMessage}</p>
-      </Message>
-    ) : '';
-  const inputType = props.inputType ? props.inputType : 'text';
-  const inputField = props.inputType && props.inputType === 'textarea' ? (
-    <TextArea
-      placeholder={props.placeholder}
-      error={props.hasError ? props.hasError : undefined}
-    />
-  ) : (
-    <Input
-      type={inputType}
-      error={props.hasError ? props.hasError : undefined}
-      placeholder={props.placeholder}
-    />
-  );
-  return (
-    <div>
-      {inputField}
-      {errorMessage}
-    </div>
-  );
-};
+class InputField extends Component {
+  constructor(props) {
+    super(props);
+    autobind(this);
+    this.state = {
+      hasError: false,
+    };
+  }
+  handleChange(e) {
+    const hasError = this.props.validation(e.target.value);
+    this.props.onChangeField({ field: e.target.name, value: e.target.value, isDisabled: hasError });
+    this.setState({
+      hasError,
+    });
+  }
+  render() {
+    const inputType = this.props.inputType ? this.props.inputType : 'text';
+    const classStyle = this.state.hasError ? 'error' : '';
+    const inputField = this.props.inputType && this.props.inputType === 'textarea' ? (
+      <TextArea
+        className={classStyle}
+        placeholder={this.props.placeholder}
+        onChange={this.handleChange}
+        name={this.props.name}
+        defaultValue={this.props.defaultValue}
+      />
+    ) : (
+      <Input
+        className={classStyle}
+        type={inputType}
+        placeholder={this.props.placeholder}
+        onChange={this.handleChange}
+        name={this.props.name}
+        defaultValue={this.props.defaultValue}
+      />
+    );
+    return (
+      <div>
+        {inputField}
+        { this.state.hasError && <Label pointing color="red">{this.props.errorMessage}</Label> }
+      </div>
+    );
+  }
+}
 
 InputField.propTypes = {
   inputType: PropTypes.string,
-  hasError: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  onChangeField: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default InputField;
