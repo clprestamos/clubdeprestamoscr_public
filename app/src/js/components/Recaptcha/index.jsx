@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
+import autobind from 'react-autobind';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import * as RecaptchaActionCreators from '../../actions/RecaptchaActionCreators';
 
 class Recaptcha extends Component {
+  constructor(props) {
+    super(props);
+    const { dispatch } = props;
+    this.boundActionCreators = bindActionCreators({
+      RecaptchaActionCreators,
+    }, dispatch);
+    autobind(this);
+  }
+  componentWillMount() {
+    this.clearRecaptchaValue();
+  }
+  componentWillUnmount() {
+    this.clearRecaptchaValue();
+  }
   onChange(value) {
-    console.log('Captcha value:', value);
+    const { dispatch } = this.props;
+    dispatch(RecaptchaActionCreators.setRecaptchaValue(value));
+  }
+  clearRecaptchaValue() {
+    const { dispatch } = this.props;
+    dispatch(RecaptchaActionCreators.clearRecaptchaValue());
   }
   render() {
     const { SITE_KEY } = process.env;
@@ -17,4 +41,4 @@ class Recaptcha extends Component {
   }
 }
 
-export default Recaptcha;
+export default withRouter(connect()(Recaptcha));

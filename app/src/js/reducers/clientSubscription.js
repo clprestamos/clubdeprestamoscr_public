@@ -4,11 +4,11 @@ const initialState = {
   letterStep: 'uno',
   currentStep: 1,
   name: '',
-  lastNames: '',
-  identification: 0,
-  phone: 0,
-  referencePhone: 0,
-  familyPhone: 0,
+  lastName: '',
+  identification: '',
+  phone: '',
+  referencePhone: '',
+  familyPhone: '',
   email: '',
   address: '',
   province: '',
@@ -17,6 +17,7 @@ const initialState = {
   amount: 0,
   term: '',
   reason: '',
+  password: '',
   step1: {
     isActive: true,
     isComplete: false,
@@ -33,10 +34,47 @@ const initialState = {
 
 function ClientSubscription(state = initialState, action) {
   switch (action.type) {
-    case types.CLIENT_CHANGE_CURRENT_STEP:
+    case types.CHANGE_CLIENT_CURRENT_STEP:
       return {
         ...state,
         ...action.payload,
+      };
+    case types.COMPLETE_CLIENT_STEP_ONE:
+      return {
+        ...state,
+        step1: {
+          ...state.step1,
+          isComplete: true,
+        },
+      };
+    case types.COMPLETE_CLIENT_STEP_TWO:
+      return {
+        ...state,
+        step2: {
+          ...state.step2,
+          isComplete: true,
+        },
+      };
+    case types.COMPLETE_CLIENT_STEP_THREE:
+      return {
+        ...state,
+        step3: {
+          ...state.step3,
+          isComplete: true,
+        },
+      };
+    case types.SET_CLIENT_INFORMATION:
+      return {
+        ...state,
+        [action.payload.field]: action.payload.value,
+      };
+    case types.STEP_CLIENT_DISABLED:
+      return {
+        ...state,
+        [action.payload.step]: {
+          ...state[action.payload.step],
+          isDisabled: action.payload.isDisabled,
+        },
       };
     default:
       return state;

@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 const Button = (props) => {
+  const buttonClass = props.active ? `btn ${props.buttonType} disabled` : `btn ${props.buttonType}`;
   const btn = props.to ? (
     <Link
       className={`btn ${props.buttonType}`}
@@ -14,7 +15,7 @@ const Button = (props) => {
       <span>{props.text}</span>
     </Link>
   ) : (
-    <button className={`btn ${props.buttonType}`} onClick={props.onClick}>{props.text}</button>
+    <button type="button" className={buttonClass} onClick={props.onClick} disabled={props.active}>{props.text}</button>
   );
   return btn;
 };
@@ -24,6 +25,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   to: PropTypes.string,
   onClick: PropTypes.func,
+  active: PropTypes.bool,
 };
 
 export default Button;

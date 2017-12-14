@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-content: center;
     li > button {
-      cursor: pointer;
+      cursor: default;
       font-size: 16px;
       font-weight: bold;
       color: #FFF;
@@ -20,6 +20,12 @@
       &.active {
         background-color: $active;
         border-color: $active;
+      }
+      &.complete {
+        background-color: $light-green;
+        border: 1px solif $light-green;
+        cursor: pointer;
+        padding-left: 4px;
       }
     }
   }

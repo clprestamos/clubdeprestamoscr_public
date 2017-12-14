@@ -12,11 +12,11 @@ const SubscriptionFormClient = props => (
       <Divider />
       <Steps
         title={<p><b>¡Ya casi está listo!</b> Continuar con el paso <span>{props.currentStep}</span> de {props.maxSteps}</p>}
-        step1={props.steps.step1}
-        step2={props.steps.step2}
-        step3={props.steps.step3}
+        step1={props.clientInfo.step1}
+        step2={props.clientInfo.step2}
+        step3={props.clientInfo.step3}
       />
-      <ClientSteps steps={props.steps} />
+      <ClientSteps clientInfo={props.clientInfo} captcha={props.captcha} />
     </div>
   </div>
 );
@@ -24,7 +24,8 @@ const SubscriptionFormClient = props => (
 SubscriptionFormClient.propTypes = {
   currentStep: PropTypes.string.isRequired,
   maxSteps: PropTypes.string.isRequired,
-  steps: PropTypes.object.isRequired,
+  clientInfo: PropTypes.object.isRequired,
+  captcha: PropTypes.string.isRequired,
 };
 
 export default SubscriptionFormClient;
