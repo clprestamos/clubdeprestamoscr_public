@@ -3,6 +3,8 @@ import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
+import * as utils from '../../../utils';
+
 import InputField from '../../InputField';
 import Button from '../../Button';
 
@@ -22,7 +24,7 @@ class Step1 extends Component {
         defaultValue: clientInfo.name,
         validation: (value) => {
           if (value === '') return true;
-          if (/[a-zA-Z]/.test(value)) return false;
+          if (utils.validateExp({ type: 'text', value })) return false;
           return true;
         },
       },
@@ -35,7 +37,7 @@ class Step1 extends Component {
         defaultValue: clientInfo.lastName,
         validation: (value) => {
           if (value === '') return true;
-          if (/[a-zA-Z]/.test(value)) return false;
+          if (utils.validateExp({ type: 'text', value })) return false;
           return true;
         },
       },
@@ -48,35 +50,35 @@ class Step1 extends Component {
         defaultValue: clientInfo.identification,
         validation: (value) => {
           if (value === '') return true;
-          if (/^([0-9]{1})-([0-9]{4})-([0-9]{4})$/.test(value)) return false;
+          if (utils.validateExp({ type: 'identification', value })) return false;
           return true;
         },
       },
       {
         id: 4,
         placeholder: 'Teléfono *',
-        errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
+        errorMessage: 'Campo requerido. Formato de teléfono 0000-0000',
         inputType: 'tel',
         onChangeField,
         name: 'phone',
         defaultValue: clientInfo.phone,
         validation: (value) => {
           if (value === '') return true;
-          if (/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(value)) return false;
+          if (utils.validateExp({ type: 'phone', value })) return false;
           return true;
         },
       },
       {
         id: 5,
         placeholder: 'Teléfono de referencia *',
-        errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
+        errorMessage: 'Campo requerido. Formato de teléfono 0000-0000',
         inputType: 'tel',
         onChangeField,
         name: 'referencePhone',
         defaultValue: clientInfo.referencePhone,
         validation: (value) => {
           if (value === '') return true;
-          if (/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(value)) return false;
+          if (utils.validateExp({ type: 'phone', value })) return false;
           return true;
         },
       },
@@ -91,7 +93,7 @@ class Step1 extends Component {
         defaultValue: clientInfo.email,
         validation: (value) => {
           if (value === '') return true;
-          if (/^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/.test(value)) return false;
+          if (utils.validateExp({ type: 'email', value })) return false;
           return true;
         },
       }],

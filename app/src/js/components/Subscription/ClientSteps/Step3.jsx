@@ -3,6 +3,8 @@ import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
+import * as utils from '../../../utils';
+
 import InputField from '../../InputField';
 import Button from '../../Button';
 import Recaptcha from '../../Recaptcha';
@@ -18,7 +20,7 @@ class Step3 extends Component {
         id: 1,
         placeholder: 'Password *',
         hasError: false,
-        errorMessage: 'Campo requerido. Mínimo 8 caracteres',
+        errorMessage: 'Campo requerido. Mínimo 8 caracteres, Máximo 16 caracteres.',
         customClass: 'password',
         inputType: 'password',
         onChangeField: (e) => {
@@ -30,7 +32,7 @@ class Step3 extends Component {
         defaultValue: clientInfo.password,
         validation: (value) => {
           if (value === '') return true;
-          if (/^[A-Za-z\d\s@$!%*?&.()-_]{8,16}$/.test(value)) return false;
+          if (utils.validateExp({ type: 'password', value })) return false;
           return true;
         },
       },
@@ -38,7 +40,7 @@ class Step3 extends Component {
         id: 2,
         placeholder: 'Confirmar password *',
         hasError: false,
-        errorMessage: 'Campo requerido',
+        errorMessage: 'Los campos no coinciden.',
         customClass: 'password',
         inputType: 'password',
         onChangeField,

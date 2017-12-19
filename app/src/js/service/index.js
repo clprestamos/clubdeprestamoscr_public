@@ -1,6 +1,10 @@
 import request from 'superagent';
 import jwtDecode from 'jwt-decode';
 
+export function removeToken() {
+  window.sessionStorage.clear();
+}
+
 export function setToken(token, userData) {
   const currentToken = window.sessionStorage.getItem('token');
   if (!currentToken) {
@@ -16,8 +20,7 @@ export function validateToken() {
     if (new Date(decodedToken.exp * 1000) > new Date()) {
       return decodedToken;
     }
-    window.sessionStorage.removeItem('token');
-    window.sessionStorage.removeItem('userData');
+    removeToken();
   }
   return false;
 }

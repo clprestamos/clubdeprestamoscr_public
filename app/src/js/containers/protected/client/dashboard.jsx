@@ -10,7 +10,17 @@ const Dashboard = props => (
         exact
         path="/cliente/dashboard"
         render={() => (
-          <div>{props.authData.data.name} <Link to="/logout">Logout</Link></div>
+          <div>{props.authData.data.name}
+            <Link to={{
+                pathname: '/logout',
+                state: {
+                  from: props.location.pathname,
+                },
+              }}
+            >
+              Logout
+            </Link>
+          </div>
         )}
       />
       <Route

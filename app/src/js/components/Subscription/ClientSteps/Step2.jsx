@@ -3,6 +3,8 @@ import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Form, Dropdown } from 'semantic-ui-react';
 
+import * as utils from '../../../utils';
+
 import InputField from '../../InputField';
 import Button from '../../Button';
 
@@ -37,7 +39,7 @@ class Step2 extends Component {
         defaultValue: clientInfo.familyPhone,
         validation: (value) => {
           if (value === '') return true;
-          if (/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(value)) return false;
+          if (utils.validateExp({ type: 'phone', value })) return false;
           return true;
         },
       }],
