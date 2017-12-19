@@ -1,0 +1,40 @@
+.login, .logout {
+  background-color: $dark;
+  width: 100vw;
+  height: 100vh;
+  h3 {
+    font-size: 19px;
+    color: $h3Color;
+    line-height: 1.42;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.43;
+  }
+  .divider {
+    background: linear-gradient(90deg, $light-green 110px, $dark-green 0);
+    width: 355px;
+    margin: 0;
+    height: 9px;
+  }
+  .logo {
+    padding: 0;
+    padding-top: 12.5vh;
+    display: flex;
+    justify-content: center;
+  }
+  .login-box, .logout-box {
+    display: flex;
+    justify-content: center;
+    padding-top: 11vh;
+    .box {
+      background-color: white;
+      width: 355px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+  }
+}

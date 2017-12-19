@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import scrollToComponent from 'react-scroll-to-component';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import Section from '../components/Home/Section';
 import PointerMenu from '../components/Home/PointerMenu';
 import ContactUs from '../components/ContactUs';
 
-import { toggleMenuState } from '../actions';
+import * as MainActionCreators from '../actions/';
 
 import '../../style/animate.min.css'; // eslint-disable-line
 
@@ -27,7 +27,31 @@ class Main extends Component {
       invertirSelected: false,
       solicitudCreditoSelected: false,
       contactenosSelected: false,
+      isAuth: false,
+      redirectTo: '',
     };
+    const { dispatch } = props;
+    this.boundActionCreators = bindActionCreators({
+      MainActionCreators,
+    }, dispatch);
+  }
+  componentWillMount() {
+    if (this.props.authData.data !== null) {
+      const { isAuth, isClient, isInvestor } = this.props.authData;
+      let redirectTo = '';
+      if (isClient) {
+        redirectTo = '/cliente/dashboard';
+      } else if (isInvestor) {
+        redirectTo = '/inversionista/dashboard';
+      }
+      this.setState({
+        isAuth,
+        redirectTo,
+      });
+    } else {
+      const { dispatch } = this.props;
+      dispatch(MainActionCreators.toggleMenuState(false));
+    }
   }
   componentDidMount() {
     window.addEventListener('scroll', () => {
@@ -36,7 +60,8 @@ class Main extends Component {
         this.changeBulletState(this.last_known_scroll_position);
       }
     });
-    this.props.toggleMenuState(true);
+    const { dispatch } = this.props;
+    dispatch(MainActionCreators.toggleMenuState(true));
     scrollToComponent(this.acercaNosotros, this.state.scrollAnimation);
   }
   componentWillUnmount() {
@@ -113,6 +138,9 @@ class Main extends Component {
     }
   }
   render() {
+    if (this.state.isAuth) {
+      return <Redirect to={this.state.redirectTo} />;
+    }
     const menuItems = [
       {
         anchor: '/#acerca-de-nosotros',
@@ -201,9 +229,8 @@ class Main extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    toggleMenuState,
-  }, dispatch);
+const mapStateToProps = state => ({
+  authData: state.user,
+});
 
-export default withRouter(connect(null, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps)(Main));
