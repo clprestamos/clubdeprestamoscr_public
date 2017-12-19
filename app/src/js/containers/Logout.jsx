@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Container } from 'semantic-ui-react';
 import Logo from '../components/Header/Logo';
@@ -21,6 +21,7 @@ class Logout extends Component {
     }, dispatch);
     this.state = {
       isAuth: true,
+      from: props.location.state && props.location.state.from,
     };
     autobind(this);
   }
@@ -41,6 +42,9 @@ class Logout extends Component {
     dispatch(MainActionCreators.toggleMenuState(true));
     dispatch(MainActionCreators.toggleMenuHideState(false));
   }
+  cancel() {
+    this.props.history.goBack();
+  }
   render() {
     const logoutComponent = this.state.isAuth ? (
       <div className="logout">
@@ -52,6 +56,7 @@ class Logout extends Component {
               <h3>Cerrar sesión</h3>
               <p>¿Desea cerrar su sesión?</p>
               <button className="btn default" onClick={this.logout}>Cerrar</button>
+              <Link to={this.state.from} className="cancel">Cancelar</Link>
             </div>
           </div>
         </Container>

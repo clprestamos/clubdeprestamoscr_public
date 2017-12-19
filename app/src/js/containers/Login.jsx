@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { Container } from 'semantic-ui-react';
-import Logo from '../components/Header/Logo';
+import { Container, Form } from 'semantic-ui-react';
 
-// import * as service from '../service';
+import Logo from '../components/Header/Logo';
+import InputField from '../components/InputField';
+
+import * as utils from '../utils';
 
 import * as LoginActionCreators from '../actions/LoginActionCreators';
 import * as MainActionCreators from '../actions/';
@@ -22,6 +24,8 @@ class Login extends Component {
     this.state = {
       isClient: false,
       isInvestor: false,
+      username: '',
+      password: '',
     };
     autobind(this);
   }
@@ -49,16 +53,28 @@ class Login extends Component {
       });
     }
   }
+  onChangeField(e) {
+    if (e.field === 'email') {
+      this.setState({
+        username: e.value,
+      });
+    } else if (e.field === 'password') {
+      this.setState({
+        password: e.value,
+      });
+    }
+  }
   login() {
     const { dispatch } = this.props;
-    dispatch(LoginActionCreators.login());
+    const { username, password } = this.state;
+    dispatch(LoginActionCreators.login({ username, password }));
   }
   render() {
     let pathname = '/';
     if (this.props.authData.isAuth && this.state.isClient) {
       pathname = '/cliente/dashboard';
     } else if (this.props.authData.isAuth && this.state.isInvestor) {
-      pathname = '/cliente/dashboard';
+      pathname = '/inversionista/dashboard';
     }
     const { from } = this.props.location.state || { from: { pathname } };
     const { isAuth } = this.props.authData;
@@ -66,6 +82,37 @@ class Login extends Component {
     if (isAuth) {
       return <Redirect to={from} />;
     }
+
+    const inputFields = [
+      {
+        id: 1,
+        placeholder: 'Email',
+        errorMessage: 'Ingrese un email válido.',
+        onChangeField: this.onChangeField,
+        name: 'email',
+        defaultValue: this.state.email,
+        validation: (value) => {
+          if (value === '') return true;
+          if (utils.validateExp({ type: 'email', value })) return false;
+          return true;
+        },
+      },
+      {
+        id: 2,
+        placeholder: 'Contraseña',
+        hasError: false,
+        errorMessage: 'Mínimo 8 caracteres, Máximo 16 caracteres',
+        inputType: 'password',
+        onChangeField: this.onChangeField,
+        name: 'password',
+        defaultValue: this.state.password,
+        validation: (value) => {
+          if (value === '') return true;
+          if (utils.validateExp({ type: 'password', value })) return false;
+          return true;
+        },
+      },
+    ];
     return (
       <div className="login">
         <Container fluid>
@@ -74,8 +121,26 @@ class Login extends Component {
             <div className="box">
               <div className="divider" />
               <h3>Ingreso de usuario</h3>
-              <p>Ingrese al sistema con su correo y contraseña.</p>
+              <p>Digite su correo y contraseña ingresadas al sistema.</p>
+              <Form>
+                {
+                  inputFields.map(inputField => (
+                    <Form.Field key={inputField.id}>
+                      <InputField
+                        placeholder={inputField.placeholder}
+                        validation={inputField.validation}
+                        errorMessage={inputField.errorMessage}
+                        inputType={inputField.inputType}
+                        onChangeField={inputField.onChangeField}
+                        name={inputField.name}
+                        defaultValue={inputField.defaultValue}
+                      />
+                    </Form.Field>
+                  ))
+                }
+              </Form>
               <button className="btn default" onClick={this.login}>Ingresar</button>
+              <Link to="/contrasena" className="forgot-password">¿Olvidaste la contraseña?</Link>
             </div>
           </div>
         </Container>

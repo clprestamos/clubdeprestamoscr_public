@@ -1,3 +1,7 @@
+input::placeholder {
+  color: $placeholderColor;
+}
+
 .formInput {
   @include input-field(#fff, #fff);
 }
@@ -7,6 +11,8 @@
   input[type="text"]:focus,
   input[type="email"],
   input[type="email"]:focus,
+  input[type="password"],
+  input[type="password"]:focus,
   input[type="tel"],
   input[type="tel"]:focus {
     @extend .formInput;

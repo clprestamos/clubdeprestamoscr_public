@@ -1,5 +1,5 @@
 import * as types from '../constants';
-import * as request from '../service';
+import * as service from '../service';
 
 export function loginInit() {
   return {
@@ -33,13 +33,13 @@ export function loginError(error) {
     },
   };
 }
-export function login() {
+export function login({ username, password }) {
   return (dispatch) => {
-    request.post({
+    service.post({
       endpoint: 'auth/login',
       payload: {
-        email: 'client@test.com',
-        password: 'Test.1234',
+        email: username,
+        password,
       },
     })
       .then((response) => {
@@ -59,7 +59,7 @@ export function login() {
           email,
           roleId,
         };
-        request.setToken(token, data);
+        service.setToken(token, data);
         dispatch(loginSuccess(data));
       })
       .catch((error) => {
@@ -68,6 +68,7 @@ export function login() {
   };
 }
 export function logout() {
+  service.removeToken();
   return dispatch => dispatch({
     type: types.LOGOUT,
   });
