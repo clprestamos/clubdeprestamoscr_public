@@ -1,26 +1,27 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import Menu from './Menu';
-import Button from '../Button';
 
+const Login = () => <Link to="/login" className="btn default">Iniciar Sesión</Link>;
 const Header = (props) => {
   const styleClass = props.isHomeMenu ? '' : 'secondary-page';
-  return (
+  const headerComponent = !props.hide ? (
     <header className={`header ${styleClass}`}>
       <Logo />
       <Menu />
       <div className="action-btn">
-        <Button to="/login" buttonType="default" text="Iniciar Sesión" />
+        <Login />
       </div>
     </header>
-  );
+  ) : '';
+  return headerComponent;
 };
 
-const mapStateToProps = state => ({
-  isHomeMenu: state.main.isHomeMenu,
-});
+Header.propTypes = {
+  isHomeMenu: PropTypes.bool.isRequired,
+  hide: PropTypes.bool.isRequired,
+};
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default Header;

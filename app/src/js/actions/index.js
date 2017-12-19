@@ -27,6 +27,15 @@ export function toggleMenuState(isHomeMenu) {
   });
 }
 
+export function toggleMenuHideState(isHomeMenuHidden) {
+  return dispatch => dispatch({
+    type: types.TOGGLE_MENU_HIDE_STATE,
+    payload: {
+      isHomeMenuHidden,
+    },
+  });
+}
+
 export function investorChangeCurrentStep(currentStep) {
   return (dispatch) => {
     let payload = {

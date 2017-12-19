@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -15,23 +16,62 @@ import AboutUs from './containers/AboutUs';
 import Faqs from './containers/Faqs';
 import RequestLoan from './containers/RequestLoan';
 import InvestorRegister from './containers/InvestorRegister';
+import Login from './containers/Login';
+import Logout from './containers/Logout';
+import ClientDashboard from './containers/protected/client/dashboard';
+import LoanApproved from './containers/protected/client/loanApproved';
 
-const Routes = () => (
-  <Router>
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/comofunciona" component={HowWorks} />
-        <Route path="/acercadenosotros" component={AboutUs} />
-        <Route path="/preguntasfrecuentes" component={Faqs} />
-        <Route path="/prestamos" component={RequestLoan} />
-        <Route path="/invierta" component={InvestorRegister} />
-        <Redirect from="*" to="/" />
-      </Switch>
-      <Footer />
-    </div>
-  </Router>
+let isAuthenticated = false;
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (
+    isAuthenticated ? (
+      <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: props.location },
+          }}
+        />
+      )
+    )}
+  />
 );
+const Routes = (props) => {
+  isAuthenticated = props.isAuth;
+  return (
+    <Router>
+      <div>
+        <Header
+          isHomeMenu={props.isHomeMenu}
+          isAuth={props.isAuth}
+          hide={props.isHomeMenuHidden}
+        />
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/comofunciona" component={HowWorks} />
+          <Route path="/acercadenosotros" component={AboutUs} />
+          <Route path="/preguntasfrecuentes" component={Faqs} />
+          <Route path="/prestamos" component={RequestLoan} />
+          <Route path="/invierta" component={InvestorRegister} />
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <PrivateRoute path="/cliente/dashboard" component={ClientDashboard} />
+          <PrivateRoute path="/cliente/prestamos-aprobados" component={LoanApproved} />
+          <Redirect from="*" to="/" />
+        </Switch>
+        <Footer hide={props.isHomeMenuHidden} />
+      </div>
+    </Router>
+  );
+};
 
-export default Routes;
+const mapStateToProps = state => ({
+  isHomeMenu: state.main.isHomeMenu,
+  isHomeMenuHidden: state.main.isHomeMenuHidden,
+  isAuth: state.user.isAuth,
+});
+
+export default connect(mapStateToProps)(Routes);
