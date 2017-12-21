@@ -60,12 +60,43 @@ export function post({
 
 export function get({
   endpoint,
-  payload,
   authorization,
   requiredToken,
 }) {
   const requestGet = (resolve, reject) => {
     request.get(`http://localhost:3000/${endpoint}`)
+      .set({ authorization })
+      .then((response) => {
+        resolve(response);
+      })
+      .catch(err => reject(err));
+  };
+  return new Promise((resolve, reject) => {
+    if (requiredToken) {
+      try {
+        const isTokenValid = validateToken();
+        if (isTokenValid) {
+          requestGet(resolve, reject);
+        } else {
+          reject(new Error('Token expiró'));
+        }
+      } catch (err) {
+        reject(err);
+      }
+    } else {
+      requestGet(resolve, reject);
+    }
+  });
+}
+
+export function patch({
+  endpoint,
+  payload,
+  authorization,
+  requiredToken,
+}) {
+  const requestGet = (resolve, reject) => {
+    request.patch(`http://localhost:3000/${endpoint}`)
       .send(payload)
       .set({ authorization })
       .then((response) => {

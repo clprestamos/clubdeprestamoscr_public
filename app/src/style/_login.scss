@@ -1,4 +1,4 @@
-.login, .logout {
+.login, .logout, .change-password {
   background-color: $dark;
   width: 100vw;
   height: 100vh;
@@ -13,6 +13,12 @@
     margin-bottom: 24px;
     width: 60%;
     text-align: center;
+  }
+  .ui.message .content {
+    > p {
+      text-align: left;
+      width: 100%;
+    }
   }
   .btn.default {
     margin-top: 45px;
@@ -30,7 +36,7 @@
   }
   .logo {
     padding: 0;
-    padding-top: 12.5vh;
+    padding-top: 6.5vh;
     display: flex;
     justify-content: center;
   }
@@ -52,7 +58,7 @@
       color: $dark;
     }
   }
-  .login-box, .logout-box {
+  .login-box, .logout-box, .modal-box, .change-password-box {
     display: flex;
     justify-content: center;
     padding-top: 11vh;
@@ -70,6 +76,11 @@
     .btn.default {
       margin-top: 0;
       margin-bottom: 34px;
+    }
+  }
+  .change-password-box {
+    .btn.default {
+      margin-bottom: 0;
     }
   }
 }

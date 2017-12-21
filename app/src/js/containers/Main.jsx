@@ -48,9 +48,6 @@ class Main extends Component {
         isAuth,
         redirectTo,
       });
-    } else {
-      const { dispatch } = this.props;
-      dispatch(MainActionCreators.toggleMenuState(false));
     }
   }
   componentDidMount() {
@@ -60,8 +57,11 @@ class Main extends Component {
         this.changeBulletState(this.last_known_scroll_position);
       }
     });
-    const { dispatch } = this.props;
-    dispatch(MainActionCreators.toggleMenuState(true));
+    if (this.props.authData.data === null) {
+      const { dispatch } = this.props;
+      dispatch(MainActionCreators.toggleMenuState(true));
+      dispatch(MainActionCreators.toggleMenuHideState(false));
+    }
     scrollToComponent(this.acercaNosotros, this.state.scrollAnimation);
   }
   componentWillUnmount() {

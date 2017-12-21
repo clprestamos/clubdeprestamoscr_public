@@ -28,6 +28,7 @@ class InputField extends Component {
         onChange={this.handleChange}
         name={this.props.name}
         defaultValue={this.props.defaultValue}
+        required={this.props.isRequired}
       />
     ) : (
       <Input
@@ -37,6 +38,7 @@ class InputField extends Component {
         onChange={this.handleChange}
         name={this.props.name}
         defaultValue={this.props.defaultValue}
+        required={this.props.isRequired}
       />
     );
     return (
@@ -50,6 +52,7 @@ class InputField extends Component {
 
 InputField.propTypes = {
   inputType: PropTypes.string,
+  isRequired: PropTypes.bool,
   errorMessage: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
