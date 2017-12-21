@@ -1,6 +1,11 @@
 import * as types from '../constants';
 import * as service from '../service';
 
+export function clearLoginData() {
+  return {
+    type: types.CLEAR_LOGIN_DATA,
+  };
+}
 export function loginInit() {
   return {
     type: types.LOGIN_INIT,

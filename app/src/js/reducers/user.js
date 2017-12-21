@@ -19,6 +19,7 @@ function user(state = initialState, action) {
         ...action.payload,
       };
     case types.LOGOUT:
+    case types.CLEAR_LOGIN_DATA:
       return {
         ...state,
         ...initialState,

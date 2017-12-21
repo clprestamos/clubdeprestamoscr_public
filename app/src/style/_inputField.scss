@@ -18,7 +18,7 @@ input::placeholder {
     @extend .formInput;
   }
   &.error > input {
-    border: 1px solid red;
+    border: 1px solid red !important;
   }
 }
 

@@ -8,7 +8,7 @@ const Login = () => <Link to="/login" className="btn default">Iniciar Sesión</L
 const Header = (props) => {
   const styleClass = props.isHomeMenu ? '' : 'secondary-page';
   const headerComponent = !props.hide ? (
-    <header className={`header ${styleClass}`}>
+    <header className={`main-header ${styleClass}`}>
       <Logo />
       <Menu />
       <div className="action-btn">

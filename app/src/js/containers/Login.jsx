@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { connect } from 'react-redux';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Container, Form } from 'semantic-ui-react';
 
 import Logo from '../components/Header/Logo';
 import InputField from '../components/InputField';
+import Modal from '../components/Modal';
+import Message from '../components/Message';
+import ForgotPassword from './ForgotPassword';
 
 import * as utils from '../utils';
 
@@ -26,6 +29,9 @@ class Login extends Component {
       isInvestor: false,
       username: '',
       password: '',
+      isModalOpen: false,
+      isMessageVisible: false,
+      hasErrors: false,
     };
     autobind(this);
   }
@@ -34,6 +40,17 @@ class Login extends Component {
     dispatch(MainActionCreators.toggleMenuHideState(true));
   }
   componentWillReceiveProps(nextProps) {
+    if (nextProps.isForgotPasswordSuccess && !this.state.isMessageVisible) {
+      this.setState({
+        isMessageVisible: true,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            isMessageVisible: false,
+          });
+        }, 10000);
+      });
+    }
     if (nextProps.authData.data !== null) {
       if (nextProps.authData.data.roleId === 'client') {
         this.setState({
@@ -53,6 +70,10 @@ class Login extends Component {
       });
     }
   }
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(LoginActionCreators.clearLoginData());
+  }
   onChangeField(e) {
     if (e.field === 'email') {
       this.setState({
@@ -65,9 +86,21 @@ class Login extends Component {
     }
   }
   login() {
-    const { dispatch } = this.props;
-    const { username, password } = this.state;
-    dispatch(LoginActionCreators.login({ username, password }));
+    if (!this.state.hasErrors) {
+      const { dispatch } = this.props;
+      const { username, password } = this.state;
+      dispatch(LoginActionCreators.login({ username, password }));
+    }
+  }
+  handleModalOpen() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
+  }
+  handleMessage() {
+    this.setState({
+      isMessageVisible: false,
+    });
   }
   render() {
     let pathname = '/';
@@ -91,9 +124,23 @@ class Login extends Component {
         onChangeField: this.onChangeField,
         name: 'email',
         defaultValue: this.state.email,
+        isRequired: true,
         validation: (value) => {
-          if (value === '') return true;
-          if (utils.validateExp({ type: 'email', value })) return false;
+          if (value === '') {
+            this.setState({
+              hasErrors: true,
+            });
+            return true;
+          }
+          if (utils.validateExp({ type: 'email', value })) {
+            this.setState({
+              hasErrors: false,
+            });
+            return false;
+          }
+          this.setState({
+            hasErrors: true,
+          });
           return true;
         },
       },
@@ -105,24 +152,56 @@ class Login extends Component {
         inputType: 'password',
         onChangeField: this.onChangeField,
         name: 'password',
+        isRequired: true,
         defaultValue: this.state.password,
         validation: (value) => {
-          if (value === '') return true;
-          if (utils.validateExp({ type: 'password', value })) return false;
+          if (value === '') {
+            this.setState({
+              hasErrors: true,
+            });
+            return true;
+          }
+          if (utils.validateExp({ type: 'password', value })) {
+            this.setState({
+              hasErrors: false,
+            });
+            return false;
+          }
+          this.setState({
+            hasErrors: true,
+          });
           return true;
         },
       },
     ];
+    const message = this.props.isForgotPasswordSuccess && this.state.isMessageVisible ? (
+      <Message
+        positive
+        icon="mail"
+        header="Mensaje enviado"
+        content="Un correo electrónico ha sido enviado a su cuenta, con un link para la restauración de su contraseña. Revise su bandeja de entrada o inbox, sino bien revise su bandeja de spam."
+        onDismiss={this.handleMessage}
+      />
+    ) : '';
+    const errorMessage = this.props.authData.error ? (
+      <Message
+        negative
+        header="Error de autenticación"
+        content="Verifique correo o contraseña."
+        size="mini"
+      />
+    ) : '';
     return (
       <div className="login">
         <Container fluid>
+          {message}
           <Logo />
           <div className="login-box">
             <div className="box">
               <div className="divider" />
               <h3>Ingreso de usuario</h3>
               <p>Digite su correo y contraseña ingresadas al sistema.</p>
-              <Form>
+              <Form onSubmit={this.login}>
                 {
                   inputFields.map(inputField => (
                     <Form.Field key={inputField.id}>
@@ -134,13 +213,27 @@ class Login extends Component {
                         onChangeField={inputField.onChangeField}
                         name={inputField.name}
                         defaultValue={inputField.defaultValue}
+                        isRequired={inputField.isRequired}
                       />
                     </Form.Field>
                   ))
                 }
+                {errorMessage}
+                <button
+                  type="submit"
+                  className="btn default"
+                  style={this.props.authData.error ? { marginTop: '5px' } : {}}
+                >
+                  Ingresar
+                </button>
               </Form>
-              <button className="btn default" onClick={this.login}>Ingresar</button>
-              <Link to="/contrasena" className="forgot-password">¿Olvidaste la contraseña?</Link>
+              <Modal
+                className="modal"
+                trigger={<button className="forgot-password" onClick={this.handleModalOpen}>¿Olvidaste la contraseña?</button>}
+                isOpen={this.state.isModalOpen}
+                onClose={this.handleModalOpen}
+                component={<ForgotPassword closeSelf={this.handleModalOpen} />}
+              />
             </div>
           </div>
         </Container>
@@ -151,6 +244,7 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
   authData: state.user,
+  isForgotPasswordSuccess: state.forgotPassword.isSuccess,
 });
 
 export default withRouter(connect(mapStateToProps)(Login));

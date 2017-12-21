@@ -20,6 +20,7 @@ import Login from './containers/Login';
 import Logout from './containers/Logout';
 import ClientDashboard from './containers/protected/client/dashboard';
 import LoanApproved from './containers/protected/client/loanApproved';
+import ChangePassword from './containers/ChangePassword';
 
 let isAuthenticated = false;
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -58,6 +59,7 @@ const Routes = (props) => {
           <Route path="/invierta" component={InvestorRegister} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
+          <Route path="/cambiar-password/:passwordKey" component={ChangePassword} />
           <PrivateRoute path="/cliente/dashboard" component={ClientDashboard} />
           <PrivateRoute path="/cliente/prestamos-aprobados" component={LoanApproved} />
           <Redirect from="*" to="/" />

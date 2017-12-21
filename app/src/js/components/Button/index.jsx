@@ -15,7 +15,7 @@ const Button = (props) => {
       <span>{props.text}</span>
     </Link>
   ) : (
-    <button type="button" className={buttonClass} onClick={props.onClick} disabled={props.active}>{props.text}</button>
+    <button type={props.type ? props.type : 'button'} className={buttonClass} onClick={props.onClick} disabled={props.active}>{props.text}</button>
   );
   return btn;
 };
@@ -26,6 +26,7 @@ Button.propTypes = {
   to: PropTypes.string,
   onClick: PropTypes.func,
   active: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default Button;

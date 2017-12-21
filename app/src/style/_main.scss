@@ -30,6 +30,18 @@ button {
   outline: none;
 }
 
+.ui.message {
+  position: absolute;
+  z-index: 9;
+  opacity: 0.8;
+}
+
+.ui.form {
+  .ui.message {
+    position: relative;
+  }
+}
+
 .pointer-menu {
   display: flex;
   position: fixed;
@@ -51,14 +63,19 @@ button {
     background-color: $light-green;
   }
 }
-
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
 .btn {
   cursor: pointer;
   border-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: white;
   font-weight: bold;
   font-size: 11px;
   text-transform: uppercase;
@@ -72,6 +89,20 @@ button {
     font-size: 14px;
     width: 259px;
     height: 55px;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    background: $inactive;
+    border: 1px solid #c2c2c2;
+  }
+  &.cancel {
+    color: $dark;
+    background: none;
+    width: inherit;
+    height: inherit;
+    border: none;
+    display: inline-flex;
+    margin-top: 5vh;
   }
 }
 
@@ -102,7 +133,7 @@ button {
   flex-grow: 1;
 }
 
-.header {
+.main-header {
   display: flex;
   flex-direction: row;
   align-items: center;
