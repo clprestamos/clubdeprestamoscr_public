@@ -2,18 +2,48 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  .message {
+    p {
+      color: inherit;
+      font-size: inherit;
+    }
+  }
+  .ui.form {
+    width: 27.8vw;
+    margin-top: 32px;
+    .ui.input {
+      height: 50px;
+      &.error {
+        width: 90%;
+      }
+      @media (max-width: 1300px) {
+        min-width: 270px;
+      }
+    }
+    @media (max-width: 1300px) {
+      textarea {
+        min-width: 270px;
+      }
+    }
+  }
   .field {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex-flow: column;
+    flex-direction: row;
     &> div {
       margin-bottom: 1rem;
+    }
+    @media (max-width: 1300px) {
+      flex-direction: column;
+      &> div:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
 #contactenos {
-  padding-top: 25vh;
   padding-left: 35vw;
   padding-right: 35vw;
-  height: 75vh;
 }
