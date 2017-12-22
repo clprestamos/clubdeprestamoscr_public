@@ -75,15 +75,9 @@ class Login extends Component {
     dispatch(LoginActionCreators.clearLoginData());
   }
   onChangeField(e) {
-    if (e.field === 'email') {
-      this.setState({
-        username: e.value,
-      });
-    } else if (e.field === 'password') {
-      this.setState({
-        password: e.value,
-      });
-    }
+    this.setState({
+      [e.field]: e.value,
+    });
   }
   login() {
     if (!this.state.hasErrors) {

@@ -26,7 +26,7 @@ input::placeholder {
   textarea,
   textarea:focus {
     @extend .formInput;
-    width: 27.8vw;
+    width: 92%;
   }
   &.error > textarea {
     border: 1px solid red;

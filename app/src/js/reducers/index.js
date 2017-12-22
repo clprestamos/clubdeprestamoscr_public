@@ -6,6 +6,7 @@ import investorSubscription from './investorSubscription';
 import recaptcha from './recaptcha';
 import user from './user';
 import forgotPassword from './forgotPassword';
+import contactUs from './contactUs';
 
 const rootReducer = combineReducers({
   main,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   forgotPassword,
   clientSubscription,
   investorSubscription,
+  contactUs,
 });
 
 export default rootReducer;

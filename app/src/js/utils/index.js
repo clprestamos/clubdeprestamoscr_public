@@ -19,7 +19,7 @@ export const rules = [
   },
   {
     type: 'text',
-    regExp: /^[a-zA-Z]$/,
+    regExp: /^[a-zA-Z]*$/,
   },
 ];
 

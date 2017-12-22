@@ -10,6 +10,7 @@ import PointerMenu from '../components/Home/PointerMenu';
 import ContactUs from '../components/ContactUs';
 
 import * as MainActionCreators from '../actions/';
+import * as ContactUsActionCreators from '../actions/ContactUsActionCreators';
 
 import '../../style/animate.min.css'; // eslint-disable-line
 
@@ -33,6 +34,7 @@ class Main extends Component {
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
       MainActionCreators,
+      ContactUsActionCreators,
     }, dispatch);
   }
   componentWillMount() {
@@ -137,6 +139,10 @@ class Main extends Component {
       });
     }
   }
+  handleSendMessage(data) {
+    const { dispatch } = this.props;
+    dispatch(ContactUsActionCreators.sendMsgEmail(data));
+  }
   render() {
     if (this.state.isAuth) {
       return <Redirect to={this.state.redirectTo} />;
@@ -182,7 +188,7 @@ class Main extends Component {
               buttonType="large"
               buttonTo="/acercadenosotros"
               itemId="acerca-de-nosotros"
-              scrollToOnClick={menuItems[1].onClick}
+              scrollTo="#invertir"
             />
           </div>
           <div ref={(section) => { this.invertir = section; }}>
@@ -194,7 +200,7 @@ class Main extends Component {
               buttonType="large"
               buttonTo="/invertir"
               itemId="invertir"
-              scrollToOnClick={menuItems[2].onClick}
+              scrollTo="#solicitud-de-credito"
             />
           </div>
           <div ref={(section) => { this.solicitudCredito = section; }}>
@@ -206,7 +212,7 @@ class Main extends Component {
               buttonType="large"
               buttonTo="/solicitudcredito"
               itemId="solicitud-de-credito"
-              scrollToOnClick={menuItems[0].onClick}
+              scrollTo="#contactenos"
             />
           </div>
           <div ref={(section) => { this.contactenos = section; }}>
@@ -216,10 +222,8 @@ class Main extends Component {
               id="contactenos"
             >
               <ContactUs
-                buttonType="default"
-                buttonText="Enviar"
-                btnOnClick={() => {}}
-                buttonTo="/"
+                handleSendMessage={this.handleSendMessage}
+                sent={this.props.sent}
               />
             </section>
           </div>
@@ -231,6 +235,7 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   authData: state.user,
+  sent: state.contactUs.sent,
 });
 
 export default withRouter(connect(mapStateToProps)(Main));
