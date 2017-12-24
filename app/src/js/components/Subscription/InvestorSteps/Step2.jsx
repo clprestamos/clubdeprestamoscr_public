@@ -3,79 +3,83 @@ import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
+import * as utils from '../../../utils';
+
 import InputField from '../../InputField';
-import Button from '../../Button';
 import Recaptcha from '../../Recaptcha';
 
 class Step2 extends Component {
   constructor(props) {
     super(props);
-    const { onChangeField, investorInfo } = props;
     this.state = {
-      isDisabled: true,
+      hasErrors: true,
       password: '',
-      inputFields: [{
-        id: 1,
-        placeholder: 'Password *',
-        hasError: false,
-        errorMessage: 'Campo requerido. Mínimo 8 caracteres',
-        customClass: 'password',
-        inputType: 'password',
-        onChangeField: (e) => {
-          this.setState({
-            password: e.value,
-          });
-        },
-        name: 'confirm',
-        defaultValue: investorInfo.password,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/^[A-Za-z\d\s@$!%*?&.()-_]{8,16}$/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 2,
-        placeholder: 'Confirmar password *',
-        hasError: false,
-        errorMessage: 'Campo requerido',
-        customClass: 'password',
-        inputType: 'password',
-        onChangeField,
-        name: 'password',
-        validation: (value) => {
-          if (value === '') return true;
-          if (value === this.state.password) return false;
-          return true;
-        },
-      }],
     };
     autobind(this);
   }
-  componentWillMount() {
-    if (this.props.investorInfo.password !== '' || this.props.captcha !== '') {
-      this.setButtonState(true);
-    }
-  }
-  componentDidMount() {
-    if (this.props.isComplete) this.setButtonState(false);
-  }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.investorInfo.password !== '' && nextProps.captcha !== '') {
-      this.setButtonState(false);
-    }
-  }
-  setButtonState(isDisabled) {
     this.setState({
-      isDisabled,
+      hasErrors: !(nextProps.investorInfo.password !== '' && nextProps.captcha !== ''),
     });
   }
+  handleSubmit() {
+    if (!this.state.hasErrors && this.props.captcha) {
+      this.props.handleSubmit();
+    }
+  }
+  validation({ type, value }) {
+    let result = true;
+    if (value === '') result = true;
+    if (utils.validateExp({ type, value })) result = false;
+    this.setState({
+      hasErrors: result,
+    });
+    return result;
+  }
   render() {
+    const { onChangeField, investorInfo } = this.props;
+    const inputFields = [{
+      id: 1,
+      placeholder: 'Password *',
+      hasError: false,
+      errorMessage: 'Campo requerido. Mínimo 8 caracteres, Máximo 16 caracteres.',
+      customClass: 'password',
+      inputType: 'password',
+      onChangeField: (e) => {
+        this.setState({
+          password: e.value,
+        });
+      },
+      name: 'password',
+      isRequired: true,
+      defaultValue: investorInfo.password,
+      validation: value => this.validation({ value, type: 'password' }),
+    },
+    {
+      id: 2,
+      placeholder: 'Confirmar password *',
+      hasError: false,
+      errorMessage: 'Los campos no coinciden.',
+      customClass: 'password',
+      inputType: 'password',
+      onChangeField,
+      name: 'password',
+      isRequired: true,
+      validation: (value) => {
+        if (value !== this.state.password) {
+          this.setState({
+            hasErrors: true,
+          });
+          return true;
+        }
+        return this.validation({ value, type: 'password' });
+      },
+    }];
     return (
       <div className="client-subscription step1">
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           {
-            this.state.inputFields.map(inputField => (
+            inputFields.map(inputField => (
               <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
                 <InputField
                   placeholder={inputField.placeholder}
@@ -84,6 +88,7 @@ class Step2 extends Component {
                   inputType={inputField.inputType}
                   onChangeField={inputField.onChangeField}
                   name={inputField.name}
+                  isRequired={inputField.isRequired}
                   defaultValue={inputField.defaultValue}
                 />
               </Form.Field>
@@ -92,12 +97,7 @@ class Step2 extends Component {
           <Form.Field className="recaptcha">
             <Recaptcha />
           </Form.Field>
-          <Button
-            onClick={this.props.btnOnClick}
-            text={this.props.btnText}
-            buttonType={this.props.btnType}
-            active={this.state.isDisabled}
-          />
+          <button type="submit" className="btn default">{this.props.btnText}</button>
           <span>Campos obligatorios **</span>
         </Form>
       </div>
@@ -106,12 +106,10 @@ class Step2 extends Component {
 }
 
 Step2.propTypes = {
-  btnOnClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   btnText: PropTypes.string.isRequired,
-  btnType: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
   investorInfo: PropTypes.object.isRequired,
-  isComplete: PropTypes.bool.isRequired,
   captcha: PropTypes.string.isRequired,
 };
 

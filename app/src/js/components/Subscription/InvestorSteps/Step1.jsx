@@ -3,188 +3,102 @@ import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
+import * as utils from '../../../utils';
+
 import InputField from '../../InputField';
-import Button from '../../Button';
 
 class Step1 extends Component {
   constructor(props) {
     super(props);
-    const { onChangeField, investorInfo } = props;
     this.state = {
-      isDisabled: true,
-      inputFields: [{
-        id: 1,
-        placeholder: 'Nombre *',
-        errorMessage: 'Campo requerido, digite solamente caracteres',
-        customClass: 'name',
-        onChangeField,
-        name: 'name',
-        defaultValue: investorInfo.name,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/[a-zA-Z]/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 2,
-        placeholder: 'Apellido *',
-        errorMessage: 'Campo requerido, digite solamente caracteres',
-        onChangeField,
-        name: 'lastName',
-        defaultValue: investorInfo.lastName,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/[a-zA-Z]/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 3,
-        placeholder: 'Cédula *',
-        errorMessage: 'Campo requerido. Formato de cédula 0-0000-0000',
-        onChangeField,
-        name: 'identification',
-        defaultValue: investorInfo.identification,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/^([0-9]{1})-([0-9]{4})-([0-9]{4})$/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 4,
-        placeholder: 'Teléfono *',
-        errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
-        inputType: 'tel',
-        onChangeField,
-        name: 'phone',
-        defaultValue: investorInfo.phone,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 5,
-        placeholder: 'Teléfono adicional *',
-        errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
-        inputType: 'tel',
-        onChangeField,
-        name: 'aditionalPhone',
-        defaultValue: investorInfo.aditionalPhone,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(value)) return false;
-          return true;
-        },
-      },
-      {
-        id: 6,
-        placeholder: 'Email *',
-        errorMessage: 'Campo requerido. Formato de email inválido.',
-        inputType: 'email',
-        customClass: 'email',
-        onChangeField,
-        name: 'email',
-        defaultValue: investorInfo.email,
-        validation: (value) => {
-          if (value === '') return true;
-          if (/^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/.test(value)) return false;
-          return true;
-        },
-      }],
+      hasErrors: false,
     };
     autobind(this);
   }
-  componentWillMount() {
-    const { investorInfo } = this.props;
-    const {
-      name,
-      lastName,
-      identification,
-      phone,
-      aditionalPhone,
-      email,
-    } = investorInfo;
-    if (
-      name !== '' ||
-      lastName !== '' ||
-      identification !== '' ||
-      phone !== '' ||
-      aditionalPhone !== '' ||
-      email !== ''
-    ) {
-      this.setButtonState(true);
+  handleSubmit() {
+    if (!this.state.hasErrors) {
+      this.props.handleSubmit();
     }
   }
-  componentDidMount() {
-    if (this.props.isComplete) this.setButtonState(false);
-  }
-  componentWillReceiveProps(nextProps) {
-    const { investorInfo } = nextProps;
-    const {
-      name,
-      lastName,
-      identification,
-      phone,
-      aditionalPhone,
-      email,
-    } = investorInfo;
-    if (
-      !this.state.inputFields[0].validation(name) &&
-      !this.state.inputFields[1].validation(lastName) &&
-      !this.state.inputFields[1].validation(identification) &&
-      !this.state.inputFields[1].validation(phone) &&
-      !this.state.inputFields[1].validation(aditionalPhone) &&
-      !this.state.inputFields[1].validation(email)
-    ) {
-      this.setButtonState(true);
-    } else if (
-      name === '' ||
-      lastName === '' ||
-      identification === '' ||
-      phone === '' ||
-      aditionalPhone === '' ||
-      email === ''
-    ) {
-      this.setButtonState(true);
-    } else {
-      this.setButtonState(false);
-    }
-  }
-  setButtonState(isDisabled) {
+  validation({ type, value }) {
+    let result = true;
+    if (value === '') result = true;
+    if (utils.validateExp({ type, value })) result = false;
     this.setState({
-      isDisabled,
+      hasErrors: result,
     });
-  }
-  handleButtonClick() {
-    const { investorInfo } = this.props;
-    const {
-      name,
-      lastName,
-      identification,
-      phone,
-      aditionalPhone,
-      email,
-    } = investorInfo;
-    if (
-      name !== '' ||
-      lastName !== '' ||
-      identification !== '' ||
-      phone !== '' ||
-      aditionalPhone !== '' ||
-      email !== ''
-    ) {
-      this.props.btnOnClick();
-    }
+    return result;
   }
   render() {
-    const { inputFields } = this.state;
+    const { investorInfo, onChangeField } = this.props;
+    const inputFields = [{
+      id: 1,
+      placeholder: 'Nombre *',
+      errorMessage: 'Campo requerido, digite solamente caracteres',
+      customClass: 'name',
+      onChangeField,
+      name: 'name',
+      defaultValue: investorInfo.name,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'text' }),
+    },
+    {
+      id: 2,
+      placeholder: 'Apellido *',
+      errorMessage: 'Campo requerido, digite solamente caracteres',
+      onChangeField,
+      name: 'lastName',
+      defaultValue: investorInfo.lastName,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'text' }),
+    },
+    {
+      id: 3,
+      placeholder: 'Cédula *',
+      errorMessage: 'Campo requerido. Formato de cédula 0-0000-0000 ó 000000000',
+      onChangeField,
+      name: 'identification',
+      defaultValue: investorInfo.identification,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'identification' }),
+    },
+    {
+      id: 4,
+      placeholder: 'Teléfono *',
+      errorMessage: 'Campo requerido. Formato de teléfono 0000-0000',
+      inputType: 'tel',
+      onChangeField,
+      name: 'phone',
+      defaultValue: investorInfo.phone,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'phone' }),
+    },
+    {
+      id: 5,
+      placeholder: 'Teléfono adicional *',
+      errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
+      inputType: 'tel',
+      onChangeField,
+      name: 'referencePhone',
+      defaultValue: investorInfo.referencePhone,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'phone' }),
+    },
+    {
+      id: 6,
+      placeholder: 'Email *',
+      errorMessage: 'Campo requerido. Formato de email inválido.',
+      inputType: 'email',
+      customClass: 'email',
+      onChangeField,
+      name: 'email',
+      defaultValue: investorInfo.email,
+      isRequired: true,
+      validation: value => this.validation({ value, type: 'email' }),
+    }];
     return (
       <div className="investor-subscription step1">
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           {
             inputFields.map(inputField => (
               <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
@@ -196,16 +110,17 @@ class Step1 extends Component {
                   onChangeField={inputField.onChangeField}
                   name={inputField.name}
                   defaultValue={inputField.defaultValue}
+                  isRequired={inputField.isRequired}
                 />
               </Form.Field>
             ))
           }
-          <Button
-            onClick={this.handleButtonClick}
-            text={this.props.btnText}
-            buttonType={this.props.btnType}
-            active={this.state.isDisabled}
-          />
+          <button
+            type="submit"
+            className="btn default"
+          >
+            {this.props.btnText}
+          </button>
           <span>Campos obligatorios **</span>
         </Form>
       </div>
@@ -214,12 +129,10 @@ class Step1 extends Component {
 }
 
 Step1.propTypes = {
-  btnOnClick: PropTypes.func.isRequired,
-  btnText: PropTypes.string.isRequired,
-  btnType: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   onChangeField: PropTypes.func.isRequired,
   investorInfo: PropTypes.object.isRequired,
-  isComplete: PropTypes.bool.isRequired,
+  btnText: PropTypes.string.isRequired,
 };
 
 export default Step1;

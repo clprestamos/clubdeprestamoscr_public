@@ -1,5 +1,12 @@
+import moment from 'moment';
 import * as types from '../constants';
+import * as service from '../service';
 
+export function clearInvestorSubscription() {
+  return {
+    type: types.CLEAR_INVESTOR_SUBSCRIPTION,
+  };
+}
 export function setInvestorInformation({ field, value }) {
   return dispatch => dispatch({
     type: types.SET_INVESTOR_INFORMATION,
@@ -9,7 +16,6 @@ export function setInvestorInformation({ field, value }) {
     },
   });
 }
-
 export function stepIsDisabled({ step, isDisabled }) {
   return dispatch => dispatch({
     type: types.STEP_INVESTOR_DISABLED,
@@ -19,7 +25,6 @@ export function stepIsDisabled({ step, isDisabled }) {
     },
   });
 }
-
 export function investorIsCompletedStep(currentStep) {
   return (dispatch) => {
     let type = '';
@@ -68,5 +73,73 @@ export function investorChangeCurrentStep(currentStep) {
       type: types.CHANGE_INVESTOR_CURRENT_STEP,
       payload,
     });
+  };
+}
+export function registerNewInvestorInit() {
+  return {
+    type: types.ADD_NEW_INVESTOR_INIT,
+    payload: {
+      isLoading: true,
+      newInvestor: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewInvestorError(error) {
+  return {
+    type: types.ADD_NEW_INVESTOR_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+      newInvestor: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewInvestorSuccess() {
+  return {
+    type: types.ADD_NEW_INVESTOR_SUCCESS,
+    payload: {
+      isLoading: false,
+      newInvestor: {
+        saved: true,
+      },
+    },
+  };
+}
+export function registerUserInvestor() {
+  return (dispatch, getState) => {
+    dispatch(registerNewInvestorInit());
+    const {
+      name,
+      lastName,
+      identification,
+      phone,
+      referencePhone,
+      email,
+      password,
+    } = getState().investorSubscription;
+    service.post({
+      endpoint: 'users',
+      payload: {
+        name,
+        lastName,
+        identification,
+        phone,
+        referencePhone,
+        email,
+        password,
+        roleId: 2,
+        signupDate: moment().format(),
+        isActive: true,
+      },
+    })
+      .then((response) => {
+        dispatch(registerNewInvestorSuccess());
+        return response.body[0].id;
+      })
+      .catch(error => dispatch(registerNewInvestorError(error)));
   };
 }

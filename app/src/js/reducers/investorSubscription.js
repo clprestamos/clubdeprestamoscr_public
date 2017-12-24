@@ -1,14 +1,20 @@
 import * as types from '../constants';
 
 const initialState = {
+  isLoading: false,
+  error: null,
   letterStep: 'uno',
   currentStep: 1,
-  name: '',
-  lastNames: '',
-  identification: '',
-  phone: '',
-  aditionalPhone: '',
-  email: '',
+  name: null,
+  lastName: null,
+  identification: null,
+  phone: null,
+  referencePhone: null,
+  email: null,
+  password: null,
+  newInvestor: {
+    saved: false,
+  },
   step1: {
     isActive: true,
     isComplete: false,
@@ -21,6 +27,9 @@ const initialState = {
 
 function InvestorSubscription(state = initialState, action) {
   switch (action.type) {
+    case types.ADD_NEW_INVESTOR_INIT:
+    case types.ADD_NEW_INVESTOR_ERROR:
+    case types.ADD_NEW_INVESTOR_SUCCESS:
     case types.CHANGE_INVESTOR_CURRENT_STEP:
       return {
         ...state,
@@ -54,6 +63,11 @@ function InvestorSubscription(state = initialState, action) {
           ...state[action.payload.step],
           isDisabled: action.payload.isDisabled,
         },
+      };
+    case types.CLEAR_INVESTOR_SUBSCRIPTION:
+      return {
+        ...state,
+        ...initialState,
       };
     default:
       return state;
