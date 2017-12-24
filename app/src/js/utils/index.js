@@ -11,7 +11,7 @@ export const rules = [
   },
   {
     type: 'identification',
-    regExp: /^([0-9]{1})-([0-9]{4})-([0-9]{4})$/, // 0-0000-0000
+    regExp: /^([0-9]{1})-([0-9]{4})-([0-9]{4})|([0-9]{9})$/, // 0-0000-0000 || 000000000
   },
   {
     type: 'password',
@@ -19,7 +19,7 @@ export const rules = [
   },
   {
     type: 'text',
-    regExp: /^[a-zA-Z]*$/,
+    regExp: /^([a-zA-Záéíóúñ]\s?)*$/,
   },
 ];
 

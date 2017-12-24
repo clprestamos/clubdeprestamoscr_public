@@ -1,123 +1,71 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
-import { Form, Dropdown } from 'semantic-ui-react';
+import _ from 'lodash';
+import { Form, Dropdown, Label, Icon } from 'semantic-ui-react';
 
 import * as utils from '../../../utils';
 
 import InputField from '../../InputField';
-import Button from '../../Button';
 
 class Step2 extends Component {
   constructor(props) {
     super(props);
-    const { onChangeField, clientInfo } = props;
     this.state = {
-      isDisabled: true,
-      inputFields: [{
-        id: 1,
-        placeholder: 'Dirección casa de habitación *',
-        errorMessage: 'Campo requerido',
-        customClass: 'address',
-        onChangeField,
-        name: 'address',
-        defaultValue: clientInfo.address,
-        validation: (value) => {
-          if (value === '') return true;
-          return false;
-        },
-      },
-      {
-        id: 2,
-        placeholder: 'Teléfono de un familiar *',
-        hasError: false,
-        errorMessage: 'Campo requerido. Formato de teléfono 0000-00-00',
-        customClass: 'familyPhone',
-        inputType: 'tel',
-        onChangeField,
-        name: 'familyPhone',
-        defaultValue: clientInfo.familyPhone,
-        validation: (value) => {
-          if (value === '') return true;
-          if (utils.validateExp({ type: 'phone', value })) return false;
-          return true;
-        },
-      }],
+      hasErrors: false,
     };
     autobind(this);
   }
-  componentWillMount() {
+  onChangeProvinces() {
+    this.props.getCantons();
+  }
+  onChangeCantons() {
+    this.props.getDistricts();
+  }
+  onChangeDistricts() {
+    this.props.getZipCode();
+  }
+  getDropDownItems(itemsArray) {
+    return _.map(itemsArray, item => ({ text: item, value: item }));
+  }
+  handleSubmit() {
     const { clientInfo } = this.props;
-    const {
-      address,
-      familyPhone,
-      amount,
-      term,
-      reason,
-    } = clientInfo;
     if (
-      address !== '' ||
-      familyPhone !== '' ||
-      amount !== '' ||
-      term !== '' ||
-      reason !== ''
+      !this.state.hasErrors &&
+      clientInfo.term &&
+      clientInfo.reason &&
+      clientInfo.amount &&
+      clientInfo.province &&
+      clientInfo.canton &&
+      clientInfo.district &&
+      clientInfo.zipCode
     ) {
-      this.setButtonState(true);
+      this.props.handleSubmit();
     }
   }
-  componentDidMount() {
-    if (this.props.isComplete) this.setButtonState(false);
-  }
-  componentWillReceiveProps(nextProps) {
-    const { clientInfo } = nextProps;
-    const {
-      address,
-      familyPhone,
-      amount,
-      term,
-      reason,
-    } = clientInfo;
-    if (
-      address !== '' &&
-      familyPhone !== '' &&
-      amount !== '' &&
-      term !== '' &&
-      reason !== ''
-    ) {
-      this.setButtonState(false);
-    }
-  }
-  setButtonState(isDisabled) {
+  validation({ type, value }) {
+    let result = true;
+    if (value === '') result = true;
+    if (utils.validateExp({ type, value })) result = false;
     this.setState({
-      isDisabled,
+      hasErrors: result,
     });
-  }
-  handleButtonClick() {
-    const { clientInfo } = this.props;
-    const {
-      address,
-      familyPhone,
-      term,
-      reason,
-      amount,
-    } = clientInfo;
-    if (
-      address !== '' ||
-      familyPhone !== '' ||
-      term !== '' ||
-      reason !== '' ||
-      amount !== ''
-    ) {
-      this.props.btnOnClick();
-    }
+    return result;
   }
   render() {
-    const { clientInfo } = this.props;
+    const { onChangeField, clientInfo } = this.props;
     const {
       term,
       reason,
       amount,
+      province,
+      canton,
+      district,
+      zipCode,
     } = clientInfo;
+    const provinces = this.getDropDownItems(this.props.provinces);
+    const cantons = this.getDropDownItems(this.props.cantons);
+    const districts = this.getDropDownItems(this.props.districts);
     const terms = [
       { text: '12 meses', value: '12-meses' },
       { text: '18 meses', value: '18-meses' },
@@ -184,25 +132,92 @@ class Step2 extends Component {
       { text: '₡ 4 900 000', value: 4900000 },
       { text: '₡ 5 000 000', value: 5000000 },
     ];
-    const { inputFields } = this.state;
     return (
       <div className="client-subscription Step2">
-        <Form>
-          {
-            inputFields.map(inputField => (
-              <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
-                <InputField
-                  placeholder={inputField.placeholder}
-                  validation={inputField.validation}
-                  errorMessage={inputField.errorMessage}
-                  inputType={inputField.inputType}
-                  onChangeField={inputField.onChangeField}
-                  name={inputField.name}
-                  defaultValue={inputField.defaultValue}
-                />
-              </Form.Field>
-            ))
-          }
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field className="address">
+            <InputField
+              placeholder="Dirección casa de habitación *"
+              validation={value => this.validation({ value, type: 'text' })}
+              errorMessage="Campo requerido."
+              onChangeField={onChangeField}
+              name="address"
+              isRequired
+              defaultValue={clientInfo.address}
+            />
+          </Form.Field>
+          <Form.Field className="address-details">
+            <Dropdown
+              placeholder="Provincia *"
+              selection
+              fluid
+              compact
+              search
+              options={provinces}
+              onChange={(e, { value }) => {
+                this.props.onChangeField({ field: 'province', value });
+                this.onChangeProvinces();
+              }}
+              defaultValue={province}
+            />
+            <Dropdown
+              placeholder="Cantón *"
+              selection
+              fluid
+              compact
+              search
+              options={cantons}
+              onChange={(e, { value }) => {
+                this.props.onChangeField({ field: 'canton', value });
+                this.onChangeCantons();
+              }}
+              defaultValue={canton}
+            />
+            <Dropdown
+              placeholder="Distrito *"
+              selection
+              fluid
+              compact
+              search
+              options={districts}
+              onChange={(e, { value }) => {
+                this.props.onChangeField({ field: 'district', value });
+                this.onChangeDistricts();
+              }}
+              defaultValue={district}
+            />
+          </Form.Field>
+          <Form.Field className="zipCode">
+            <Label>
+              <Icon name="mail" />
+              {zipCode}
+              <Label.Detail>Código Postal</Label.Detail>
+            </Label>
+          </Form.Field>
+          <Form.Field className="relativePhone">
+            <InputField
+              placeholder="Teléfono de un familiar *"
+              validation={value => this.validation({ value, type: 'phone' })}
+              errorMessage="Campo requerido. Formato de teléfono 0000-0000."
+              inputType="tel"
+              onChangeField={onChangeField}
+              name="relativePhone"
+              isRequired
+              defaultValue={clientInfo.relativePhone}
+            />
+          </Form.Field>
+          <Form.Field className="cellphone">
+            <InputField
+              placeholder="Celular *"
+              validation={value => this.validation({ value, type: 'phone' })}
+              errorMessage="Campo requerido. Formato de teléfono 0000-0000."
+              inputType="tel"
+              onChangeField={onChangeField}
+              name="cellphone"
+              isRequired
+              defaultValue={clientInfo.cellphone}
+            />
+          </Form.Field>
           <Form.Field>
             <Dropdown
               placeholder="Monto *"
@@ -242,12 +257,7 @@ class Step2 extends Component {
               defaultValue={reason}
             />
           </Form.Field>
-          <Button
-            onClick={this.handleButtonClick}
-            text={this.props.btnText}
-            buttonType={this.props.btnType}
-            active={this.state.isDisabled}
-          />
+          <button type="submit" className="btn default">{this.props.btnText}</button>
           <span>Campos obligatorios **</span>
         </Form>
       </div>
@@ -256,12 +266,16 @@ class Step2 extends Component {
 }
 
 Step2.propTypes = {
-  btnOnClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   btnText: PropTypes.string.isRequired,
-  btnType: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
   clientInfo: PropTypes.object.isRequired,
-  isComplete: PropTypes.bool.isRequired,
+  getCantons: PropTypes.func.isRequired,
+  getDistricts: PropTypes.func.isRequired,
+  getZipCode: PropTypes.func.isRequired,
+  provinces: PropTypes.array.isRequired,
+  cantons: PropTypes.array,
+  districts: PropTypes.array,
 };
 
 export default Step2;

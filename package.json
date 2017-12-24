@@ -58,7 +58,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
-    "moment": "^2.19.0",
+    "moment": "^2.20.1",
     "optimize-css-assets-webpack-plugin": "^3.0.0",
     "prop-types": "^15.5.10",
     "react": "^16.1.1",

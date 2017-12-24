@@ -5,50 +5,48 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 
 const ClientSteps = (props) => {
-  const { clientInfo } = props;
+  const { clientInfo, captcha } = props;
   const { step1, step2, step3 } = clientInfo;
   let stepContent = (
     <Step1
-      btnOnClick={step1.handleNextOnclick}
-      btnText="Siguiente"
-      btnType="default"
+      handleSubmit={step1.handleNextOnclick}
       onChangeField={step1.onChangeField}
       clientInfo={clientInfo}
-      isComplete={step1.isComplete}
+      btnText="Siguiente"
     />
   );
   if (step1.isActive) {
     stepContent = (
       <Step1
-        btnOnClick={step1.handleNextOnclick}
-        btnText="Siguiente"
-        btnType="default"
+        handleSubmit={step1.handleNextOnclick}
         onChangeField={step1.onChangeField}
         clientInfo={clientInfo}
-        isComplete={step1.isComplete}
+        btnText="Siguiente"
       />
     );
   } else if (step2.isActive) {
     stepContent = (
       <Step2
-        btnOnClick={step2.handleNextOnclick}
-        btnText="Siguiente"
-        btnType="default"
+        handleSubmit={step2.handleNextOnclick}
         onChangeField={step2.onChangeField}
         clientInfo={clientInfo}
-        isComplete={step2.isComplete}
+        getCantons={step2.getCantons}
+        getDistricts={step2.getDistricts}
+        getZipCode={step2.getZipCode}
+        provinces={step2.provinces}
+        cantons={step2.cantons}
+        districts={step2.districts}
+        btnText="Siguiente"
       />
     );
   } else if (step3.isActive) {
     stepContent = (
       <Step3
-        btnOnClick={step3.handleNextOnclick}
-        btnText="Enviar datos"
-        btnType="default"
+        handleSubmit={step3.handleNextOnclick}
         onChangeField={step3.onChangeField}
         clientInfo={clientInfo}
-        isComplete={step3.isComplete}
-        captcha={props.captcha}
+        btnText="Enviar Datos"
+        captcha={captcha}
       />
     );
   }

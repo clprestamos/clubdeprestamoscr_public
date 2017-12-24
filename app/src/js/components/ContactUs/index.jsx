@@ -31,7 +31,7 @@ class ContactUs extends Component {
       this.props.handleSendMessage(this.state);
     }
   }
-  validation(value, type) {
+  validation({ value, type }) {
     let result = true;
     if (value === '') result = true;
     if (utils.validateExp({ type, value })) result = false;
@@ -57,7 +57,7 @@ class ContactUs extends Component {
           <Form.Field>
             <InputField
               placeholder="Nombre"
-              validation={value => this.validation(value, 'text')}
+              validation={value => this.validation({ value, type: 'text' })}
               errorMessage="Campo requerido."
               onChangeField={this.onChangeField}
               name="name"
@@ -66,7 +66,7 @@ class ContactUs extends Component {
             />
             <InputField
               placeholder="Email"
-              validation={value => this.validation(value, 'email')}
+              validation={value => this.validation({ value, type: 'email' })}
               errorMessage="Campo requerido."
               onChangeField={this.onChangeField}
               name="email"
@@ -77,7 +77,7 @@ class ContactUs extends Component {
           <Form.Field>
             <InputField
               placeholder="Teléfono"
-              validation={value => this.validation(value, 'phone')}
+              validation={value => this.validation({ value, type: 'phone' })}
               errorMessage="Campo requerido."
               onChangeField={this.onChangeField}
               name="phone"
@@ -86,7 +86,7 @@ class ContactUs extends Component {
             />
             <InputField
               placeholder="Asunto"
-              validation={value => this.validation(value, 'text')}
+              validation={value => this.validation({ value, type: 'text' })}
               errorMessage="Campo requerido."
               onChangeField={this.onChangeField}
               name="subject"
@@ -97,7 +97,7 @@ class ContactUs extends Component {
           <Form.Field style={{ flexFlow: 'column' }}>
             <InputField
               placeholder="Mensaje"
-              validation={value => this.validation(value, 'text')}
+              validation={value => this.validation({ value, type: 'text' })}
               errorMessage="Campo requerido."
               inputType="textarea"
               onChangeField={this.onChangeField}

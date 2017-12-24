@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -8,6 +9,7 @@ import * as RegisterClientActionCreators from '../actions/RegisterClientActionCr
 
 import Hero from '../components/Subscription/Hero';
 import SubscriptionFormClient from '../components/Subscription/SubscriptionForm/SubscriptionFormClient';
+import SubscriptionSuccess from '../components/Subscription/SubscriptionSuccess';
 
 class RequestLoan extends Component {
   constructor(props) {
@@ -22,8 +24,39 @@ class RequestLoan extends Component {
     const { dispatch } = this.props;
     dispatch(GeneralActionCreators.toggleMenuState(false));
   }
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(RegisterClientActionCreators.getProvinces());
+  }
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(RegisterClientActionCreators.clearClientSubscription());
+  }
+  getCantons() {
+    const { dispatch } = this.props;
+    dispatch(RegisterClientActionCreators.getCantons());
+  }
+  getDistricts() {
+    const { dispatch } = this.props;
+    dispatch(RegisterClientActionCreators.getDistricts());
+  }
+  getZipCode() {
+    const { dispatch } = this.props;
+    dispatch(RegisterClientActionCreators.getZipCode());
+  }
   render() {
-    const { dispatch, clientInfo } = this.props;
+    const {
+      dispatch,
+      clientInfo,
+    } = this.props;
+    const {
+      newUser,
+      newLoan,
+      newClient,
+    } = clientInfo;
+    const provinces = _.orderBy(this.props.provinces, _.identity, ['asc']);
+    const cantons = _.orderBy(this.props.cantons, _.identity, ['asc']);
+    const districts = _.orderBy(this.props.districts, _.identity, ['asc']);
     let currentStep = 'uno';
     switch (this.props.currentStep) {
       case 1:
@@ -66,6 +99,18 @@ class RequestLoan extends Component {
           dispatch(RegisterClientActionCreators.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
           dispatch(RegisterClientActionCreators.setClientInformation(fieldChange));
         },
+        getCantons: () => {
+          this.getCantons();
+        },
+        getDistricts: () => {
+          this.getDistricts();
+        },
+        getZipCode: () => {
+          this.getZipCode();
+        },
+        provinces,
+        cantons,
+        districts,
       },
       step3: {
         ...clientInfo.step3,
@@ -73,7 +118,7 @@ class RequestLoan extends Component {
           dispatch(RegisterClientActionCreators.clientChangeCurrentStep(3));
         },
         handleNextOnclick: () => {
-          console.log('SUCCESS');
+          dispatch(RegisterClientActionCreators.registerUserClient());
         },
         onChangeField: (fieldChange) => {
           dispatch(RegisterClientActionCreators.stepIsDisabled({ step: 'step3', isDisabled: fieldChange.isDisabled }));
@@ -81,18 +126,23 @@ class RequestLoan extends Component {
         },
       },
     };
+    const componentContent = newUser.saved && newLoan.saved && newClient.saved ? (
+      <SubscriptionSuccess />
+    ) : (
+      <SubscriptionFormClient
+        currentStep={currentStep}
+        maxSteps="tres"
+        clientInfo={clientInfoStepEvent}
+        captcha={this.props.captcha}
+      />
+    );
     return (
       <div className="internal-page register client">
         <Hero
           title="Solicite su préstamo"
           content={<p><span>Haga realidad ese proyecto con el que tanto ha soñado</span>, enfrente un imprevisto en su vehículo, herramientas de trabajo o una emergencia personal que no puede esperar más, todo con nuestro Club de Préstamos especializado en crear soluciones donde otros simplemente cierran la puerta.</p>}
         />
-        <SubscriptionFormClient
-          currentStep={currentStep}
-          maxSteps="tres"
-          clientInfo={clientInfoStepEvent}
-          captcha={this.props.captcha}
-        />
+        {componentContent}
       </div>
     );
   }
@@ -101,6 +151,9 @@ class RequestLoan extends Component {
 const mapStateToProps = state => ({
   letterStep: state.clientSubscription.letterStep,
   currentStep: state.clientSubscription.currentStep,
+  provinces: state.clientSubscription.provinces,
+  cantons: state.clientSubscription.cantons,
+  districts: state.clientSubscription.districts,
   clientInfo: state.clientSubscription,
   captcha: state.recaptcha.captcha,
 });

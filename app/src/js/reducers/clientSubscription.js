@@ -1,23 +1,40 @@
 import * as types from '../constants';
 
 const initialState = {
+  isLoading: false,
+  error: null,
   letterStep: 'uno',
   currentStep: 1,
-  name: '',
-  lastName: '',
-  identification: '',
-  phone: '',
-  referencePhone: '',
-  familyPhone: '',
-  email: '',
-  address: '',
-  province: '',
-  canton: '',
-  district: '',
-  amount: 0,
-  term: '',
-  reason: '',
-  password: '',
+  name: null,
+  lastName: null,
+  identification: null,
+  nationality: null,
+  phone: null,
+  referencePhone: null,
+  relativePhone: null,
+  cellphone: null,
+  email: null,
+  address: null,
+  province: null,
+  canton: null,
+  district: null,
+  zipCode: null,
+  amount: null,
+  term: null,
+  reason: null,
+  password: null,
+  provinces: null,
+  cantons: null,
+  distrits: null,
+  newUser: {
+    saved: false,
+  },
+  newLoan: {
+    saved: false,
+  },
+  newClient: {
+    saved: false,
+  },
   step1: {
     isActive: true,
     isComplete: false,
@@ -35,6 +52,27 @@ const initialState = {
 function ClientSubscription(state = initialState, action) {
   switch (action.type) {
     case types.CHANGE_CLIENT_CURRENT_STEP:
+    case types.GET_PROVINCES_INIT:
+    case types.GET_PROVINCES_ERROR:
+    case types.GET_PROVINCES_SUCCESS:
+    case types.GET_CANTONS_INIT:
+    case types.GET_CANTONS_ERROR:
+    case types.GET_CANTONS_SUCCESS:
+    case types.GET_DISTRICTS_INIT:
+    case types.GET_DISTRICTS_ERROR:
+    case types.GET_DISTRICTS_SUCCESS:
+    case types.GET_ZIPCODE_INIT:
+    case types.GET_ZIPCODE_ERROR:
+    case types.GET_ZIPCODE_SUCCESS:
+    case types.ADD_NEW_USER_INIT:
+    case types.ADD_NEW_USER_ERROR:
+    case types.ADD_NEW_USER_SUCCESS:
+    case types.ADD_NEW_CLIENT_INIT:
+    case types.ADD_NEW_CLIENT_ERROR:
+    case types.ADD_NEW_CLIENT_SUCCESS:
+    case types.ADD_NEW_LOAN_INIT:
+    case types.ADD_NEW_LOAN_ERROR:
+    case types.ADD_NEW_LOAN_SUCCESS:
       return {
         ...state,
         ...action.payload,
@@ -75,6 +113,11 @@ function ClientSubscription(state = initialState, action) {
           ...state[action.payload.step],
           isDisabled: action.payload.isDisabled,
         },
+      };
+    case types.CLEAR_CLIENT_SUBSCRIPTION:
+      return {
+        ...state,
+        ...initialState,
       };
     default:
       return state;
