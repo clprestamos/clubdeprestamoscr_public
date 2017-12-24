@@ -8,6 +8,7 @@ import * as RegisterInvestorActionCreators from '../actions/RegisterInvestorActi
 
 import Hero from '../components/Subscription/Hero';
 import SubscriptionFormInvestor from '../components/Subscription/SubscriptionForm/SubscriptionFormInvestor';
+import SubscriptionSuccess from '../components/Subscription/SubscriptionSuccess';
 
 class InvestorRegister extends Component {
   constructor(props) {
@@ -22,8 +23,16 @@ class InvestorRegister extends Component {
     const { dispatch } = this.props;
     dispatch(GeneralActionCreators.toggleMenuState(false));
   }
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(RegisterInvestorActionCreators.clearInvestorSubscription());
+  }
   render() {
-    const { dispatch, investorInfo } = this.props;
+    const {
+      dispatch,
+      investorInfo,
+    } = this.props;
+    const { newInvestor } = investorInfo;
     let currentStep = 'uno';
     switch (this.props.currentStep) {
       case 1:
@@ -56,7 +65,7 @@ class InvestorRegister extends Component {
           dispatch(RegisterInvestorActionCreators.investorChangeCurrentStep(2));
         },
         handleNextOnclick: () => {
-          console.log('SUCCESS');
+          dispatch(RegisterInvestorActionCreators.registerUserInvestor());
         },
         onChangeField: (fieldChange) => {
           dispatch(RegisterInvestorActionCreators.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
@@ -64,6 +73,16 @@ class InvestorRegister extends Component {
         },
       },
     };
+    const componentContent = newInvestor.saved ? (
+      <SubscriptionSuccess />
+    ) : (
+      <SubscriptionFormInvestor
+        currentStep={currentStep}
+        maxSteps="dos"
+        investorInfo={investorInfoStepEvent}
+        captcha={this.props.captcha}
+      />
+    );
     return (
       <div className="internal-page register investor">
         <Hero
@@ -75,12 +94,7 @@ class InvestorRegister extends Component {
             </div>
           }
         />
-        <SubscriptionFormInvestor
-          currentStep={currentStep}
-          maxSteps="dos"
-          investorInfo={investorInfoStepEvent}
-          captcha={this.props.captcha}
-        />
+        {componentContent}
       </div>
     );
   }
