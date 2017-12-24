@@ -29,6 +29,8 @@ class InputField extends Component {
         name={this.props.name}
         defaultValue={this.props.defaultValue}
         required={this.props.isRequired}
+        disabled={this.props.disabled}
+        value={this.props.value ? this.props.value : undefined}
       />
     ) : (
       <Input
@@ -39,6 +41,8 @@ class InputField extends Component {
         name={this.props.name}
         defaultValue={this.props.defaultValue}
         required={this.props.isRequired}
+        disabled={this.props.disabled}
+        value={this.props.value ? this.props.value : undefined}
       />
     );
     return (
@@ -53,11 +57,16 @@ class InputField extends Component {
 InputField.propTypes = {
   inputType: PropTypes.string,
   isRequired: PropTypes.bool,
+  disabled: PropTypes.bool,
   errorMessage: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),

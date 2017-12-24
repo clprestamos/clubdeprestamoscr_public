@@ -1,5 +1,364 @@
+import moment from 'moment';
 import * as types from '../constants';
+import * as service from '../service';
 
+export function clearClientSubscription() {
+  return {
+    type: types.CLEAR_CLIENT_SUBSCRIPTION,
+  };
+}
+export function getProvincesInit() {
+  return {
+    type: types.GET_PROVINCES_INIT,
+    payload: {
+      isLoading: true,
+    },
+  };
+}
+export function getProvincesError(error) {
+  return {
+    type: types.GET_PROVINCES_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+export function getProvincesSuccess(provinces) {
+  return {
+    type: types.GET_PROVINCES_SUCCESS,
+    payload: {
+      isLoading: false,
+      provinces,
+    },
+  };
+}
+export function getProvinces() {
+  return (dispatch) => {
+    dispatch(getProvincesInit());
+    service.get({
+      endpoint: 'getProvinces',
+    })
+      .then((response) => {
+        dispatch(getProvincesSuccess(response.body));
+      })
+      .catch(error => dispatch(getProvincesError(error)));
+  };
+}
+export function getCantonsInit() {
+  return {
+    type: types.GET_CANTONS_INIT,
+    payload: {
+      isLoading: true,
+    },
+  };
+}
+export function getCantonsError(error) {
+  return {
+    type: types.GET_CANTONS_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+export function getCantonsSuccess(cantons) {
+  return {
+    type: types.GET_CANTONS_SUCCESS,
+    payload: {
+      isLoading: false,
+      cantons,
+    },
+  };
+}
+export function getCantons() {
+  return (dispatch, getState) => {
+    dispatch(getCantonsInit());
+    service.get({
+      endpoint: `getCantons/${getState().clientSubscription.province}`,
+    })
+      .then((response) => {
+        dispatch(getCantonsSuccess(response.body));
+      })
+      .catch(error => dispatch(getCantonsError(error)));
+  };
+}
+export function getDistrictsInit() {
+  return {
+    type: types.GET_DISTRICTS_INIT,
+    payload: {
+      isLoading: true,
+    },
+  };
+}
+export function getDistrictsError(error) {
+  return {
+    type: types.GET_DISTRICTS_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+export function getDistrictsSuccess(districts) {
+  return {
+    type: types.GET_DISTRICTS_SUCCESS,
+    payload: {
+      isLoading: false,
+      districts,
+    },
+  };
+}
+export function getDistricts() {
+  return (dispatch, getState) => {
+    dispatch(getDistrictsInit());
+    service.get({
+      endpoint: `getDistricts/${getState().clientSubscription.province}/${getState().clientSubscription.canton}`,
+    })
+      .then((response) => {
+        dispatch(getDistrictsSuccess(response.body));
+      })
+      .catch(error => dispatch(getDistrictsError(error)));
+  };
+}
+export function getZipCodeInit() {
+  return {
+    type: types.GET_ZIPCODE_INIT,
+    payload: {
+      isLoading: true,
+    },
+  };
+}
+export function getZipCodeError(error) {
+  return {
+    type: types.GET_ZIPCODE_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+export function getZipCodeSuccess(zipCode) {
+  return {
+    type: types.GET_ZIPCODE_SUCCESS,
+    payload: {
+      isLoading: false,
+      zipCode,
+    },
+  };
+}
+export function getZipCode() {
+  return (dispatch, getState) => {
+    dispatch(getZipCodeInit());
+    service.get({
+      endpoint: `getZipcode/${getState().clientSubscription.province}/${getState().clientSubscription.canton}/${getState().clientSubscription.district}`,
+    })
+      .then((response) => {
+        dispatch(getZipCodeSuccess(response.body[0].zipCode));
+      })
+      .catch(error => dispatch(getZipCodeError(error)));
+  };
+}
+export function registerNewClientInit() {
+  return {
+    type: types.ADD_NEW_CLIENT_INIT,
+    payload: {
+      isLoading: true,
+      newClient: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewClientError(error) {
+  return {
+    type: types.ADD_NEW_CLIENT_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+      newClient: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewClientSuccess() {
+  return {
+    type: types.ADD_NEW_CLIENT_SUCCESS,
+    payload: {
+      isLoading: false,
+      newClient: {
+        saved: true,
+      },
+    },
+  };
+}
+export function registerNewClient({ userId, loanId }) {
+  return (dispatch) => {
+    dispatch(registerNewClientInit());
+    service.post({
+      endpoint: 'clients',
+      payload: {
+        userId,
+        loanId,
+      },
+    })
+      .then(() => {
+        dispatch(registerNewClientSuccess());
+      })
+      .catch(error => dispatch(registerNewClientError(error)));
+  };
+}
+export function registerNewLoanInit() {
+  return {
+    type: types.ADD_NEW_LOAN_INIT,
+    payload: {
+      isLoading: true,
+      newLoan: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewLoanError(error) {
+  return {
+    type: types.ADD_NEW_LOAN_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+      newLoan: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewLoanSuccess() {
+  return {
+    type: types.ADD_NEW_LOAN_SUCCESS,
+    payload: {
+      isLoading: false,
+      newLoan: {
+        saved: true,
+      },
+    },
+  };
+}
+export function registerNewLoan(userId) {
+  return (dispatch, getState) => {
+    dispatch(registerNewLoanInit());
+    const {
+      amount,
+      term,
+      reason,
+    } = getState().clientSubscription;
+    service.post({
+      endpoint: 'loans',
+      payload: {
+        amount,
+        term,
+        reason,
+        stateId: 1,
+        userId,
+        requestLoanDate: moment().format(),
+      },
+    })
+      .then((response) => {
+        dispatch(registerNewLoanSuccess());
+        dispatch(registerNewClient({
+          userId,
+          loanId: response.body.id,
+        }));
+      })
+      .catch(error => dispatch(registerNewLoanError(error)));
+  };
+}
+export function registerNewUserInit() {
+  return {
+    type: types.ADD_NEW_USER_INIT,
+    payload: {
+      isLoading: true,
+      newUser: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewUserError(error) {
+  return {
+    type: types.ADD_NEW_USER_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+      newUser: {
+        saved: false,
+      },
+    },
+  };
+}
+export function registerNewUserSuccess() {
+  return {
+    type: types.ADD_NEW_USER_SUCCESS,
+    payload: {
+      isLoading: false,
+      newUser: {
+        saved: true,
+      },
+    },
+  };
+}
+export function registerUserClient() {
+  return (dispatch, getState) => {
+    dispatch(registerNewUserInit());
+    const {
+      name,
+      lastName,
+      identification,
+      nationality,
+      phone,
+      referencePhone,
+      relativePhone,
+      cellphone,
+      email,
+      address,
+      province,
+      canton,
+      district,
+      zipCode,
+      password,
+    } = getState().clientSubscription;
+    service.post({
+      endpoint: 'users',
+      payload: {
+        name,
+        lastName,
+        identification,
+        nationality,
+        phone,
+        referencePhone,
+        relativePhone,
+        cellphone,
+        email,
+        address,
+        province,
+        canton,
+        district,
+        zipCode,
+        password,
+        roleId: 1,
+        signupDate: moment().format(),
+        isActive: true,
+      },
+    })
+      .then((response) => {
+        dispatch(registerNewUserSuccess());
+        return response.body[0].id;
+      })
+      .then((userId) => {
+        dispatch(registerNewLoan(userId));
+      })
+      .catch(error => dispatch(registerNewUserError(error)));
+  };
+}
 export function setClientInformation({ field, value }) {
   return dispatch => dispatch({
     type: types.SET_CLIENT_INFORMATION,

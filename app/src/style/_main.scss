@@ -142,6 +142,7 @@ button {
   height: 15vh;
   z-index: 9999;
   &.secondary-page {
+    position: relative;
     background-color: $dark;
   }
 }

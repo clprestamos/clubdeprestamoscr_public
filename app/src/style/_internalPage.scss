@@ -1,13 +1,13 @@
 .internal-page {
-  background: linear-gradient(180deg, $dark 66.4vh, #FFFFFF 33.6vh);
+  background: linear-gradient(180deg, $dark 49vh, #FFFFFF 0);
   display: flex;
   justify-content: center;
-  padding-top: 28vh;
+  padding-top: 10vh;
   &.register {
     background: none;
     justify-content: flex-start;
-    padding-top: 15vh;
     min-height: 88vh;
+    padding-top: 0;
   }
   .divider {
     display: block;
