@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { Button, Menu, Icon, Dropdown, Responsive, Sidebar } from 'semantic-ui-react';
 
-import Routes from './routes';
+import MainContent from './MainContent';
 import Logo from '../../../components/Header/Logo';
 
 class Dashboard extends Component {
@@ -26,7 +26,7 @@ class Dashboard extends Component {
         <Link to={{
             pathname: '/logout',
             state: {
-              from: this.props.pathname,
+              from: this.props.location.pathname,
             },
           }}
         >
@@ -36,7 +36,7 @@ class Dashboard extends Component {
     );
     return (
       <div className="dashboard">
-        <div className="header">
+        <div className="wrapper">
           <Responsive minWidth={768}>
             <Menu stackable>
               <Menu.Item position="left" name="home" className="item-logo">
@@ -53,7 +53,11 @@ class Dashboard extends Component {
                 {logoutItem}
               </Menu.Menu>
             </Menu>
-            <Routes authData={this.props.authData} />
+            <MainContent
+              authData={this.props.authData}
+              match={this.props.match}
+              pathname={this.props.location.pathname}
+            />
           </Responsive>
           <Responsive maxWidth={767}>
             <div className="mobile-header">
@@ -74,7 +78,11 @@ class Dashboard extends Component {
                 {logoutItem}
               </Sidebar>
               <Sidebar.Pusher>
-                <Routes authData={this.props.authData} />
+                <MainContent
+                  authData={this.props.authData}
+                  match={this.props.match}
+                  pathname={this.props.location.pathname}
+                />
               </Sidebar.Pusher>
             </Sidebar.Pushable>
           </Responsive>

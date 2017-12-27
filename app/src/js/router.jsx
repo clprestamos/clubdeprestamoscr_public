@@ -19,7 +19,6 @@ import InvestorRegister from './containers/InvestorRegister';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
 import ClientDashboard from './containers/protected/client/dashboard';
-import LoanApproved from './containers/protected/client/loanApproved';
 import ChangePassword from './containers/ChangePassword';
 
 let isAuthenticated = false;
@@ -60,8 +59,7 @@ const Routes = (props) => {
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/cambiar-password/:passwordKey" component={ChangePassword} />
-          <PrivateRoute path="/cliente/dashboard" component={ClientDashboard} />
-          <PrivateRoute path="/cliente/prestamos-aprobados" component={LoanApproved} />
+          <PrivateRoute path="/cliente" component={ClientDashboard} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer hide={props.isHomeMenuHidden} />
