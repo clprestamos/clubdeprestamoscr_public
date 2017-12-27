@@ -2,10 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { checkSessionStatusMiddleware } from '../middlewares/authentication';
+
 import reducer from '../reducers';
 
 const store = __DEV__ ? // eslint-disable-line no-undef
-createStore(reducer, composeWithDevTools(applyMiddleware(thunk))) :
-  createStore(reducer, applyMiddleware(thunk));
+createStore(reducer, composeWithDevTools(applyMiddleware(thunk, checkSessionStatusMiddleware))) :
+  createStore(reducer, applyMiddleware(thunk, checkSessionStatusMiddleware));
+// createStore(reducer, composeWithDevTools(applyMiddleware(thunk))) :
+//   createStore(reducer, applyMiddleware(thunk));
 
 export default store;

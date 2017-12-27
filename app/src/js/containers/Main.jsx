@@ -39,13 +39,10 @@ class Main extends Component {
   }
   componentWillMount() {
     if (this.props.authData.data !== null) {
-      const { isAuth, isClient, isInvestor } = this.props.authData;
-      let redirectTo = '';
-      if (isClient) {
-        redirectTo = '/cliente/dashboard';
-      } else if (isInvestor) {
-        redirectTo = '/inversionista/dashboard';
-      }
+      const { isAuth } = this.props.authData;
+      const { roleId } = this.props.authData.data;
+      let redirectTo = roleId === 1 ? '/cliente/dashboard' : '';
+      redirectTo = roleId === 2 ? '/inversionista/dashboard' : redirectTo;
       this.setState({
         isAuth,
         redirectTo,

@@ -5,8 +5,6 @@ const initialState = {
   isLoading: false,
   error: '',
   data: null,
-  isClient: false,
-  isInvestor: false,
 };
 
 function user(state = initialState, action) {
