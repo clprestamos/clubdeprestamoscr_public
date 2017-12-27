@@ -15,15 +15,11 @@ export function loginInit() {
   };
 }
 export function loginSuccess(data) {
-  const isClient = data.roleId === 'client';
-  const isInvestor = data.roleId === 'investor';
   return {
     type: types.LOGIN_SUCCESS,
     payload: {
       isLoading: false,
       isAuth: true,
-      isClient,
-      isInvestor,
       data,
     },
   };

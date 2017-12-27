@@ -52,27 +52,18 @@ class Login extends Component {
       });
     }
     if (nextProps.authData.data !== null) {
-      if (nextProps.authData.data.roleId === 'client') {
-        this.setState({
-          isClient: true,
-          isInvestor: false,
-        });
-      } else if (nextProps.authData.data.roleId === 'investor') {
-        this.setState({
-          isClient: false,
-          isInvestor: true,
-        });
-      }
+      const isClient = nextProps.authData.data.roleId === 1;
+      const isInvestor = nextProps.authData.data.roleId === 2;
+      this.setState({
+        isClient,
+        isInvestor,
+      });
     } else {
       this.setState({
         isClient: false,
         isInvestor: false,
       });
     }
-  }
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch(LoginActionCreators.clearLoginData());
   }
   onChangeField(e) {
     this.setState({
@@ -96,6 +87,15 @@ class Login extends Component {
       isMessageVisible: false,
     });
   }
+  validation({ type, value }) {
+    let result = true;
+    if (value === '') result = true;
+    if (utils.validateExp({ type, value })) result = false;
+    this.setState({
+      hasErrors: result,
+    });
+    return result;
+  }
   render() {
     let pathname = '/';
     if (this.props.authData.isAuth && this.state.isClient) {
@@ -109,34 +109,16 @@ class Login extends Component {
     if (isAuth) {
       return <Redirect to={from} />;
     }
-
     const inputFields = [
       {
         id: 1,
         placeholder: 'Email',
         errorMessage: 'Ingrese un email válido.',
         onChangeField: this.onChangeField,
-        name: 'email',
-        defaultValue: this.state.email,
+        name: 'username',
+        defaultValue: this.state.username,
         isRequired: true,
-        validation: (value) => {
-          if (value === '') {
-            this.setState({
-              hasErrors: true,
-            });
-            return true;
-          }
-          if (utils.validateExp({ type: 'email', value })) {
-            this.setState({
-              hasErrors: false,
-            });
-            return false;
-          }
-          this.setState({
-            hasErrors: true,
-          });
-          return true;
-        },
+        validation: value => this.validation({ value, type: 'email' }),
       },
       {
         id: 2,
@@ -148,24 +130,7 @@ class Login extends Component {
         name: 'password',
         isRequired: true,
         defaultValue: this.state.password,
-        validation: (value) => {
-          if (value === '') {
-            this.setState({
-              hasErrors: true,
-            });
-            return true;
-          }
-          if (utils.validateExp({ type: 'password', value })) {
-            this.setState({
-              hasErrors: false,
-            });
-            return false;
-          }
-          this.setState({
-            hasErrors: true,
-          });
-          return true;
-        },
+        validation: value => this.validation({ value, type: 'password' }),
       },
     ];
     const message = this.props.isForgotPasswordSuccess && this.state.isMessageVisible ? (
