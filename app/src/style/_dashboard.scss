@@ -1,0 +1,45 @@
+.dashboard {
+  .header {
+    .ui.menu {
+      background: $dark;
+      border-radius: 0;
+      .item {
+        &-logo {
+          background: black;
+        }
+        &-logout {
+          background: black;
+          margin-left: 0 !important;
+          a {
+            color: $menu-item;
+            font-size: 2rem;
+          }
+        }
+        .ui.dropdown {
+          color: $menu-item;
+          > i {
+            font-size: 2rem;
+          }
+          .text {
+            color: $menu-item;
+          }
+        }
+      }
+    }
+    .logo {
+      padding: 0;
+      img {
+        width: 154px;
+        height: 30px;
+      }
+    }
+  }
+  .mobile-header {
+    background: $dark;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    padding: 0 3vw;
+    align-items: center;
+  }
+}
