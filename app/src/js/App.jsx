@@ -7,7 +7,7 @@ import Routes from './router';
 
 import '../style/index.scss';
 import * as service from './service';
-import { loginSuccess } from './actions/LoginActionCreators';
+import { loginSuccess } from './actions/Login';
 import { toggleMenuHideState } from './actions';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
     autobind(this);
   }
   componentWillMount() {
-    const userData = service.validateToken();
+    const userData = service.getUserAuth();
     const { dispatch } = this.props;
     if (userData) {
       dispatch(loginSuccess(userData));

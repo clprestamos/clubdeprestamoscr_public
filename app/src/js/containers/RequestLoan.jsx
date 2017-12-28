@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import * as GeneralActionCreators from '../actions';
-import * as RegisterClientActionCreators from '../actions/RegisterClientActionCreators';
+import * as RegisterClient from '../actions/RegisterClient';
+import * as Locales from '../actions/Locales';
 
 import Hero from '../components/Subscription/Hero';
 import SubscriptionFormClient from '../components/Subscription/SubscriptionForm/SubscriptionFormClient';
@@ -17,7 +18,8 @@ class RequestLoan extends Component {
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
       GeneralActionCreators,
-      RegisterClientActionCreators,
+      RegisterClient,
+      Locales,
     }, dispatch);
   }
   componentWillMount() {
@@ -26,23 +28,23 @@ class RequestLoan extends Component {
   }
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(RegisterClientActionCreators.getProvinces());
+    dispatch(Locales.getProvinces());
   }
   componentWillUnmount() {
     const { dispatch } = this.props;
-    dispatch(RegisterClientActionCreators.clearClientSubscription());
+    dispatch(RegisterClient.clearClientSubscription());
   }
-  getCantons() {
+  getCantons(province) {
     const { dispatch } = this.props;
-    dispatch(RegisterClientActionCreators.getCantons());
+    dispatch(Locales.getCantons(province));
   }
-  getDistricts() {
-    const { dispatch } = this.props;
-    dispatch(RegisterClientActionCreators.getDistricts());
+  getDistricts(canton) {
+    const { dispatch, clientInfo } = this.props;
+    dispatch(Locales.getDistricts(clientInfo.province, canton));
   }
   getZipCode() {
     const { dispatch } = this.props;
-    dispatch(RegisterClientActionCreators.getZipCode());
+    dispatch(RegisterClient.getZipCode());
   }
   render() {
     const {
@@ -76,34 +78,34 @@ class RequestLoan extends Component {
       step1: {
         ...clientInfo.step1,
         handleClick: () => {
-          dispatch(RegisterClientActionCreators.clientChangeCurrentStep(1));
+          dispatch(RegisterClient.clientChangeCurrentStep(1));
         },
         handleNextOnclick: () => {
-          dispatch(RegisterClientActionCreators.clientChangeCurrentStep(2));
-          dispatch(RegisterClientActionCreators.clientIsCompletedStep(1));
+          dispatch(RegisterClient.clientChangeCurrentStep(2));
+          dispatch(RegisterClient.clientIsCompletedStep(1));
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterClientActionCreators.setClientInformation(fieldChange));
+          dispatch(RegisterClient.setClientInformation(fieldChange));
         },
       },
       step2: {
         ...clientInfo.step2,
         handleClick: () => {
-          dispatch(RegisterClientActionCreators.clientChangeCurrentStep(2));
+          dispatch(RegisterClient.clientChangeCurrentStep(2));
         },
         handleNextOnclick: () => {
-          dispatch(RegisterClientActionCreators.clientChangeCurrentStep(3));
-          dispatch(RegisterClientActionCreators.clientIsCompletedStep(2));
+          dispatch(RegisterClient.clientChangeCurrentStep(3));
+          dispatch(RegisterClient.clientIsCompletedStep(2));
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterClientActionCreators.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
-          dispatch(RegisterClientActionCreators.setClientInformation(fieldChange));
+          dispatch(RegisterClient.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
+          dispatch(RegisterClient.setClientInformation(fieldChange));
         },
-        getCantons: () => {
-          this.getCantons();
+        getCantons: (province) => {
+          this.getCantons(province);
         },
-        getDistricts: () => {
-          this.getDistricts();
+        getDistricts: (canton) => {
+          this.getDistricts(canton);
         },
         getZipCode: () => {
           this.getZipCode();
@@ -115,14 +117,14 @@ class RequestLoan extends Component {
       step3: {
         ...clientInfo.step3,
         handleClick: () => {
-          dispatch(RegisterClientActionCreators.clientChangeCurrentStep(3));
+          dispatch(RegisterClient.clientChangeCurrentStep(3));
         },
         handleNextOnclick: () => {
-          dispatch(RegisterClientActionCreators.registerUserClient());
+          dispatch(RegisterClient.registerUserClient());
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterClientActionCreators.stepIsDisabled({ step: 'step3', isDisabled: fieldChange.isDisabled }));
-          dispatch(RegisterClientActionCreators.setClientInformation(fieldChange));
+          dispatch(RegisterClient.stepIsDisabled({ step: 'step3', isDisabled: fieldChange.isDisabled }));
+          dispatch(RegisterClient.setClientInformation(fieldChange));
         },
       },
     };
@@ -151,9 +153,9 @@ class RequestLoan extends Component {
 const mapStateToProps = state => ({
   letterStep: state.clientSubscription.letterStep,
   currentStep: state.clientSubscription.currentStep,
-  provinces: state.clientSubscription.provinces,
-  cantons: state.clientSubscription.cantons,
-  districts: state.clientSubscription.districts,
+  provinces: state.locales.provinces,
+  cantons: state.locales.cantons,
+  districts: state.locales.districts,
   clientInfo: state.clientSubscription,
   captcha: state.recaptcha.captcha,
 });

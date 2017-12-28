@@ -71,6 +71,7 @@ button {
 }
 .btn {
   cursor: pointer;
+  font-family: 'Hind', sans-serif !important;
   border-color: transparent;
   display: flex;
   align-items: center;
@@ -81,6 +82,39 @@ button {
   text-transform: uppercase;
   border-radius: 73px;
   background-image: linear-gradient(to right, $light-green, $dark-green);
+  .icon {
+    position: relative;
+    top: -2px;
+  }
+  &.edit, &.cancel-edit {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.43;
+    color: $dark-gray;
+    background-image: none;
+    width: 117px;
+    height: 46px;
+    border-radius: 73px;
+    border: 1px solid $yard-green;
+    text-transform: none;
+    background: none;
+    &:hover, &:focus {
+      background: none;
+    }
+  }
+  &.cancel-edit {
+    border-color: $dark;
+  }
+  &.save, &.save:focus, &.save:hover {
+    font-size: 14px;
+    font-weight: bold;
+    color: $yard-green;
+    width: 178px;
+    height: 42px;
+    border-radius: 73px;
+    background-image: linear-gradient(to right, rgba(0, 104, 56, 0.12), rgba(139, 197, 63, 0.12));
+    text-transform: uppercase;
+  }
   &.default {
     width: 142px;
     height: 38px;

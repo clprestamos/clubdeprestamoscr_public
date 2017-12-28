@@ -8,7 +8,7 @@ import Logo from '../components/Header/Logo';
 
 // import * as service from '../service';
 
-import * as LoginActionCreators from '../actions/LoginActionCreators';
+import * as Login from '../actions/Login';
 import * as MainActionCreators from '../actions/';
 
 class Logout extends Component {
@@ -16,7 +16,7 @@ class Logout extends Component {
     super(props);
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
-      LoginActionCreators,
+      Login,
       MainActionCreators,
     }, dispatch);
     this.state = {
@@ -38,7 +38,7 @@ class Logout extends Component {
   }
   logout() {
     const { dispatch } = this.props;
-    dispatch(LoginActionCreators.logout());
+    dispatch(Login.logout());
     dispatch(MainActionCreators.toggleMenuState(true));
     dispatch(MainActionCreators.toggleMenuHideState(false));
   }

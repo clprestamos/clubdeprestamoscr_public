@@ -11,7 +11,7 @@ import Button from '../components/Button';
 
 import * as utils from '../utils';
 
-import * as ForgotPasswordActionCreators from '../actions/ForgotPasswordActionCreators';
+import * as ForgotPassword from '../actions/ForgotPassword';
 import * as MainActionCreators from '../actions';
 
 class ChangePassword extends Component {
@@ -19,7 +19,7 @@ class ChangePassword extends Component {
     super(props);
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
-      ForgotPasswordActionCreators,
+      ForgotPassword,
       MainActionCreators,
     }, dispatch);
     this.state = {
@@ -35,7 +35,7 @@ class ChangePassword extends Component {
   componentDidMount() {
     const { dispatch, match } = this.props;
     const { passwordKey } = match.params;
-    dispatch(ForgotPasswordActionCreators.getUserId(passwordKey));
+    dispatch(ForgotPassword.getUserId(passwordKey));
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isForgotPasswordSuccess && !this.state.isMessageVisible) {
@@ -52,17 +52,17 @@ class ChangePassword extends Component {
   }
   componentWillUnmount() {
     const { dispatch } = this.props;
-    dispatch(ForgotPasswordActionCreators.clearForgotPassword());
+    dispatch(ForgotPassword.clearForgotPassword());
   }
   onChangePassword(e) {
     const { dispatch } = this.props;
-    dispatch(ForgotPasswordActionCreators.setNewPassword(e.value));
+    dispatch(ForgotPassword.setNewPassword(e.value));
   }
   handleOnSubmit() {
     if (!this.state.hasErrors) {
       const { dispatch } = this.props;
       const { password } = this.state;
-      dispatch(ForgotPasswordActionCreators.changeUserPassword(password));
+      dispatch(ForgotPassword.changeUserPassword(password));
     }
   }
   render() {

@@ -8,6 +8,7 @@
     .main-content {
       .pushable {
         height: 100vh;
+        display: flex;
         .ui.menu.left.sidebar {
           width: 186px;
           border: none;
@@ -15,6 +16,7 @@
           &~.pusher {
             -webkit-transform: translate3d(186px,0,0);
             transform: translate3d(186px,0,0);
+            overflow-y: scroll;
           }
         }
         .ui.secondary.vertical.pointing.menu .item {

@@ -16,11 +16,11 @@ class Step2 extends Component {
     };
     autobind(this);
   }
-  onChangeProvinces() {
-    this.props.getCantons();
+  onChangeProvinces(province) {
+    this.props.getCantons(province);
   }
-  onChangeCantons() {
-    this.props.getDistricts();
+  onChangeCantons(canton) {
+    this.props.getDistricts(canton);
   }
   onChangeDistricts() {
     this.props.getZipCode();
@@ -63,9 +63,9 @@ class Step2 extends Component {
       district,
       zipCode,
     } = clientInfo;
-    const provinces = this.getDropDownItems(this.props.provinces);
-    const cantons = this.getDropDownItems(this.props.cantons);
-    const districts = this.getDropDownItems(this.props.districts);
+    const provinces = utils.getDropDownItems(this.props.provinces);
+    const cantons = utils.getDropDownItems(this.props.cantons);
+    const districts = utils.getDropDownItems(this.props.districts);
     const terms = [
       { text: '12 meses', value: '12-meses' },
       { text: '18 meses', value: '18-meses' },
@@ -156,7 +156,7 @@ class Step2 extends Component {
               options={provinces}
               onChange={(e, { value }) => {
                 this.props.onChangeField({ field: 'province', value });
-                this.onChangeProvinces();
+                this.onChangeProvinces(value);
               }}
               defaultValue={province}
             />
@@ -169,7 +169,7 @@ class Step2 extends Component {
               options={cantons}
               onChange={(e, { value }) => {
                 this.props.onChangeField({ field: 'canton', value });
-                this.onChangeCantons();
+                this.onChangeCantons(value);
               }}
               defaultValue={canton}
             />
@@ -182,7 +182,7 @@ class Step2 extends Component {
               options={districts}
               onChange={(e, { value }) => {
                 this.props.onChangeField({ field: 'district', value });
-                this.onChangeDistricts();
+                this.onChangeDistricts(value);
               }}
               defaultValue={district}
             />

@@ -7,8 +7,8 @@ const ModalComponent = props => (
     trigger={props.trigger}
     open={props.isOpen}
     onClose={props.onClose}
-    basic
-    size="small"
+    basic={props.isBasic !== undefined ? props.isBasic : true}
+    size={props.size ? props.size : 'small'}
     className={props.className}
   >
     <Modal.Content>
@@ -18,7 +18,9 @@ const ModalComponent = props => (
 );
 
 ModalComponent.propTypes = {
-  trigger: PropTypes.object.isRequired,
+  isBasic: PropTypes.bool,
+  size: PropTypes.string,
+  trigger: PropTypes.object,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
