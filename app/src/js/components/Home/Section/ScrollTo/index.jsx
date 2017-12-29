@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ScrollTo = props => (
   <div className="scroll">
-    <a href={props.scrollTo}><span />Scroll To</a>
+    <a href={props.scrollTo}><span /></a>
   </div>
 );
 

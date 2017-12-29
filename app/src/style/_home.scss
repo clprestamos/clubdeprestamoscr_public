@@ -34,3 +34,19 @@
     display: flex;
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .home-section .scroll {
+    position: inherit;
+    bottom: 0;
+    left: 0;
+    a { 
+      top: 50px; 
+    }
+  }
+  #contactenos {
+    padding-left: 0vw;
+    padding-right: 0vw;
+    height: 116vh;
+  }
+}
