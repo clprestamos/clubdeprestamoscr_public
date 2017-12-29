@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import * as GeneralActionCreators from '../actions';
-import * as RegisterInvestorActionCreators from '../actions/RegisterInvestorActionCreators';
+import * as RegisterInvestor from '../actions/RegisterInvestor';
 
 import Hero from '../components/Subscription/Hero';
 import SubscriptionFormInvestor from '../components/Subscription/SubscriptionForm/SubscriptionFormInvestor';
@@ -16,7 +16,7 @@ class InvestorRegister extends Component {
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
       GeneralActionCreators,
-      RegisterInvestorActionCreators,
+      RegisterInvestor,
     }, dispatch);
   }
   componentWillMount() {
@@ -25,7 +25,7 @@ class InvestorRegister extends Component {
   }
   componentWillUnmount() {
     const { dispatch } = this.props;
-    dispatch(RegisterInvestorActionCreators.clearInvestorSubscription());
+    dispatch(RegisterInvestor.clearInvestorSubscription());
   }
   render() {
     const {
@@ -49,27 +49,27 @@ class InvestorRegister extends Component {
       step1: {
         ...investorInfo.step1,
         handleClick: () => {
-          dispatch(RegisterInvestorActionCreators.investorChangeCurrentStep(1));
+          dispatch(RegisterInvestor.investorChangeCurrentStep(1));
         },
         handleNextOnclick: () => {
-          dispatch(RegisterInvestorActionCreators.investorChangeCurrentStep(2));
-          dispatch(RegisterInvestorActionCreators.investorIsCompletedStep(1));
+          dispatch(RegisterInvestor.investorChangeCurrentStep(2));
+          dispatch(RegisterInvestor.investorIsCompletedStep(1));
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterInvestorActionCreators.setInvestorInformation(fieldChange));
+          dispatch(RegisterInvestor.setInvestorInformation(fieldChange));
         },
       },
       step2: {
         ...investorInfo.step2,
         handleClick: () => {
-          dispatch(RegisterInvestorActionCreators.investorChangeCurrentStep(2));
+          dispatch(RegisterInvestor.investorChangeCurrentStep(2));
         },
         handleNextOnclick: () => {
-          dispatch(RegisterInvestorActionCreators.registerUserInvestor());
+          dispatch(RegisterInvestor.registerUserInvestor());
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterInvestorActionCreators.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
-          dispatch(RegisterInvestorActionCreators.setInvestorInformation(fieldChange));
+          dispatch(RegisterInvestor.stepIsDisabled({ step: 'step2', isDisabled: fieldChange.isDisabled }));
+          dispatch(RegisterInvestor.setInvestorInformation(fieldChange));
         },
       },
     };

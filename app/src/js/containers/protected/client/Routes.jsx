@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './Home';
 import LoanApproved from './loanApproved';
+import Profile from './Profile';
 
 const Routes = props => (
   <Switch>
@@ -10,6 +11,10 @@ const Routes = props => (
       exact
       path={`${props.match.path}/dashboard`}
       render={() => <Home authData={props.authData} />}
+    />
+    <Route
+      path={`${props.match.path}/perfil`}
+      component={Profile}
     />
     <Route
       path={`${props.match.path}/prestamo-aprobado`}

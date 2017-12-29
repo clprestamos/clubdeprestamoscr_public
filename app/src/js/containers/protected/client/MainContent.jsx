@@ -17,7 +17,7 @@ const MainContent = (props) => {
           <Sidebar
             as={Menu}
             visible={visible}
-            animation="push"
+            animation="slide along"
             vertical
             pointing
             secondary

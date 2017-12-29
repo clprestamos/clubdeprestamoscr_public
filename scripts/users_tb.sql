@@ -30,8 +30,10 @@ CREATE TABLE public.users_tb
     last_update text COLLATE pg_catalog."default",
     password_key text COLLATE pg_catalog."default",
     password_date text COLLATE pg_catalog."default",
-    CONSTRAINT user_id PRIMARY KEY (id),
-    CONSTRAINT users_email UNIQUE (email)
+    bank text COLLATE pg_catalog."default",
+    client_account integer,
+    iban integer,
+    CONSTRAINT user_id PRIMARY KEY (id)
 )
 WITH (
     OIDS = FALSE

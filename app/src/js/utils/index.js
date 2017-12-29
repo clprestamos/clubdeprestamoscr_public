@@ -21,6 +21,14 @@ export const rules = [
     type: 'text',
     regExp: /^([a-zA-Záéíóúñ]\s?)*$/,
   },
+  {
+    type: 'clientAccount',
+    regExp: /^([0-9]{15})$/,
+  },
+  {
+    type: 'iban',
+    regExp: /^([0-9]{22})$/,
+  },
 ];
 
 export function getRegExp(type) {
@@ -32,4 +40,11 @@ export function validateExp({ type, value }) {
   const regExp = getRegExp(type);
   if (regExp.test(value)) return true;
   return false;
+}
+
+export function getDropDownItems(itemsArray) {
+  if (itemsArray) {
+    return _.map(itemsArray, item => ({ text: item, value: item }));
+  }
+  return [];
 }

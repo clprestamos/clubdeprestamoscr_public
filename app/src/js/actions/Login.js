@@ -53,12 +53,14 @@ export function login({ username, password }) {
           lastName,
           email,
           roleId,
+          userId,
         } = userInfo;
         const data = {
           name,
           lastName,
           email,
           roleId,
+          userId,
         };
         service.setToken(token, data);
         dispatch(loginSuccess(data));

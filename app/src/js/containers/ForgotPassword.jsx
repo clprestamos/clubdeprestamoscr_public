@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import InputField from '../components/InputField';
 import * as utils from '../utils';
 
-import * as FPActionCreators from '../actions/ForgotPasswordActionCreators';
+import * as FPActionCreators from '../actions/ForgotPassword';
 
 class ForgotPassword extends Component {
   constructor(props) {

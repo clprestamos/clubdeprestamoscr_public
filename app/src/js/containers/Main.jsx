@@ -7,10 +7,10 @@ import { bindActionCreators } from 'redux';
 
 import Section from '../components/Home/Section';
 import PointerMenu from '../components/Home/PointerMenu';
-import ContactUs from '../components/ContactUs';
+import ContactUsComponent from '../components/ContactUs';
 
 import * as MainActionCreators from '../actions/';
-import * as ContactUsActionCreators from '../actions/ContactUsActionCreators';
+import * as ContactUs from '../actions/ContactUs';
 
 import '../../style/animate.min.css'; // eslint-disable-line
 
@@ -34,7 +34,7 @@ class Main extends Component {
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
       MainActionCreators,
-      ContactUsActionCreators,
+      ContactUs,
     }, dispatch);
   }
   componentWillMount() {
@@ -138,7 +138,7 @@ class Main extends Component {
   }
   handleSendMessage(data) {
     const { dispatch } = this.props;
-    dispatch(ContactUsActionCreators.sendMsgEmail(data));
+    dispatch(ContactUs.sendMsgEmail(data));
   }
   render() {
     if (this.state.isAuth) {
@@ -218,7 +218,7 @@ class Main extends Component {
               style={{ backgroundImage: 'url("images/portada-revista-costa-rica-ef-elfima-20131008-0015-4.jpg")' }}
               id="contactenos"
             >
-              <ContactUs
+              <ContactUsComponent
                 handleSendMessage={this.handleSendMessage}
                 sent={this.props.sent}
               />

@@ -23,9 +23,6 @@ const initialState = {
   term: null,
   reason: null,
   password: null,
-  provinces: null,
-  cantons: null,
-  distrits: null,
   newUser: {
     saved: false,
   },
@@ -52,15 +49,6 @@ const initialState = {
 function ClientSubscription(state = initialState, action) {
   switch (action.type) {
     case types.CHANGE_CLIENT_CURRENT_STEP:
-    case types.GET_PROVINCES_INIT:
-    case types.GET_PROVINCES_ERROR:
-    case types.GET_PROVINCES_SUCCESS:
-    case types.GET_CANTONS_INIT:
-    case types.GET_CANTONS_ERROR:
-    case types.GET_CANTONS_SUCCESS:
-    case types.GET_DISTRICTS_INIT:
-    case types.GET_DISTRICTS_ERROR:
-    case types.GET_DISTRICTS_SUCCESS:
     case types.GET_ZIPCODE_INIT:
     case types.GET_ZIPCODE_ERROR:
     case types.GET_ZIPCODE_SUCCESS:

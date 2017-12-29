@@ -13,15 +13,15 @@ import ForgotPassword from './ForgotPassword';
 
 import * as utils from '../utils';
 
-import * as LoginActionCreators from '../actions/LoginActionCreators';
+import * as Login from '../actions/Login';
 import * as MainActionCreators from '../actions/';
 
-class Login extends Component {
+class LoginComponent extends Component {
   constructor(props) {
     super(props);
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
-      LoginActionCreators,
+      Login,
       MainActionCreators,
     }, dispatch);
     this.state = {
@@ -74,7 +74,7 @@ class Login extends Component {
     if (!this.state.hasErrors) {
       const { dispatch } = this.props;
       const { username, password } = this.state;
-      dispatch(LoginActionCreators.login({ username, password }));
+      dispatch(Login.login({ username, password }));
     }
   }
   handleModalOpen() {
@@ -206,4 +206,4 @@ const mapStateToProps = state => ({
   isForgotPasswordSuccess: state.forgotPassword.isSuccess,
 });
 
-export default withRouter(connect(mapStateToProps)(Login));
+export default withRouter(connect(mapStateToProps)(LoginComponent));
