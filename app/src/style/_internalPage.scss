@@ -80,7 +80,7 @@
     column-count: 1;
   }
   .internat-page .content {
-    width: 75.25vw;
+    width: 75.25vw !important;
   }
   .internal-page .sub-header .left-content {
     width: 100%;
@@ -98,9 +98,9 @@
     }
 
   footer {
-    height: 22vh;
+    height: 22vh !important;
     flex-direction: column-reverse;
-    padding-right: 8.3vw;
+    padding-right: 8.3vw !important;
     .right-content {
       ul {
         margin-top: 2vh; 
