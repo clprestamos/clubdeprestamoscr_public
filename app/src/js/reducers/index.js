@@ -9,6 +9,7 @@ import forgotPassword from './forgotPassword';
 import contactUs from './contactUs';
 import locales from './locales';
 import clientProfile from './clientProfile';
+import loan from './loan';
 
 const rootReducer = combineReducers({
   main,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   contactUs,
   locales,
   clientProfile,
+  loan,
 });
 
 export default rootReducer;

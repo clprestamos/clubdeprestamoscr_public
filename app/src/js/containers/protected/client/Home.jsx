@@ -9,7 +9,7 @@ const cards = [
     icon: 'credit card alternative',
     header: 'Solicitud de crédito',
     content: 'Esta es la solicitud de préstamo que hemos recibido de su parte. Esta será publicada entre los miembros inversionista para que ellos lo valoren.',
-    btnTo: '/cliente/solicitud-credito',
+    btnTo: '/cliente/solicitud-prestamo',
   },
   {
     icon: 'thumbs outline up',

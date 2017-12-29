@@ -51,12 +51,12 @@ const MainContent = (props) => {
             </Menu.Item>
             <Menu.Item
               as={Link}
-              name="solicitud-credito"
-              active={activeItem === 'solicitud-credito'}
+              name="solicitud-prestamo"
+              active={activeItem === 'solicitud-prestamo'}
               onClick={handleItemClick}
-              to={`${props.match.path}/solicitud-credito`}
+              to={`${props.match.path}/solicitud-prestamo`}
             >
-              Solicitudes de Crédito
+              Solicitud de Crédito
             </Menu.Item>
             <Menu.Item
               as={Link}
@@ -65,7 +65,7 @@ const MainContent = (props) => {
               onClick={handleItemClick}
               to={`${props.match.path}/prestamo-aprobado`}
             >
-              Préstamos Aprobados
+              Préstamo Aprobado
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>
