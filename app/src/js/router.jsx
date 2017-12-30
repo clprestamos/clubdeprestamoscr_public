@@ -18,7 +18,7 @@ import RequestLoan from './containers/RequestLoan';
 import InvestorRegister from './containers/InvestorRegister';
 import Login from './containers/Login';
 import Logout from './containers/Logout';
-import ClientDashboard from './containers/protected/client/dashboard';
+import ClientDashboard from './containers/protected/client/Dashboard';
 import ChangePassword from './containers/ChangePassword';
 
 let isAuthenticated = false;
@@ -56,7 +56,7 @@ const Routes = (props) => {
           <Route path="/preguntasfrecuentes" component={Faqs} />
           <Route path="/prestamos" component={RequestLoan} />
           <Route path="/invierta" component={InvestorRegister} />
-          <Route path="/login" component={Login} />
+          <Route path="/login/:payment?" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/cambiar-password/:passwordKey" component={ChangePassword} />
           <PrivateRoute path="/cliente" component={ClientDashboard} />
@@ -72,6 +72,7 @@ const mapStateToProps = state => ({
   isHomeMenu: state.main.isHomeMenu,
   isHomeMenuHidden: state.main.isHomeMenuHidden,
   isAuth: state.user.isAuth,
+  logout: state.user.logout,
 });
 
 export default connect(mapStateToProps)(Routes);

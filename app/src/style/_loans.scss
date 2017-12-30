@@ -1,4 +1,4 @@
-.loan-request {
+.loans {
   padding: 8vh 4vw;
   width: calc(100vw - 186px);
   .ui.table {
@@ -23,6 +23,24 @@
       font-weight: 500;
       &:first-child {
         text-align: center;
+      }
+    }
+  }
+  .ui.message {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    &.box {
+      border-radius: 2px;
+      box-shadow: 0 2px 20px 0 rgba(0,0,0,0.3);
+    }
+    .content {
+      font-size: 18px;
+      color: $dark-green;
+      .header {
+        color: $dark-gray;
+        line-height: 2;
       }
     }
   }

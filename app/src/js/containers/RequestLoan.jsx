@@ -129,14 +129,14 @@ class RequestLoan extends Component {
       },
     };
     const componentContent = newUser.saved && newLoan.saved && newClient.saved ? (
-      <SubscriptionSuccess />
-    ) : (
       <SubscriptionFormClient
         currentStep={currentStep}
         maxSteps="tres"
         clientInfo={clientInfoStepEvent}
         captcha={this.props.captcha}
       />
+    ) : (
+      <SubscriptionSuccess roleId="client" />
     );
     return (
       <div className="internal-page register client">

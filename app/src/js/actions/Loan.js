@@ -35,14 +35,18 @@ export function clearLoanData() {
 }
 export function getLoanData() {
   return (dispatch, getState) => {
-    dispatch(getLoanInit());
-    const { userId } = getState().user.data;
-    service.get({
-      endpoint: `getloansbyclient/${userId}`,
-    })
-      .then((response) => {
-        dispatch(getLoanSuccess(response.body[0]));
+    try {
+      dispatch(getLoanInit());
+      const { userId } = getState().user.data;
+      service.get({
+        endpoint: `/getloansbyclient/${userId}`,
       })
-      .catch(error => dispatch(getLoanError(error)));
+        .then((response) => {
+          dispatch(getLoanSuccess(response.body[0]));
+        })
+        .catch(error => dispatch(getLoanError(error)));
+    } catch (error) {
+      dispatch(getLoanError(error));
+    }
   };
 }

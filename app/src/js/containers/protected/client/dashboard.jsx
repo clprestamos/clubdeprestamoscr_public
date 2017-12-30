@@ -5,19 +5,27 @@ import { withRouter, Link } from 'react-router-dom';
 import { Button, Menu, Icon, Dropdown, Responsive, Sidebar } from 'semantic-ui-react';
 
 import MainContent from './MainContent';
+import ForgotPassword from '../../ForgotPassword';
 import Logo from '../../../components/Header/Logo';
+import Modal from '../../../components/Modal';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
+      isModalOpen: false,
     };
     autobind(this);
   }
   toggleVisible() {
     this.setState({
       visible: !this.state.visible,
+    });
+  }
+  handleModalOpen() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
     });
   }
   render() {
@@ -46,7 +54,13 @@ class Dashboard extends Component {
                 <Menu.Item position="right">
                   <Dropdown pointing="top right" icon="user circle outline">
                     <Dropdown.Menu>
-                      <Dropdown.Item>Cambiar contraseña</Dropdown.Item>
+                      <Modal
+                        className="modal"
+                        trigger={<Dropdown.Item onClick={this.handleModalOpen}>Cambiar contraseña</Dropdown.Item>}
+                        isOpen={this.state.isModalOpen}
+                        onClose={this.handleModalOpen}
+                        component={<ForgotPassword closeSelf={this.handleModalOpen} />}
+                      />
                     </Dropdown.Menu>
                   </Dropdown>
                 </Menu.Item>
