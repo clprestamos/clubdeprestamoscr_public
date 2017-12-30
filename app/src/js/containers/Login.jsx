@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Container, Form } from 'semantic-ui-react';
+import { NotificationManager } from 'react-notifications';
 
 import Logo from '../components/Header/Logo';
 import InputField from '../components/InputField';
 import Modal from '../components/Modal';
 import Message from '../components/Message';
 import ForgotPassword from './ForgotPassword';
+import PaymentModal from '../components/PaymentModal';
 
 import * as utils from '../utils';
 
@@ -30,8 +32,8 @@ class LoginComponent extends Component {
       username: '',
       password: '',
       isModalOpen: false,
-      isMessageVisible: false,
       hasErrors: false,
+      isPaymentModalOpen: props.match.params.payment ? props.match.params.payment : false,
     };
     autobind(this);
   }
@@ -39,17 +41,28 @@ class LoginComponent extends Component {
     const { dispatch } = this.props;
     dispatch(MainActionCreators.toggleMenuHideState(true));
   }
+  componentDidMount() {
+    if (this.props.isChangeSuccess) {
+      this.createNotification('successChange');
+    }
+    if (this.props.match.params.payment) {
+      if (this.props.match.params.payment === 'pago-satisfactorio') {
+        this.createNotification('reportPayment');
+      }
+      if (this.props.match.params.payment === 'pago-cancelado') {
+        this.createNotification('cancelPayment');
+      }
+    }
+  }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isForgotPasswordSuccess && !this.state.isMessageVisible) {
-      this.setState({
-        isMessageVisible: true,
-      }, () => {
-        setTimeout(() => {
-          this.setState({
-            isMessageVisible: false,
-          });
-        }, 10000);
-      });
+    if (nextProps.isForgotPasswordSuccess) {
+      this.createNotification('successPassword');
+    }
+    if (nextProps.errorForgotPassword) {
+      this.createNotification('errorPassword');
+    }
+    if (nextProps.authData.error) {
+      this.createNotification('errorAuth');
     }
     if (nextProps.authData.data !== null) {
       const isClient = nextProps.authData.data.roleId === 1;
@@ -70,6 +83,31 @@ class LoginComponent extends Component {
       [e.field]: e.value,
     });
   }
+  createNotification(type) {
+    switch (type) {
+      case 'reportPayment':
+        NotificationManager.success('Por favor reporte su pago a info@clubdeprestamos.cr, para proceder con el análisis', 'Pago Satisfactorio', 10000);
+        break;
+      case 'cancelPayment':
+        NotificationManager.info('Su pago no ha sido realizado, verifique que ha haya hecho su pago o contáctenos a info@clubdeprestamos.cr', 'Pago Cancelado', 10000);
+        break;
+      case 'successPassword':
+        NotificationManager.success('Un correo electrónico ha sido enviado a su cuenta, con un link para la restauración de su contraseña. Revise su bandeja de entrada o inbox, sino bien revise su bandeja de spam.', 'Cambio de contraseña solicitado', 10000);
+        break;
+      case 'successChange':
+        NotificationManager.success('Ingrese con su nueva contraseña.', 'Cambio de contraseña satisfactorio', 5000);
+        break;
+      case 'errorPassword':
+        NotificationManager.error('Correo no existe', `Error ${this.props.error}`, 5000);
+        break;
+      case 'errorAuth':
+        NotificationManager.error('Verifique correo o contraseña.', 'Error de autenticación', 5000);
+        break;
+      default:
+        NotificationManager.error('Contáctenos', 'Error inesperado', 3000);
+        break;
+    }
+  }
   login() {
     if (!this.state.hasErrors) {
       const { dispatch } = this.props;
@@ -82,9 +120,9 @@ class LoginComponent extends Component {
       isModalOpen: !this.state.isModalOpen,
     });
   }
-  handleMessage() {
+  handlePaymentModal() {
     this.setState({
-      isMessageVisible: false,
+      isPaymentModalOpen: !this.state.isPaymentModalOpen,
     });
   }
   validation({ type, value }) {
@@ -133,15 +171,6 @@ class LoginComponent extends Component {
         validation: value => this.validation({ value, type: 'password' }),
       },
     ];
-    const message = this.props.isForgotPasswordSuccess && this.state.isMessageVisible ? (
-      <Message
-        positive
-        icon="mail"
-        header="Mensaje enviado"
-        content="Un correo electrónico ha sido enviado a su cuenta, con un link para la restauración de su contraseña. Revise su bandeja de entrada o inbox, sino bien revise su bandeja de spam."
-        onDismiss={this.handleMessage}
-      />
-    ) : '';
     const errorMessage = this.props.authData.error ? (
       <Message
         negative
@@ -150,10 +179,13 @@ class LoginComponent extends Component {
         size="mini"
       />
     ) : '';
+    const { payment } = this.props.match.params;
+    const paymentModal = payment ? (
+      <PaymentModal payment={payment} handleClose={this.handlePaymentModal} />
+    ) : '';
     return (
       <div className="login">
         <Container fluid>
-          {message}
           <Logo />
           <div className="login-box">
             <div className="box">
@@ -193,6 +225,16 @@ class LoginComponent extends Component {
                 onClose={this.handleModalOpen}
                 component={<ForgotPassword closeSelf={this.handleModalOpen} />}
               />
+              {
+                payment ? (
+                  <Modal
+                    className="modal"
+                    isOpen={this.state.isPaymentModalOpen}
+                    onClose={this.handlePaymentModal}
+                    component={paymentModal}
+                  />
+                ) : ''
+              }
             </div>
           </div>
         </Container>
@@ -204,6 +246,8 @@ class LoginComponent extends Component {
 const mapStateToProps = state => ({
   authData: state.user,
   isForgotPasswordSuccess: state.forgotPassword.isSuccess,
+  isChangeSuccess: state.forgotPassword.isChangeSuccess,
+  errorForgotPassword: state.forgotPassword.error,
 });
 
 export default withRouter(connect(mapStateToProps)(LoginComponent));

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Form } from 'semantic-ui-react';
 import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 import InputField from '../components/InputField';
 import * as utils from '../utils';
@@ -19,9 +20,14 @@ class ForgotPassword extends Component {
     }, dispatch);
     autobind(this);
   }
-  componentWillUnmount() {
+  componentWillMount() {
     const { dispatch } = this.props;
     dispatch(FPActionCreators.clearForgotPassword());
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.error) {
+      this.createNotification('error');
+    }
   }
   onChangeField(e) {
     const { dispatch } = this.props;
@@ -34,6 +40,16 @@ class ForgotPassword extends Component {
   }
   handleCancel() {
     this.props.closeSelf();
+  }
+  createNotification(type) {
+    switch (type) {
+      case 'error':
+        NotificationManager.error(this.props.error, 'Error', 3000);
+        break;
+      default:
+        NotificationManager.error('Contáctenos', 'Error inesperado', 3000);
+        break;
+    }
   }
   render() {
     return (
@@ -65,6 +81,7 @@ class ForgotPassword extends Component {
             </Form.Field>
           </Form>
         </div>
+        <NotificationContainer />
       </div>
     );
   }
@@ -76,7 +93,7 @@ ForgotPassword.propTypes = {
 
 const mapStateToProps = state => ({
   email: state.forgotPassword.email,
-  isSuccess: state.forgotPassword.isSuccess,
+  error: state.forgotPassword.error,
 });
 
 export default connect(mapStateToProps)(ForgotPassword);

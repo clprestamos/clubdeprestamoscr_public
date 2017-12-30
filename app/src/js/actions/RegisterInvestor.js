@@ -122,7 +122,7 @@ export function registerUserInvestor() {
       password,
     } = getState().investorSubscription;
     service.post({
-      endpoint: 'users',
+      endpoint: '/users',
       payload: {
         name,
         lastName,

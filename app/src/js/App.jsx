@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'react-autobind';
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
 
 import Routes from './router';
 
@@ -28,7 +30,7 @@ class App extends Component {
     }
   }
   render() {
-    return <div><Routes /></div>;
+    return <div><Routes /><NotificationContainer /></div>;
   }
 }
 

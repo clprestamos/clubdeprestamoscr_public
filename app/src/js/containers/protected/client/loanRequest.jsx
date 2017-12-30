@@ -36,7 +36,7 @@ class LoanRequest extends Component {
     stateName = stateId === 4 ? 'En espera' : stateName;
     stateName = stateId === 5 ? 'Rechazado' : stateName;
     return (
-      <div className="loan-request">
+      <div className="loans">
         <Card>
           <Card.Content>
             <Card.Header>

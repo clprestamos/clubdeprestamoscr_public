@@ -48,7 +48,7 @@ export function sendMsgEmail({
       subject,
     };
     return service.post({
-      endpoint: 'sendmailto',
+      endpoint: '/sendmailto',
       payload: emailMessage,
     })
       .then((response) => {
@@ -67,7 +67,7 @@ export function sendEmail(data) {
     subject: 'Club de Préstamos - Cambiar contraseña',
   };
   return service.post({
-    endpoint: 'sendmailto',
+    endpoint: '/sendmailto',
     payload: emailData,
   })
     .then((response) => {

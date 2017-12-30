@@ -31,7 +31,7 @@ export function getProvinces() {
   return (dispatch) => {
     dispatch(getProvincesInit());
     service.get({
-      endpoint: 'getProvinces',
+      endpoint: '/getProvinces',
     })
       .then((response) => {
         dispatch(getProvincesSuccess(response.body));
@@ -69,7 +69,7 @@ export function getCantons(province) {
   return (dispatch) => {
     dispatch(getCantonsInit());
     service.get({
-      endpoint: `getCantons/${province}`,
+      endpoint: `/getCantons/${province}`,
     })
       .then((response) => {
         dispatch(getCantonsSuccess(response.body));
@@ -107,7 +107,7 @@ export function getDistricts(province, canton) {
   return (dispatch) => {
     dispatch(getDistrictsInit());
     service.get({
-      endpoint: `getDistricts/${province}/${canton}`,
+      endpoint: `/getDistricts/${province}/${canton}`,
     })
       .then((response) => {
         dispatch(getDistrictsSuccess(response.body));

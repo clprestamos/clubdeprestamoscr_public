@@ -36,8 +36,10 @@ export function loginError(error) {
 }
 export function login({ username, password }) {
   return (dispatch) => {
+    dispatch(clearLoginData());
+    dispatch(loginInit());
     service.post({
-      endpoint: 'auth/login',
+      endpoint: '/auth/login',
       payload: {
         email: username,
         password,

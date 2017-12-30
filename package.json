@@ -66,6 +66,7 @@
     "react-autobind": "^1.0.6",
     "react-dom": "^16.0.0",
     "react-google-recaptcha": "^0.9.9",
+    "react-notifications": "^1.4.3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
     "react-router-hash-link": "^1.1.1",

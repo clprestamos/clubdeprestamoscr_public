@@ -7,6 +7,7 @@ import {
   EDIT_CLIENT_PROFILE,
   GET_USER_PROFILE_INIT,
   SAVE_CLIENT_PROFILE_INIT,
+  GET_LOAN_DATA_INIT,
 } from '../constants';
 import { logout } from '../actions/Login';
 
@@ -16,13 +17,14 @@ export const checkSessionStatusMiddleware = store => next => action => {
     'EDIT_CLIENT_PROFILE',
     'GET_USER_PROFILE_INIT',
     'SAVE_CLIENT_PROFILE_INIT',
+    'GET_LOAN_DATA_INIT',
   ];
-
   const checkSession = includes(checkSessionInActions, action.type);
   if (checkSession) {
     const isValidToken = service.validateToken();
     if (!isValidToken) {
-      return store.dispatch(logout());
+      window.location.replace('/logout');
+      return null;
     }
   }
 

@@ -19,13 +19,12 @@ export function forgotPasswordError(error) {
     },
   };
 }
-export function forgotPasswordSuccess(data) {
+export function forgotPasswordSuccess() {
   return {
     type: types.FORGOT_PASSWORD_SUCCESS,
     payload: {
       isLoading: false,
       isSuccess: true,
-      data,
     },
   };
 }
@@ -49,7 +48,7 @@ export function sendEmail(data) {
     subject: 'Club de Préstamos - Cambiar contraseña',
   };
   return service.post({
-    endpoint: 'sendmailto',
+    endpoint: '/sendmailto',
     payload: emailData,
   })
     .then((response) => {
@@ -64,10 +63,11 @@ export function requestNewPassword() {
   return (dispatch, getState) => {
     dispatch(forgotPasswordInit());
     service.patch({
-      endpoint: 'auth/restorepassword',
+      endpoint: '/auth/restorepassword',
       payload: {
         email: getState().forgotPassword.email,
       },
+      noAuthorization: true,
     })
       .then((response) => {
         const data = response.body.results.data[0];
@@ -75,7 +75,7 @@ export function requestNewPassword() {
       })
       .then((data) => {
         if (data) {
-          dispatch(forgotPasswordSuccess(data));
+          dispatch(forgotPasswordSuccess());
         }
       })
       .catch((error) => {
@@ -91,12 +91,12 @@ export function changePasswordInit() {
     },
   };
 }
-export function changePasswordSuccess(data) {
+export function changePasswordSuccess() {
   return {
     type: types.CHANGE_PASSWORD_SUCCESS,
     payload: {
       isLoading: false,
-      data,
+      isChangeSuccess: true,
     },
   };
 }
@@ -139,7 +139,7 @@ export function getUserId(passwordKey) {
   return (dispatch) => {
     dispatch(getUserIdInit());
     service.get({
-      endpoint: `auth/restorepassword/${passwordKey}`,
+      endpoint: `/auth/restorepassword/${passwordKey}`,
     })
       .then((response) => {
         if (response.body.length) {
@@ -166,14 +166,14 @@ export function changeUserPassword(password) {
     dispatch(changePasswordInit());
     const { userId } = getState().forgotPassword.data;
     service.patch({
-      endpoint: 'auth/restorepassword',
+      endpoint: '/auth/restorepassword',
       payload: {
         userId,
         password,
       },
     })
-      .then((response) => {
-        dispatch(changePasswordSuccess(response));
+      .then(() => {
+        dispatch(changePasswordSuccess());
       })
       .catch((error) => {
         dispatch(changePasswordError(error));

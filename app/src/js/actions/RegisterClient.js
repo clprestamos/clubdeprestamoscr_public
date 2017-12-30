@@ -37,7 +37,7 @@ export function getZipCode() {
   return (dispatch, getState) => {
     dispatch(getZipCodeInit());
     service.get({
-      endpoint: `getZipcode/${getState().clientSubscription.province}/${getState().clientSubscription.canton}/${getState().clientSubscription.district}`,
+      endpoint: `/getZipcode/${getState().clientSubscription.province}/${getState().clientSubscription.canton}/${getState().clientSubscription.district}`,
     })
       .then((response) => {
         dispatch(getZipCodeSuccess(response.body[0].zipCode));
@@ -83,7 +83,7 @@ export function registerNewClient({ userId, loanId }) {
   return (dispatch) => {
     dispatch(registerNewClientInit());
     service.post({
-      endpoint: 'clients',
+      endpoint: '/clients',
       payload: {
         userId,
         loanId,
@@ -138,7 +138,7 @@ export function registerNewLoan(userId) {
       reason,
     } = getState().clientSubscription;
     service.post({
-      endpoint: 'loans',
+      endpoint: '/loans',
       payload: {
         amount,
         term,
@@ -213,7 +213,7 @@ export function registerUserClient() {
       password,
     } = getState().clientSubscription;
     service.post({
-      endpoint: 'users',
+      endpoint: '/users',
       payload: {
         name,
         lastName,

@@ -30,12 +30,6 @@ button {
   outline: none;
 }
 
-.ui.message {
-  position: absolute;
-  z-index: 9;
-  opacity: 0.8;
-}
-
 .ui.form {
   .ui.message {
     position: relative;
@@ -69,17 +63,23 @@ button {
   align-items: center;
   flex-direction: row;
 }
+.btn-font {
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+a.btn {
+  @extend .btn-font;
+}
 .btn {
+  @extend .btn-font;
   cursor: pointer;
   font-family: 'Hind', sans-serif !important;
   border-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 11px;
-  text-transform: uppercase;
   border-radius: 73px;
   background-image: linear-gradient(to right, $light-green, $dark-green);
   .icon {

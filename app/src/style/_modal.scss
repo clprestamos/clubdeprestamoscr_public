@@ -16,6 +16,10 @@
       text-align: left;
       margin-bottom: 5px;
     }
+    a, a:focus, a:hover, a:visited {
+      color: $dark;
+      font-weight: bold;
+    }
     .btn.default {
       margin-top: 34px;
       width: 194px;
@@ -60,6 +64,21 @@
           height: 50px;
           color: $dark;
         }
+      }
+    }
+    &.payment-modal {
+      .sub.header {
+        line-height: 1.5;
+        margin-top: 1rem;
+      }
+      .btn {
+        margin-top: 0;
+      }
+      .icons {
+        margin-right: 2vw;
+      }
+      .ui.icon.header .icon.dont {
+        font-size: 3rem;
       }
     }
   }

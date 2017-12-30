@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Container, Form } from 'semantic-ui-react';
+import { NotificationManager } from 'react-notifications';
 
 import Logo from '../components/Header/Logo';
 import InputField from '../components/InputField';
@@ -31,6 +32,7 @@ class ChangePassword extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(MainActionCreators.toggleMenuHideState(true));
+    dispatch(ForgotPassword.clearForgotPassword());
   }
   componentDidMount() {
     const { dispatch, match } = this.props;
@@ -38,21 +40,9 @@ class ChangePassword extends Component {
     dispatch(ForgotPassword.getUserId(passwordKey));
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isForgotPasswordSuccess && !this.state.isMessageVisible) {
-      this.setState({
-        isMessageVisible: true,
-      }, () => {
-        setTimeout(() => {
-          this.setState({
-            isMessageVisible: false,
-          });
-        }, 5000);
-      });
+    if (nextProps.error) {
+      this.createNotification('error');
     }
-  }
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch(ForgotPassword.clearForgotPassword());
   }
   onChangePassword(e) {
     const { dispatch } = this.props;
@@ -63,6 +53,16 @@ class ChangePassword extends Component {
       const { dispatch } = this.props;
       const { password } = this.state;
       dispatch(ForgotPassword.changeUserPassword(password));
+    }
+  }
+  createNotification(type) {
+    switch (type) {
+      case 'error':
+        NotificationManager.error('Token inválido', 'Error', 3000);
+        break;
+      default:
+        NotificationManager.error('Contáctenos', 'Error inesperado', 3000);
+        break;
     }
   }
   render() {
@@ -166,18 +166,23 @@ class ChangePassword extends Component {
     );
     return (
       <div className="change-password">
-        <Container fluid>
-          <Logo />
-          <div className="change-password-box">
-            {content}
-          </div>
-        </Container>
+        { this.props.isChangeSuccess ? (
+          <Redirect to="/login" />
+        ) : (
+          <Container fluid>
+            <Logo />
+            <div className="change-password-box">
+              {content}
+            </div>
+          </Container>
+        ) }
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  isChangeSuccess: state.forgotPassword.isChangeSuccess,
   error: state.forgotPassword.error,
 });
 

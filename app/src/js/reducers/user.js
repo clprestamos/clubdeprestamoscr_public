@@ -3,7 +3,7 @@ import * as types from '../constants';
 const initialState = {
   isAuth: false,
   isLoading: false,
-  error: '',
+  error: null,
   data: null,
 };
 

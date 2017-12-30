@@ -33,7 +33,7 @@ export function getZipCode() {
   return (dispatch, getState) => {
     dispatch(getZipCodeInit());
     service.get({
-      endpoint: `getZipcode/${getState().clientProfile.province}/${getState().clientProfile.canton}/${getState().clientProfile.district}`,
+      endpoint: `/getZipcode/${getState().clientProfile.province}/${getState().clientProfile.canton}/${getState().clientProfile.district}`,
     })
       .then((response) => {
         dispatch(getZipCodeSuccess(response.body[0].zipCode));
@@ -79,7 +79,7 @@ export function getUserProfile() {
     dispatch(getUserProfileInit());
     const id = getState().user.data.userId;
     service.get({
-      endpoint: `users/${id}`,
+      endpoint: `/users/${id}`,
     })
       .then((response) => {
         const {
@@ -202,7 +202,7 @@ export function saveClientProfile() {
     payload = _.pickBy(payload, _.identity);
     const { userId } = getState().user.data;
     service.patch({
-      endpoint: `users/${userId}`,
+      endpoint: `/users/${userId}`,
       payload,
     })
       .then((response) => {
