@@ -65,49 +65,45 @@
   }
 }
 @media only screen and (max-width: 320px) {
-  .internal-page .sub-header {
-    flex-direction: column;
-  }
   .internal-page {
-
-    background: linear-gradient(180deg, $dark 78vh, #FFFFFF 0);
-    .divider {
-      background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
-    }
-  }
-  .internal-page .main-content {
-    padding-top: 38vh;
-    column-count: 1;
-  }
-  .internat-page .content {
-    width: 75.25vw !important;
-  }
-  .internal-page .sub-header .left-content {
-    width: 100%;
-    margin-right: 0vh;
-  }
-  .internal-page .sub-header .left-content p {
-    position: absolute;
-    padding-top: 47.5vh;
-  }
-  .internal-page .sub-header .right-content {
-        img {
-          width: 86vw;
-          margin-left: -4.6vw;
+    flex-direction: column;
+      .static-content{
+        width: 100% !important;
+        .title {
+          width: 88vw !important;
         }
-    }
-
+        .content {
+          width: 88vw !important;
+        }
+      }
+  }
+  .divider {
+    width: 88vw !important;
+    background: linear-gradient(90deg,rgba(139,197,63,.97) 44vw,#006838 0) !important;
+  }
+  .subscription-success {
+    width: 100% !important;
+      div {
+        width: 88vw !important;  
+      }
+  }
+  .subscription-form {
+    width: 100% !important;
+      div {
+        width: 88vw !important;  
+      }
+  }
   footer {
     height: 22vh !important;
     flex-direction: column-reverse;
     padding-right: 8.3vw !important;
-    .right-content {
-      ul {
-        margin-top: 2vh; 
+      .right-content {
+        ul {
+          margin-top: 2vh; 
+        }
       }
-    }
-    .left-content{
+      .left-content{
       margin-bottom: 2vh;
-    }
+      }
   }
 }
