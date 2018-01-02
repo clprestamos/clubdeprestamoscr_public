@@ -139,3 +139,40 @@
     }
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .faqs-page .title {
+    width: 100%;
+    align-items: inherit;
+    height: 60vh;
+  }
+  .faqs-page .title h2 {
+    width: 100%;
+  }
+  .faqs-page .title h2 span:after, .faqs-page .title h2 span:before {
+    content: "";
+    position: absolute;
+    height: 0px;
+    border-bottom: none;
+    top: 0vh;
+    width: 0vw;
+  }
+  .faqs-page .question-icon {
+    float: none;
+    top: 0px;
+    margin: 0 auto;
+  }
+  .faqs-page .question-box {
+    width: 100%;
+    height: 60vh;
+  }
+  .faqs-page .question-box p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a4a4a;
+    padding-top: 3vh;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+}
