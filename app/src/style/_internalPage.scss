@@ -69,15 +69,15 @@
     flex-direction: column-reverse;
   }
   .register .static-content {
-    width: 100%;
+    width: 100% !important;
   }
   .subscription-form {
-    width: 100%;
+    width: 100% !important;
   }
   .register .static-content .content, .register .static-content .divider, .register .static-content .title {
-    width: 80%;
+    width: 80% !important;
   }
   .subscription-form .divider, .subscription-form>div {
-    width: 80%;
+    width: 80% !important;
   }
 }
