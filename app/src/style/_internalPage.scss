@@ -1,5 +1,5 @@
 .internal-page {
-  background: linear-gradient(180deg, $dark 49vh, #FFFFFF 0);
+  background: linear-gradient(180deg, $dark 56vh, #FFFFFF 0);
   display: flex;
   justify-content: center;
   padding-top: 10vh;
@@ -65,18 +65,26 @@
   }
 }
 @media only screen and (max-width: 320px) {
-  .internal-page {
+  .internal-page.register {
     flex-direction: column;
-      .static-content{
-        width: 100% !important;
-        .title {
-          width: 88vw !important;
-        }
-        .content {
-          width: 88vw !important;
-        }
+  }
+  .internal-page .sub-header {
+    flex-direction: column;
+  }
+  .internal-page .content {
+    width: 77.4vw;
+  }
+  .internal-page {
+    background: linear-gradient(180deg, $dark 78vh, #FFFFFF 0);
+      .divider {
+        background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
       }
   }
+  .internal-page .main-content {
+    padding-top: 38vh;
+    column-count: 1;
+  }
+
   .divider {
     width: 88vw !important;
     background: linear-gradient(90deg,rgba(139,197,63,.97) 44vw,#006838 0) !important;
@@ -87,23 +95,55 @@
         width: 88vw !important;  
       }
   }
-  .subscription-form {
+  .internal-page .sub-header .left-content p {
+    position: absolute;
+    padding-top: 50.5vh;
+  }
+  .internal-page .sub-header .right-content {
+    img {
+      width: 86vw;
+      margin-left: -4.6vw;
+    }
+  }
+  .register .static-content {
     width: 100% !important;
-      div {
-        width: 88vw !important;  
-      }
+    .title {
+     width: 88vw !important;
+    }
+    .content {
+      width: 88vw !important;
+    }
   }
-  footer {
-    height: 22vh !important;
-    flex-direction: column-reverse;
-    padding-right: 8.3vw !important;
-      .right-content {
-        ul {
-          margin-top: 2vh; 
-        }
-      }
-      .left-content{
-      margin-bottom: 2vh;
-      }
+  .subscription-form {
+        width: 100% !important;
   }
+  .subscription-form>div {
+        width: 88vw !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 768px) and (min-width: 321px) {
+  .internal-page {
+    background: linear-gradient(180deg,#1f1f1f 66vh,#fff 0);
+  }
+  .internal-page .main-content {
+    padding-top: 20vh;
+  }
+  .internal-page .sub-header .left-content {
+    width: 100%;
+  }
+  .internal-page .sub-header .right-content {
+    img {
+      width: 38vw;
+    }
+  }
+  .internal-page .sub-header .left-content p {
+    position: absolute;
+    padding-top: 5.5vh;
+    line-height: 1.2;
+    width: 75vw;
+  }
+
 }
