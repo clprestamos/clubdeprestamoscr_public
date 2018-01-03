@@ -50,3 +50,16 @@
     height: 116vh;
   }
 }
+@media only screen and (max-width: 768px) and (min-width: 321px) {
+  .home-section {
+    height: 120vh;
+  }
+  .home-section .scroll {
+    left: 80%;
+  }
+  #contactenos {
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+  
+}
