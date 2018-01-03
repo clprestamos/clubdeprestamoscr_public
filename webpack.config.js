@@ -26,6 +26,7 @@ let plugins = [
     __DEV__: false,
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
+      API_URL: JSON.stringify('https://api.clubdeprestamos.cr'),
     },
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -109,6 +110,7 @@ if (DEVELOPMENT) {
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
         SITE_KEY: JSON.stringify('6LdLCTsUAAAAALL-9p_C181biMLzELJIioMOsQzp'),
+        API_URL: JSON.stringify('http://localhost:3000'),
       },
     }),
     // > Configure CSS Bundle file
