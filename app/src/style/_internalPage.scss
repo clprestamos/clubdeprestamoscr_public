@@ -65,12 +65,11 @@
   }
 }
 @media only screen and (max-width: 320px) {
+  .internal-page.register {
+      flex-direction: column;
+  }
   .internal-page {
     background: linear-gradient(180deg, $dark 78vh, #FFFFFF 0);
-    flex-direction: column;
-      .divider {
-      background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
-      }
       .sub-header {
         flex-direction: column;
         .left-content p {
@@ -88,6 +87,10 @@
         width: 100% !important;
         .title {
           width: 88vw !important;
+            .divider {
+            width: 88vw !important;
+            background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
+            }
         }
         .content {
           width: 88vw !important;
@@ -99,11 +102,7 @@
       }
 
   }
-  
-  .divider {
-    width: 88vw !important;
-    background: linear-gradient(90deg,rgba(139,197,63,.97) 44vw,#006838 0) !important;
-  }
+
   .subscription-success {
     width: 100% !important;
       div {
