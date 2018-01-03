@@ -53,12 +53,12 @@
     padding-left: 35vw;
     padding-right: 35vw;
   }
-  .right-content {
-    display: none;
-  }
   footer {
     padding-right: 0vw;
     text-align: center;
+    .right-content {
+    display: none;
+    }
   }
   .contact-us .ui.form {
     width: 90%;
