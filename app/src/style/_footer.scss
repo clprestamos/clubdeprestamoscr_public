@@ -41,3 +41,22 @@ footer {
     }
   }
 }
+
+@media only screen and (max-width: 320px) {
+  footer {
+    height: 22vh !important;
+    flex-direction: column-reverse;
+    padding-right: 8.3vw !important;
+    .right-content {
+      ul {
+        margin-top: 2vh; 
+      }
+    }
+    .left-content{
+      margin-bottom: 2vh;
+    }
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 321px) {
+
+}
