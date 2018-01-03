@@ -1,6 +1,8 @@
 import request from 'superagent';
 import jwtDecode from 'jwt-decode';
 
+const { API_URL } = process.env;
+
 export function removeToken() {
   window.sessionStorage.clear();
 }
@@ -37,7 +39,7 @@ export function post({
   requiredToken,
 }) {
   const requestPost = (resolve, reject) => {
-    request.post(`http://localhost:3000${endpoint}`)
+    request.post(`${API_URL}${endpoint}`)
       .send(payload)
       .set({ authorization })
       .then((response) => {
@@ -67,7 +69,7 @@ export function get({
 }) {
   const authorization = getToken();
   return new Promise((resolve, reject) => {
-    request.get(`http://localhost:3000${endpoint}`)
+    request.get(`${API_URL}${endpoint}`)
       .set({ authorization })
       .then((response) => {
         resolve(response);
@@ -83,14 +85,14 @@ export function patch({
   const authorization = getToken();
   return new Promise((resolve, reject) => {
     if (noAuthorization) {
-      request.patch(`http://localhost:3000${endpoint}`)
+      request.patch(`${API_URL}${endpoint}`)
         .send(payload)
         .then((response) => {
           resolve(response);
         })
         .catch(err => reject(err));
     } else {
-      request.patch(`http://localhost:3000${endpoint}`)
+      request.patch(`${API_URL}${endpoint}`)
         .send(payload)
         .set({ authorization })
         .then((response) => {
