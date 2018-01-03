@@ -41,3 +41,43 @@ footer {
     }
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .main + footer {
+    height: 0vh !important;
+    flex-direction: column-reverse;
+    padding-right: 8.3vw !important;
+    margin-top: 0px;
+    .right-content {
+      display: none;
+      ul {
+        margin-top: 2vh; 
+      }
+    }
+    .left-content{
+      margin-bottom: 2vh;
+      z-index: 999;
+    }
+  }
+  #contactenos {
+    height: 170vh;
+  }
+  .internal-page + footer {
+    height: 20vh;
+    flex-direction: column-reverse;
+    padding-right: 8.3vw;
+    .right-content {
+      margin-top: 2vh; 
+    }
+    .left-content{
+      margin-bottom: 2vh;
+    }
+
+  }
+
+}
+@media only screen and (max-width: 768px) and (min-width: 321px) {
+  #contactenos {
+    height: 150vh;
+  }
+}

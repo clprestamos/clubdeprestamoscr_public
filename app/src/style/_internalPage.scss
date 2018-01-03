@@ -1,5 +1,5 @@
 .internal-page {
-  background: linear-gradient(180deg, $dark 49vh, #FFFFFF 0);
+  background: linear-gradient(180deg, $dark 56vh, #FFFFFF 0);
   display: flex;
   justify-content: center;
   padding-top: 10vh;
@@ -68,12 +68,14 @@
   .internal-page .sub-header {
     flex-direction: column;
   }
+  .internal-page .content {
+    width: 77.4vw;
+  }
   .internal-page {
-
     background: linear-gradient(180deg, $dark 78vh, #FFFFFF 0);
-    .divider {
-      background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
-    }
+      .divider {
+        background: linear-gradient(90deg, $light-green 122px, $dark-green 0);
+      }
   }
   .internal-page .main-content {
     padding-top: 38vh;
@@ -88,26 +90,37 @@
   }
   .internal-page .sub-header .left-content p {
     position: absolute;
-    padding-top: 47.5vh;
+    padding-top: 50.5vh;
   }
   .internal-page .sub-header .right-content {
-        img {
-          width: 86vw;
-          margin-left: -4.6vw;
-        }
-    }
-
-  footer {
-    height: 22vh !important;
-    flex-direction: column-reverse;
-    padding-right: 8.3vw !important;
-    .right-content {
-      ul {
-        margin-top: 2vh; 
-      }
-    }
-    .left-content{
-      margin-bottom: 2vh;
+    img {
+      width: 86vw;
+      margin-left: -4.6vw;
     }
   }
+
+}
+
+@media only screen and (max-width: 768px) and (min-width: 321px) {
+  .internal-page {
+    background: linear-gradient(180deg,#1f1f1f 66vh,#fff 0);
+  }
+  .internal-page .main-content {
+    padding-top: 20vh;
+  }
+  .internal-page .sub-header .left-content {
+    width: 100%;
+  }
+  .internal-page .sub-header .right-content {
+    img {
+      width: 38vw;
+    }
+  }
+  .internal-page .sub-header .left-content p {
+    position: absolute;
+    padding-top: 5.5vh;
+    line-height: 1.2;
+    width: 75vw;
+  }
+
 }
