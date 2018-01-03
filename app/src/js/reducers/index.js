@@ -10,6 +10,8 @@ import contactUs from './contactUs';
 import locales from './locales';
 import clientProfile from './clientProfile';
 import loan from './loan';
+import investorProfile from './investorProfile';
+import opportunities from './opportunities';
 
 const rootReducer = combineReducers({
   main,
@@ -22,6 +24,8 @@ const rootReducer = combineReducers({
   locales,
   clientProfile,
   loan,
+  investorProfile,
+  opportunities,
 });
 
 export default rootReducer;

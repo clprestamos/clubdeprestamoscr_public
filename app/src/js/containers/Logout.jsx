@@ -61,7 +61,7 @@ class Logout extends Component {
         </Container>
       </div>
     ) : (
-      <Redirect to="/" />
+      <Redirect to="/login" />
     );
     return logoutComponent;
   }

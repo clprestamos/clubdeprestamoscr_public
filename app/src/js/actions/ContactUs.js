@@ -6,6 +6,7 @@ export function contactUsInit() {
     type: types.CONTACT_US_SEND_MSG_INIT,
     payload: {
       isLoading: true,
+      error: null,
     },
   };
 }

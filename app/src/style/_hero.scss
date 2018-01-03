@@ -19,6 +19,15 @@
       color: $dark-gray;
       font-size: 20px;
       font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+  }
+  &.investor {
+    p {
+      &.welcome {
+        color: $active;
+        font-size: 18px;
+      }
     }
   }
 }

@@ -13,6 +13,9 @@ const initialState = {
   interest: null,
   score: null,
   approvedDate: null,
+  stateName: null,
+  name: null,
+  lastName: null,
 };
 
 function Loan(state = initialState, action) {

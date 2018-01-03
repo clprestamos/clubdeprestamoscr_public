@@ -35,24 +35,21 @@ export function getUserAuth() {
 export function post({
   endpoint,
   payload,
-  authorization,
   requiredToken,
 }) {
-  const requestPost = (resolve, reject) => {
-    request.post(`${API_URL}${endpoint}`)
-      .send(payload)
-      .set({ authorization })
-      .then((response) => {
-        resolve(response);
-      })
-      .catch(err => reject(err));
-  };
+  const authorization = getToken();
   return new Promise((resolve, reject) => {
     if (requiredToken) {
       try {
         const isTokenValid = validateToken();
         if (isTokenValid) {
-          requestPost(resolve, reject);
+          request.post(`${API_URL}${endpoint}`)
+            .send(payload)
+            .set({ authorization })
+            .then((response) => {
+              resolve(response);
+            })
+            .catch(err => reject(err));
         } else {
           reject(new Error('Token expiró'));
         }
@@ -60,7 +57,12 @@ export function post({
         reject(err);
       }
     } else {
-      requestPost(resolve, reject);
+      request.post(`${API_URL}${endpoint}`)
+        .send(payload)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch(err => reject(err));
     }
   });
 }

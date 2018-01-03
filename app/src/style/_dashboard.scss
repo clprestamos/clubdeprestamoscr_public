@@ -6,6 +6,7 @@
   }
   .wrapper {
     .main-content {
+      padding-top: 9vh;
       .pushable {
         height: 100vh;
         display: flex;
@@ -17,6 +18,19 @@
             -webkit-transform: translate3d(186px,0,0);
             transform: translate3d(186px,0,0);
             overflow-y: scroll;
+          }
+          a.item.icon {
+            padding-left: 3.5vw;
+            > .icon {
+              margin-left: -2vw !important;
+            }
+          }
+          a.item > .icon {
+            float: left;
+            margin: 0 0.5em 0 0;
+          }
+          div.item > .menu {
+            margin-top: 2vh;
           }
         }
         .ui.secondary.vertical.pointing.menu .item {
