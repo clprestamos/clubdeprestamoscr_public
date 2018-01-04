@@ -2,12 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import { Table, Image, Rating, Icon } from 'semantic-ui-react';
+import { Table, Image, Rating, Icon, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
-const Available = (props) => {
-  if (props.loans) {
+const LoanList = (props) => {
+  console.log('PROPS', props);
+  if (props.loans.length) {
     return (
       <Table striped className="available">
         <Table.Header>
@@ -18,7 +18,7 @@ const Available = (props) => {
             <Table.HeaderCell>Plazo</Table.HeaderCell>
             <Table.HeaderCell>Tasa</Table.HeaderCell>
             <Table.HeaderCell>Fecha</Table.HeaderCell>
-            <Table.HeaderCell>Detalle</Table.HeaderCell>
+            <Table.HeaderCell>Invertir</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -44,7 +44,7 @@ const Available = (props) => {
                 { moment(new Date(loan.requestLoanDate)).format('MMM DD, YYYY') }
               </Table.Cell>
               <Table.Cell>
-                <Link to={`/inversionista/prestamo/${loan.loanId}`}><Icon name="eye" /></Link>
+                <Link to={`/inversionista/prestamo/${loan.loanId}`}><Icon name="usd" /></Link>
               </Table.Cell>
             </Table.Row>
           ))}
@@ -52,12 +52,14 @@ const Available = (props) => {
       </Table>
     );
   } else {
-    return (<Redirect to="/" />);
+    return (
+      <Segment inverted color="blue"><Icon name="warning sign" /> No posee inversiones disponibles en este momento.</Segment>
+    );
   }
 };
 
-Available.propTypes = {
+LoanList.propTypes = {
   loans: PropTypes.array.isRequired,
 };
 
-export default Available;
+export default LoanList;
