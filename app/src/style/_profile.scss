@@ -5,6 +5,25 @@
 .profile {
   padding: 8vh 4vw;
   width: calc(100vw - 186px);
+  &.investor {
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: $dark;
+    }
+    .ui.grid .column.avatar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+    .ui.celled.grid>.row {
+      box-shadow: none;
+    }
+    .ui.celled.grid.box {
+      box-shadow: 0 2px 10px 0 rgba(0,0,0,.06);
+    }
+  }
   .ui.form {
     display: flex;
     flex-wrap: wrap;

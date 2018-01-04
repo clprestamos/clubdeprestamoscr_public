@@ -9,7 +9,7 @@ const initialState = {
   lastName: null,
   identification: null,
   phone: null,
-  referencePhone: null,
+  cellphone: null,
   email: null,
   password: null,
   newInvestor: {

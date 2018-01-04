@@ -3,8 +3,6 @@ import * as types from '../constants';
 const initialState = {
   isLoading: false,
   error: null,
-  letterStep: 'uno',
-  currentStep: 1,
   name: null,
   lastName: null,
   email: null,
@@ -32,9 +30,9 @@ function ClientProfile(state = initialState, action) {
     case types.GET_PROFILE_ZIPCODE_INIT:
     case types.GET_PROFILE_ZIPCODE_ERROR:
     case types.GET_PROFILE_ZIPCODE_SUCCESS:
-    case types.GET_USER_PROFILE_INIT:
-    case types.GET_USER_PROFILE_ERROR:
-    case types.GET_USER_PROFILE_SUCCESS:
+    case types.GET_CLIENT_PROFILE_INIT:
+    case types.GET_CLIENT_PROFILE_ERROR:
+    case types.GET_CLIENT_PROFILE_SUCCESS:
       return {
         ...state,
         ...action.payload,

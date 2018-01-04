@@ -12,6 +12,13 @@ class InputField extends Component {
     };
     autobind(this);
   }
+  componentWillMount() {
+    if (this.props.readonly) {
+      this.setState({
+        visible: true,
+      });
+    }
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.defaultValue) {
       this.showLabel();
@@ -38,6 +45,10 @@ class InputField extends Component {
   }
   render() {
     const placeholder = this.state.visible ? '' : this.props.inputPlaceholder;
+    let disabled = this.props.disabled ? this.props.disabled : false;
+    if (this.props.readonly) {
+      disabled = true;
+    }
     return (
       <div className="input-field">
         <Label className={`float-label ${this.state.visible ? 'show' : 'hide'}`} pointing="below">{this.props.labelText}</Label>
@@ -49,7 +60,7 @@ class InputField extends Component {
           value={this.props.defaultValue ? this.props.defaultValue : ''}
           onChange={this.handleOnChange}
           name={this.props.inputName}
-          disabled={this.props.disabled}
+          disabled={disabled}
         />
         { this.state.hasError && <Label pointing color="red">{this.props.errorMessage}</Label> }
       </div>
@@ -58,15 +69,19 @@ class InputField extends Component {
 }
 
 InputField.propTypes = {
-  inputType: PropTypes.string.isRequired,
-  inputPlaceholder: PropTypes.string.isRequired,
-  labelText: PropTypes.string.isRequired,
-  handleOnChange: PropTypes.func.isRequired,
-  defaultValue: PropTypes.string,
-  validation: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string.isRequired,
-  inputName: PropTypes.string.isRequired,
+  inputType: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
+  labelText: PropTypes.string,
+  handleOnChange: PropTypes.func,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  validation: PropTypes.func,
+  errorMessage: PropTypes.string,
+  inputName: PropTypes.string,
   disabled: PropTypes.bool,
+  readonly: PropTypes.bool,
 };
 
 export default InputField;

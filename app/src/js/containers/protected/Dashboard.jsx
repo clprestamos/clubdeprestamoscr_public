@@ -5,9 +5,9 @@ import { withRouter, Link } from 'react-router-dom';
 import { Button, Menu, Icon, Dropdown, Responsive, Sidebar } from 'semantic-ui-react';
 
 import MainContent from './MainContent';
-import ForgotPassword from '../../ForgotPassword';
-import Logo from '../../../components/Header/Logo';
-import Modal from '../../../components/Modal';
+import ForgotPassword from '../ForgotPassword';
+import Logo from '../../components/Header/Logo';
+import Modal from '../../components/Modal';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="wrapper">
           <Responsive minWidth={768}>
-            <Menu stackable>
+            <Menu stackable className="fixed">
               <Menu.Item position="left" name="home" className="item-logo">
                 <Logo />
               </Menu.Item>
@@ -69,8 +69,7 @@ class Dashboard extends Component {
             </Menu>
             <MainContent
               authData={this.props.authData}
-              match={this.props.match}
-              pathname={this.props.location.pathname}
+              {...this.props}
             />
           </Responsive>
           <Responsive maxWidth={767}>
@@ -94,8 +93,7 @@ class Dashboard extends Component {
               <Sidebar.Pusher>
                 <MainContent
                   authData={this.props.authData}
-                  match={this.props.match}
-                  pathname={this.props.location.pathname}
+                  {...this.props}
                 />
               </Sidebar.Pusher>
             </Sidebar.Pushable>

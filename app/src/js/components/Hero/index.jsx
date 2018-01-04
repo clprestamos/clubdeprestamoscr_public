@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 
 const Hero = props => (
-  <div className="hero box">
+  <div className={`hero box ${props.authData.data.roleId === 2 ? 'investor' : 'client'}`}>
     <Icon circular inverted name="home" size="big" color="teal" />
     <p className="welcome">Hola {props.authData.data.name} bienvenido a tu cuenta.</p>
     <p>Aquí el sistema muestra el detalle de tu solictud de crédito, tu score credicticio y puedes manejar tu información de usuario.</p>

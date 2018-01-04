@@ -62,7 +62,7 @@ class ProfileComponent extends Component {
   }
   loadUserProfile() {
     const { dispatch } = this.props;
-    dispatch(Profile.getUserProfile());
+    dispatch(Profile.getClientProfile());
   }
   validation({ type, value }) {
     let result = true;

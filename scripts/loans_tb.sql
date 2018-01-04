@@ -16,6 +16,7 @@ CREATE TABLE public.loans_tb
     interest integer,
     score integer,
     approved_date text COLLATE pg_catalog."default",
+    percentage_inverted integer,
     CONSTRAINT loans_tb_pkey PRIMARY KEY (id),
     CONSTRAINT fk_user_id FOREIGN KEY (user_id)
         REFERENCES public.users_tb (id) MATCH SIMPLE
