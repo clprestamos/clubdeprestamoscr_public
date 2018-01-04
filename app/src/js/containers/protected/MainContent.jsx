@@ -64,12 +64,6 @@ const MainContent = (props) => {
           icon: 'chevron right',
           url: '/inversionista/oportunidades/en-proceso',
         },
-        {
-          name: 'proceso-activacion',
-          text: 'Proceso de activación',
-          icon: 'chevron right',
-          url: '/inversionista/oportunidades/proceso-activacion',
-        },
       ],
     },
     {
