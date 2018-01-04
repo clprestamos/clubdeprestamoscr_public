@@ -42,6 +42,9 @@
 }
 
 @media only screen and (max-width: 320px) {
+  .home-section {
+    height: 210vh;
+  }
   .home-section .scroll {
     position: inherit;
     bottom: 0;
@@ -50,21 +53,12 @@
       top: 50px;
     }
   }
-  #contactenos {
-    padding-left: 0vw;
-    padding-right: 0vw;
-    height: 116vh;
-  }
 }
 @media only screen and (max-width: 768px) and (min-width: 321px) {
   .home-section {
-    height: 120vh;
+    height: 170vh;
   }
   .home-section .scroll {
     left: 80%;
-  }
-  #contactenos {
-    padding-left: 0vw;
-    padding-right: 0vw;
   }
 }
