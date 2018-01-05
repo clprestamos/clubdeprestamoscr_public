@@ -9,7 +9,7 @@ const TitleHeader = (props) => {
   } = props;
   return (
     <div>
-      <Responsive maxWidth={480}>
+      <Responsive maxWidth={768}>
         <div className="sub-header">
           <div className="left-content">
             <div className="divider" />
@@ -20,7 +20,7 @@ const TitleHeader = (props) => {
           </div>
         </div>
       </Responsive>
-      <Responsive minWidth={481}>
+      <Responsive minWidth={769}>
         <div className="sub-header">
           <div className="left-content">
             <div className="divider" />

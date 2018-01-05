@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Container, Form } from 'semantic-ui-react';
 import { NotificationManager } from 'react-notifications';
@@ -186,7 +186,7 @@ class LoginComponent extends Component {
     return (
       <div className="login">
         <Container fluid>
-          <Logo />
+          <Link to="/"><Logo /></Link>
           <div className="login-box">
             <div className="box">
               <div className="divider" />
