@@ -2,6 +2,54 @@ import _ from 'lodash';
 import * as types from '../constants';
 import * as service from '../service';
 
+export function getLoansByInvestorInit() {
+  return {
+    type: types.GET_LOANS_BY_INVESTOR_INIT,
+    payload: {
+      isLoading: true,
+      error: null,
+    },
+  };
+}
+
+export function getLoansByInvestorError(error) {
+  return {
+    type: types.GET_LOANS_BY_INVESTOR_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+
+export function getLoansByInvestorSuccess(loansByInvestor) {
+  return {
+    type: types.GET_LOANS_BY_INVESTOR_SUCCESS,
+    payload: {
+      isLoading: false,
+      error: null,
+      loansByInvestor,
+    },
+  };
+}
+
+export function getLoansByInvestor(loanId) {
+  return (dispatch) => {
+    try {
+      dispatch(getLoansByInvestorInit());
+      service.get({
+        endpoint: `/getloansbyinvestor/${loanId}`,
+      })
+        .then((response) => {
+          dispatch(getLoansByInvestorSuccess(response.body));
+        })
+        .catch(error => dispatch(getLoansByInvestorError(error)));
+    } catch (error) {
+      dispatch(getLoansByInvestorError(error));
+    }
+  };
+}
+
 export function getLoanOpportunityInit() {
   return {
     type: types.GET_LOAN_OPPORTUNITY_INIT,
@@ -47,11 +95,11 @@ export function setInvestors(investors) {
   };
 }
 
-export function setPercentageInverted(percentageInverted) {
+export function setPercentageInverted(percentage) {
   return {
     type: types.SET_PERCENTAGE_INVERTED,
     payload: {
-      percentageInverted,
+      percentage,
     },
   };
 }
@@ -109,25 +157,44 @@ export function saveInvestSuccess() {
 }
 
 export function saveInvest({ loanId, investorId, percentage }) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     try {
       dispatch(saveInvestInit());
-      service.post({
-        endpoint: '/assigninvestorloan',
-        payload: {
-          loanId,
-          investorId,
-          percentage,
-        },
-        requiredToken: true,
-      })
-        .then((response) => {
-          if (response.status === 201) {
-            dispatch(saveInvestSuccess());
-            dispatch(getLoanOpportunity(loanId));
-          }
+      const isInvestor = _.find(getState().opportunities.loansByInvestor, { loanId, investorId });
+      if (isInvestor) {
+        service.patch({
+          endpoint: `/getloansbyinvestor/${isInvestor.id}`,
+          payload: {
+            percentage: isInvestor.percentage + percentage,
+          },
         })
-        .catch(error => dispatch(saveInvestError(error)));
+          .then((response) => {
+            if (response.status === 202) {
+              dispatch(saveInvestSuccess());
+              dispatch(getLoanOpportunity(loanId));
+              dispatch(getLoansByInvestor(loanId));
+            }
+          })
+          .catch(error => dispatch(saveInvestError(error)));
+      } else {
+        service.post({
+          endpoint: '/assigninvestorloan',
+          payload: {
+            loanId,
+            investorId,
+            percentage,
+          },
+          requiredToken: true,
+        })
+          .then((response) => {
+            if (response.status === 201) {
+              dispatch(saveInvestSuccess());
+              dispatch(getLoanOpportunity(loanId));
+              dispatch(getLoansByInvestor(loanId));
+            }
+          })
+          .catch(error => dispatch(saveInvestError(error)));
+      }
     } catch (error) {
       dispatch(saveInvestError(error));
     }

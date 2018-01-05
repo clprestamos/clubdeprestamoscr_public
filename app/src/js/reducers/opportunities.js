@@ -49,9 +49,10 @@ const initialState = {
     investorId: null,
     percentage: null,
   },
+  loansByInvestor: [],
 };
 
-function Loan(state = initialState, action) {
+function Opportunities(state = initialState, action) {
   switch (action.type) {
     case types.GET_OPPORTUNITIES_DATA_INIT:
     case types.GET_OPPORTUNITIES_DATA_ERROR:
@@ -62,6 +63,9 @@ function Loan(state = initialState, action) {
     case types.SAVE_INVEST_OPPORTUNITY_INIT:
     case types.SAVE_INVEST_OPPORTUNITY_ERROR:
     case types.SAVE_INVEST_OPPORTUNITY_SUCCESS:
+    case types.GET_LOANS_BY_INVESTOR_INIT:
+    case types.GET_LOANS_BY_INVESTOR_ERROR:
+    case types.GET_LOANS_BY_INVESTOR_SUCCESS:
       return {
         ...state,
         ...action.payload,
@@ -99,4 +103,4 @@ function Loan(state = initialState, action) {
   }
 }
 
-export default Loan;
+export default Opportunities;

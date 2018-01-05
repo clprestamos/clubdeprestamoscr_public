@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Table, Image, Rating, Icon, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
@@ -16,7 +16,8 @@ const LoanList = (props) => {
             <Table.HeaderCell>Plazo</Table.HeaderCell>
             <Table.HeaderCell>Tasa</Table.HeaderCell>
             <Table.HeaderCell>Fecha</Table.HeaderCell>
-            <Table.HeaderCell>Invertir</Table.HeaderCell>
+            <Table.HeaderCell>Inversión</Table.HeaderCell>
+            <Table.HeaderCell>Detalle</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -42,6 +43,9 @@ const LoanList = (props) => {
                 </Table.Cell>
                 <Table.Cell>
                   { moment(new Date(loan.requestLoanDate)).format('MMM DD, YYYY') }
+                </Table.Cell>
+                <Table.Cell>
+                  {loan.investorPercentage}%
                 </Table.Cell>
                 <Table.Cell>
                   <Link to={`/inversionista/prestamo/${loan.loanId}`}><Icon name="usd" /></Link>

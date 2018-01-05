@@ -14,6 +14,7 @@ import {
   GET_OPPORTUNITIES_DATA_INIT,
   SAVE_INVEST_OPPORTUNITY_INIT,
   GET_LOAN_OPPORTUNITY_INIT,
+  GET_LOANS_MY_INVESTS_INIT,
 } from '../constants';
 import { logout } from '../actions/Login';
 
@@ -30,6 +31,7 @@ export const checkSessionStatusMiddleware = store => next => action => {
     'GET_OPPORTUNITIES_DATA_INIT',
     'SAVE_INVEST_OPPORTUNITY_INIT',
     'GET_LOAN_OPPORTUNITY_INIT',
+    'GET_LOANS_MY_INVESTS_INIT',
   ];
   const checkSession = includes(checkSessionInActions, action.type);
   if (checkSession) {

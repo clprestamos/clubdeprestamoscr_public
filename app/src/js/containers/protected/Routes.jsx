@@ -10,6 +10,7 @@ import Score from './client/Score';
 import InvestorHome from './investor/Home';
 import InvestorProfile from './investor/Profile';
 import Opportunities from './investor/Opportunities';
+import MyInvests from './investor/MyInvests';
 
 import Loan from './loan/Loan';
 
@@ -50,6 +51,10 @@ const Routes = (props) => {
     {
       path: '/inversionista/oportunidades/:type?',
       component: () => <Opportunities />,
+    },
+    {
+      path: '/inversionista/mis-inversiones/:type?',
+      component: () => <MyInvests />,
     },
     {
       path: '/inversionista/prestamo/:loanId',
