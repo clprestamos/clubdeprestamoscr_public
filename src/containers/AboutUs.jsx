@@ -11,7 +11,7 @@ import aboutUsImg from '../images/about-us.jpg';
 const AboutUs = (props) => {
   props.toggleMenuState(false);
   return (
-    <div className="internal-page">
+    <div className="internal-page about-us">
       <div className="content">
         <TitleHeader
           title="Acerca de nosotros"
