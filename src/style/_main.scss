@@ -189,6 +189,11 @@ a.btn {
           }
         }
       }
+      @media all and (max-width: 320px) {
+        .item {
+          padding: 3vh 2vw;
+        }
+      }
     }
     &.pointing {
       .item {

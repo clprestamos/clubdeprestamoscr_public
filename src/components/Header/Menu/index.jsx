@@ -36,7 +36,7 @@ class MenuComponent extends Component {
           </Menu>
         </Responsive>
         <Responsive maxWidth={1024}>
-          <Menu secondary borderless className="mobile">
+          <Menu secondary borderless fixed="top" className="mobile">
             <Menu.Item name="/home" as={Link} to="/" onClick={this.handleClickItem}><Logo /></Menu.Item>
             <Menu.Item position="right"><Icon name="content" /></Menu.Item>
           </Menu>
