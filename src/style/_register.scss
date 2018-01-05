@@ -1,14 +1,4 @@
 .register {
-  &.client {
-    .static-content {
-      background-image: url('/images/request-loan.jpg');
-    }
-  }
-  &.investor {
-    .static-content {
-      background-image: url('/images/investor-register.jpg');
-    }
-  }
   .static-content {
     width: 46.32vw;
     background-size: cover;
@@ -16,12 +6,20 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    @media all and (max-width: 1024px) {
+      width: 100vw;
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+    }
     .title {
       align-items: flex-start;
       justify-content: flex-start;
     }
     .title, .divider, .content {
       width: 25vw;
+      @media all and (max-width: 1024px) {
+        width: 75vw;
+      }
     }
     .content {
       p {

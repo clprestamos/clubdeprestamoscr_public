@@ -3,11 +3,18 @@
   display: flex;
   justify-content: center;
   padding-top: 10vh;
+  &.how-works {
+    padding-top: 17vh;
+  }
   &.register {
     background: none;
     justify-content: flex-start;
     min-height: 88vh;
-    padding-top: 0;
+    padding-top: 12.5vh;
+    @media all and (max-width: 1024px) {
+      flex-direction: column;
+      padding-top: 0;
+    }
   }
   .divider {
     display: block;
@@ -106,17 +113,12 @@
   .subscription-success {
     width: 100% !important;
       div {
-        width: 88vw !important;  
+        width: 88vw !important;
       }
   }
   .subscription-form {
-        width: 100% !important;
+    width: 100% !important;
   }
-  .subscription-form>div {
-        width: 88vw !important;
-  }  
-
-
 }
 
 @media only screen and (max-width: 768px) and (min-width: 321px) {

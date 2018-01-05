@@ -11,7 +11,7 @@ import howWorksImg from '../images/how-works.jpg';
 const HowWorks = (props) => {
   props.toggleMenuState(false);
   return (
-    <div className="internal-page">
+    <div className="internal-page how-works">
       <div className="content">
         <TitleHeader
           title="¿Cómo funciona?"

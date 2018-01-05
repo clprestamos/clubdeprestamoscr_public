@@ -131,7 +131,7 @@ class ProfileComponent extends Component {
                       handleOnChange={this.onChangeField}
                       defaultValue={identification}
                       validation={value => this.validation({ type: 'identification', value })}
-                      errorMessage="Campo requerido. Formato de cédula 0-0000-0000 ó 000000000."
+                      errorMessage="Campo requerido. Formato de cédula #-0###-0###"
                       inputName="identification"
                       disabled={this.state.isDisabled}
                     />
@@ -159,7 +159,7 @@ class ProfileComponent extends Component {
                       handleOnChange={this.onChangeField}
                       defaultValue={phone}
                       validation={value => this.validation({ type: 'phone', value })}
-                      errorMessage="Campo requerido. Formato de teléfono 0000-0000."
+                      errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########."
                       inputName="phone"
                       disabled={this.state.isDisabled}
                     />
@@ -172,7 +172,7 @@ class ProfileComponent extends Component {
                       handleOnChange={this.onChangeField}
                       defaultValue={cellphone}
                       validation={value => this.validation({ type: 'phone', value })}
-                      errorMessage="Campo requerido. Formato de celular 0000-0000."
+                      errorMessage="Campo requerido. Formato de celular ####-#### ó ########."
                       inputName="cellphone"
                       disabled={this.state.isDisabled}
                     />

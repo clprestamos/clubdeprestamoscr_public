@@ -10,6 +10,8 @@ import Hero from '../components/Subscription/Hero';
 import SubscriptionFormInvestor from '../components/Subscription/SubscriptionForm/SubscriptionFormInvestor';
 import SubscriptionSuccess from '../components/Subscription/SubscriptionSuccess';
 
+import investorRegisterImg from '../images/investor-register.jpg';
+
 class InvestorRegister extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +85,7 @@ class InvestorRegister extends Component {
         captcha={this.props.captcha}
       />
     );
+    const styles = { backgroundImage: `url(${investorRegisterImg})` };
     return (
       <div className="internal-page register investor">
         <Hero
@@ -93,6 +96,7 @@ class InvestorRegister extends Component {
               <p>El Club de Préstamos le ofrece una gran alternativa <span>para invertir con un mayor y mejor retorno mientras se transforman vidas,</span> proyectos y comunidades.</p>
             </div>
           }
+          styles={styles}
         />
         {componentContent}
       </div>

@@ -41,13 +41,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 const Routes = (props) => {
   isAuthenticated = props.isAuth;
+  const { pathname } = props.routing.location;
   return (
     <Router>
       <div>
         <Header
           isHomeMenu={props.isHomeMenu}
-          isAuth={props.isAuth}
           hide={props.isHomeMenuHidden}
+          pathname={pathname}
         />
         <Switch>
           <Route exact path="/" component={Main} />
@@ -70,6 +71,7 @@ const Routes = (props) => {
 };
 
 const mapStateToProps = state => ({
+  routing: state.routing,
   isHomeMenu: state.main.isHomeMenu,
   isHomeMenuHidden: state.main.isHomeMenuHidden,
   isAuth: state.user.isAuth,

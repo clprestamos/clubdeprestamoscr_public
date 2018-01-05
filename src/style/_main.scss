@@ -84,7 +84,7 @@ a.btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 73px;
+  border-radius: 73px !important;
   background-image: linear-gradient(to right, $light-green, $dark-green);
   .icon {
     position: relative;
@@ -98,7 +98,6 @@ a.btn {
     background-image: none;
     width: 117px;
     height: 46px;
-    border-radius: 73px;
     border: 1px solid $yard-green;
     text-transform: none;
     background: none;
@@ -154,24 +153,6 @@ a.btn {
   }
 }
 
-.menu {
-  flex-grow: 2;
-  ul {
-    justify-content: flex-end;
-    li > a {
-      color: rgba(255, 255, 255, 0.97);
-      font-size: 14px;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding-left: 20px;
-    }
-    li:last-child > a {
-      padding-right: 40px;
-    }
-  }
-}
-
 .logo {
   flex-grow: 1;
   padding-left: 76px;
@@ -181,17 +162,63 @@ a.btn {
   flex-grow: 1;
 }
 
+.ui.secondary.pointing.menu {
+  border-bottom: none;
+}
+
 .main-header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
   width: 100vw;
-  height: 15vh;
   z-index: 9999;
+  .ui.secondary.menu {
+    padding-bottom: 2vh;
+    padding-top: 1vh;
+    &.mobile {
+      @media all and (max-width: 1024px) {
+        width: 100vw;
+        margin: 0;
+        .item {
+          color: white;
+          font-size: 35px;
+          &:first-child {
+            > .logo {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+    &.pointing {
+      .item {
+        color: rgba(255, 255, 255, 0.97);
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1vh;
+        &.active {
+          border-color: $light-green;
+        }
+        &:first-child {
+          margin-bottom: 0;
+        }
+        &:last-child {
+          margin-right: 1vw;
+        }
+        &:hover {
+          color: rgba(255, 255, 255, 0.97);
+        }
+        &.btn {
+          @extend .btn;
+        }
+      }
+    }
+  }
   &.secondary-page {
-    position: relative;
-    background-color: $dark;
+    .ui.secondary.menu {
+      background-color: $dark;
+    }
   }
 }
 

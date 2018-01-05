@@ -55,7 +55,7 @@ class Step1 extends Component {
     {
       id: 3,
       placeholder: 'Cédula *',
-      errorMessage: 'Campo requerido. Formato de cédula 0-0000-0000 ó 000000000',
+      errorMessage: 'Campo requerido. Formato de cédula #-0###-0###',
       onChangeField,
       name: 'identification',
       defaultValue: investorInfo.identification,
@@ -65,7 +65,7 @@ class Step1 extends Component {
     {
       id: 4,
       placeholder: 'Teléfono *',
-      errorMessage: 'Campo requerido. Formato de teléfono 0000-0000',
+      errorMessage: 'Campo requerido. Formato de teléfono ####-#### ó ########',
       inputType: 'tel',
       onChangeField,
       name: 'phone',
@@ -76,7 +76,7 @@ class Step1 extends Component {
     {
       id: 5,
       placeholder: 'Celular *',
-      errorMessage: 'Campo requerido. Formato de celular 0000-00-00',
+      errorMessage: 'Campo requerido. Formato de celular ####-#### ó ########',
       inputType: 'tel',
       onChangeField,
       name: 'cellphone',
