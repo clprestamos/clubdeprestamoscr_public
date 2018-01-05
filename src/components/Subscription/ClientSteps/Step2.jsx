@@ -198,7 +198,7 @@ class Step2 extends Component {
             <InputField
               placeholder="Teléfono de un familiar *"
               validation={value => this.validation({ value, type: 'phone' })}
-              errorMessage="Campo requerido. Formato de teléfono 0000-0000."
+              errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########."
               inputType="tel"
               onChangeField={onChangeField}
               name="relativePhone"
@@ -210,7 +210,7 @@ class Step2 extends Component {
             <InputField
               placeholder="Celular *"
               validation={value => this.validation({ value, type: 'phone' })}
-              errorMessage="Campo requerido. Formato de teléfono 0000-0000."
+              errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########."
               inputType="tel"
               onChangeField={onChangeField}
               name="cellphone"

@@ -4,9 +4,22 @@
   align-items: center;
   width: 53.68vw;
   padding: 10vh 0;
+  @media all and (max-width: 1024px) {
+    width: 100vw;
+    padding: 5vh 0;
+  }
 
   &> div, .divider {
     width: 35vw;
+    @media all and (max-width: 1024px) {
+      width: 50vw;
+    }
+    @media all and (max-width: 800px) {
+      width: 75vw;
+    }
+    @media all and (max-width: 667px) {
+      width: 80vw;
+    }
   }
 
   .divider {
@@ -38,6 +51,9 @@
     justify-content: space-between;
     .field {
       width: 48%;
+      @media all and (max-width: 667px) {
+        width: 100%;
+      }
     }
     .field.name, .field.email, .field.address, .field.nationality, .field.reason, .field.password, .field.recaptcha {
       width: 100%;

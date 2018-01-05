@@ -199,7 +199,7 @@ class Main extends Component {
               content="La inversión tradicional tiene pocos rendimientos o es inestable, por eso hemos diseñado un sistema que permite ganar hasta un 43% de su inversión inicial, manteniendo en control su operación y eligiendo los proyectos de su preferencia." // eslint-disable-line
               buttonText="Invertir"
               buttonType="large"
-              buttonTo="/invertir"
+              buttonTo="/invierta"
               itemId="invertir"
               scrollTo="#solicitud-de-credito"
             />
@@ -211,7 +211,7 @@ class Main extends Component {
               content="Si los pagos en la casa de empeño, la tarjeta de crédito o el prestamista no le permiten avanzar, no baja la deuda y la relación se volvió un círculo vicioso de nunca acabar, es hora de formar parte del Club de Préstamos y dar un giro a su vida." // eslint-disable-line
               buttonText="Solicitar Préstamo"
               buttonType="large"
-              buttonTo="/solicitudcredito"
+              buttonTo="/prestamos"
               itemId="solicitud-de-credito"
               scrollTo="#contactenos"
             />
