@@ -20,6 +20,7 @@ const initialState = {
   bank: null,
   clientAccount: null,
   iban: null,
+  paymentId: null,
 };
 
 function ClientProfile(state = initialState, action) {

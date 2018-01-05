@@ -31,9 +31,11 @@ CREATE TABLE public.users_tb
     password_key text COLLATE pg_catalog."default",
     password_date text COLLATE pg_catalog."default",
     bank text COLLATE pg_catalog."default",
-    client_account integer,
-    iban integer,
-    CONSTRAINT user_id PRIMARY KEY (id)
+    client_account bigint,
+    iban bigint,
+    avatar text COLLATE pg_catalog."default",
+    CONSTRAINT user_id PRIMARY KEY (id),
+    CONSTRAINT unique_email UNIQUE (email)
 )
 WITH (
     OIDS = FALSE

@@ -12,6 +12,7 @@ import clientProfile from './clientProfile';
 import loan from './loan';
 import investorProfile from './investorProfile';
 import opportunities from './opportunities';
+import myinvests from './myinvests';
 
 const rootReducer = combineReducers({
   main,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   loan,
   investorProfile,
   opportunities,
+  myinvests,
 });
 
 export default rootReducer;

@@ -17,7 +17,7 @@ class Loan extends Component {
       hasErrors: false,
       isModalOpen: false,
       invest: 0,
-      percentage: props.loan.percentageInverted,
+      percentage: props.loan.percentage,
     };
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
@@ -29,14 +29,15 @@ class Loan extends Component {
     const { dispatch } = this.props;
     const { loanId } = this.props.match.params;
     dispatch(LoanOpportunity.getLoanOpportunity(loanId));
+    dispatch(LoanOpportunity.getLoansByInvestor(loanId));
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      percentage: nextProps.loan.percentageInverted,
+      percentage: nextProps.loan.percentage,
     });
   }
   handlePercentage(e, { value }) {
-    const currentValue = this.props.loan.percentageInverted + value;
+    const currentValue = this.props.loan.percentage + value;
     if (currentValue <= 100) {
       this.setState({
         percentage: currentValue,
@@ -193,7 +194,7 @@ class Loan extends Component {
             </Card.Header>
           </Card.Content>
           <Card.Content className="content-form">
-            { this.props.loan.percentageInverted !== 100 ? (
+            { this.props.loan.percentage !== 100 ? (
               <Form>
                 <Form.Field>
                   <Progress percent={this.state.percentage} indicating progress="percent">Este préstamo le resta un {100 - this.state.percentage}%</Progress>

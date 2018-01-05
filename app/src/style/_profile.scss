@@ -80,7 +80,6 @@
     }
   }
   .form .input-field input, .form .input-field input:focus {
-    @extend .resetInputs;
     border-radius: 0;
     padding-top: 0;
     &::-webkit-input-placeholder,
