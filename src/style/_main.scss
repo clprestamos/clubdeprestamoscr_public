@@ -104,6 +104,10 @@ a.btn {
     &:hover, &:focus {
       background: none;
     }
+    @media all and (max-width: 320px) {
+      width: 178px;
+      margin-bottom: 3vh;
+    }
   }
   &.ui.labeled.icon.button.upload {
     width: 177px;
@@ -152,7 +156,6 @@ a.btn {
     margin-top: 5vh;
   }
 }
-
 .logo {
   flex-grow: 1;
   padding-left: 76px;
@@ -378,5 +381,10 @@ a.btn {
   }
   .btn.large {
     width: 222px;
+  }
+}
+@media all and (max-width: 320px) {
+  .ui.card [class*="left floated"], .ui[class*="left floated"].button {
+    float: right;
   }
 }

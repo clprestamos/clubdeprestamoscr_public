@@ -15,6 +15,10 @@
     font-weight: 300;
     line-height: 0.71;
     text-align: center;
+    @media all and (max-width: 1024px) {
+      width: 85%;
+      line-height: 1.5;
+    }
     &.welcome {
       color: $dark-gray;
       font-size: 20px;
