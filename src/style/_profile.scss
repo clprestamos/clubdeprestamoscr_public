@@ -4,18 +4,27 @@
 }
 .profile {
   padding: 8vh 4vw;
-  width: calc(100vw - 186px);
+  @media all and (max-width: 800px) {
+    padding-top: 4vh;
+  }
+  @media all and (min-width: 601px) {
+    width: calc(100vw - 186px);
+  }
   &.investor {
     h2 {
       font-size: 20px;
       font-weight: bold;
       color: $dark;
     }
-    .ui.grid .column.avatar {
+    .ui.grid .column.avatar > div {
       display: flex;
       align-items: center;
       justify-content: space-around;
       flex-direction: column;
+      img {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+      }
     }
     .ui.celled.grid>.row {
       box-shadow: none;
@@ -30,8 +39,15 @@
     justify-content: space-between;
     .fields {
       width: 100%;
+      @media all and (max-width: 800px) {
+        flex-direction: column;
+      }
       .field {
         margin-bottom: 1rem;
+        input {
+          border: none;
+          border-bottom: 3px solid $input-bottom-border;
+        }
       }
     }
     .field {
@@ -39,13 +55,21 @@
       .ui.label {
         margin-top: 1vh;
       }
+      input {
+        border: none;
+        border-bottom: 3px solid $input-bottom-border;
+      }
+      .ui.dropdown {
+        border: none;
+        border-bottom: 3px solid $input-bottom-border;
+      }
     }
     .fields-spacer {
       margin-top: 100px;
       width: 100%;
-    }
-    .ui.dropdown {
-      @extend .resetInputs;
+      @media all and (max-width: 1024px) {
+        margin-top: 5vh;
+      }
     }
   }
   .ui.card {
@@ -65,6 +89,10 @@
       border: none;
       &.content-form {
         padding: 60px 55px;
+        @media all and (max-width: 320px) {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
       }
     }
   }
