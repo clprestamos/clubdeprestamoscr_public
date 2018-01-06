@@ -49,17 +49,8 @@
 #contactenos {
   padding-left: 35vw;
   padding-right: 35vw;
-}
-
-@media only screen and (max-width: 568px) {
-  #contactenos {
+  @media all and (max-width: 480px) {
     padding-left: 0vw;
     padding-right: 0vw;
   }
-  footer {
-    padding-right: 0vw;
-    text-align: center;
-
-  }
-
 }
