@@ -11,6 +11,9 @@
   .ui.form {
     width: 27.8vw;
     margin-top: 32px;
+    @media all and (max-width: 480px){
+    width: 90%;
+    }
     .ui.input {
       height: 50px;
       &.error {
@@ -50,15 +53,13 @@
 
 @media only screen and (max-width: 568px) {
   #contactenos {
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 0vw;
+    padding-right: 0vw;
   }
   footer {
     padding-right: 0vw;
     text-align: center;
 
   }
-  .contact-us .ui.form {
-    width: 90%;
-  }
+
 }
