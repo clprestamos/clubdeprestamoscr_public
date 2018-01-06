@@ -1,6 +1,11 @@
 .opportunities {
   padding: 8vh 4vw;
-  width: calc(100vw - 186px);
+  @media all and (max-width: 800px) {
+    padding-top: 4vh;
+  }
+  @media all and (min-width: 601px) {
+    width: calc(100vw - 186px);
+  }
   .oval {
     width: 16px;
     height: 16px;
@@ -19,9 +24,16 @@
       border-color: $light-green;
     }
     padding-bottom: 3vh;
+    @media all and (max-width: 320px) {
+      padding-left: 3vw;
+      padding-right: 3vw;
+    }
   }
   .ui.table {
     border: none;
+    @media all and (max-width: 1024px) {
+      width: 100vw;
+    }
     tr th {
       background: none;
       font-size: 14px;
@@ -66,7 +78,8 @@
     > .content {
       border: none;
       &.content-form {
-        padding: 5vh 2vw;
+        margin: 5vh 2vw;
+        overflow-x: scroll;
       }
     }
     &.menuItems {

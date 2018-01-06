@@ -38,7 +38,7 @@ class Opportunities extends Component {
               Oportunidades de inversión
             </Card.Header>
           </Card.Content>
-          <Card.Content className="content-form">
+          <Card.Content>
             <p>En esta sección, usted podrá ver todas las oportunidades de inversión que están disponibles en el sistema.</p>
           </Card.Content>
         </Card>

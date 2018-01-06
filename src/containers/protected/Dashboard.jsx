@@ -45,7 +45,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="wrapper">
-          <Responsive minWidth={768}>
+          <Responsive minWidth={601}>
             <Menu stackable className="fixed">
               <Menu.Item position="left" name="home" className="item-logo">
                 <Logo />
@@ -69,10 +69,11 @@ class Dashboard extends Component {
             </Menu>
             <MainContent
               authData={this.props.authData}
+              isMenuVisible
               {...this.props}
             />
           </Responsive>
-          <Responsive maxWidth={767}>
+          <Responsive maxWidth={600}>
             <div className="mobile-header">
               <Logo />
               <Button icon onClick={this.toggleVisible}>
@@ -80,19 +81,10 @@ class Dashboard extends Component {
               </Button>
             </div>
             <Sidebar.Pushable>
-              <Sidebar
-                as={Menu}
-                animation="push"
-                direction="top"
-                visible={this.state.visible}
-                inverted
-                stackable
-              >
-                {logoutItem}
-              </Sidebar>
               <Sidebar.Pusher>
                 <MainContent
                   authData={this.props.authData}
+                  isMenuVisible={this.state.visible}
                   {...this.props}
                 />
               </Sidebar.Pusher>
@@ -105,6 +97,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
+  routing: state.routing.location,
   authData: state.user,
 });
 

@@ -1,6 +1,11 @@
 .score {
   padding: 8vh 4vw;
-  width: calc(100vw - 186px);
+  @media all and (max-width: 768px) {
+    padding-top: 4vh;
+  }
+  @media all and (min-width: 601px) {
+    width: calc(100vw - 186px);
+  }
   .payment-process {
     text-align: center;
     padding: 5vh 0;
@@ -23,6 +28,10 @@
       .header {
         color: $dark-gray;
         line-height: 2;
+        @media all and (max-width: 800px) {
+          line-height: 1;
+          margin-bottom: 3vh;
+        }
       }
       &.text {
         width: 50vw;

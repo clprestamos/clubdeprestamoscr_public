@@ -104,6 +104,10 @@ a.btn {
     &:hover, &:focus {
       background: none;
     }
+    @media all and (max-width: 320px) {
+      width: 178px;
+      margin-bottom: 3vh;
+    }
   }
   &.ui.labeled.icon.button.upload {
     width: 177px;
@@ -155,7 +159,6 @@ a.btn {
     margin-top: 5vh;
   }
 }
-
 .logo {
   flex-grow: 1;
   padding-left: 76px;
@@ -397,6 +400,7 @@ a.btn {
   height: 140vh;
   }  
 }
+
 #solicitud-de-credito {
   @media all and (max-width: 320px) {
   height: 210vh;
@@ -413,5 +417,10 @@ a.btn {
   }
   @media all and (min-width: 321px) and (max-width: 480px){
     height: 145vh;
+  }
+}
+@media all and (max-width: 320px) {
+  .ui.card [class*="left floated"], .ui[class*="left floated"].button {
+    float: right;
   }
 }

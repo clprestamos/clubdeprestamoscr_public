@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Form, Grid, Image, Button, Icon } from 'semantic-ui-react';
+import { Form, Grid, Image, Button, Icon, Responsive } from 'semantic-ui-react';
 
 import * as utils from '../../../utils';
 import * as Locales from '../../../actions/Locales';
@@ -80,136 +80,158 @@ class ProfileComponent extends Component {
       phone,
       email,
     } = this.props.profile;
+    const avatarContent = (
+      <div>
+        <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="small" circular />
+        <Button className="btn upload" icon labelPosition="left">
+          <Icon name="camera" />
+          Actualizar imagen
+        </Button>
+      </div>
+    );
+    const formContent = (
+      <Form>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="Nombre"
+              labelText="Nombre:"
+              handleOnChange={this.onChangeField}
+              defaultValue={name}
+              validation={value => this.validation({ type: 'text', value })}
+              errorMessage="Campo requerido."
+              inputName="name"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="Apellidos"
+              labelText="Apellidos:"
+              handleOnChange={this.onChangeField}
+              defaultValue={lastName}
+              validation={value => this.validation({ type: 'text', value })}
+              errorMessage="Campo requerido."
+              inputName="lastName"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="Cédula"
+              labelText="Cédula:"
+              handleOnChange={this.onChangeField}
+              defaultValue={identification}
+              validation={value => this.validation({ type: 'identification', value })}
+              errorMessage="Campo requerido. Formato de cédula #-0###-0###"
+              inputName="identification"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+          <Form.Field>
+            <InputField
+              inputType="email"
+              inputPlaceholder="Email"
+              labelText="Email:"
+              handleOnChange={this.onChangeField}
+              defaultValue={email}
+              validation={value => this.validation({ type: 'email', value })}
+              errorMessage="Campo requerido."
+              inputName="email"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <InputField
+              inputType="tel"
+              inputPlaceholder="Teléfono"
+              labelText="Teléfono:"
+              handleOnChange={this.onChangeField}
+              defaultValue={phone}
+              validation={value => this.validation({ type: 'phone', value })}
+              errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########."
+              inputName="phone"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+          <Form.Field>
+            <InputField
+              inputType="tel"
+              inputPlaceholder="Celular"
+              labelText="Celular:"
+              handleOnChange={this.onChangeField}
+              defaultValue={cellphone}
+              validation={value => this.validation({ type: 'phone', value })}
+              errorMessage="Campo requerido. Formato de celular ####-#### ó ########."
+              inputName="cellphone"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Field>
+          <ButtonComponent
+            buttonType="edit"
+            text="Editar"
+            onClick={this.toggleDisableForm}
+            type="button"
+            btnIcon="pencil"
+            floated="left"
+          />
+          {!this.state.isDisabled ? (
+            <ButtonComponent
+              buttonType="cancel-edit"
+              text="Cancelar"
+              onClick={this.cancelEdit}
+              type="button"
+              btnIcon="cancel"
+              floated="left"
+            />
+          ) : ''}
+          <ButtonComponent
+            buttonType="save"
+            text="Guardar cambios"
+            onClick={this.handleSubmit}
+            type="button"
+            floated="right"
+          />
+          <SaveModal isOpen={this.state.isModalOpen} handleCancel={this.handleModalOpen} handleSave={this.saveChanges} />
+        </Form.Field>
+      </Form>
+    );
     return (
       <div className="profile investor">
         <h2>Perfil</h2>
-        <Grid celled className="box">
-          <Grid.Row>
-            <Grid.Column width={4} className="avatar">
-              <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="small" circular />
-              <Button className="btn upload" icon labelPosition="left">
-                <Icon name="camera" />
-                Actualizar imagen
-              </Button>
-            </Grid.Column>
-            <Grid.Column width={12} className="content-form">
-              <Form>
-                <Form.Group widths="equal">
-                  <Form.Field>
-                    <InputField
-                      inputType="text"
-                      inputPlaceholder="Nombre"
-                      labelText="Nombre:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={name}
-                      validation={value => this.validation({ type: 'text', value })}
-                      errorMessage="Campo requerido."
-                      inputName="name"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <InputField
-                      inputType="text"
-                      inputPlaceholder="Apellidos"
-                      labelText="Apellidos:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={lastName}
-                      validation={value => this.validation({ type: 'text', value })}
-                      errorMessage="Campo requerido."
-                      inputName="lastName"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Field>
-                    <InputField
-                      inputType="text"
-                      inputPlaceholder="Cédula"
-                      labelText="Cédula:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={identification}
-                      validation={value => this.validation({ type: 'identification', value })}
-                      errorMessage="Campo requerido. Formato de cédula #-0###-0###"
-                      inputName="identification"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <InputField
-                      inputType="email"
-                      inputPlaceholder="Email"
-                      labelText="Email:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={email}
-                      validation={value => this.validation({ type: 'email', value })}
-                      errorMessage="Campo requerido."
-                      inputName="email"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Field>
-                    <InputField
-                      inputType="tel"
-                      inputPlaceholder="Teléfono"
-                      labelText="Teléfono:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={phone}
-                      validation={value => this.validation({ type: 'phone', value })}
-                      errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########."
-                      inputName="phone"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <InputField
-                      inputType="tel"
-                      inputPlaceholder="Celular"
-                      labelText="Celular:"
-                      handleOnChange={this.onChangeField}
-                      defaultValue={cellphone}
-                      validation={value => this.validation({ type: 'phone', value })}
-                      errorMessage="Campo requerido. Formato de celular ####-#### ó ########."
-                      inputName="cellphone"
-                      disabled={this.state.isDisabled}
-                    />
-                  </Form.Field>
-                </Form.Group>
-                <Form.Field>
-                  <ButtonComponent
-                    buttonType="edit"
-                    text="Editar"
-                    onClick={this.toggleDisableForm}
-                    type="button"
-                    btnIcon="pencil"
-                    floated="left"
-                  />
-                  {!this.state.isDisabled ? (
-                    <ButtonComponent
-                      buttonType="cancel-edit"
-                      text="Cancelar"
-                      onClick={this.cancelEdit}
-                      type="button"
-                      btnIcon="cancel"
-                      floated="left"
-                    />
-                  ) : ''}
-                  <ButtonComponent
-                    buttonType="save"
-                    text="Guardar cambios"
-                    onClick={this.handleSubmit}
-                    type="button"
-                    floated="right"
-                  />
-                  <SaveModal isOpen={this.state.isModalOpen} handleCancel={this.handleModalOpen} handleSave={this.saveChanges} />
-                </Form.Field>
-              </Form>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Responsive minWidth={801}>
+          <Grid celled className="box">
+            <Grid.Row>
+              <Grid.Column width={4} className="avatar">
+                {avatarContent}
+              </Grid.Column>
+              <Grid.Column width={12} className="content-form">
+                {formContent}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Responsive>
+        <Responsive maxWidth={800}>
+          <Grid celled className="box">
+            <Grid.Row>
+              <Grid.Column width={16} className="avatar">
+                {avatarContent}
+              </Grid.Column>
+              <Grid.Column width={16} className="content-form">
+                {formContent}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Responsive>
       </div>
     );
   }
