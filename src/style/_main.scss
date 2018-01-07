@@ -140,6 +140,9 @@ a.btn {
     font-size: 14px;
     width: 259px;
     height: 55px;
+    @media all and (max-width: 480px) {
+      width: 222px;
+    }
   }
   &.disabled {
     cursor: not-allowed;
@@ -234,6 +237,9 @@ a.btn {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  @media all and (min-width: 481px) and (max-width: 768px ) {
+    height: 180vh;
+  }
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,6 +255,9 @@ a.btn {
     line-height: 1.18;
     text-align: left;
     text-transform: uppercase;
+      @media all and (max-width: 480px) {
+        font-size: 2.2rem;
+      }
   }
   p {
     color: white;
@@ -260,7 +269,7 @@ a.btn {
   .scroll {
     position: absolute;
     bottom: 0;
-    left: 45%;
+    left: 50%;
     a {
       position: relative;
       bottom: 20px;
@@ -359,28 +368,55 @@ a.btn {
   margin-bottom: 3vh;
   background: linear-gradient(90deg, $light-green 149px, $dark-green 0);
   height: 3px;
-}
-
-@media only screen and (max-width: 568px) {
-  .ui.container {
-    margin-left: 0em !important;
-    margin-right: 0em !important;
-  }
-  .pointer-menu {
-    display: none;
-  }
-  .home-section {
-    height: 190vh;
-    h2 {
-    font-size: 2.2rem;
-    }
-  }
-  .divider {
+  @media all and (max-width: 480px) {
     width: 100%;
     background: linear-gradient(90deg, $light-green 109px, $dark-green 0);
   }
-  .btn.large {
-    width: 222px;
+}
+.ui.container {
+  @media all and (max-width: 480px) {  
+  margin-left: 0em !important;
+  margin-right: 0em !important;
+  }
+}
+.pointer-menu {
+  @media all and (max-width: 480px) {  
+    display: none;
+  }
+}
+#acerca-de-nosotros {
+  @media all and (max-width: 320px) {
+  height: 250vh;
+  }
+  @media all and (min-width: 321px) and (max-width: 480px) {
+  height: 170vh;
+  }
+}
+#invertir {
+  @media all and (max-width: 320px) {
+  height: 210vh;
+  }
+  @media all and (min-width: 321px) and (max-width: 480px) {
+  height: 140vh;
+  }  
+}
+
+#solicitud-de-credito {
+  @media all and (max-width: 320px) {
+  height: 210vh;
+  }
+  @media all and (min-width: 321px) and (max-width: 480px) {
+  height: 140vh;
+  }    
+}
+#contactenos {
+  @media all and (max-width: 320px) {
+    height: 150vh;
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+  @media all and (min-width: 321px) and (max-width: 480px){
+    height: 145vh;
   }
 }
 @media all and (max-width: 320px) {
