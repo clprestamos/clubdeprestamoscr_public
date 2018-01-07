@@ -28,7 +28,7 @@ const LoanList = (props) => {
                 return (
                   <Table.Row key={key}>
                     <Table.Cell>
-                      <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="mini" circular />
+                      <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" avatar />
                       {index + 1}. {loan.name} {loan.lastName}
                     </Table.Cell>
                     <Table.Cell>
@@ -66,7 +66,7 @@ const LoanList = (props) => {
                 <Grid.Row>
                   <Grid.Column width={6}>Solicitante:</Grid.Column>
                   <Grid.Column width={10}>
-                    <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="mini" circular /> {index + 1}. {loan.name} {loan.lastName}
+                    <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" avatar /> {index + 1}. {loan.name} {loan.lastName}
                   </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
