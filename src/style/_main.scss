@@ -30,6 +30,11 @@ button {
   outline: none;
 }
 
+.main > .ui.fluid.container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .ui.form {
   .ui.message {
     position: relative;
@@ -140,8 +145,10 @@ a.btn {
     font-size: 14px;
     width: 259px;
     height: 55px;
-    @media all and (max-width: 480px) {
-      width: 222px;
+    @media all and (max-width: 568px) {
+      font-size: 0.8rem;
+      width: 173px;
+      height: 10vh;
     }
   }
   &.disabled {
@@ -162,6 +169,11 @@ a.btn {
 .logo {
   flex-grow: 1;
   padding-left: 76px;
+  @media all and (max-width: 568px) {
+    img {
+      width: 90%;
+    }
+  }
 }
 
 .action-btn {
@@ -237,9 +249,6 @@ a.btn {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  @media all and (min-width: 481px) and (max-width: 768px ) {
-    height: 180vh;
-  }
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,27 +258,59 @@ a.btn {
   padding-left: 15vw;
   padding-right: 15vw;
   position: relative;
+  @media all and (max-width: 800px) {
+    height: 100vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+  @media all and (max-width: 568px) {
+    padding-top: 20vh;
+    height: 80vh;
+  }
   h2 {
     font-size: 3.2rem;
     font-weight: bold;
     line-height: 1.18;
     text-align: left;
     text-transform: uppercase;
-      @media all and (max-width: 480px) {
-        font-size: 2.2rem;
-      }
+    @media all and (max-width: 800px) {
+      font-size: 2.2rem;
+    }
+    @media all and (max-width: 600px) {
+      font-size: 3rem;
+    }
+    @media all and (max-width: 568px) {
+      font-size: 1.5rem;
+      margin-bottom: 0.5vh;
+    }
   }
   p {
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 300;
     line-height: 1.65;
     margin-bottom: 5vh;
+    @media all and (max-width: 800px) {
+      font-size: 1.1rem;
+    }
+    @media all and (max-width: 600px) {
+      font-size: 1.5rem;
+    }
+    @media all and (max-width: 568px) {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
   }
   .scroll {
     position: absolute;
     bottom: 0;
     left: 50%;
+    @media all and (max-width: 568px) {
+      display: none;
+    }
+    @media all and (max-width: 320px) {
+      top: -4vh;
+    }
     a {
       position: relative;
       bottom: 20px;
@@ -374,49 +415,14 @@ a.btn {
   }
 }
 .ui.container {
-  @media all and (max-width: 480px) {  
+  @media all and (max-width: 480px) {
   margin-left: 0em !important;
   margin-right: 0em !important;
   }
 }
 .pointer-menu {
-  @media all and (max-width: 480px) {  
+  @media all and (max-width: 568px) {
     display: none;
-  }
-}
-#acerca-de-nosotros {
-  @media all and (max-width: 320px) {
-  height: 250vh;
-  }
-  @media all and (min-width: 321px) and (max-width: 480px) {
-  height: 170vh;
-  }
-}
-#invertir {
-  @media all and (max-width: 320px) {
-  height: 210vh;
-  }
-  @media all and (min-width: 321px) and (max-width: 480px) {
-  height: 140vh;
-  }  
-}
-
-#solicitud-de-credito {
-  @media all and (max-width: 320px) {
-  height: 210vh;
-  }
-  @media all and (min-width: 321px) and (max-width: 480px) {
-  height: 140vh;
-  }    
-}
-#contactenos {
-  @media all and (max-width: 320px) {
-    height: 150vh;
-    padding-left: 0vw;
-    padding-right: 0vw;
-  }
-  @media all and (min-width: 321px) and (max-width: 480px){
-    height: 145vh;
   }
 }
 @media all and (max-width: 320px) {

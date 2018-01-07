@@ -11,8 +11,8 @@
   .ui.form {
     width: 27.8vw;
     margin-top: 32px;
-    @media all and (max-width: 480px){
-    width: 90%;
+    @media all and (max-width: 568px){
+      width: 90%;
     }
     .ui.input {
       height: 50px;
@@ -49,7 +49,7 @@
 #contactenos {
   padding-left: 35vw;
   padding-right: 35vw;
-  @media all and (max-width: 480px) {
+  @media all and (max-width: 568px) {
     padding-left: 0vw;
     padding-right: 0vw;
   }
