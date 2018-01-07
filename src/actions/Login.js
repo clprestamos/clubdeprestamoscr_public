@@ -56,6 +56,7 @@ export function login({ username, password }) {
           email,
           roleId,
           userId,
+          avatar,
         } = userInfo;
         const data = {
           name,
@@ -63,6 +64,7 @@ export function login({ username, password }) {
           email,
           roleId,
           userId,
+          avatar,
         };
         service.setToken(token, data);
         dispatch(loginSuccess(data));
