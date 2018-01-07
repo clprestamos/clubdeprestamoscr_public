@@ -3,6 +3,15 @@
   display: flex;
   justify-content: center;
   padding-top: 10vh;
+  @media all and (max-width: 376px) {
+    background: linear-gradient(180deg, $dark 64vh, #FFFFFF 0);
+  }   
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    background: linear-gradient(180deg, $dark 74vh, #FFFFFF 0);
+  } 
+  @media all and (min-width: 1024px) and (max-width: 1440px) {
+    background: linear-gradient(180deg, $dark 64vh, #FFFFFF 0);
+  } 
   &.about-us {
     padding-top: 17vh;
     @media all and (max-width: 480px) {
@@ -12,9 +21,22 @@
     @media all and (max-width: 320px) {
       background: linear-gradient(180deg, $dark 63vh,#fff 0);
     }
+
   }
   &.how-works {
     padding-top: 17vh;
+    @media all and (max-width: 360px) {
+      padding-top: 24vh;
+    } 
+    @media all and (min-width: 361px) and (max-width: 480px) {
+      padding-top: 26vh;
+    }
+      @media all and (min-width: 768px) and (max-width: 1023px) {
+      padding-top: 24vh;
+    } 
+    @media all and (min-width: 1024px) and (max-width: 1440px) {
+      padding-top: 22vh;
+    }     
   }
   &.register {
     background: none;
@@ -58,6 +80,13 @@
   .sub-header {
     display: flex;
     flex-direction: row;
+    .right-content{
+      @media all and (min-width: 1024px) and (max-width: 1440px) {
+        img {
+          width: 120%;
+        } 
+      } 
+    }
     .left-content {
       width: 19vw;
       margin-right: 3vw;
@@ -68,11 +97,17 @@
         img {
           max-width: 90%;
           margin-top: 10vh;
+                @media all and (min-width: 768px) and (max-width: 1023px) {
+                padding-top: 12vh;
+              } 
         }
       }
       @media all and (max-width: 320px) {
         padding-left: 8vw;
-      }
+      } 
+      @media all and (min-width: 1024px) and (max-width: 1440px) {
+        margin-right: 8vw;
+      } 
       p {
         padding-top: 8.5vh;
         font-weight: bold;
@@ -88,6 +123,10 @@
           padding-right: 8vw;
           width: 82vw;
         }
+         @media all and (min-width: 768px) and (max-width: 1023px) {
+          position: absolute;
+          width: 80%;
+        } 
       }
     }
   }
@@ -99,6 +138,9 @@
       column-count: 1;
       padding-left: 8vw;
       padding-right: 8vw;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px){
+      padding-top: 30vh;
     }
     p {
       color: $dark;
