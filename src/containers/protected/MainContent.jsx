@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import { Sidebar, Menu, Icon, Responsive } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -21,6 +22,9 @@ class MainContent extends Component {
       this.setState({
         activeItem: to,
       });
+      if (this.props.toggleMenuVisible) {
+        this.props.toggleMenuVisible();
+      }
     }
   }
   handleModalOpen() {
@@ -92,16 +96,16 @@ class MainContent extends Component {
         url: '/inversionista/mis-inversiones',
         items: [
           {
-            name: 'por-formalizar',
-            text: 'Por formalizar',
-            icon: 'chevron right',
-            url: '/inversionista/mis-inversiones/por-formalizar',
-          },
-          {
             name: 'formalizadas',
             text: 'Formalizadas',
             icon: 'chevron right',
             url: '/inversionista/mis-inversiones/formalizadas',
+          },
+          {
+            name: 'por-formalizar',
+            text: 'Por formalizar',
+            icon: 'chevron right',
+            url: '/inversionista/mis-inversiones/por-formalizar',
           },
         ],
       },
@@ -189,5 +193,11 @@ class MainContent extends Component {
     );
   }
 }
+
+MainContent.propTypes = {
+  authData: PropTypes.object.isRequired,
+  isMenuVisible: PropTypes.bool.isRequired,
+  toggleMenuVisible: PropTypes.func,
+};
 
 export default MainContent;
