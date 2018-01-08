@@ -109,6 +109,9 @@ class ContactUs extends Component {
           {message}
           <button type="submit" className="btn default">Enviar</button>
         </Form>
+        <div className="scroll">
+          <a href="#acerca-de-nosotros"><span /></a>
+        </div>
       </div>
     );
   }

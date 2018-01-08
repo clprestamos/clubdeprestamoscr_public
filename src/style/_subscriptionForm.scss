@@ -28,11 +28,14 @@
 
   h3 {
     color: $dark-gray;
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: bold;
     line-height: 1.23;
     text-align: left;
     text-transform: uppercase;
+    @media all and (max-width: 320px) {
+      font-size: 1.5rem;
+    }
   }
 
   p {

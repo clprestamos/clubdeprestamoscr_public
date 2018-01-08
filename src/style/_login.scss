@@ -6,6 +6,9 @@
     font-size: 19px;
     color: $dark-gray;
     line-height: 1.42;
+    @media all and (max-width: 480px) {
+      padding: 0;
+    }
   }
   p {
     font-size: 14px;
@@ -13,6 +16,9 @@
     margin-bottom: 24px;
     width: 60%;
     text-align: center;
+    @media all and (max-width: 320px) {
+      margin-bottom: 1rem;
+    }
   }
   a:not(.btn), a:not(.btn):focus, a:not(.btn):hover, a:not(.btn):visited {
     color: $dark;
@@ -30,18 +36,30 @@
     width: 264px;
     height: 50px;
     font-size: 14px;
+    @media all and (max-width: 480px) {
+      margin-top: 1vh;
+      margin-bottom: 2vh;
+    }
   }
   .divider {
     background: linear-gradient(90deg, $light-green 110px, $dark-green 0);
     width: 355px;
     margin: 0;
     height: 9px;
+    @media all and (max-width: 480px) {
+      width: 100%;
+    }
   }
   .logo {
     padding: 0;
     padding-top: 6.5vh;
     display: flex;
     justify-content: center;
+    @media all and (max-width: 568px) {
+      img {
+        width: inherit;
+      }
+    }
   }
   .forgot-password, .cancel {
   	font-size: 14px;
@@ -60,11 +78,19 @@
       height: 50px;
       color: $dark;
     }
+    @media all and (max-width: 320px) {
+      .field {
+        margin-bottom: 0.5rem;
+      }
+    }
   }
   .login-box, .logout-box, .modal-box, .change-password-box {
     display: flex;
     justify-content: center;
     padding-top: 11vh;
+    @media all and (max-width: 320px) {
+      padding-top: 5vh;
+    }
     .box {
       background-color: white;
       width: 355px;
@@ -73,6 +99,9 @@
       justify-content: center;
       align-items: center;
       padding-bottom: 30px;
+      @media all and (max-width: 480px) {
+        width: 100%;
+      }
     }
   }
   .logout-box {
