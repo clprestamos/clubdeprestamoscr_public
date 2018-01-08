@@ -61,6 +61,9 @@
   @media all and (max-width: 568px) {
     padding-left: 0vw;
     padding-right: 0vw;
-    height: 150vh;
+    min-height: 120vh;
+  }
+  @media all and (max-width: 768px) {
+    min-height: 150vh;
   }
 }

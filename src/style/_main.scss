@@ -310,7 +310,6 @@ a.btn {
     padding-right: 10vw;
   }
   @media all and (max-width: 568px) {
-    padding-top: 20vh;
     height: 80vh;
   }
   h2 {
@@ -474,5 +473,10 @@ a.btn {
 @media all and (max-width: 320px) {
   .ui.card [class*="left floated"], .ui[class*="left floated"].button {
     float: right;
+  }
+}
+#acerca-de-nosotros {
+  @media all and (max-width: 568px){
+  padding-top: 20vh;
   }
 }
