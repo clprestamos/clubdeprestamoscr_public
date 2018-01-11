@@ -6,11 +6,20 @@
   @media all and (max-width: 376px) {
     background: linear-gradient(180deg, $dark 64vh, #FFFFFF 0);
   }
+  @media all and (min-width: 479px) and (max-width: 481px) {
+    background: linear-gradient(180deg, $dark 110vh, #FFFFFF 0);
+  }
+  @media all and (min-width: 567px) and (max-width: 568px) {
+    background: linear-gradient(180deg, $dark 130vh, #FFFFFF 0); 
+  }   
   @media all and (min-width: 768px) and (max-width: 1023px) {
     background: linear-gradient(180deg, $dark 74vh, #FFFFFF 0);
   }
   @media all and (min-width: 1024px) and (max-width: 1440px) {
-    background: linear-gradient(180deg, $dark 64vh, #FFFFFF 0);
+    background: linear-gradient(180deg, $dark 52vh, #FFFFFF 0);
+  }
+  @media all and (min-width: 799px) and (max-width: 801px) {
+    background: linear-gradient(180deg, $dark 50vh, #FFFFFF 0) !important;
   }
   &.about-us {
     padding-top: 17vh;
@@ -31,15 +40,27 @@
     @media all and (min-width: 361px) and (max-width: 480px) {
       padding-top: 26vh;
     }
+    @media all and (min-width: 481px) and (max-width: 767px) {
+      padding-top: 6vh;
+    }    
+    @media all and (min-width: 567px) and (max-width: 568px) {
+      padding-top: 20vh; 
+    }    
     @media all and (min-width: 768px) and (max-width: 1023px) {
-      padding-top: 24vh;
+      padding-top: 8vh;
     }
     @media all and (min-width: 1024px) and (max-width: 1440px) {
-      padding-top: 22vh;
+      padding-top: 10vh;
     }
     .sub-header .left-content {
+      @media all and (min-width: 1024px) and (max-width: 1440px) {
+        margin-right: 6vw;
+      }
       p {
         padding-top: 8vh;
+        @media all and (min-width: 799px) and (max-width: 801px) {
+          position: relative;
+        }
       }
     }
     @media all and (max-width: 320px) {
@@ -61,7 +82,7 @@
     }
     &.client {
       @media all and (aspect-ratio: 8/5) {
-        padding-top: 10.5vh;
+        padding-top: 6.5vh;
       }
       @media all and (aspect-ratio: 5/8) {
         padding-top: 8.5vh;
@@ -95,6 +116,13 @@
     width: 246px;
     height: 3px;
     background: linear-gradient(90deg, $light-green 150px, $dark-green 0);
+    @media all and (min-width: 479px) and (max-width: 480px) {
+      width: 90%;
+    }      
+    @media all and (min-width: 481px) and (max-width: 1023px) {
+      width: 100%;
+      background: linear-gradient(90deg, $light-green 27vh, $dark-green 0);
+    }
   }
   h2 {
     font-weight: bold;
@@ -109,6 +137,9 @@
       line-height: 1.23;
       padding: 0;
     }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      text-align: center;
+    }    
   }
   .content {
     width: 69.25vw;
@@ -117,13 +148,19 @@
     }
     @media all and (max-width: 320px) {
       width: 100vw;
-    }
+    } 
+    @media all and (min-width: 481px) and (max-width: 1023px) {
+      width: 80%;
+    }    
   }
   .sub-header {
     display: flex;
     flex-direction: row;
     .right-content {
       padding-top: 5vh;
+      img {
+        width: 125%;
+      }
     }
     .left-content {
       width: 19vw;
@@ -147,6 +184,12 @@
       @media all and (max-width: 320px) {
         padding-left: 8vw;
       }
+      @media all and (min-width: 481px) and (max-width: 1023px) {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }      
       p {
         padding-top: 11.5vh;
         font-weight: bold;
@@ -165,6 +208,7 @@
          @media all and (min-width: 768px) and (max-width: 1023px) {
           position: absolute;
           width: 80%;
+          padding-top:2vh !important;
         }
       }
     }
@@ -179,8 +223,11 @@
       padding-right: 8vw;
     }
     @media all and (min-width: 768px) and (max-width: 1023px){
-      padding-top: 30vh;
+      padding-top: 10vh;
     }
+    @media all and (min-width: 799px) and (max-width: 801px) {
+      padding-top: 2vh;
+    }    
     p {
       color: $dark;
       font-size: 14px;

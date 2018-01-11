@@ -5,6 +5,7 @@
   .scroll {
     left: inherit;
     right: 15%;
+    top: 97%;
     a span::after {
       -webkit-transform: rotate(135deg);
       transform: rotate(135deg);
@@ -18,10 +19,10 @@
     }
   }
   .ui.form {
-    width: 27.8vw;
+    width: 40vw;
     margin-top: 32px;
-    @media all and (max-width: 568px){
-      width: 90%;
+    @media all and (max-width: 600px){
+      width: 100%;
     }
     .ui.input {
       height: 50px;
@@ -29,12 +30,12 @@
         width: 90%;
       }
       @media (max-width: 1300px) {
-        min-width: 270px;
+        min-width: 241px;
       }
     }
     @media (max-width: 1300px) {
       textarea {
-        min-width: 270px;
+        min-width: 212px;
       }
     }
   }
@@ -58,12 +59,14 @@
 #contactenos {
   padding-left: 35vw;
   padding-right: 35vw;
-  @media all and (max-width: 568px) {
+  @media all and (max-width: 800px) {
     padding-left: 0vw;
     padding-right: 0vw;
-    min-height: 120vh;
-  }
-  @media all and (max-width: 768px) {
-    min-height: 150vh;
+    height: 120vh;
+  } 
+  @media all and (max-width: 1024px){
+    padding-left: 15vw;
+    padding-right: 15vw;
+    height: 150vh;
   }
 }
