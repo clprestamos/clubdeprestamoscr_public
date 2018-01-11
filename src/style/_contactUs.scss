@@ -69,4 +69,9 @@
     padding-right: 15vw;
     height: 150vh;
   }
+  @media all and (max-height: 320px){
+    padding-left: 15vw;
+    padding-right: 15vw;
+    height: 190vh;
+  }
 }
