@@ -67,7 +67,7 @@ class Score extends Component {
                 <div className="payment-process">
                   <Header as="h2" icon>
                     <Icon name="paypal" />
-                    Solicitud de análisis credicticio.
+                    Solicitud de análisis crediticio.
                     <Header.Subheader>
                       Si aún no ha cancelado los $15 para realizar su análisis, su préstamo no será presentado ante nuestros inversionistas.
                       Basado en este análisis su score e interés será calculado.

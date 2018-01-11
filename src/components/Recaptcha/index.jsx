@@ -33,11 +33,11 @@ class RecaptchaComponent extends Component {
     dispatch(Recaptcha.clearRecaptchaValue());
   }
   render() {
-    const { SITE_KEY } = process.env;
+    const { REACT_APP_SITE_KEY } = process.env;
     return (
       <ReCAPTCHA
         ref={(c) => { this.recaptcha = c; }}
-        sitekey={SITE_KEY}
+        sitekey={REACT_APP_SITE_KEY}
         onChange={this.onChange}
         onExpired={this.onExpired}
       />

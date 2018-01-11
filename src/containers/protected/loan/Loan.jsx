@@ -190,7 +190,7 @@ class Loan extends Component {
           </Card.Header>
         </Card.Content>
         <Card.Content className="content-form">
-          { this.props.loan.percentage === 100 ? (
+          { this.props.loan.percentage !== 100 ? (
             <Form>
               <Form.Field>
                 <Progress percent={this.state.percentage} indicating progress="percent">Este préstamo le resta un {100 - this.state.percentage}%</Progress>
