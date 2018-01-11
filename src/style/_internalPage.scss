@@ -10,9 +10,9 @@
     background: linear-gradient(180deg, $dark 110vh, #FFFFFF 0);
   }
   @media all and (min-width: 567px) and (max-width: 568px) {
-    background: linear-gradient(180deg, $dark 130vh, #FFFFFF 0); 
-  }   
-  @media all and (min-width: 768px) and (max-width: 1023px) {
+    background: linear-gradient(180deg, $dark 130vh, #FFFFFF 0);
+  }
+  @media all and (min-width: 769px) and (max-width: 1023px) {
     background: linear-gradient(180deg, $dark 74vh, #FFFFFF 0);
   }
   @media all and (min-width: 1024px) and (max-width: 1440px) {
@@ -23,6 +23,10 @@
   }
   &.about-us {
     padding-top: 17vh;
+    @media all and (max-width: 768px) {
+      background: linear-gradient(180deg, $dark 64vh,#fff 0);
+      padding-top: 8vh;
+    }
     @media all and (max-width: 480px) {
       background: linear-gradient(180deg, $dark 100vh,#fff 0);
       padding-top: 0;
@@ -42,10 +46,10 @@
     }
     @media all and (min-width: 481px) and (max-width: 767px) {
       padding-top: 6vh;
-    }    
+    }
     @media all and (min-width: 567px) and (max-width: 568px) {
-      padding-top: 20vh; 
-    }    
+      padding-top: 20vh;
+    }
     @media all and (min-width: 768px) and (max-width: 1023px) {
       padding-top: 8vh;
     }
@@ -75,6 +79,9 @@
     justify-content: flex-start;
     min-height: 88vh;
     padding-top: 12.5vh;
+    @media all and (max-width: 1280px) {
+      padding-top: 10.5vh;
+    }
     &.investor {
       @media all and (aspect-ratio: 40/71) {
         padding-top: 15vh;
@@ -118,7 +125,7 @@
     background: linear-gradient(90deg, $light-green 150px, $dark-green 0);
     @media all and (min-width: 479px) and (max-width: 480px) {
       width: 90%;
-    }      
+    }
     @media all and (min-width: 481px) and (max-width: 1023px) {
       width: 100%;
       background: linear-gradient(90deg, $light-green 27vh, $dark-green 0);
@@ -139,7 +146,7 @@
     }
     @media all and (min-width: 768px) and (max-width: 1023px) {
       text-align: center;
-    }    
+    }
   }
   .content {
     width: 69.25vw;
@@ -148,10 +155,10 @@
     }
     @media all and (max-width: 320px) {
       width: 100vw;
-    } 
+    }
     @media all and (min-width: 481px) and (max-width: 1023px) {
       width: 80%;
-    }    
+    }
   }
   .sub-header {
     display: flex;
@@ -189,7 +196,7 @@
         img {
           width: 100%;
         }
-      }      
+      }
       p {
         padding-top: 11.5vh;
         font-weight: bold;
@@ -227,7 +234,7 @@
     }
     @media all and (min-width: 799px) and (max-width: 801px) {
       padding-top: 2vh;
-    }    
+    }
     p {
       color: $dark;
       font-size: 14px;

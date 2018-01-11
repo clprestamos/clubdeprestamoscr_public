@@ -59,19 +59,17 @@
 #contactenos {
   padding-left: 35vw;
   padding-right: 35vw;
-  @media all and (max-width: 800px) {
-    padding-left: 0vw;
-    padding-right: 0vw;
-    height: 120vh;
-  } 
   @media all and (max-width: 1024px){
     padding-left: 15vw;
     padding-right: 15vw;
-    height: 150vh;
+    height: 100vh;
   }
-  @media all and (max-height: 320px){
+  @media all and (max-width: 800px) {
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+  @media all and (max-width: 568px){
     padding-left: 15vw;
     padding-right: 15vw;
-    height: 190vh;
   }
 }

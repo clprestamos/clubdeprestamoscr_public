@@ -309,9 +309,6 @@ a.btn {
     padding-left: 10vw;
     padding-right: 10vw;
   }
-  @media all and (max-width: 568px) {
-    height: 80vh;
-  }
   h2 {
     font-size: 3.2rem;
     font-weight: bold;
@@ -476,7 +473,10 @@ a.btn {
   }
 }
 #acerca-de-nosotros {
-  @media all and (max-width: 568px){
-  padding-top: 20vh;
+  @media all and (max-width: 568px) {
+    padding-top: 20vh;
+  }
+  @media all and (max-width: 320px) {
+    padding-top: 5vh;
   }
 }
