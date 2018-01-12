@@ -23,16 +23,38 @@
   }
   &.about-us {
     padding-top: 17vh;
-    @media all and (max-width: 768px) {
-      background: linear-gradient(180deg, $dark 64vh,#fff 0);
+    @media all and (min-width: 361px) and (max-width: 480px) {
+      padding-top: 26vh;
+    }
+    @media all and (min-width: 481px) and (max-width: 767px) {
+      padding-top: 6vh;
+    }
+    @media all and (min-width: 567px) and (max-width: 568px) {
+      padding-top: 20vh;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
       padding-top: 8vh;
     }
-    @media all and (max-width: 480px) {
-      background: linear-gradient(180deg, $dark 100vh,#fff 0);
-      padding-top: 0;
+    @media all and (min-width: 1024px) and (max-width: 1440px) {
+      padding-top: 10vh;
+      background: linear-gradient(180deg, $dark 57vh, #FFFFFF 0) !important;
+    }
+    .sub-header .left-content {
+      @media all and (min-width: 1024px) and (max-width: 1440px) {
+        margin-right: 6vw;
+      }
+      p {
+        padding-top: 8vh;
+        @media all and (min-width: 799px) and (max-width: 801px) {
+          position: relative;
+        }
+      }
     }
     @media all and (max-width: 320px) {
-      background: linear-gradient(180deg, $dark 63vh,#fff 0);
+      padding-top: 10vh;
+      h2 {
+        font-size: 1.5rem;
+      }
     }
 
   }
@@ -144,9 +166,6 @@
       line-height: 1.23;
       padding: 0;
     }
-    @media all and (min-width: 768px) and (max-width: 1023px) {
-      text-align: center;
-    }
   }
   .content {
     width: 69.25vw;
@@ -166,7 +185,7 @@
     .right-content {
       padding-top: 5vh;
       img {
-        width: 125%;
+        width: 110%;
       }
     }
     .left-content {
@@ -188,14 +207,32 @@
           }
         }
       }
-      @media all and (max-width: 320px) {
-        padding-left: 8vw;
-      }
-      @media all and (min-width: 481px) and (max-width: 1023px) {
+      @media all and (max-width: 1023px) {
         width: 100%;
         img {
           width: 100%;
         }
+      }         
+      @media all and (max-width: 800px) {
+        width: 78%;
+        img {
+          width: 100%;
+        }
+      }   
+      @media all and (max-width: 600px) {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      @media all and (width: 768px) and (height: 1024px)             {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      @media all and (max-width: 320px) {
+        padding-left: 8vw;
       }
       p {
         padding-top: 11.5vh;
@@ -213,8 +250,6 @@
           width: 82vw;
         }
          @media all and (min-width: 768px) and (max-width: 1023px) {
-          position: absolute;
-          width: 80%;
           padding-top:2vh !important;
         }
       }
