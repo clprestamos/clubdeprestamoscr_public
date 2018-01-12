@@ -64,12 +64,13 @@
     padding-right: 15vw;
     height: 100vh;
   }
-  @media all and (max-width: 800px) {
-    padding-left: 0vw;
-    padding-right: 0vw;
-  }
-  @media all and (max-width: 568px){
-    padding-left: 15vw;
+  @media all and (max-width: 600px){
+    padding-left: 13vw;
     padding-right: 15vw;
+    height: 120vh;
   }
+  @media all and (max-height: 320px){
+    height: 180vh;
+  }
+
 }

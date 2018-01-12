@@ -304,11 +304,21 @@ a.btn {
   padding-left: 15vw;
   padding-right: 15vw;
   position: relative;
-  @media all and (max-width: 800px) {
-    height: 100vh;
+  @media all and (max-width: 768px) {
+    height: 70vh;
     padding-left: 10vw;
     padding-right: 10vw;
   }
+  @media all and (max-height: 480px) {
+    height: 80vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }  
+  @media all and (max-height: 800px) {
+    height: 100vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }    
   h2 {
     font-size: 3.2rem;
     font-weight: bold;
