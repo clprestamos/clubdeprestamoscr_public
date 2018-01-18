@@ -50,7 +50,7 @@ class ProfileComponent extends Component {
   }
   onChangeField({ field, value }) {
     const { dispatch } = this.props;
-    dispatch(Profile.editClientProfile({ field, value }));
+    dispatch(Profile.editUserProfile({ field, value }));
   }
   getCantons(province) {
     const { dispatch } = this.props;
@@ -61,8 +61,8 @@ class ProfileComponent extends Component {
     dispatch(Locales.getDistricts(this.props.profile.province, canton));
   }
   loadUserProfile() {
-    const { dispatch } = this.props;
-    dispatch(Profile.getClientProfile());
+    const { dispatch, authData } = this.props;
+    dispatch(Profile.getUserProfile(authData.data.userId));
   }
   validation({ type, value }) {
     let result = true;
@@ -96,7 +96,7 @@ class ProfileComponent extends Component {
     this.handleModalOpen();
     this.toggleDisableForm();
     const { dispatch } = this.props;
-    dispatch(Profile.saveClientProfile());
+    dispatch(Profile.saveUserProfile());
   }
   render() {
     const provinces = utils.getDropDownItems(this.props.provinces);
@@ -406,7 +406,7 @@ class ProfileComponent extends Component {
 
 const mapStateToProps = state => ({
   authData: state.user,
-  profile: state.clientProfile,
+  profile: state.userProfile,
   provinces: state.locales.provinces,
   cantons: state.locales.cantons,
   districts: state.locales.districts,

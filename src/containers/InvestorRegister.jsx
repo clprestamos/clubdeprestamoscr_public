@@ -83,6 +83,7 @@ class InvestorRegister extends Component {
         maxSteps="dos"
         investorInfo={investorInfoStepEvent}
         captcha={this.props.captcha}
+        investorSubscription={this.props.investorSubscription}
       />
     );
     const styles = { backgroundImage: `url(${investorRegisterImg})` };
@@ -109,6 +110,7 @@ const mapStateToProps = state => ({
   currentStep: state.investorSubscription.currentStep,
   investorInfo: state.investorSubscription,
   captcha: state.recaptcha.captcha,
+  investorSubscription: state.investorSubscription,
 });
 
 export default withRouter(connect(mapStateToProps)(InvestorRegister));

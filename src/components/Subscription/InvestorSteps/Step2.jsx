@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 
 import * as utils from '../../../utils';
 
@@ -75,9 +75,10 @@ class Step2 extends Component {
         return this.validation({ value, type: 'password' });
       },
     }];
+    const formError = !this.props.investorSubscription.error ? false : this.props.investorSubscription.error;
     return (
       <div className="client-subscription step1">
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} error={formError && formError === 409}>
           {
             inputFields.map(inputField => (
               <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
@@ -99,6 +100,11 @@ class Step2 extends Component {
           </Form.Field>
           <button type="submit" className="btn default">{this.props.btnText}</button>
           <span>Campos obligatorios **</span>
+          <Message
+            error
+            header="Usuario ya existe"
+            content="Debe registrar otro usuario en nuestro sistema, ya existe el elegido."
+          />
         </Form>
       </div>
     );
@@ -111,6 +117,7 @@ Step2.propTypes = {
   onChangeField: PropTypes.func.isRequired,
   investorInfo: PropTypes.object.isRequired,
   captcha: PropTypes.string.isRequired,
+  investorSubscription: PropTypes.object,
 };
 
 export default Step2;

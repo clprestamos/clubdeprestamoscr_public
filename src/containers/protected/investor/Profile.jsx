@@ -10,6 +10,7 @@ import * as Profile from '../../../actions/Profile';
 import InputField from '../../../components/Dashboard/InputField';
 import ButtonComponent from '../../../components/Button';
 import SaveModal from '../../../components/SaveModal';
+import ChangeAvatarModal from '../../../components/ChangeAvatarModal';
 
 class ProfileComponent extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class ProfileComponent extends Component {
       hasErrors: false,
       isDisabled: true,
       isModalOpen: false,
+      isChangeAvatarModalOpen: false,
     };
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
@@ -31,11 +33,11 @@ class ProfileComponent extends Component {
   }
   onChangeField({ field, value }) {
     const { dispatch } = this.props;
-    dispatch(Profile.editInvestorProfile({ field, value }));
+    dispatch(Profile.editUserProfile({ field, value }));
   }
   loadUserProfile() {
-    const { dispatch } = this.props;
-    dispatch(Profile.getInvestorProfile());
+    const { dispatch, authData } = this.props;
+    dispatch(Profile.getUserProfile(authData.data.userId));
   }
   validation({ type, value }) {
     let result = true;
@@ -69,24 +71,32 @@ class ProfileComponent extends Component {
     this.handleModalOpen();
     this.toggleDisableForm();
     const { dispatch } = this.props;
-    dispatch(Profile.saveInvestorProfile());
+    dispatch(Profile.saveUserProfile());
+  }
+  handleChangeAvatarModalOpen() {
+    this.setState({
+      isChangeAvatarModalOpen: !this.state.isChangeAvatarModalOpen,
+    });
   }
   render() {
     const {
+      avatar,
       name,
       lastName,
       identification,
       cellphone,
       phone,
       email,
-    } = this.props.profile;
+    } = this.props.userProfile;
+    const imageAvatar = !avatar ? 'https://react.semantic-ui.com/assets/images/wireframe/square-image.png' : avatar;
     const avatarContent = (
       <div>
-        <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="small" circular />
-        <Button className="btn upload" icon labelPosition="left">
+        <Image onClick={this.handleChangeAvatarModalOpen} src={imageAvatar} size="small" circular />
+        <Button onClick={this.handleChangeAvatarModalOpen} className="btn upload" icon labelPosition="left">
           <Icon name="camera" />
           Actualizar imagen
         </Button>
+        <ChangeAvatarModal isOpen={this.state.isChangeAvatarModalOpen} handleCancel={this.handleChangeAvatarModalOpen} />
       </div>
     );
     const formContent = (
@@ -238,7 +248,8 @@ class ProfileComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.investorProfile,
+  authData: state.user,
+  userProfile: state.userProfile,
 });
 
 export default connect(mapStateToProps)(ProfileComponent);

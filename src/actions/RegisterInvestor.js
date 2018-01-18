@@ -1,4 +1,3 @@
-import moment from 'moment';
 import * as types from '../constants';
 import * as service from '../service';
 
@@ -116,6 +115,7 @@ export function registerUserInvestor() {
       name,
       lastName,
       identification,
+      cellphone,
       phone,
       referencePhone,
       email,
@@ -127,12 +127,13 @@ export function registerUserInvestor() {
         name,
         lastName,
         identification,
+        cellphone,
         phone,
         referencePhone,
         email,
         password,
         roleId: 2,
-        signupDate: moment().format(),
+        signupDate: new Date(),
         isActive: true,
       },
     })
@@ -140,6 +141,6 @@ export function registerUserInvestor() {
         dispatch(registerNewInvestorSuccess());
         return response.body[0].id;
       })
-      .catch(error => dispatch(registerNewInvestorError(error)));
+      .catch(error => dispatch(registerNewInvestorError(error.status)));
   };
 }

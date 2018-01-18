@@ -1,0 +1,14 @@
+.terms-conditions {
+  background: none;
+  min-height: 88vh;
+  h1 {
+    color: $dark;
+  }
+  .content {
+    padding-top: 3rem;
+  }
+  ol, ul {
+    padding-left: 40px;
+    -webkit-padding-start: 40px;
+  }
+}

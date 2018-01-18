@@ -3,9 +3,9 @@ import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Card, Table, Responsive, Grid } from 'semantic-ui-react';
-import moment from 'moment';
 
 import * as Loan from '../../../actions/Loan';
+import * as utils from '../../../utils';
 
 class LoanRequest extends Component {
   constructor(props) {
@@ -22,19 +22,14 @@ class LoanRequest extends Component {
   }
   render() {
     const {
-      id,
+      loanId,
       amount,
       interest,
       term,
       requestLoanDate,
       reason,
-      stateId,
+      stateName,
     } = this.props.loan;
-    let stateName = stateId === 1 ? 'Nuevo ingreso' : '';
-    stateName = stateId === 2 ? 'Pre-Aprobado' : stateName;
-    stateName = stateId === 3 ? 'Aprobado' : stateName;
-    stateName = stateId === 4 ? 'En espera' : stateName;
-    stateName = stateId === 5 ? 'Rechazado' : stateName;
     return (
       <div className="loans">
         <Card>
@@ -59,11 +54,11 @@ class LoanRequest extends Component {
                 </Table.Header>
                 <Table.Body>
                   <Table.Row active>
-                    <Table.Cell>{id}</Table.Cell>
-                    <Table.Cell>₡ {amount}</Table.Cell>
+                    <Table.Cell>{loanId}</Table.Cell>
+                    <Table.Cell>{utils.amountToMoney(amount)}</Table.Cell>
                     <Table.Cell>{interest ? `${interest}%` : '0%'}</Table.Cell>
                     <Table.Cell>{term}</Table.Cell>
-                    <Table.Cell>{moment(new Date(requestLoanDate)).format('DD/MM/YYYY')}</Table.Cell>
+                    <Table.Cell>{utils.parseDate(requestLoanDate)}</Table.Cell>
                     <Table.Cell>{reason}</Table.Cell>
                     <Table.Cell>{stateName}</Table.Cell>
                   </Table.Row>
@@ -74,11 +69,11 @@ class LoanRequest extends Component {
               <Grid celled>
                 <Grid.Row>
                   <Grid.Column width={6}>ID:</Grid.Column>
-                  <Grid.Column width={10}>{id}</Grid.Column>
+                  <Grid.Column width={10}>{loanId}</Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Monto:</Grid.Column>
-                  <Grid.Column width={10}>₡ {amount}</Grid.Column>
+                  <Grid.Column width={10}>{utils.amountToMoney(amount)}</Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Tasa %:</Grid.Column>
@@ -90,9 +85,7 @@ class LoanRequest extends Component {
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Fecha de Solicitud:</Grid.Column>
-                  <Grid.Column width={10}>
-                    {moment(new Date(requestLoanDate)).format('DD/MM/YYYY')}
-                  </Grid.Column>
+                  <Grid.Column width={10}>{utils.parseDate(requestLoanDate)}</Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Motivo:</Grid.Column>

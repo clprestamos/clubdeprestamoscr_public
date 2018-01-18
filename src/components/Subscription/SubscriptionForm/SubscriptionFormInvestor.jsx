@@ -15,7 +15,7 @@ const SubscriptionFormInvestor = props => (
         step1={props.investorInfo.step1}
         step2={props.investorInfo.step2}
       />
-      <InvestorSteps investorInfo={props.investorInfo} captcha={props.captcha} />
+      <InvestorSteps investorSubscription={props.investorSubscription} investorInfo={props.investorInfo} captcha={props.captcha} />
     </div>
   </div>
 );
@@ -25,6 +25,7 @@ SubscriptionFormInvestor.propTypes = {
   maxSteps: PropTypes.string.isRequired,
   investorInfo: PropTypes.object.isRequired,
   captcha: PropTypes.string.isRequired,
+  investorSubscription: PropTypes.object,
 };
 
 export default SubscriptionFormInvestor;

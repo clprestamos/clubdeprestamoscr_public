@@ -5,7 +5,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 
 const ClientSteps = (props) => {
-  const { clientInfo, captcha } = props;
+  const { clientInfo, captcha, clientSubscriptionError } = props;
   const { step1, step2, step3 } = clientInfo;
   let stepContent = (
     <Step1
@@ -47,6 +47,7 @@ const ClientSteps = (props) => {
         clientInfo={clientInfo}
         btnText="Enviar Datos"
         captcha={captcha}
+        clientSubscriptionError={clientSubscriptionError}
       />
     );
   }
@@ -56,6 +57,10 @@ const ClientSteps = (props) => {
 ClientSteps.propTypes = {
   clientInfo: PropTypes.object.isRequired,
   captcha: PropTypes.string.isRequired,
+  clientSubscriptionError: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default ClientSteps;

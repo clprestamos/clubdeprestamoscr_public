@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 import { Sidebar, Menu, Icon, Responsive } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Routes from './Routes';
 
 import Modal from '../../components/Modal';
@@ -12,7 +13,7 @@ class MainContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: props.routing.pathname,
+      activeItem: props.routing.location.pathname,
       isModalOpen: false,
     };
     autobind(this);
@@ -111,9 +112,9 @@ class MainContent extends Component {
       },
     ];
     let menuItems = [];
-    if (this.props.authData.data.roleId === 1) {
+    if (this.props.authData.roleId === 1) {
       menuItems = clientMenuItems;
-    } else if (this.props.authData.data.roleId === 2) {
+    } else if (this.props.authData.roleId === 2) {
       menuItems = investorMenuItems;
     }
     return (
@@ -186,7 +187,7 @@ class MainContent extends Component {
             </Responsive>
           </Sidebar>
           <Sidebar.Pusher>
-            <Routes authData={this.props.authData} match={this.props.match} />
+            <Routes />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
@@ -195,9 +196,13 @@ class MainContent extends Component {
 }
 
 MainContent.propTypes = {
-  authData: PropTypes.object.isRequired,
   isMenuVisible: PropTypes.bool.isRequired,
   toggleMenuVisible: PropTypes.func,
 };
 
-export default MainContent;
+const mapStateToProps = state => ({
+  routing: state.routing,
+  userProfile: state.userProfile,
+});
+
+export default withRouter(connect(mapStateToProps)(MainContent));

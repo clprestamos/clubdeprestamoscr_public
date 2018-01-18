@@ -22,7 +22,7 @@ class Score extends Component {
   }
   render() {
     const {
-      // interest,
+      interest,
       score,
     } = this.props.loan;
     return (
@@ -43,14 +43,14 @@ class Score extends Component {
                 <Message.Content className="score-result">
                   <Statistic>
                     <Statistic.Value>
-                      <Rating maxRating={5} defaultRating={3} icon="star" size="huge" disabled />
+                      <Rating maxRating={5} defaultRating={score} icon="star" size="huge" disabled />
                     </Statistic.Value>
                     <Statistic.Label>Score</Statistic.Label>
                   </Statistic>
                 </Message.Content>
                 <Message.Content className="interest-result">
                   <Statistic>
-                    <Statistic.Value>32%</Statistic.Value>
+                    <Statistic.Value>{interest}%</Statistic.Value>
                     <Statistic.Label>Interés</Statistic.Label>
                   </Statistic>
                 </Message.Content>

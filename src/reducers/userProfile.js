@@ -3,6 +3,7 @@ import * as types from '../constants';
 const initialState = {
   isLoading: false,
   error: null,
+  avatar: null,
   name: null,
   lastName: null,
   email: null,
@@ -23,27 +24,30 @@ const initialState = {
   paymentId: null,
 };
 
-function ClientProfile(state = initialState, action) {
+function userProfile(state = initialState, action) {
   switch (action.type) {
-    case types.SAVE_CLIENT_PROFILE_INIT:
-    case types.SAVE_CLIENT_PROFILE_ERROR:
-    case types.SAVE_CLIENT_PROFILE_SUCCESS:
+    case types.SAVE_USER_PROFILE_INIT:
+    case types.SAVE_USER_PROFILE_ERROR:
+    case types.SAVE_USER_PROFILE_SUCCESS:
     case types.GET_PROFILE_ZIPCODE_INIT:
     case types.GET_PROFILE_ZIPCODE_ERROR:
     case types.GET_PROFILE_ZIPCODE_SUCCESS:
-    case types.GET_CLIENT_PROFILE_INIT:
-    case types.GET_CLIENT_PROFILE_ERROR:
-    case types.GET_CLIENT_PROFILE_SUCCESS:
+    case types.GET_USER_PROFILE_INIT:
+    case types.GET_USER_PROFILE_ERROR:
+    case types.GET_USER_PROFILE_SUCCESS:
+    case types.UPLOAD_FILE_INIT:
+    case types.UPLOAD_FILE_ERROR:
+    case types.UPLOAD_FILE_SUCCESS:
       return {
         ...state,
         ...action.payload,
       };
-    case types.EDIT_CLIENT_PROFILE:
+    case types.EDIT_USER_PROFILE:
       return {
         ...state,
         [action.payload.field]: action.payload.value,
       };
-    case types.CLEAR_CLIENT_PROFILE:
+    case types.CLEAR_USER_PROFILE:
       return {
         ...state,
         ...initialState,
@@ -53,4 +57,4 @@ function ClientProfile(state = initialState, action) {
   }
 }
 
-export default ClientProfile;
+export default userProfile;

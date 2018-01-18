@@ -6,6 +6,9 @@
   @media all and (min-width: 601px) {
     width: calc(100vw - 186px);
   }
+  .ui.image {
+    cursor: default;
+  }
   h3.ui.header {
     margin-top: 0;
     font-size: 24px;

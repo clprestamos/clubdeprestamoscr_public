@@ -212,13 +212,13 @@
         img {
           width: 100%;
         }
-      }         
+      }
       @media all and (max-width: 800px) {
         width: 78%;
         img {
           width: 100%;
         }
-      }   
+      }
       @media all and (max-width: 600px) {
         width: 100%;
         img {
@@ -269,6 +269,12 @@
     }
     @media all and (min-width: 799px) and (max-width: 801px) {
       padding-top: 2vh;
+    }
+    ol li, ul li {
+      color: $dark;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left;
     }
     p {
       color: $dark;

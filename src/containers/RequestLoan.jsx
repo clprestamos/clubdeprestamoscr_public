@@ -138,6 +138,7 @@ class RequestLoan extends Component {
         maxSteps="tres"
         clientInfo={clientInfoStepEvent}
         captcha={this.props.captcha}
+        clientSubscriptionError={this.props.clientSubscriptionError}
       />
     );
     const styles = { backgroundImage: `url(${requestLoanImg})` };
@@ -162,6 +163,7 @@ const mapStateToProps = state => ({
   districts: state.locales.districts,
   clientInfo: state.clientSubscription,
   captcha: state.recaptcha.captcha,
+  clientSubscriptionError: state.clientSubscription.error,
 });
 
 export default withRouter(connect(mapStateToProps)(RequestLoan));

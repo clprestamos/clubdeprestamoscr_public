@@ -1,7 +1,11 @@
-import moment from 'moment';
 import * as types from '../constants';
 import * as service from '../service';
 
+export function clearErrorSubscription() {
+  return {
+    type: types.CLEAR_ERROR_SUBSCRIPTION,
+  };
+}
 export function clearClientSubscription() {
   return {
     type: types.CLEAR_CLIENT_SUBSCRIPTION,
@@ -145,7 +149,7 @@ export function registerNewLoan(userId) {
         reason,
         stateId: 1,
         userId,
-        requestLoanDate: moment().format(),
+        requestLoanDate: new Date(),
       },
     })
       .then((response) => {
@@ -231,7 +235,7 @@ export function registerUserClient() {
         zipCode,
         password,
         roleId: 1,
-        signupDate: moment().format(),
+        signupDate: new Date(),
         isActive: true,
       },
     })
@@ -242,7 +246,7 @@ export function registerUserClient() {
       .then((userId) => {
         dispatch(registerNewLoan(userId));
       })
-      .catch(error => dispatch(registerNewUserError(error)));
+      .catch(error => dispatch(registerNewUserError(error.status)));
   };
 }
 export function setClientInformation({ field, value }) {

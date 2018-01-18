@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Table, Image, Rating, Icon, Segment, Responsive, Grid } from 'semantic-ui-react';
-import moment from 'moment';
+
+import * as utils from '../../../../utils';
 
 const LoanList = (props) => {
   if (props.loans.length) {
@@ -44,7 +45,7 @@ const LoanList = (props) => {
                       {loan.interest}%
                     </Table.Cell>
                     <Table.Cell>
-                      { moment(new Date(loan.requestLoanDate)).format('MMM DD, YYYY') }
+                      {utils.parseDate(loan.requestLoanDate)}
                     </Table.Cell>
                     <Table.Cell>
                       {loan.investorPercentage}%
@@ -89,9 +90,7 @@ const LoanList = (props) => {
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Fecha:</Grid.Column>
-                  <Grid.Column width={10}>
-                    { moment(new Date(loan.requestLoanDate)).format('MMM DD, YYYY') }
-                  </Grid.Column>
+                  <Grid.Column width={10}>{utils.parseDate(loan.requestLoanDate)}</Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column width={6}>Inversión:</Grid.Column>

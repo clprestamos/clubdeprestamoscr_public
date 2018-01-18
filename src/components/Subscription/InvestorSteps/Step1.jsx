@@ -86,7 +86,7 @@ class Step1 extends Component {
     },
     {
       id: 6,
-      placeholder: 'Email *',
+      placeholder: 'Email * (Este va ser su usuario)',
       errorMessage: 'Campo requerido. Formato de email inválido.',
       inputType: 'email',
       customClass: 'email',

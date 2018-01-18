@@ -102,6 +102,11 @@ function ClientSubscription(state = initialState, action) {
           isDisabled: action.payload.isDisabled,
         },
       };
+    case types.CLEAR_ERROR_SUBSCRIPTION:
+      return {
+        ...state,
+        error: null,
+      };
     case types.CLEAR_CLIENT_SUBSCRIPTION:
       return {
         ...state,

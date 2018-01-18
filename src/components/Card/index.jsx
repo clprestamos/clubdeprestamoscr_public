@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
-
-import Button from '../Button';
 
 const CardComponent = (props) => {
   let key = 0;
@@ -21,11 +21,7 @@ const CardComponent = (props) => {
         </Card.Content>
         <Card.Content>
           {card.content}
-          <Button
-            buttonType="default"
-            text="Ver detalle"
-            to={card.btnTo}
-          />
+          <Link className="btn default" to={card.btnTo}>Ver detalle</Link>
         </Card.Content>
       </Card>
     );
@@ -41,4 +37,4 @@ CardComponent.propTypes = {
   cards: PropTypes.array.isRequired,
 };
 
-export default CardComponent;
+export default withRouter(connect()(CardComponent));

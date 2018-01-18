@@ -16,7 +16,7 @@ const SubscriptionFormClient = props => (
         step2={props.clientInfo.step2}
         step3={props.clientInfo.step3}
       />
-      <ClientSteps clientInfo={props.clientInfo} captcha={props.captcha} />
+      <ClientSteps clientSubscriptionError={props.clientSubscriptionError} clientInfo={props.clientInfo} captcha={props.captcha} />
     </div>
   </div>
 );
@@ -26,6 +26,10 @@ SubscriptionFormClient.propTypes = {
   maxSteps: PropTypes.string.isRequired,
   clientInfo: PropTypes.object.isRequired,
   captcha: PropTypes.string.isRequired,
+  clientSubscriptionError: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default SubscriptionFormClient;

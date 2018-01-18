@@ -31,6 +31,7 @@ const InvestorSteps = (props) => {
         investorInfo={investorInfo}
         btnText="Enviar datos"
         captcha={captcha}
+        investorSubscription={props.investorSubscription}
       />
     );
   }
@@ -40,6 +41,7 @@ const InvestorSteps = (props) => {
 InvestorSteps.propTypes = {
   investorInfo: PropTypes.object.isRequired,
   captcha: PropTypes.string.isRequired,
+  investorSubscription: PropTypes.object,
 };
 
 export default InvestorSteps;

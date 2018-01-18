@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Hero from '../../../components/Hero';
 import Card from '../../../components/Card';
@@ -20,15 +21,15 @@ const cards = [
 ];
 const Home = props => (
   <div className="home">
-    <Hero authData={props.authData} />
+    <Hero userProfile={props.userProfile} />
     <section>
       <Card cards={cards} />
     </section>
   </div>
 );
 
-Home.propTypes = {
-  authData: PropTypes.object.isRequired,
-};
+const mapStateToProps = state => ({
+  userProfile: state.userProfile,
+});
 
-export default Home;
+export default withRouter(connect(mapStateToProps)(Home));

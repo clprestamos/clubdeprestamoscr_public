@@ -9,9 +9,8 @@ import user from './user';
 import forgotPassword from './forgotPassword';
 import contactUs from './contactUs';
 import locales from './locales';
-import clientProfile from './clientProfile';
+import userProfile from './userProfile';
 import loan from './loan';
-import investorProfile from './investorProfile';
 import opportunities from './opportunities';
 import myinvests from './myinvests';
 
@@ -25,9 +24,8 @@ export default combineReducers({
   investorSubscription,
   contactUs,
   locales,
-  clientProfile,
+  userProfile,
   loan,
-  investorProfile,
   opportunities,
   myinvests,
 });

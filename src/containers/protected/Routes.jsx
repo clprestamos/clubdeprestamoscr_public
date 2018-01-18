@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 import ClientHome from './client/Home';
 import LoanApproved from './client/LoanApproved';
@@ -14,72 +15,35 @@ import MyInvests from './investor/MyInvests';
 
 import Loan from './loan/Loan';
 
-const Routes = (props) => {
-  const clientRoutes = [
-    {
-      exact: true,
-      path: '/cliente/dashboard',
-      component: () => <ClientHome authData={props.authData} />,
-    },
-    {
-      path: '/cliente/prestamo-aprobado',
-      component: () => <LoanApproved />,
-    },
-    {
-      path: '/cliente/solicitud-credito',
-      component: () => <LoanRequest />,
-    },
-    {
-      path: '/cliente/perfil',
-      component: () => <ClientProfile />,
-    },
-    {
-      path: '/cliente/score-crediticio',
-      component: () => <Score />,
-    },
-  ];
-  const investorRoutes = [
-    {
-      exact: true,
-      path: '/inversionista/dashboard',
-      component: () => <InvestorHome authData={props.authData} />,
-    },
-    {
-      path: '/inversionista/perfil',
-      component: () => <InvestorProfile />,
-    },
-    {
-      path: '/inversionista/oportunidades/:type?',
-      component: () => <Opportunities />,
-    },
-    {
-      path: '/inversionista/mis-inversiones/:type?',
-      component: () => <MyInvests />,
-    },
-    {
-      path: '/inversionista/prestamo/:loanId',
-      component: () => <Loan match={props.match} />,
-    },
-  ];
-  let routes = [];
-  if (props.authData.data.roleId === 1) {
-    routes = clientRoutes;
-  } else if (props.authData.data.roleId === 2) {
-    routes = investorRoutes;
-  }
-  return (
-    <Switch>
-      {routes.map((route, index) => (
-        <Route
-          key={index} // eslint-disable-line
-          path={route.path}
-          component={route.component}
-          exact={route.exact}
-        />
-      ))}
-      <Redirect from="*" to="/" />
-    </Switch>
-  );
-};
+const Routes = props => (
+  <div>
+    { props.authData.data.roleId === 1 ? (
+      <Switch>
+        <Route exact path="/" component={ClientHome} />
+        <Route path="/cliente/dashboard" component={ClientHome} />
+        <Route path="/cliente/prestamo-aprobado" component={LoanApproved} />
+        <Route path="/cliente/solicitud-credito" component={LoanRequest} />
+        <Route path="/cliente/perfil" component={ClientProfile} />
+        <Route path="/cliente/score-crediticio" component={Score} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    ) : (
+      <Switch>
+        <Route exact path="/" component={InvestorHome} />
+        <Route path="/inversionista/dashboard" component={InvestorHome} />
+        <Route path="/inversionista/perfil" component={InvestorProfile} />
+        <Route path="/inversionista/oportunidades/:type?" component={Opportunities} />
+        <Route path="/inversionista/mis-inversiones/:type?" component={MyInvests} />
+        <Route path="/inversionista/prestamo/:loanId" component={Loan} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    )}
+  </div>
+);
 
-export default Routes;
+const mapStateToProps = state => ({
+  authData: state.user,
+  userProfile: state.userProfile,
+});
+
+export default withRouter(connect(mapStateToProps)(Routes));

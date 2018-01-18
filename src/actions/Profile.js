@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as types from '../constants';
 import * as service from '../service';
+import * as Locales from './Locales';
 
 export function getZipCodeInit() {
   return {
@@ -33,7 +34,7 @@ export function getZipCode() {
   return (dispatch, getState) => {
     dispatch(getZipCodeInit());
     service.get({
-      endpoint: `/getZipcode/${getState().clientProfile.province}/${getState().clientProfile.canton}/${getState().clientProfile.district}`,
+      endpoint: `/getZipcode/${getState().userProfile.province}/${getState().userProfile.canton}/${getState().userProfile.district}`,
     })
       .then((response) => {
         dispatch(getZipCodeSuccess(response.body[0].zipCode));
@@ -41,27 +42,27 @@ export function getZipCode() {
       .catch(error => dispatch(getZipCodeError(error)));
   };
 }
-export function getClientProfileInit() {
+export function getUserProfileInit() {
   return {
-    type: types.GET_CLIENT_PROFILE_INIT,
+    type: types.GET_USER_PROFILE_INIT,
     payload: {
       isLoading: true,
       error: null,
     },
   };
 }
-export function getClientProfileError(error) {
+export function getUserProfileError(error) {
   return {
-    type: types.GET_CLIENT_PROFILE_ERROR,
+    type: types.GET_USER_PROFILE_ERROR,
     payload: {
       isLoading: false,
       error,
     },
   };
 }
-export function getClientProfileSuccess(data) {
+export function getUserProfileSuccess(data) {
   return {
-    type: types.GET_CLIENT_PROFILE_SUCCESS,
+    type: types.GET_USER_PROFILE_SUCCESS,
     payload: {
       isLoading: false,
       error: null,
@@ -69,274 +70,86 @@ export function getClientProfileSuccess(data) {
     },
   };
 }
-export function clearClientProfile() {
+export function clearUserProfile() {
   return {
-    type: types.CLEAR_CLIENT_PROFILE,
+    type: types.CLEAR_USER_PROFILE,
   };
 }
-export function getClientProfile() {
-  return (dispatch, getState) => {
-    dispatch(getClientProfileInit());
-    const id = getState().user.data.userId;
-    service.get({
-      endpoint: `/users/${id}`,
-    })
-      .then((response) => {
-        const {
-          name,
-          lastName,
-          email,
-          nationality,
-          identification,
-          phone,
-          cellphone,
-          address,
-          province,
-          canton,
-          district,
-          zipCode,
-          referencePhone,
-          relativePhone,
-          bank,
-          clientAccount,
-          iban,
-        } = response.body[0];
-        dispatch(getClientProfileSuccess({
-          name,
-          lastName,
-          email,
-          nationality,
-          identification,
-          phone,
-          cellphone,
-          address,
-          province,
-          canton,
-          district,
-          zipCode,
-          referencePhone,
-          relativePhone,
-          bank,
-          clientAccount,
-          iban,
-        }));
+export function getUserProfile(userId) {
+  return (dispatch) => {
+    dispatch(getUserProfileInit());
+    try {
+      service.get({
+        endpoint: `/users/${userId}`,
       })
-      .catch(error => dispatch(getClientProfileError(error)));
+        .then((response) => {
+          dispatch(Locales.getProvinces());
+          dispatch(Locales.getCantons(response.body[0].province));
+          dispatch(Locales.getDistricts(response.body[0].province, response.body[0].canton));
+          dispatch(getUserProfileSuccess(response.body[0]));
+        })
+        .catch(error => dispatch(getUserProfileError(error)));
+    } catch (error) {
+      dispatch(getUserProfileError(error));
+    }
   };
 }
-export function editClientProfile({ field, value }) {
+export function editUserProfile({ field, value }) {
   return {
-    type: types.EDIT_CLIENT_PROFILE,
+    type: types.EDIT_USER_PROFILE,
     payload: {
       field,
       value,
     },
   };
 }
-export function saveClientProfileInit() {
+export function saveUserProfileInit() {
   return {
-    type: types.SAVE_CLIENT_PROFILE_INIT,
+    type: types.SAVE_USER_PROFILE_INIT,
     payload: {
       isLoading: true,
       error: null,
     },
   };
 }
-export function saveClientProfileError(error) {
+export function saveUserProfileError(error) {
   return {
-    type: types.SAVE_CLIENT_PROFILE_ERROR,
+    type: types.SAVE_USER_PROFILE_ERROR,
     payload: {
       isLoading: false,
       error,
     },
   };
 }
-export function saveClientProfileSuccess(data) {
+export function saveuserProfileSuccess(data) {
   return {
-    type: types.SAVE_CLIENT_PROFILE_SUCCESS,
+    type: types.SAVE_USER_PROFILE_SUCCESS,
     payload: {
       isLoading: false,
       ...data,
     },
   };
 }
-export function saveClientProfile() {
+export function saveUserProfile() {
   return (dispatch, getState) => {
-    dispatch(saveClientProfileInit());
-    const {
-      name,
-      lastName,
-      email,
-      nationality,
-      identification,
-      cellphone,
-      address,
-      province,
-      canton,
-      district,
-      zipCode,
-      referencePhone,
-      relativePhone,
-      bank,
-      clientAccount,
-      iban,
-    } = getState().clientProfile;
-    let payload = {
-      name,
-      lastName,
-      email,
-      nationality,
-      identification,
-      cellphone,
-      address,
-      province,
-      canton,
-      district,
-      zipCode,
-      referencePhone,
-      relativePhone,
-      bank,
-      clientAccount,
-      iban,
-    };
-    payload = _.pickBy(payload, _.identity);
-    const { userId } = getState().user.data;
-    service.patch({
-      endpoint: `/users/${userId}`,
-      payload,
-    })
-      .then((response) => {
-        dispatch(saveClientProfileSuccess(response.body));
+    dispatch(saveUserProfileInit());
+    try {
+      const { userProfile } = getState();
+      const { userId } = userProfile;
+      const payload = _.chain(userProfile)
+        .pickBy(_.identity)
+        .omit(['userId', 'isLoading', 'lastUpdate', 'roleName'])
+        .value();
+      service.patch({
+        endpoint: `/users/${userId}`,
+        payload,
       })
-      .catch(error => dispatch(saveClientProfileError(error)));
-  };
-}
-// Inversionista
-export function getInvestorProfileInit() {
-  return {
-    type: types.GET_INVESTOR_PROFILE_INIT,
-    payload: {
-      isLoading: true,
-      error: null,
-    },
-  };
-}
-export function getInvestorProfileError(error) {
-  return {
-    type: types.GET_INVESTOR_PROFILE_ERROR,
-    payload: {
-      isLoading: false,
-      error,
-    },
-  };
-}
-export function getInvestorProfileSuccess(data) {
-  return {
-    type: types.GET_INVESTOR_PROFILE_SUCCESS,
-    payload: {
-      isLoading: false,
-      error: null,
-      ...data,
-    },
-  };
-}
-export function clearInvestorProfile() {
-  return {
-    type: types.CLEAR_INVESTOR_PROFILE,
-  };
-}
-export function getInvestorProfile() {
-  return (dispatch, getState) => {
-    dispatch(getInvestorProfileInit());
-    const id = getState().user.data.userId;
-    service.get({
-      endpoint: `/users/${id}`,
-    })
-      .then((response) => {
-        const {
-          name,
-          lastName,
-          email,
-          identification,
-          cellphone,
-          phone,
-        } = response.body[0];
-        dispatch(getInvestorProfileSuccess({
-          name,
-          lastName,
-          email,
-          identification,
-          cellphone,
-          phone,
-        }));
-      })
-      .catch(error => dispatch(getInvestorProfileError(error)));
-  };
-}
-export function editInvestorProfile({ field, value }) {
-  return {
-    type: types.EDIT_INVESTOR_PROFILE,
-    payload: {
-      field,
-      value,
-    },
-  };
-}
-export function saveInvestorProfileInit() {
-  return {
-    type: types.SAVE_INVESTOR_PROFILE_INIT,
-    payload: {
-      isLoading: true,
-      error: null,
-    },
-  };
-}
-export function saveInvestorProfileError(error) {
-  return {
-    type: types.SAVE_INVESTOR_PROFILE_ERROR,
-    payload: {
-      isLoading: false,
-      error,
-    },
-  };
-}
-export function saveInvestorProfileSuccess(data) {
-  return {
-    type: types.SAVE_INVESTOR_PROFILE_SUCCESS,
-    payload: {
-      isLoading: false,
-      ...data,
-    },
-  };
-}
-export function saveInvestorProfile() {
-  return (dispatch, getState) => {
-    dispatch(saveInvestorProfileInit());
-    const {
-      name,
-      lastName,
-      email,
-      identification,
-      cellphone,
-      phone,
-    } = getState().investorProfile;
-    let payload = {
-      name,
-      lastName,
-      email,
-      identification,
-      cellphone,
-      phone,
-    };
-    payload = _.pickBy(payload, _.identity);
-    const { userId } = getState().user.data;
-    service.patch({
-      endpoint: `/users/${userId}`,
-      payload,
-    })
-      .then((response) => {
-        dispatch(saveInvestorProfileSuccess(response.body));
-      })
-      .catch(error => dispatch(saveInvestorProfileError(error)));
+        .then((response) => {
+          dispatch(saveuserProfileSuccess(response.body[0]));
+        })
+        .catch(error => dispatch(saveUserProfileError(error)));
+    } catch (error) {
+      dispatch(saveUserProfileError(error));
+    }
   };
 }

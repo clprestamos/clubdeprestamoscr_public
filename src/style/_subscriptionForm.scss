@@ -52,14 +52,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    .ui.message {
+      width: 100%;
+      p {
+        text-align: left;
+      }
+    }
     .field {
       width: 48%;
       @media all and (max-width: 667px) {
         width: 100%;
       }
     }
-    .field.name, .field.email, .field.address, .field.nationality, .field.reason, .field.password, .field.recaptcha {
+    .field.name, .field.email, .field.address, .field.nationality, .field.reason, .field.password, .field.recaptcha, .field.disclaimer {
       width: 100%;
+    }
+    .field.disclaimer > p {
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 1.36;
+      color: $light-gray;
     }
     .ui.input {
       input[type="text"],
