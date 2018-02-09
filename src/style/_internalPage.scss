@@ -167,7 +167,7 @@
       padding: 0;
     }
   }
-  .content {
+  & > .content {
     width: 69.25vw;
     @media all and (max-width: 480px) {
       width: 90vw;

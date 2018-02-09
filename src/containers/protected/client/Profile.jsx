@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import _ from 'lodash';
 import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Card, Form, Dropdown, Label, Icon } from 'semantic-ui-react';
+import { Card, Form, Dropdown, Label, Icon, Radio } from 'semantic-ui-react';
 
 import * as utils from '../../../utils';
 import * as Locales from '../../../actions/Locales';
@@ -37,6 +38,11 @@ class ProfileComponent extends Component {
       this.getCantons(nextProps.profile.province);
       this.getDistricts(nextProps.profile.canton);
     }
+  }
+  onRadioChange({ value, name }) {
+    const { dispatch } = this.props;
+    const isChecked = value === 'yes';
+    dispatch(Profile.editUserProfile({ field: name, value: isChecked }));
   }
   onChangeProvinces(province) {
     this.getCantons(province);
@@ -103,7 +109,6 @@ class ProfileComponent extends Component {
     const cantons = utils.getDropDownItems(this.props.cantons);
     const districts = utils.getDropDownItems(this.props.districts);
     const {
-      name,
       lastName,
       email,
       nationality,
@@ -120,6 +125,15 @@ class ProfileComponent extends Component {
       clientAccount,
       iban,
       phone,
+      sex,
+      maritalStatus,
+      home,
+      otherProperties,
+      jobSector,
+      jobCategory,
+      academicLevel,
+      hasVehicle,
+      jobTime,
     } = this.props.profile;
     return (
       <div className="profile">
@@ -138,7 +152,7 @@ class ProfileComponent extends Component {
                     inputPlaceholder="Nombre"
                     labelText="Nombre:"
                     handleOnChange={this.onChangeField}
-                    defaultValue={name}
+                    defaultValue={this.props.profile.name}
                     validation={value => this.validation({ type: 'text', value })}
                     errorMessage="Campo requerido."
                     inputName="name"
@@ -363,6 +377,165 @@ class ProfileComponent extends Component {
                       validation={value => this.validation({ type: 'iban', value })}
                       errorMessage="Campo requerido. Debe digitar los 22 dígitos de su cuenta."
                       inputName="clientAccount"
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Sexo:</label>
+                    <Dropdown
+                      placeholder="Sexo"
+                      fluid
+                      search
+                      selection
+                      options={utils.getSex()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'sex', value });
+                      }}
+                      value={sex}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Estado civil:</label>
+                    <Dropdown
+                      placeholder="Estado civil"
+                      fluid
+                      search
+                      selection
+                      options={utils.getMaritalStatus()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'maritalStatus', value });
+                      }}
+                      value={maritalStatus}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Casa:</label>
+                    <Dropdown
+                      placeholder="Casa"
+                      fluid
+                      search
+                      selection
+                      options={utils.getHome()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'home', value });
+                      }}
+                      value={home}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Sector empleo:</label>
+                    <Dropdown
+                      placeholder="Sector empleo"
+                      fluid
+                      search
+                      selection
+                      options={utils.getJobSector()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'jobSector', value });
+                      }}
+                      value={jobSector}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Categoría laboral:</label>
+                    <Dropdown
+                      placeholder="Categoría laboral"
+                      fluid
+                      search
+                      selection
+                      options={utils.getJobCategory()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'jobCategory', value });
+                      }}
+                      value={jobCategory}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Nivel académico:</label>
+                    <Dropdown
+                      placeholder="Nivel académico"
+                      fluid
+                      search
+                      selection
+                      options={utils.getAcademicLevel()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'academicLevel', value });
+                      }}
+                      value={academicLevel}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field>
+                    <label className="ui label float-label pointing below">Antiguedad laboral:</label>
+                    <Dropdown
+                      placeholder="Antiguedad laboral"
+                      fluid
+                      search
+                      selection
+                      options={utils.getJobTime()}
+                      onChange={(e, { value }) => {
+                        this.onChangeField({ field: 'jobTime', value });
+                      }}
+                      value={jobTime}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Posee Vehículo:</label>
+                    <Radio
+                      label="Si"
+                      name="hasVehicle"
+                      value="yes"
+                      checked={hasVehicle}
+                      onChange={(e, { value, name }) => {
+                        this.onRadioChange({ value, name });
+                      }}
+                      disabled={this.state.isDisabled}
+                    />
+                    <Radio
+                      label="No"
+                      name="hasVehicle"
+                      value="no"
+                      checked={!hasVehicle}
+                      onChange={(e, { value, name }) => {
+                        this.onRadioChange({ value, name });
+                      }}
+                      disabled={this.state.isDisabled}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Posee otras propiedades:</label>
+                    <Radio
+                      label="Si"
+                      name="otherProperties"
+                      value="yes"
+                      checked={otherProperties}
+                      onChange={(e, { value, name }) => {
+                        this.onRadioChange({ value, name });
+                      }}
+                      disabled={this.state.isDisabled}
+                    />
+                    <Radio
+                      label="No"
+                      name="otherProperties"
+                      value="no"
+                      checked={!otherProperties}
+                      onChange={(e, { value, name }) => {
+                        this.onRadioChange({ value, name });
+                      }}
                       disabled={this.state.isDisabled}
                     />
                   </Form.Field>

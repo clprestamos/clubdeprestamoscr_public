@@ -6,6 +6,19 @@
   @media all and (min-width: 601px) {
     width: calc(100vw - 186px);
   }
+  .payments {
+    .ui.header {
+      margin: 3rem 0;
+      .sub.header {
+        margin-top: 2rem;
+        padding: 0 25%;
+        text-align: center;
+      }
+    }
+    .ui.table {
+      border: 1px solid rgba(34,36,38,.15);
+    }
+  }
   .ui.table {
     border: none;
     th {

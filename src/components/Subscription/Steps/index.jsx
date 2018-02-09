@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 
 const Steps = (props) => {
-  const { step1, step2, step3 } = props;
+  const {
+    step1,
+    step2,
+    step3,
+    step4,
+  } = props;
   const ovals = (
     <li className="ovals">
       <ul>
@@ -31,6 +36,14 @@ const Steps = (props) => {
       <button className={`${step3.isActive ? 'active' : ''}`}>3</button>
     );
   }
+  let buttonStep4 = '';
+  if (step4) {
+    buttonStep4 = step4.isComplete ? (
+      <button className="complete" onClick={step4.handleClick}><Icon name="check" /></button>
+    ) : (
+      <button className={`${step4.isActive ? 'active' : ''}`}>4</button>
+    );
+  }
   return (
     <div className="steps">
       {props.title}
@@ -41,6 +54,10 @@ const Steps = (props) => {
         {buttonStep3 ? ovals : ''}
         {buttonStep3 ? (
           <li>{buttonStep3}</li>
+        ) : ''}
+        {buttonStep4 ? ovals : ''}
+        {buttonStep4 ? (
+          <li>{buttonStep4}</li>
         ) : ''}
       </ul>
     </div>
@@ -60,6 +77,11 @@ Steps.propTypes = {
     handleClick: PropTypes.func,
   }),
   step3: PropTypes.shape({
+    isActive: PropTypes.bool,
+    isComplete: PropTypes.bool,
+    handleClick: PropTypes.func,
+  }),
+  step4: PropTypes.shape({
     isActive: PropTypes.bool,
     isComplete: PropTypes.bool,
     handleClick: PropTypes.func,

@@ -21,7 +21,6 @@ import Logout from './containers/Logout';
 import Dashboard from './containers/protected/Dashboard';
 import ChangePassword from './containers/ChangePassword';
 import TermsConditions from './containers/TermsConditions';
-import Policies from './containers/Policies';
 
 let isAuthenticated = false;
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -55,7 +54,6 @@ const Routes = (props) => {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/terminosycondiciones" component={TermsConditions} />
-          <Route path="/politicasyprivacidad" component={Policies} />
           <Route path="/comofunciona" component={HowWorks} />
           <Route path="/acercadenosotros" component={AboutUs} />
           <Route path="/preguntasfrecuentes" component={Faqs} />

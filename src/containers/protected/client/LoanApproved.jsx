@@ -6,6 +6,7 @@ import { Card, Table, Message, Icon, Responsive, Grid } from 'semantic-ui-react'
 
 import * as Loan from '../../../actions/Loan';
 import * as utils from '../../../utils';
+import Payments from '../../../components/Payments';
 
 class LoanApproved extends Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class LoanApproved extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
+                <Payments amount={amount} term={term} interest={interest} approvedDate={approvedDate} />
               </Responsive>
               <Responsive maxWidth={600}>
                 <Grid celled>
@@ -105,6 +107,7 @@ class LoanApproved extends Component {
                     <Grid.Column width={10}>{reason}</Grid.Column>
                   </Grid.Row>
                 </Grid>
+                <Payments amount={amount} term={term} interest={interest} approvedDate={approvedDate} />
               </Responsive>
             </Card.Content>
           ) : (

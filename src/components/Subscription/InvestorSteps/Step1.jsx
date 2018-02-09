@@ -20,10 +20,13 @@ class Step1 extends Component {
       this.props.handleSubmit();
     }
   }
-  validation({ type, value }) {
+  validation({ type, value, customRegExp }) {
     let result = true;
     if (value === '') result = true;
     if (utils.validateExp({ type, value })) result = false;
+    if (customRegExp) {
+      if (utils.validateExp({ type, value, customRegExp })) result = false;
+    }
     this.setState({
       hasErrors: result,
     });
@@ -55,7 +58,7 @@ class Step1 extends Component {
     {
       id: 3,
       placeholder: 'Cédula *',
-      errorMessage: 'Campo requerido. Formato de cédula #-0###-0###',
+      errorMessage: 'Campo requerido. Nacional: #-####-####',
       onChangeField,
       name: 'identification',
       defaultValue: investorInfo.identification,

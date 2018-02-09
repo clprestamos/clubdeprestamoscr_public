@@ -18,6 +18,9 @@ class Hero extends Component {
       isChangeAvatarModalOpen: !this.state.isChangeAvatarModalOpen,
     });
   }
+  handleUpload(file) {
+    this.props.handleUpload(file);
+  }
   render() {
     const {
       roleId,
@@ -40,7 +43,11 @@ class Hero extends Component {
         {!avatar ? <Image src="https://react.semantic-ui.com/assets/images/wireframe/square-image.png" size="tiny" circular onClick={this.handleChangeAvatarModalOpen} /> : <Image src={avatar} size="tiny" circular onClick={this.handleChangeAvatarModalOpen} />}
         <p className="welcome">Hola {name} bienvenido a tu cuenta.</p>
         {legend}
-        <ChangeAvatarModal isOpen={this.state.isChangeAvatarModalOpen} handleCancel={this.handleChangeAvatarModalOpen} />
+        <ChangeAvatarModal
+          isOpen={this.state.isChangeAvatarModalOpen}
+          handleCancel={this.handleChangeAvatarModalOpen}
+          handleUpload={this.handleUpload}
+        />
       </div>
     );
   }
@@ -48,6 +55,7 @@ class Hero extends Component {
 
 Hero.propTypes = {
   userProfile: PropTypes.object.isRequired,
+  handleUpload: PropTypes.func.isRequired,
 };
 
 export default Hero;

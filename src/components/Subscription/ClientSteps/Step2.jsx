@@ -131,7 +131,7 @@ class Step2 extends Component {
               <Label.Detail>Código Postal</Label.Detail>
             </Label>
           </Form.Field>
-          <Form.Field className="relativePhone">
+          <Form.Field className="relative-phone">
             <InputField
               placeholder="Teléfono de un familiar *"
               validation={value => this.validation({ value, type: 'phone' })}

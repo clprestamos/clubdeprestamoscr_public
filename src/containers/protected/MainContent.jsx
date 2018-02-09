@@ -37,7 +37,7 @@ class MainContent extends Component {
     const clientMenuItems = [
       {
         name: 'dashboard',
-        text: 'Dashboard',
+        text: 'Panel de control',
         url: '/cliente/dashboard',
       },
       {
@@ -47,7 +47,7 @@ class MainContent extends Component {
       },
       {
         name: 'score-crediticio',
-        text: 'Score Crediticio',
+        text: 'Calificación crediticia',
         url: '/cliente/score-crediticio',
       },
       {
@@ -64,7 +64,7 @@ class MainContent extends Component {
     const investorMenuItems = [
       {
         name: 'dashboard',
-        text: 'Dashboard',
+        text: 'Panel de control',
         url: '/inversionista/dashboard',
       },
       {
