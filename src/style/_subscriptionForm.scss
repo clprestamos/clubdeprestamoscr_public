@@ -9,6 +9,12 @@
     padding: 5vh 0;
   }
 
+  .investor-subscription {
+    .field {
+      width: 48%;
+    }
+  }
+
   &> div, .divider {
     width: 35vw;
     @media all and (max-width: 1024px) {
@@ -48,24 +54,63 @@
       font-size: inherit;
     }
   }
+  .Step2 {
+    .ui.form {
+      .field {
+        width: 48%;
+        @media all and (max-width: 568px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .field.password {
+    width: 48%;
+  }
   .ui.form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    .ui.radio {
+      margin-right: 10%;
+    }
     .ui.message {
       width: 100%;
+      .content {
+        width: 100%;
+      }
       p {
         text-align: left;
       }
     }
-    .field {
-      width: 48%;
-      @media all and (max-width: 667px) {
-        width: 100%;
+    .fields {
+      width: 100%;
+      .field {
+        width: 48%;
+        @media all and (max-width: 568px) {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+      }
+      .field.client- {
+        &name, &lastname, &email {
+          width: 96%;
+        }
       }
     }
-    .field.name, .field.email, .field.address, .field.nationality, .field.reason, .field.password, .field.recaptcha, .field.disclaimer {
+    .field.address, .field.disclaimer, .field.reason {
       width: 100%;
+    }
+    .field.address-details, .field.relative-phone, .field.cellphone {
+      width: 48%;
+    }
+    @media all and (max-width: 568px) {
+      .field, .field.address-details, .field.relative-phone, .field.cellphone {
+        width: 100%;
+      }
+      .field.address-details, .field.zipCode {
+        width: 100%;
+      }
     }
     .field.disclaimer > p {
       font-size: 11px;

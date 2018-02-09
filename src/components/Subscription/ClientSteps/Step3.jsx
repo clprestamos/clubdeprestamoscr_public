@@ -1,14 +1,12 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Dropdown, Radio, Message } from 'semantic-ui-react';
 
 import * as utils from '../../../utils';
-
-import InputField from '../../InputField';
-import Recaptcha from '../../Recaptcha';
 
 import * as RegisterClient from '../../../actions/RegisterClient';
 
@@ -20,104 +18,213 @@ class Step3 extends Component {
       RegisterClient,
     }, dispatch);
     this.state = {
-      hasErrors: true,
-      password: '',
+      requiredMessage: false,
     };
     autobind(this);
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      hasErrors: !(nextProps.clientInfo.password !== '' && nextProps.captcha !== ''),
-    });
   }
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(RegisterClient.clearErrorSubscription());
   }
+  onRadioChange({ value, name }) {
+    const isChecked = value === 'yes';
+    this.props.onChangeField({ field: name, value: isChecked });
+  }
   handleSubmit() {
-    if (!this.state.hasErrors && this.props.captcha) {
+    if (this.validation()) {
       this.props.handleSubmit();
+    } else {
+      this.setState({
+        requiredMessage: true,
+      });
     }
   }
-  validation({ type, value }) {
-    let result = true;
-    if (value === '') result = true;
-    if (utils.validateExp({ type, value })) result = false;
-    this.setState({
-      hasErrors: result,
-    });
-    return result;
+  validation() {
+    const {
+      sex,
+      maritalStatus,
+      home,
+      jobSector,
+      jobCategory,
+      academicLevel,
+      jobTime,
+    } = this.props.clientInfo;
+    if (sex && maritalStatus && home &&
+      jobSector && jobCategory && academicLevel && jobTime
+    ) {
+      return true;
+    }
+    return false;
   }
   render() {
-    const { onChangeField, clientInfo } = this.props;
-    const inputFields = [
-      {
-        id: 1,
-        placeholder: 'Password *',
-        errorMessage: 'Campo requerido. Mínimo 8 caracteres, Máximo 16 caracteres.',
-        customClass: 'password',
-        inputType: 'password',
-        onChangeField: (e) => {
-          this.setState({
-            password: e.value,
-          });
-        },
-        name: 'password',
-        isRequired: true,
-        defaultValue: clientInfo.password,
-        validation: value => this.validation({ value, type: 'password' }),
-      },
-      {
-        id: 2,
-        placeholder: 'Confirmar password *',
-        hasError: false,
-        errorMessage: 'Los campos no coinciden.',
-        customClass: 'password',
-        inputType: 'password',
-        onChangeField,
-        name: 'password',
-        isRequired: true,
-        validation: (value) => {
-          if (value !== this.state.password) {
-            this.setState({
-              hasErrors: true,
-            });
-            return true;
-          }
-          return this.validation({ value, type: 'password' });
-        },
-      },
-    ];
+    const { clientInfo } = this.props;
     const { clientSubscriptionError } = this.props;
+    const errorMessage = this.state.requiredMessage ? (
+      <Message negative content="Todos los campos son requeridos" />
+    ) : '';
     return (
-      <div className="client-subscription step3">
-        <Form onSubmit={this.handleSubmit} error={clientSubscriptionError && clientSubscriptionError === 409}>
-          {
-            inputFields.map(inputField => (
-              <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
-                <InputField
-                  placeholder={inputField.placeholder}
-                  validation={inputField.validation}
-                  errorMessage={inputField.errorMessage}
-                  inputType={inputField.inputType}
-                  onChangeField={inputField.onChangeField}
-                  name={inputField.name}
-                  isRequired={inputField.isRequired}
-                  defaultValue={inputField.defaultValue}
-                />
-              </Form.Field>
-            ))
-          }
-          <Form.Field className="recaptcha">
-            <Recaptcha />
-          </Form.Field>
+      <div className="client-subscription step4">
+        {errorMessage}
+        <Form onSubmit={this.handleSubmit} error={clientSubscriptionError}>
+          <Form.Group>
+            <Form.Field>
+              <label>Sexo:</label>
+              <Dropdown
+                placeholder="Sexo *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getSex()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'sex', value });
+                }}
+                defaultValue={clientInfo.sex}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Estado Civil:</label>
+              <Dropdown
+                placeholder="Estado Civil *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getMaritalStatus()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'maritalStatus', value });
+                }}
+                defaultValue={clientInfo.maritalStatus}
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <label>Casa de habitación:</label>
+              <Dropdown
+                placeholder="Casa de habitación *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getHome()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'home', value });
+                }}
+                defaultValue={clientInfo.home}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Otras Propiedades:</label>
+              <Radio
+                label="Si"
+                name="otherProperties"
+                value="yes"
+                checked={clientInfo.otherProperties}
+                onChange={(e, { value, name }) => {
+                  this.onRadioChange({ value, name });
+                }}
+              />
+              <Radio
+                label="No"
+                name="otherProperties"
+                value="no"
+                checked={!clientInfo.otherProperties}
+                onChange={(e, { value, name }) => {
+                  this.onRadioChange({ value, name });
+                }}
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <label>Sector Empleo:</label>
+              <Dropdown
+                placeholder="Sector Empleo *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getJobSector()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'jobSector', value });
+                }}
+                defaultValue={clientInfo.jobSector}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Categoria Laboral:</label>
+              <Dropdown
+                placeholder="Categoria Laboral *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getJobCategory()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'jobCategory', value });
+                }}
+                defaultValue={clientInfo.jobCategory}
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <label>Nivel Académico:</label>
+              <Dropdown
+                placeholder="Nivel Académico *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getAcademicLevel()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'academicLevel', value });
+                }}
+                defaultValue={clientInfo.academicLevel}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Posee Vehículo:</label>
+              <Radio
+                label="Si"
+                name="hasVehicle"
+                value="yes"
+                checked={clientInfo.hasVehicle}
+                onChange={(e, { value, name }) => {
+                  this.onRadioChange({ value, name });
+                }}
+              />
+              <Radio
+                label="No"
+                name="hasVehicle"
+                value="no"
+                checked={!clientInfo.hasVehicle}
+                onChange={(e, { value, name }) => {
+                  this.onRadioChange({ value, name });
+                }}
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <label>Antiguedad laboral:</label>
+              <Dropdown
+                placeholder="Antiguedad laboral *"
+                selection
+                fluid
+                compact
+                search
+                options={utils.getJobTime()}
+                onChange={(e, { value }) => {
+                  this.props.onChangeField({ field: 'jobTime', value });
+                }}
+                defaultValue={clientInfo.jobTime}
+              />
+            </Form.Field>
+          </Form.Group>
           <button type="submit" className="btn default">{this.props.btnText}</button>
           <span>Campos obligatorios **</span>
-          <Message
-            error
-            header="Usuario ya existe"
-            content="Debe registrar otro usuario en nuestro sistema, ya existe el elegido."
-          />
         </Form>
       </div>
     );
@@ -129,7 +236,6 @@ Step3.propTypes = {
   btnText: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
   clientInfo: PropTypes.object.isRequired,
-  captcha: PropTypes.string.isRequired,
   clientSubscriptionError: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

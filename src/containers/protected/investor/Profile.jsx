@@ -87,6 +87,9 @@ class ProfileComponent extends Component {
       cellphone,
       phone,
       email,
+      bank,
+      clientAccount,
+      iban,
     } = this.props.userProfile;
     const imageAvatar = !avatar ? 'https://react.semantic-ui.com/assets/images/wireframe/square-image.png' : avatar;
     const avatarContent = (
@@ -181,6 +184,47 @@ class ProfileComponent extends Component {
               validation={value => this.validation({ type: 'phone', value })}
               errorMessage="Campo requerido. Formato de celular ####-#### ó ########."
               inputName="cellphone"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="Banco"
+              labelText="Banco:"
+              handleOnChange={this.onChangeField}
+              defaultValue={bank}
+              validation={value => this.validation({ type: 'text', value })}
+              errorMessage="Campo requerido."
+              inputName="bank"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="Cuenta cliente"
+              labelText="Cuenta cliente:"
+              handleOnChange={this.onChangeField}
+              defaultValue={clientAccount}
+              validation={value => this.validation({ type: 'clientAccount', value })}
+              errorMessage="Campo requerido."
+              inputName="clientAccount"
+              disabled={this.state.isDisabled}
+            />
+          </Form.Field>
+          <Form.Field>
+            <InputField
+              inputType="text"
+              inputPlaceholder="IBAN"
+              labelText="IBAN:"
+              handleOnChange={this.onChangeField}
+              defaultValue={iban}
+              validation={value => this.validation({ type: 'iban', value })}
+              errorMessage="Campo requerido."
+              inputName="iban"
               disabled={this.state.isDisabled}
             />
           </Form.Field>

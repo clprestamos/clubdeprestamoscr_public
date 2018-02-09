@@ -95,6 +95,31 @@ export function getUserProfile(userId) {
   };
 }
 export function editUserProfile({ field, value }) {
+  if (field === 'identification') {
+    if (!_.isNaN(value) && value.length === 9) {
+      const province = `${_.chain(value).split('').first().value()}-`;
+      const folio = `${_.chain(value).split('').slice(1, 5).join('')
+        .value()}-`;
+      const consecutive = `${_.chain(value).split('').slice(5, 9).join('')
+        .value()}`;
+      return dispatch => dispatch({
+        type: types.EDIT_USER_PROFILE,
+        payload: {
+          field,
+          value: `${province}${folio}${consecutive}`,
+        },
+      });
+    }
+  }
+  if (/(p|P)hone/.test(field)) {
+    return dispatch => dispatch({
+      type: types.EDIT_USER_PROFILE,
+      payload: {
+        field,
+        value: _.replace(value, '-', ''),
+      },
+    });
+  }
   return {
     type: types.EDIT_USER_PROFILE,
     payload: {

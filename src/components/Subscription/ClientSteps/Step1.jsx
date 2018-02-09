@@ -15,11 +15,6 @@ class Step1 extends Component {
     };
     autobind(this);
   }
-  handleSubmit() {
-    if (!this.state.hasErrors) {
-      this.props.handleSubmit();
-    }
-  }
   validation({ type, value }) {
     let result = true;
     if (value === '') result = true;
@@ -29,103 +24,110 @@ class Step1 extends Component {
     });
     return result;
   }
+  handleSubmit() {
+    if (!this.state.hasErrors) {
+      this.props.handleSubmit();
+    }
+  }
   render() {
     const { onChangeField, clientInfo } = this.props;
-    const inputFields = [{
-      id: 1,
-      placeholder: 'Nombre *',
-      errorMessage: 'Campo requerido, digite solamente caracteres',
-      customClass: 'name',
-      onChangeField,
-      name: 'name',
-      defaultValue: clientInfo.name,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'text' }),
-    },
-    {
-      id: 2,
-      placeholder: 'Apellido *',
-      errorMessage: 'Campo requerido, digite solamente caracteres',
-      onChangeField,
-      name: 'lastName',
-      defaultValue: clientInfo.lastName,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'text' }),
-    },
-    {
-      id: 3,
-      placeholder: 'Cédula *',
-      errorMessage: 'Campo requerido. Formato de cédula #-0###-0###',
-      onChangeField,
-      name: 'identification',
-      defaultValue: clientInfo.identification,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'identification' }),
-    },
-    {
-      id: 4,
-      placeholder: 'Nacionalidad *',
-      errorMessage: 'Campo requerido.',
-      onChangeField,
-      name: 'nationality',
-      customClass: 'nationality',
-      defaultValue: clientInfo.nationality,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'text' }),
-    },
-    {
-      id: 5,
-      placeholder: 'Teléfono *',
-      errorMessage: 'Campo requerido. Formato de teléfono ####-#### ó ########',
-      inputType: 'tel',
-      onChangeField,
-      name: 'phone',
-      defaultValue: clientInfo.phone,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'phone' }),
-    },
-    {
-      id: 6,
-      placeholder: 'Teléfono de referencia *',
-      errorMessage: 'Campo requerido. Formato de teléfono ####-#### ó ########',
-      inputType: 'tel',
-      onChangeField,
-      name: 'referencePhone',
-      defaultValue: clientInfo.referencePhone,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'phone' }),
-    },
-    {
-      id: 7,
-      placeholder: 'Email * (Este va ser su usuario)',
-      errorMessage: 'Campo requerido. Formato de email inválido.',
-      inputType: 'email',
-      customClass: 'email',
-      onChangeField,
-      name: 'email',
-      defaultValue: clientInfo.email,
-      isRequired: true,
-      validation: value => this.validation({ value, type: 'email' }),
-    }];
     return (
       <div className="client-subscription step1">
         <Form onSubmit={this.handleSubmit}>
-          {
-            inputFields.map(inputField => (
-              <Form.Field key={inputField.id} className={inputField.customClass ? inputField.customClass : ''}>
-                <InputField
-                  placeholder={inputField.placeholder}
-                  validation={inputField.validation}
-                  errorMessage={inputField.errorMessage}
-                  inputType={inputField.inputType}
-                  onChangeField={inputField.onChangeField}
-                  name={inputField.name}
-                  defaultValue={inputField.defaultValue}
-                  isRequired={inputField.isRequired}
-                />
-              </Form.Field>
-            ))
-          }
+          <Form.Group>
+            <Form.Field className="client-name">
+              <InputField
+                placeholder="Nombre *"
+                validation={value => this.validation({ value, type: 'text' })}
+                errorMessage="Campo requerido, digite solamente caracteres"
+                inputType="text"
+                onChangeField={onChangeField}
+                name="name"
+                defaultValue={clientInfo.name}
+                isRequired
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field className="client-lastname">
+              <InputField
+                placeholder="Apellidos *"
+                validation={value => this.validation({ value, type: 'text' })}
+                errorMessage="Campo requerido, digite solamente caracteres"
+                inputType="text"
+                onChangeField={onChangeField}
+                name="lastName"
+                defaultValue={clientInfo.lastName}
+                isRequired
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <InputField
+                placeholder="Cédula *"
+                validation={value => this.validation({ value, type: 'identification' })}
+                errorMessage="Campo requerido"
+                inputType="text"
+                onChangeField={onChangeField}
+                name="identification"
+                defaultValue={clientInfo.identification}
+                isRequired
+              />
+            </Form.Field>
+            <Form.Field>
+              <InputField
+                placeholder="Nacionalidad *"
+                validation={value => this.validation({ value, type: 'text' })}
+                errorMessage="Campo requerido, digite solamente caracteres"
+                inputType="text"
+                onChangeField={onChangeField}
+                name="nationality"
+                defaultValue={clientInfo.nationality}
+                isRequired
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <InputField
+                placeholder="Teléfono *"
+                validation={value => this.validation({ value, type: 'phone' })}
+                errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########"
+                inputType="tel"
+                onChangeField={onChangeField}
+                name="phone"
+                defaultValue={clientInfo.phone}
+                isRequired
+              />
+            </Form.Field>
+            <Form.Field>
+              <InputField
+                placeholder="Teléfono de referencia *"
+                validation={value => this.validation({ value, type: 'phone' })}
+                errorMessage="Campo requerido. Formato de teléfono ####-#### ó ########"
+                inputType="tel"
+                onChangeField={onChangeField}
+                name="referencePhone"
+                defaultValue={clientInfo.referencePhone}
+                isRequired
+              />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field className="client-email">
+              <InputField
+                placeholder="Email (Este va ser su usuario) *"
+                validation={value => this.validation({ value, type: 'email' })}
+                errorMessage="Campo requerido. Formato de email inválido."
+                inputType="email"
+                onChangeField={onChangeField}
+                name="email"
+                defaultValue={clientInfo.email}
+                isRequired
+              />
+            </Form.Field>
+          </Form.Group>
           <button
             type="submit"
             className="btn default"

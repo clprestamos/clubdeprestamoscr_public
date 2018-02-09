@@ -15,6 +15,7 @@ const SubscriptionFormClient = props => (
         step1={props.clientInfo.step1}
         step2={props.clientInfo.step2}
         step3={props.clientInfo.step3}
+        step4={props.clientInfo.step4}
       />
       <ClientSteps clientSubscriptionError={props.clientSubscriptionError} clientInfo={props.clientInfo} captcha={props.captcha} />
     </div>

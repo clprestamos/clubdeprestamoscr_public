@@ -8,35 +8,35 @@ const Footer = (props) => {
     <footer>
       <div className="left-content">
         <p className="copyright">Club de Préstamos © 2017 San José, Costa Rica</p>
-        <p className="footer-links"><Link to="/terminosycondiciones">Términos y condiciones</Link> | <Link to="/politicasyprivacidad">Políticas de Privacidad</Link></p>
+        <p className="footer-links"><Link to="/terminosycondiciones">Términos y condiciones | Políticas de Privacidad</Link></p>
       </div>
       <div className="right-content">
         <ul>
           <li>Síganos</li>
-          <li>
+          {/* <li>
             <a href="http://twiiter.com" rel="noopener noreferrer" target="_blank">
               <Icon.Group>
                 <Icon inverted size="big" name="circle" />
                 <Icon name="twitter" />
               </Icon.Group>
             </a>
-          </li>
+          </li> */}
           <li>
-            <a href="http://facebook.com" rel="noopener noreferrer" target="_blank">
+            <a href="//www.facebook.com/clubdeprestamoscr/" rel="noopener noreferrer" target="_blank">
               <Icon.Group>
                 <Icon inverted size="big" name="circle" />
                 <Icon name="facebook" />
               </Icon.Group>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="http://youtube.com" rel="noopener noreferrer" target="_blank">
               <Icon.Group>
                 <Icon inverted size="big" name="circle" />
                 <Icon name="youtube play" />
               </Icon.Group>
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </footer>

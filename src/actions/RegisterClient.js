@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as types from '../constants';
 import * as service from '../service';
 
@@ -215,6 +216,15 @@ export function registerUserClient() {
       district,
       zipCode,
       password,
+      sex,
+      home,
+      maritalStatus,
+      otherProperties,
+      hasVehicle,
+      jobTime,
+      jobSector,
+      jobCategory,
+      academicLevel,
     } = getState().clientSubscription;
     service.post({
       endpoint: '/users',
@@ -234,6 +244,15 @@ export function registerUserClient() {
         district,
         zipCode,
         password,
+        sex,
+        home,
+        maritalStatus,
+        otherProperties,
+        hasVehicle,
+        jobTime,
+        jobSector,
+        jobCategory,
+        academicLevel,
         roleId: 1,
         signupDate: new Date(),
         isActive: true,
@@ -250,6 +269,31 @@ export function registerUserClient() {
   };
 }
 export function setClientInformation({ field, value }) {
+  if (field === 'identification') {
+    if (!_.isNaN(value) && value.length === 9) {
+      const province = `${_.chain(value).split('').first().value()}-`;
+      const folio = `${_.chain(value).split('').slice(1, 5).join('')
+        .value()}-`;
+      const consecutive = `${_.chain(value).split('').slice(5, 9).join('')
+        .value()}`;
+      return dispatch => dispatch({
+        type: types.SET_CLIENT_INFORMATION,
+        payload: {
+          field,
+          value: `${province}${folio}${consecutive}`,
+        },
+      });
+    }
+  }
+  if (/(p|P)hone/.test(field)) {
+    return dispatch => dispatch({
+      type: types.SET_CLIENT_INFORMATION,
+      payload: {
+        field,
+        value: _.replace(value, '-', ''),
+      },
+    });
+  }
   return dispatch => dispatch({
     type: types.SET_CLIENT_INFORMATION,
     payload: {
@@ -278,6 +322,8 @@ export function clientIsCompletedStep(currentStep) {
       type = types.COMPLETE_CLIENT_STEP_TWO;
     } else if (currentStep === 3) {
       type = types.COMPLETE_CLIENT_STEP_THREE;
+    } else if (currentStep === 4) {
+      type = types.COMPLETE_CLIENT_STEP_FOUR;
     }
     return dispatch({
       type,
@@ -305,6 +351,10 @@ export function clientChangeCurrentStep(currentStep) {
           ...getState().clientSubscription.step3,
           isActive: false,
         },
+        step4: {
+          ...getState().clientSubscription.step4,
+          isActive: false,
+        },
       };
     } else if (currentStep === 2) {
       payload = {
@@ -321,6 +371,10 @@ export function clientChangeCurrentStep(currentStep) {
           ...getState().clientSubscription.step3,
           isActive: false,
         },
+        step4: {
+          ...getState().clientSubscription.step4,
+          isActive: false,
+        },
       };
     } else if (currentStep === 3) {
       payload = {
@@ -335,6 +389,30 @@ export function clientChangeCurrentStep(currentStep) {
         },
         step3: {
           ...getState().clientSubscription.step3,
+          isActive: true,
+        },
+        step4: {
+          ...getState().clientSubscription.step4,
+          isActive: false,
+        },
+      };
+    } else if (currentStep === 4) {
+      payload = {
+        ...payload,
+        step1: {
+          ...getState().clientSubscription.step1,
+          isActive: false,
+        },
+        step2: {
+          ...getState().clientSubscription.step2,
+          isActive: false,
+        },
+        step3: {
+          ...getState().clientSubscription.step3,
+          isActive: false,
+        },
+        step4: {
+          ...getState().clientSubscription.step4,
           isActive: true,
         },
       };

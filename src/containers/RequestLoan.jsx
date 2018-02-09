@@ -72,6 +72,9 @@ class RequestLoan extends Component {
       case 3:
         currentStep = 'tres';
         break;
+      case 4:
+        currentStep = 'cuatro';
+        break;
       default:
         currentStep = 'uno';
     }
@@ -122,10 +125,23 @@ class RequestLoan extends Component {
           dispatch(RegisterClient.clientChangeCurrentStep(3));
         },
         handleNextOnclick: () => {
+          dispatch(RegisterClient.clientChangeCurrentStep(4));
+          dispatch(RegisterClient.clientIsCompletedStep(3));
+        },
+        onChangeField: (fieldChange) => {
+          dispatch(RegisterClient.setClientInformation(fieldChange));
+        },
+      },
+      step4: {
+        ...clientInfo.step4,
+        handleClick: () => {
+          dispatch(RegisterClient.clientChangeCurrentStep(4));
+        },
+        handleNextOnclick: () => {
           dispatch(RegisterClient.registerUserClient());
         },
         onChangeField: (fieldChange) => {
-          dispatch(RegisterClient.stepIsDisabled({ step: 'step3', isDisabled: fieldChange.isDisabled }));
+          dispatch(RegisterClient.stepIsDisabled({ step: 'step4', isDisabled: fieldChange.isDisabled }));
           dispatch(RegisterClient.setClientInformation(fieldChange));
         },
       },
@@ -135,7 +151,7 @@ class RequestLoan extends Component {
     ) : (
       <SubscriptionFormClient
         currentStep={currentStep}
-        maxSteps="tres"
+        maxSteps="cuatro"
         clientInfo={clientInfoStepEvent}
         captcha={this.props.captcha}
         clientSubscriptionError={this.props.clientSubscriptionError}

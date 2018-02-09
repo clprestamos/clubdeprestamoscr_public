@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import Step4 from './Step4';
 
 const ClientSteps = (props) => {
   const { clientInfo, captcha, clientSubscriptionError } = props;
-  const { step1, step2, step3 } = clientInfo;
+  const {
+    step1,
+    step2,
+    step3,
+    step4,
+  } = clientInfo;
   let stepContent = (
     <Step1
       handleSubmit={step1.handleNextOnclick}
@@ -44,6 +50,16 @@ const ClientSteps = (props) => {
       <Step3
         handleSubmit={step3.handleNextOnclick}
         onChangeField={step3.onChangeField}
+        clientInfo={clientInfo}
+        btnText="Siguiente"
+        clientSubscriptionError={clientSubscriptionError}
+      />
+    );
+  } else if (step4.isActive) {
+    stepContent = (
+      <Step4
+        handleSubmit={step4.handleNextOnclick}
+        onChangeField={step4.onChangeField}
         clientInfo={clientInfo}
         btnText="Enviar Datos"
         captcha={captcha}

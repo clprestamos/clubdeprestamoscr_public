@@ -22,6 +22,15 @@ const initialState = {
   clientAccount: null,
   iban: null,
   paymentId: null,
+  sex: null,
+  maritalStatus: null,
+  home: null,
+  otherProperties: true,
+  jobSector: null,
+  jobCategory: null,
+  academicLevel: null,
+  hasVehicle: true,
+  jobTime: null,
 };
 
 function userProfile(state = initialState, action) {

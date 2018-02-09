@@ -23,6 +23,15 @@ const initialState = {
   term: null,
   reason: null,
   password: null,
+  sex: null,
+  maritalStatus: null,
+  home: null,
+  otherProperties: true,
+  jobSector: null,
+  jobCategory: null,
+  academicLevel: null,
+  hasVehicle: true,
+  jobTime: null,
   newUser: {
     saved: false,
   },
@@ -41,6 +50,10 @@ const initialState = {
     isComplete: false,
   },
   step3: {
+    isActive: false,
+    isComplete: false,
+  },
+  step4: {
     isActive: false,
     isComplete: false,
   },
@@ -86,6 +99,14 @@ function ClientSubscription(state = initialState, action) {
         ...state,
         step3: {
           ...state.step3,
+          isComplete: true,
+        },
+      };
+    case types.COMPLETE_CLIENT_STEP_FOUR:
+      return {
+        ...state,
+        step3: {
+          ...state.step4,
           isComplete: true,
         },
       };

@@ -11,6 +11,11 @@ class InputField extends Component {
       hasError: false,
     };
   }
+  onFocusField() {
+    this.setState({
+      hasError: false,
+    });
+  }
   handleChange(e) {
     const hasError = this.props.validation(e.target.value);
     this.props.onChangeField({ field: e.target.name, value: e.target.value, isDisabled: hasError });
@@ -31,6 +36,7 @@ class InputField extends Component {
         required={this.props.isRequired}
         disabled={this.props.disabled}
         value={this.props.value ? this.props.value : undefined}
+        onFocus={this.onFocusField}
       />
     ) : (
       <Input
@@ -43,6 +49,7 @@ class InputField extends Component {
         required={this.props.isRequired}
         disabled={this.props.disabled}
         value={this.props.value ? this.props.value : undefined}
+        onFocus={this.onFocusField}
       />
     );
     return (

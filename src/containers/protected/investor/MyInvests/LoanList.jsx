@@ -14,7 +14,7 @@ const LoanList = (props) => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Solicitante</Table.HeaderCell>
-                <Table.HeaderCell>Score Crediticio</Table.HeaderCell>
+                <Table.HeaderCell>Calificación</Table.HeaderCell>
                 <Table.HeaderCell>Monto</Table.HeaderCell>
                 <Table.HeaderCell>Plazo</Table.HeaderCell>
                 <Table.HeaderCell>Tasa</Table.HeaderCell>
