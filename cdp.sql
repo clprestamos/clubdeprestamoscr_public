@@ -442,7 +442,7 @@ WITH (
 TABLESPACE pg_default;
 
 ALTER TABLE public.users_tb
-    OWNER to postgres;``
+    OWNER to postgres;
 
 --
 -- Name: users_tb_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
