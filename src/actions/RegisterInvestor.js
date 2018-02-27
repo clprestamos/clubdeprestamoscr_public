@@ -139,9 +139,11 @@ export function registerUserInvestor() {
     })
       .then((response) => {
         dispatch(registerNewInvestorSuccess());
+        return response.body[0].id;
+      })
+      .then(() => {
         dispatch(sendEmailAdmin({ name, lastName, email }));
         dispatch(sendEmailInvestor({ email }));
-        return response.body[0].id;
       })
       .catch(error => dispatch(registerNewInvestorError(error.status)));
   };
