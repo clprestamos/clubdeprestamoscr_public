@@ -48,7 +48,7 @@ const LoanList = (props) => {
                       {utils.parseDate(loan.requestLoanDate)}
                     </Table.Cell>
                     <Table.Cell>
-                      {loan.investorPercentage}%
+                      {loan.investPercentage}%
                     </Table.Cell>
                     <Table.Cell>
                       <Link to={`/inversionista/prestamo/${loan.loanId}`}><Icon name="usd" /></Link>

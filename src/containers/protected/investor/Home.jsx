@@ -8,6 +8,7 @@ import Hero from '../../../components/Hero';
 import Card from '../../../components/Card';
 
 import * as OpportunitiesActions from '../../../actions/Opportunities';
+import * as MyInvestsActions from '../../../actions/MyInvests';
 
 class Home extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Home extends Component {
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
       OpportunitiesActions,
+      MyInvestsActions,
     }, dispatch);
     autobind(this);
   }
@@ -22,9 +24,16 @@ class Home extends Component {
     const { dispatch } = this.props;
     dispatch(OpportunitiesActions.getOpportunities());
   }
+  componentWillReceiveProps(nextProps) {
+    const { userId } = nextProps.userProfile;
+    if (userId) {
+      const { dispatch } = this.props;
+      dispatch(MyInvestsActions.getMyInvests(userId));
+    }
+  }
   render() {
     const waitingLoans = _.filter(this.props.opportunities.loans, { stateId: 4 });
-    const formalized = _.filter(this.props.opportunities.loans, { stateId: 3 });
+    const formalized = _.filter(this.props.myinvests, { stateId: 3 });
     const cards = [
       {
         icon: 'credit card',
@@ -55,6 +64,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   userProfile: state.userProfile,
   opportunities: state.opportunities,
+  myinvests: state.myinvests.loans,
 });
 
 export default connect(mapStateToProps)(Home);

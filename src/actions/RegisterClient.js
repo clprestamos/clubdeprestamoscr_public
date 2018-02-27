@@ -149,7 +149,6 @@ export function registerNewLoan(userId) {
         term,
         reason,
         stateId: 1,
-        userId,
         requestLoanDate: new Date(),
       },
     })
