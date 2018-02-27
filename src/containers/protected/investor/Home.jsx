@@ -21,15 +21,9 @@ class Home extends Component {
     autobind(this);
   }
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, userId } = this.props;
     dispatch(OpportunitiesActions.getOpportunities());
-  }
-  componentWillReceiveProps(nextProps) {
-    const { userId } = nextProps.userProfile;
-    if (userId) {
-      const { dispatch } = this.props;
-      dispatch(MyInvestsActions.getMyInvests(userId));
-    }
+    dispatch(MyInvestsActions.getMyInvests(userId));
   }
   render() {
     const waitingLoans = _.filter(this.props.opportunities.loans, { stateId: 4 });
@@ -65,6 +59,7 @@ const mapStateToProps = state => ({
   userProfile: state.userProfile,
   opportunities: state.opportunities,
   myinvests: state.myinvests.loans,
+  userId: state.user.data.userId,
 });
 
 export default connect(mapStateToProps)(Home);

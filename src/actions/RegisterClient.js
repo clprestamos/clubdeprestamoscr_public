@@ -141,6 +141,9 @@ export function registerNewLoan(userId) {
       amount,
       term,
       reason,
+      name,
+      lastName,
+      email,
     } = getState().clientSubscription;
     service.post({
       endpoint: '/loans',
@@ -156,6 +159,12 @@ export function registerNewLoan(userId) {
         dispatch(registerNewLoanSuccess());
         dispatch(registerNewClient({
           userId,
+          loanId: response.body.id,
+        }));
+        dispatch(sendEmailAdmin({
+          name,
+          lastName,
+          email,
           loanId: response.body.id,
         }));
       })
@@ -259,6 +268,7 @@ export function registerUserClient() {
     })
       .then((response) => {
         dispatch(registerNewUserSuccess());
+        dispatch(sendEmailClient({ email }))
         return response.body[0].id;
       })
       .then((userId) => {
@@ -421,4 +431,48 @@ export function clientChangeCurrentStep(currentStep) {
       payload,
     });
   };
+}
+
+export function sendEmailClient(data) {
+  const { REACT_APP_HOST } = process.env;
+  const emailData = {
+    message: `Bienvenido al Club de Préstamos\n Ingrese con su correo y contraseña a ${REACT_APP_HOST}/login para ver el estado de su préstamo.`,
+    sender: data.email,
+    subject: 'Club de Préstamos - Bienvenido',
+  };
+  return service.post({
+    endpoint: '/sendmailto',
+    payload: emailData,
+  })
+    .then((response) => {
+      if (response.status === 250) {
+        return data;
+      }
+      return false;
+    })
+    .catch(error => error);
+}
+
+export function sendEmailAdmin({
+  name,
+  lastName,
+  email,
+  loanId,
+}) {
+  const emailData = {
+    message: `Nuevo usuario al Club de Préstamos\n Nombre: ${name} ${lastName}\n Email: ${email}\nTipo de usuario: Cliente\n https://admin.clubdeprestamos.cr/dashboard/prestamos/${loanId}`,
+    sender: 'info@clubdeprestamos.cr',
+    subject: 'Club de Préstamos - Nuevo Usuario',
+  };
+  return service.post({
+    endpoint: '/sendmailto',
+    payload: emailData,
+  })
+    .then((response) => {
+      if (response.status === 250) {
+        return data;
+      }
+      return false;
+    })
+    .catch(error => error);
 }
