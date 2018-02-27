@@ -42,8 +42,9 @@ export function setEmail(email) {
   });
 }
 export function sendEmail(data) {
+  const { REACT_APP_HOST } = process.env;
   const emailData = {
-    message: `Buenas\nDe click en el siguiente link http://localhost:7070/cambiar-password/${data.passwordKey} para cambiar su contraseña.`,
+    message: `Buenas\nDe click en el siguiente link ${REACT_APP_HOST}/cambiar-password/${data.passwordKey} para cambiar su contraseña.`,
     sender: data.email,
     subject: 'Club de Préstamos - Cambiar contraseña',
   };
