@@ -91,7 +91,6 @@ class Loan extends Component {
       interest,
       stateName,
       investors,
-      percentages,
     } = this.props.loan;
     const options = [
       { key: 1, text: '20%', value: 20 },
@@ -191,7 +190,6 @@ class Loan extends Component {
         </Form.Group>
       </Form>
     );
-    const percentage = _.sum(percentages);
     const investContent = (
       <Card>
         <Card.Content>
