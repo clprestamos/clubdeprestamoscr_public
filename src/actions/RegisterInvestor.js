@@ -141,10 +141,10 @@ export function registerUserInvestor() {
         dispatch(registerNewInvestorSuccess());
         return response.body[0].id;
       })
-      .then(() => {
-        dispatch(sendEmailAdmin({ name, lastName, email }));
-        dispatch(sendEmailInvestor({ email }));
-      })
+      // .then(() => {
+      //  dispatch(sendEmailAdmin({ name, lastName, email }));
+      //  dispatch(sendEmailInvestor({ email }));
+      // })
       .catch(error => dispatch(registerNewInvestorError(error.status)));
   };
 }
