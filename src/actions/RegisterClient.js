@@ -446,7 +446,7 @@ export function sendEmailClient(data) {
   })
     .then((response) => {
       if (response.status === 250) {
-        return data;
+        return response;
       }
       return false;
     })
@@ -470,7 +470,7 @@ export function sendEmailAdmin({
   })
     .then((response) => {
       if (response.status === 250) {
-        return data;
+        return response;
       }
       return false;
     })
