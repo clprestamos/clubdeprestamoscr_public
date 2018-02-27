@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import autobind from 'react-autobind';
 import { bindActionCreators } from 'redux';
@@ -17,7 +18,7 @@ class Loan extends Component {
       hasErrors: false,
       isModalOpen: false,
       invest: 0,
-      percentage: props.loan.percentage,
+      percentage: _.sum(props.loan.percentages),
     };
     const { dispatch } = props;
     this.boundActionCreators = bindActionCreators({
@@ -32,12 +33,19 @@ class Loan extends Component {
     dispatch(LoanOpportunity.getLoansByInvestor(loanId));
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      percentage: nextProps.loan.percentage,
-    });
+    if (nextProps.loansByInvestor.length) {
+      const percentage = _.chain(nextProps.loansByInvestor).map(loan => loan.percentage).value();
+      this.setState({
+        percentage: _.sum(percentage),
+      });
+    } else {
+      this.setState({
+        percentage: _.sum(nextProps.loan.percentages),
+      });
+    }
   }
   handlePercentage(e, { value }) {
-    const currentValue = this.props.loan.percentage + value;
+    const currentValue = _.sum(this.props.loan.percentages) + value;
     if (currentValue <= 100) {
       this.setState({
         percentage: currentValue,
@@ -76,13 +84,14 @@ class Loan extends Component {
       loanId,
       score,
       amount,
-      investors,
       term,
       bank,
       reason,
       clientAccount,
       interest,
       stateName,
+      investors,
+      percentages,
     } = this.props.loan;
     const options = [
       { key: 1, text: '20%', value: 20 },
@@ -103,7 +112,7 @@ class Loan extends Component {
             Préstamo #{loanId}
           </Header.Subheader>
         </Header>
-        <Rating maxRating={5} defaultRating={this.props.loan.score ? score : 0} icon="star" size="large" disabled />
+        <Rating maxRating={5} rating={ score } icon="star" size="large" disabled />
       </div>
     );
     const formContent = (
@@ -121,7 +130,7 @@ class Loan extends Component {
             <InputField
               inputType="text"
               labelText="Número de inversionistas:"
-              defaultValue={investors}
+              defaultValue={investors.length}
               readonly
             />
           </Form.Field>
@@ -182,6 +191,7 @@ class Loan extends Component {
         </Form.Group>
       </Form>
     );
+    const percentage = _.sum(percentages);
     const investContent = (
       <Card>
         <Card.Content>
@@ -190,7 +200,7 @@ class Loan extends Component {
           </Card.Header>
         </Card.Content>
         <Card.Content className="content-form">
-          { this.props.loan.percentage !== 100 ? (
+          { this.state.percentage !== 100 ? (
             <Form>
               <Form.Field>
                 <Progress percent={this.state.percentage} indicating progress="percent">Este préstamo le resta un {100 - this.state.percentage}%</Progress>
@@ -208,7 +218,7 @@ class Loan extends Component {
                 </div>
                 <div className="action-buttons">
                   { this.state.hasErrors ? (
-                    <Segment inverted color="red">El porcentage a invertir es mayor al esperado, por favor seleccione otro porcentage igual o menor a {100 - this.state.percentage}%.</Segment>
+                    <Segment inverted color="red" style={ { marginTop: '1rem' } }>El porcentage a invertir es mayor al esperado, por favor seleccione otro porcentage igual o menor a {100 - this.state.percentage}%.</Segment>
                   ) : '' }
                   <ButtonComponent
                     buttonType="save"
@@ -264,6 +274,7 @@ class Loan extends Component {
 const mapStateToProps = state => ({
   loan: state.opportunities.loan,
   authData: state.user.data,
+  loansByInvestor: state.opportunities.loansByInvestor,
 });
 
 export default connect(mapStateToProps)(Loan);

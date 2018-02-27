@@ -1,0 +1,3334 @@
+{
+    "meta": {
+        "page": 1,
+        "limit": 20,
+        "count": 474,
+        "pageCount": 24,
+        "totalCount": 474,
+        "next": "http://https://api.clubdeprestamos.cr/users?page=2&limit=20",
+        "previous": null,
+        "self": "http://https://api.clubdeprestamos.cr/users?page=1&limit=20",
+        "first": "http://https://api.clubdeprestamos.cr/users?page=1&limit=20",
+        "last": "http://https://api.clubdeprestamos.cr/users?page=24&limit=20"
+    },
+    "results": [
+        {
+            "id": 1,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Carmen",
+            "zipCode": 10101
+        },
+        {
+            "id": 2,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Merced",
+            "zipCode": 10102
+        },
+        {
+            "id": 3,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Hospital",
+            "zipCode": 10103
+        },
+        {
+            "id": 4,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Catedral",
+            "zipCode": 10104
+        },
+        {
+            "id": 5,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Zapote",
+            "zipCode": 10105
+        },
+        {
+            "id": 6,
+            "province": "San José",
+            "canton": "San José",
+            "district": "San Francisco de Dos Ríos",
+            "zipCode": 10106
+        },
+        {
+            "id": 7,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Uruca",
+            "zipCode": 10107
+        },
+        {
+            "id": 8,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Mata Redonda",
+            "zipCode": 10108
+        },
+        {
+            "id": 9,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Pavas",
+            "zipCode": 10109
+        },
+        {
+            "id": 10,
+            "province": "San José",
+            "canton": "San José",
+            "district": "Hatillo",
+            "zipCode": 10110
+        },
+        {
+            "id": 11,
+            "province": "San José",
+            "canton": "San José",
+            "district": "San Sebastián",
+            "zipCode": 10111
+        },
+        {
+            "id": 12,
+            "province": "San José",
+            "canton": "Escazú",
+            "district": "Escazú",
+            "zipCode": 10201
+        },
+        {
+            "id": 13,
+            "province": "San José",
+            "canton": "Escazú",
+            "district": "San Antonio",
+            "zipCode": 10202
+        },
+        {
+            "id": 14,
+            "province": "San José",
+            "canton": "Escazú",
+            "district": "San Rafael",
+            "zipCode": 10203
+        },
+        {
+            "id": 15,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Desamparados",
+            "zipCode": 10301
+        },
+        {
+            "id": 16,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Miguel",
+            "zipCode": 10302
+        },
+        {
+            "id": 17,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Juan de Dios",
+            "zipCode": 10303
+        },
+        {
+            "id": 18,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Rafael Arriba",
+            "zipCode": 10304
+        },
+        {
+            "id": 19,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Antonio",
+            "zipCode": 10305
+        },
+        {
+            "id": 20,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Frailes",
+            "zipCode": 10306
+        },
+        {
+            "id": 21,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Patarrá",
+            "zipCode": 10307
+        },
+        {
+            "id": 22,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Cristóbal",
+            "zipCode": 10308
+        },
+        {
+            "id": 23,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Rosario",
+            "zipCode": 10309
+        },
+        {
+            "id": 24,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Damas",
+            "zipCode": 10310
+        },
+        {
+            "id": 25,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "San Rafael Abajo",
+            "zipCode": 10311
+        },
+        {
+            "id": 26,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Gravilias",
+            "zipCode": 10312
+        },
+        {
+            "id": 27,
+            "province": "San José",
+            "canton": "Desamparados",
+            "district": "Los Guido",
+            "zipCode": 10313
+        },
+        {
+            "id": 28,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Santiago",
+            "zipCode": 10401
+        },
+        {
+            "id": 29,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Mercedes Sur",
+            "zipCode": 10402
+        },
+        {
+            "id": 30,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Barbacoas",
+            "zipCode": 10403
+        },
+        {
+            "id": 31,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Grifo Alto",
+            "zipCode": 10404
+        },
+        {
+            "id": 32,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "San Rafael",
+            "zipCode": 10405
+        },
+        {
+            "id": 33,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Candelarita",
+            "zipCode": 10406
+        },
+        {
+            "id": 34,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Desamparaditos",
+            "zipCode": 10407
+        },
+        {
+            "id": 35,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "San Antonio",
+            "zipCode": 10408
+        },
+        {
+            "id": 36,
+            "province": "San José",
+            "canton": "Puriscal",
+            "district": "Chires",
+            "zipCode": 10409
+        },
+        {
+            "id": 37,
+            "province": "San José",
+            "canton": "Tarrazú",
+            "district": "San Marcos",
+            "zipCode": 10501
+        },
+        {
+            "id": 38,
+            "province": "San José",
+            "canton": "Tarrazú",
+            "district": "San Lorenzo",
+            "zipCode": 10502
+        },
+        {
+            "id": 39,
+            "province": "San José",
+            "canton": "Tarrazú",
+            "district": "San Carlos",
+            "zipCode": 10503
+        },
+        {
+            "id": 40,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Aserrí",
+            "zipCode": 10601
+        },
+        {
+            "id": 41,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Tarbaca",
+            "zipCode": 10602
+        },
+        {
+            "id": 42,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Vuelta de Jorco",
+            "zipCode": 10603
+        },
+        {
+            "id": 43,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "San Gabriel",
+            "zipCode": 10604
+        },
+        {
+            "id": 44,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Legua",
+            "zipCode": 10605
+        },
+        {
+            "id": 45,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Monterrey",
+            "zipCode": 10606
+        },
+        {
+            "id": 46,
+            "province": "San José",
+            "canton": "Aserrí",
+            "district": "Salitrillos",
+            "zipCode": 10607
+        },
+        {
+            "id": 47,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Colón",
+            "zipCode": 10701
+        },
+        {
+            "id": 48,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Guayabo",
+            "zipCode": 10702
+        },
+        {
+            "id": 49,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Tabarcia",
+            "zipCode": 10703
+        },
+        {
+            "id": 50,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Piedras Negras",
+            "zipCode": 10704
+        },
+        {
+            "id": 51,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Picagres",
+            "zipCode": 10705
+        },
+        {
+            "id": 52,
+            "province": "San José",
+            "canton": "Mora",
+            "district": "Jaris",
+            "zipCode": 10706
+        },
+        {
+            "id": 53,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Guadalupe",
+            "zipCode": 10801
+        },
+        {
+            "id": 54,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "San Francisco",
+            "zipCode": 10802
+        },
+        {
+            "id": 55,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Calle Blancos",
+            "zipCode": 10803
+        },
+        {
+            "id": 56,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Mata de Plátano",
+            "zipCode": 10804
+        },
+        {
+            "id": 57,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Ipís",
+            "zipCode": 10805
+        },
+        {
+            "id": 58,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Rancho Redondo",
+            "zipCode": 10806
+        },
+        {
+            "id": 59,
+            "province": "San José",
+            "canton": "Goicoechea",
+            "district": "Purral",
+            "zipCode": 10807
+        },
+        {
+            "id": 60,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Santa Ana",
+            "zipCode": 10901
+        },
+        {
+            "id": 61,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Salitral",
+            "zipCode": 10902
+        },
+        {
+            "id": 62,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Pozos",
+            "zipCode": 10903
+        },
+        {
+            "id": 63,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Uruca",
+            "zipCode": 10904
+        },
+        {
+            "id": 64,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Piedades",
+            "zipCode": 10905
+        },
+        {
+            "id": 65,
+            "province": "San José",
+            "canton": "Santa Ana",
+            "district": "Brasil",
+            "zipCode": 10906
+        },
+        {
+            "id": 66,
+            "province": "San José",
+            "canton": "Alajuelita",
+            "district": "Alajuelita",
+            "zipCode": 11001
+        },
+        {
+            "id": 67,
+            "province": "San José",
+            "canton": "Alajuelita",
+            "district": "San Josecito",
+            "zipCode": 11002
+        },
+        {
+            "id": 68,
+            "province": "San José",
+            "canton": "Alajuelita",
+            "district": "San Antonio",
+            "zipCode": 11003
+        },
+        {
+            "id": 69,
+            "province": "San José",
+            "canton": "Alajuelita",
+            "district": "Concepción",
+            "zipCode": 11004
+        },
+        {
+            "id": 70,
+            "province": "San José",
+            "canton": "Alajuelita",
+            "district": "San Felipe",
+            "zipCode": 11005
+        },
+        {
+            "id": 71,
+            "province": "San José",
+            "canton": "Vásquez de Coronado",
+            "district": "San Isidro",
+            "zipCode": 11101
+        },
+        {
+            "id": 72,
+            "province": "San José",
+            "canton": "Vásquez de Coronado",
+            "district": "San Rafael",
+            "zipCode": 11102
+        },
+        {
+            "id": 73,
+            "province": "San José",
+            "canton": "Vásquez de Coronado",
+            "district": "Dulce Nombre de Jesús",
+            "zipCode": 11103
+        },
+        {
+            "id": 74,
+            "province": "San José",
+            "canton": "Vásquez de Coronado",
+            "district": "Patalillo",
+            "zipCode": 11104
+        },
+        {
+            "id": 75,
+            "province": "San José",
+            "canton": "Vásquez de Coronado",
+            "district": "Cascajal",
+            "zipCode": 11105
+        },
+        {
+            "id": 76,
+            "province": "San José",
+            "canton": "Acosta",
+            "district": "San Ignacio",
+            "zipCode": 11201
+        },
+        {
+            "id": 77,
+            "province": "San José",
+            "canton": "Acosta",
+            "district": "Guaitil",
+            "zipCode": 11202
+        },
+        {
+            "id": 78,
+            "province": "San José",
+            "canton": "Acosta",
+            "district": "Palmichal",
+            "zipCode": 11203
+        },
+        {
+            "id": 79,
+            "province": "San José",
+            "canton": "Acosta",
+            "district": "Cangrejal",
+            "zipCode": 11204
+        },
+        {
+            "id": 80,
+            "province": "San José",
+            "canton": "Acosta",
+            "district": "Sabanillas",
+            "zipCode": 11205
+        },
+        {
+            "id": 81,
+            "province": "San José",
+            "canton": "Tibás",
+            "district": "San Juan",
+            "zipCode": 11301
+        },
+        {
+            "id": 82,
+            "province": "San José",
+            "canton": "Tibás",
+            "district": "Cinco Esquinas",
+            "zipCode": 11302
+        },
+        {
+            "id": 83,
+            "province": "San José",
+            "canton": "Tibás",
+            "district": "Anselmo Llorente",
+            "zipCode": 11303
+        },
+        {
+            "id": 84,
+            "province": "San José",
+            "canton": "Tibás",
+            "district": "León XIII",
+            "zipCode": 11304
+        },
+        {
+            "id": 85,
+            "province": "San José",
+            "canton": "Tibás",
+            "district": "Colima",
+            "zipCode": 11305
+        },
+        {
+            "id": 86,
+            "province": "San José",
+            "canton": "Moravia",
+            "district": "San Vicente",
+            "zipCode": 11401
+        },
+        {
+            "id": 87,
+            "province": "San José",
+            "canton": "Moravia",
+            "district": "San Jerónimo",
+            "zipCode": 11402
+        },
+        {
+            "id": 88,
+            "province": "San José",
+            "canton": "Moravia",
+            "district": "La Trinidad",
+            "zipCode": 11403
+        },
+        {
+            "id": 89,
+            "province": "San José",
+            "canton": "Montes de Oca",
+            "district": "San Pedro",
+            "zipCode": 11501
+        },
+        {
+            "id": 90,
+            "province": "San José",
+            "canton": "Montes de Oca",
+            "district": "Sabanilla",
+            "zipCode": 11502
+        },
+        {
+            "id": 91,
+            "province": "San José",
+            "canton": "Montes de Oca",
+            "district": "Mercedes",
+            "zipCode": 11503
+        },
+        {
+            "id": 92,
+            "province": "San José",
+            "canton": "Montes de Oca",
+            "district": "San Rafael",
+            "zipCode": 11504
+        },
+        {
+            "id": 93,
+            "province": "San José",
+            "canton": "Turrubares",
+            "district": "San Pablo",
+            "zipCode": 11601
+        },
+        {
+            "id": 94,
+            "province": "San José",
+            "canton": "Turrubares",
+            "district": "San Pedro",
+            "zipCode": 11602
+        },
+        {
+            "id": 95,
+            "province": "San José",
+            "canton": "Turrubares",
+            "district": "San Juan de Mata",
+            "zipCode": 11603
+        },
+        {
+            "id": 96,
+            "province": "San José",
+            "canton": "Turrubares",
+            "district": "San Luis",
+            "zipCode": 11604
+        },
+        {
+            "id": 97,
+            "province": "San José",
+            "canton": "Turrubares",
+            "district": "Carara",
+            "zipCode": 11605
+        },
+        {
+            "id": 98,
+            "province": "San José",
+            "canton": "Dota",
+            "district": "Santa María",
+            "zipCode": 11701
+        },
+        {
+            "id": 99,
+            "province": "San José",
+            "canton": "Dota",
+            "district": "Jardín",
+            "zipCode": 11702
+        },
+        {
+            "id": 100,
+            "province": "San José",
+            "canton": "Dota",
+            "district": "Copey",
+            "zipCode": 11703
+        },
+        {
+            "id": 101,
+            "province": "San José",
+            "canton": "Curridabat",
+            "district": "Curridabat",
+            "zipCode": 11801
+        },
+        {
+            "id": 102,
+            "province": "San José",
+            "canton": "Curridabat",
+            "district": "Granadilla",
+            "zipCode": 11802
+        },
+        {
+            "id": 103,
+            "province": "San José",
+            "canton": "Curridabat",
+            "district": "Sánchez",
+            "zipCode": 11803
+        },
+        {
+            "id": 104,
+            "province": "San José",
+            "canton": "Curridabat",
+            "district": "Tirrases",
+            "zipCode": 11804
+        },
+        {
+            "id": 105,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "San Isidro de El General",
+            "zipCode": 11901
+        },
+        {
+            "id": 106,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "General",
+            "zipCode": 11902
+        },
+        {
+            "id": 107,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Daniel Flores",
+            "zipCode": 11903
+        },
+        {
+            "id": 108,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Rivas",
+            "zipCode": 11904
+        },
+        {
+            "id": 109,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "San Pedro",
+            "zipCode": 11905
+        },
+        {
+            "id": 110,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Platanares",
+            "zipCode": 11906
+        },
+        {
+            "id": 111,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Pejibaye",
+            "zipCode": 11907
+        },
+        {
+            "id": 112,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Cajón",
+            "zipCode": 11908
+        },
+        {
+            "id": 113,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Barú",
+            "zipCode": 11909
+        },
+        {
+            "id": 114,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Río Nuevo",
+            "zipCode": 11910
+        },
+        {
+            "id": 115,
+            "province": "San José",
+            "canton": "Pérez Zeledón",
+            "district": "Páramo",
+            "zipCode": 11911
+        },
+        {
+            "id": 116,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "San Pablo",
+            "zipCode": 12001
+        },
+        {
+            "id": 117,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "San Andrés",
+            "zipCode": 12002
+        },
+        {
+            "id": 118,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "Llano Bonito",
+            "zipCode": 12003
+        },
+        {
+            "id": 119,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "San Isidro",
+            "zipCode": 12004
+        },
+        {
+            "id": 120,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "Santa Cruz",
+            "zipCode": 12005
+        },
+        {
+            "id": 121,
+            "province": "San José",
+            "canton": "León Cortés",
+            "district": "San Antonio",
+            "zipCode": 12006
+        },
+        {
+            "id": 122,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Alajuela",
+            "zipCode": 20101
+        },
+        {
+            "id": 123,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "San José",
+            "zipCode": 20102
+        },
+        {
+            "id": 124,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Carrizal",
+            "zipCode": 20103
+        },
+        {
+            "id": 125,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "San Antonio",
+            "zipCode": 20104
+        },
+        {
+            "id": 126,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Guácima",
+            "zipCode": 20105
+        },
+        {
+            "id": 127,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "San Isidro",
+            "zipCode": 20106
+        },
+        {
+            "id": 128,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Sabanilla",
+            "zipCode": 20107
+        },
+        {
+            "id": 129,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "San Rafael",
+            "zipCode": 20108
+        },
+        {
+            "id": 130,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Río Segundo",
+            "zipCode": 20109
+        },
+        {
+            "id": 131,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Desamparados",
+            "zipCode": 20110
+        },
+        {
+            "id": 132,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Turrúcares",
+            "zipCode": 20111
+        },
+        {
+            "id": 133,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Tambor",
+            "zipCode": 20112
+        },
+        {
+            "id": 134,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Garita",
+            "zipCode": 20113
+        },
+        {
+            "id": 135,
+            "province": "Alajuela",
+            "canton": "Alajuela",
+            "district": "Sarapiquí",
+            "zipCode": 20114
+        },
+        {
+            "id": 136,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "San Ramón",
+            "zipCode": 20201
+        },
+        {
+            "id": 137,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Santiago",
+            "zipCode": 20202
+        },
+        {
+            "id": 138,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "San Juan",
+            "zipCode": 20203
+        },
+        {
+            "id": 139,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Piedades Norte",
+            "zipCode": 20204
+        },
+        {
+            "id": 140,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Piedades Sur",
+            "zipCode": 20205
+        },
+        {
+            "id": 141,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "San Rafael",
+            "zipCode": 20206
+        },
+        {
+            "id": 142,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "San Isidro",
+            "zipCode": 20207
+        },
+        {
+            "id": 143,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Los Ángeles",
+            "zipCode": 20208
+        },
+        {
+            "id": 144,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Alfaro",
+            "zipCode": 20209
+        },
+        {
+            "id": 145,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Volio",
+            "zipCode": 20210
+        },
+        {
+            "id": 146,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Concepción",
+            "zipCode": 20211
+        },
+        {
+            "id": 147,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Zapotal",
+            "zipCode": 20212
+        },
+        {
+            "id": 148,
+            "province": "Alajuela",
+            "canton": "San Ramón",
+            "district": "Peñas Blancas",
+            "zipCode": 20213
+        },
+        {
+            "id": 149,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "Grecia",
+            "zipCode": 20301
+        },
+        {
+            "id": 150,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "San Isidro",
+            "zipCode": 20302
+        },
+        {
+            "id": 151,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "San José",
+            "zipCode": 20303
+        },
+        {
+            "id": 152,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "San Roque",
+            "zipCode": 20304
+        },
+        {
+            "id": 153,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "Tacares",
+            "zipCode": 20305
+        },
+        {
+            "id": 154,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "Río Cuarto",
+            "zipCode": 20306
+        },
+        {
+            "id": 155,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "Puente de Piedra",
+            "zipCode": 20307
+        },
+        {
+            "id": 156,
+            "province": "Alajuela",
+            "canton": "Grecia",
+            "district": "Bolívar",
+            "zipCode": 20308
+        },
+        {
+            "id": 157,
+            "province": "Alajuela",
+            "canton": "San Mateo",
+            "district": "San Mateo",
+            "zipCode": 20401
+        },
+        {
+            "id": 158,
+            "province": "Alajuela",
+            "canton": "San Mateo",
+            "district": "Desmonte",
+            "zipCode": 20402
+        },
+        {
+            "id": 159,
+            "province": "Alajuela",
+            "canton": "San Mateo",
+            "district": "Jesús María",
+            "zipCode": 20403
+        },
+        {
+            "id": 160,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Atenas",
+            "zipCode": 20501
+        },
+        {
+            "id": 161,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Jesús",
+            "zipCode": 20502
+        },
+        {
+            "id": 162,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Mercedes",
+            "zipCode": 20503
+        },
+        {
+            "id": 163,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "San Isidro",
+            "zipCode": 20504
+        },
+        {
+            "id": 164,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Concepción",
+            "zipCode": 20505
+        },
+        {
+            "id": 165,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "San José",
+            "zipCode": 20506
+        },
+        {
+            "id": 166,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Santa Eulalia",
+            "zipCode": 20507
+        },
+        {
+            "id": 167,
+            "province": "Alajuela",
+            "canton": "Atenas",
+            "district": "Escobal",
+            "zipCode": 20508
+        },
+        {
+            "id": 168,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "Naranjo",
+            "zipCode": 20601
+        },
+        {
+            "id": 169,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "San Miguel",
+            "zipCode": 20602
+        },
+        {
+            "id": 170,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "San José",
+            "zipCode": 20603
+        },
+        {
+            "id": 171,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "Cirrí Sur",
+            "zipCode": 20604
+        },
+        {
+            "id": 172,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "San Jerónimo",
+            "zipCode": 20605
+        },
+        {
+            "id": 173,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "San Juan",
+            "zipCode": 20606
+        },
+        {
+            "id": 174,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "El Rosario",
+            "zipCode": 20607
+        },
+        {
+            "id": 175,
+            "province": "Alajuela",
+            "canton": "Naranjo",
+            "district": "Palmitos",
+            "zipCode": 20608
+        },
+        {
+            "id": 176,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Palmares",
+            "zipCode": 20701
+        },
+        {
+            "id": 177,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Zaragoza",
+            "zipCode": 20702
+        },
+        {
+            "id": 178,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Buenos Aires",
+            "zipCode": 20703
+        },
+        {
+            "id": 179,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Santiago",
+            "zipCode": 20704
+        },
+        {
+            "id": 180,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Candelaria",
+            "zipCode": 20705
+        },
+        {
+            "id": 181,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "Esquipulas",
+            "zipCode": 20706
+        },
+        {
+            "id": 182,
+            "province": "Alajuela",
+            "canton": "Palmares",
+            "district": "La Granja",
+            "zipCode": 20707
+        },
+        {
+            "id": 183,
+            "province": "Alajuela",
+            "canton": "Poás",
+            "district": "San Pedro",
+            "zipCode": 20801
+        },
+        {
+            "id": 184,
+            "province": "Alajuela",
+            "canton": "Poás",
+            "district": "San Juan",
+            "zipCode": 20802
+        },
+        {
+            "id": 185,
+            "province": "Alajuela",
+            "canton": "Poás",
+            "district": "San Rafael",
+            "zipCode": 20803
+        },
+        {
+            "id": 186,
+            "province": "Alajuela",
+            "canton": "Poás",
+            "district": "Carrillos",
+            "zipCode": 20804
+        },
+        {
+            "id": 187,
+            "province": "Alajuela",
+            "canton": "Poás",
+            "district": "Sabana Redonda",
+            "zipCode": 20805
+        },
+        {
+            "id": 188,
+            "province": "Alajuela",
+            "canton": "Orotina",
+            "district": "Orotina",
+            "zipCode": 20901
+        },
+        {
+            "id": 189,
+            "province": "Alajuela",
+            "canton": "Orotina",
+            "district": "El Mastate",
+            "zipCode": 20902
+        },
+        {
+            "id": 190,
+            "province": "Alajuela",
+            "canton": "Orotina",
+            "district": "Hacienda Vieja",
+            "zipCode": 20903
+        },
+        {
+            "id": 191,
+            "province": "Alajuela",
+            "canton": "Orotina",
+            "district": "Coyolar",
+            "zipCode": 20904
+        },
+        {
+            "id": 192,
+            "province": "Alajuela",
+            "canton": "Orotina",
+            "district": "La Ceiba",
+            "zipCode": 20905
+        },
+        {
+            "id": 193,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Quesada",
+            "zipCode": 21001
+        },
+        {
+            "id": 194,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Florencia",
+            "zipCode": 21002
+        },
+        {
+            "id": 195,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Buenavista",
+            "zipCode": 21003
+        },
+        {
+            "id": 196,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Aguas Zarcas",
+            "zipCode": 21004
+        },
+        {
+            "id": 197,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Venecia",
+            "zipCode": 21005
+        },
+        {
+            "id": 198,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Pital",
+            "zipCode": 21006
+        },
+        {
+            "id": 199,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "La Fortuna",
+            "zipCode": 21007
+        },
+        {
+            "id": 200,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "La Tigra",
+            "zipCode": 21008
+        },
+        {
+            "id": 201,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "La Palmera",
+            "zipCode": 21009
+        },
+        {
+            "id": 202,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Venado",
+            "zipCode": 21010
+        },
+        {
+            "id": 203,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Cutris",
+            "zipCode": 21011
+        },
+        {
+            "id": 204,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Monterrey",
+            "zipCode": 21012
+        },
+        {
+            "id": 205,
+            "province": "Alajuela",
+            "canton": "San Carlos",
+            "district": "Pocosol",
+            "zipCode": 21013
+        },
+        {
+            "id": 206,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Zarcero",
+            "zipCode": 21101
+        },
+        {
+            "id": 207,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Laguna",
+            "zipCode": 21102
+        },
+        {
+            "id": 208,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Tapesco",
+            "zipCode": 21103
+        },
+        {
+            "id": 209,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Guadalupe",
+            "zipCode": 21104
+        },
+        {
+            "id": 210,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Palmira",
+            "zipCode": 21105
+        },
+        {
+            "id": 211,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Zapote",
+            "zipCode": 21106
+        },
+        {
+            "id": 212,
+            "province": "Alajuela",
+            "canton": "Alfaro Ruiz",
+            "district": "Brisas",
+            "zipCode": 21107
+        },
+        {
+            "id": 213,
+            "province": "Alajuela",
+            "canton": "Valverde Vega",
+            "district": "Sarchí Norte",
+            "zipCode": 21201
+        },
+        {
+            "id": 214,
+            "province": "Alajuela",
+            "canton": "Valverde Vega",
+            "district": "Sarchí Sur",
+            "zipCode": 21202
+        },
+        {
+            "id": 215,
+            "province": "Alajuela",
+            "canton": "Valverde Vega",
+            "district": "Toro Amarillo",
+            "zipCode": 21203
+        },
+        {
+            "id": 216,
+            "province": "Alajuela",
+            "canton": "Valverde Vega",
+            "district": "San Pedro",
+            "zipCode": 21204
+        },
+        {
+            "id": 217,
+            "province": "Alajuela",
+            "canton": "Valverde Vega",
+            "district": "Rodríguez",
+            "zipCode": 21205
+        },
+        {
+            "id": 218,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Upala",
+            "zipCode": 21301
+        },
+        {
+            "id": 219,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Aguas Claras",
+            "zipCode": 21302
+        },
+        {
+            "id": 220,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "San José o Pizote",
+            "zipCode": 21303
+        },
+        {
+            "id": 221,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Bijagua",
+            "zipCode": 21304
+        },
+        {
+            "id": 222,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Delicias",
+            "zipCode": 21305
+        },
+        {
+            "id": 223,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Dos Ríos",
+            "zipCode": 21306
+        },
+        {
+            "id": 224,
+            "province": "Alajuela",
+            "canton": "Upala",
+            "district": "Yoliyllal",
+            "zipCode": 21307
+        },
+        {
+            "id": 225,
+            "province": "Alajuela",
+            "canton": "Los Chiles",
+            "district": "Los Chiles",
+            "zipCode": 21401
+        },
+        {
+            "id": 226,
+            "province": "Alajuela",
+            "canton": "Los Chiles",
+            "district": "Caño Negro",
+            "zipCode": 21402
+        },
+        {
+            "id": 227,
+            "province": "Alajuela",
+            "canton": "Los Chiles",
+            "district": "El Amparo",
+            "zipCode": 21403
+        },
+        {
+            "id": 228,
+            "province": "Alajuela",
+            "canton": "Los Chiles",
+            "district": "San Jorge",
+            "zipCode": 21404
+        },
+        {
+            "id": 229,
+            "province": "Alajuela",
+            "canton": "Guatuso",
+            "district": "San Rafael",
+            "zipCode": 21501
+        },
+        {
+            "id": 230,
+            "province": "Alajuela",
+            "canton": "Guatuso",
+            "district": "Buenavista",
+            "zipCode": 21502
+        },
+        {
+            "id": 231,
+            "province": "Alajuela",
+            "canton": "Guatuso",
+            "district": "Cote",
+            "zipCode": 21503
+        },
+        {
+            "id": 232,
+            "province": "Alajuela",
+            "canton": "Guatuso",
+            "district": "Katira",
+            "zipCode": 21504
+        },
+        {
+            "id": 233,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Oriental",
+            "zipCode": 30101
+        },
+        {
+            "id": 234,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Occidental",
+            "zipCode": 30102
+        },
+        {
+            "id": 235,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Carmen",
+            "zipCode": 30103
+        },
+        {
+            "id": 236,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "San Nicolás",
+            "zipCode": 30104
+        },
+        {
+            "id": 237,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Aguacaliente (San Francisco)",
+            "zipCode": 30105
+        },
+        {
+            "id": 238,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Guadalupe (Arenilla)",
+            "zipCode": 30106
+        },
+        {
+            "id": 239,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Corralillo",
+            "zipCode": 30107
+        },
+        {
+            "id": 240,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Tierra Blanca",
+            "zipCode": 30108
+        },
+        {
+            "id": 241,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Dulce Nombre",
+            "zipCode": 30109
+        },
+        {
+            "id": 242,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Llano Grande",
+            "zipCode": 30110
+        },
+        {
+            "id": 243,
+            "province": "Cartago",
+            "canton": "Cartago",
+            "district": "Quebradilla",
+            "zipCode": 30111
+        },
+        {
+            "id": 244,
+            "province": "Cartago",
+            "canton": "Paraíso",
+            "district": "Paraíso",
+            "zipCode": 30201
+        },
+        {
+            "id": 245,
+            "province": "Cartago",
+            "canton": "Paraíso",
+            "district": "Santiago",
+            "zipCode": 30202
+        },
+        {
+            "id": 246,
+            "province": "Cartago",
+            "canton": "Paraíso",
+            "district": "Orosi",
+            "zipCode": 30203
+        },
+        {
+            "id": 247,
+            "province": "Cartago",
+            "canton": "Paraíso",
+            "district": "Cachí",
+            "zipCode": 30204
+        },
+        {
+            "id": 248,
+            "province": "Cartago",
+            "canton": "Paraíso",
+            "district": "Llanos de Santa Lucía",
+            "zipCode": 30205
+        },
+        {
+            "id": 249,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "Tres Ríos",
+            "zipCode": 30301
+        },
+        {
+            "id": 250,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "San Diego",
+            "zipCode": 30302
+        },
+        {
+            "id": 251,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "San Juan",
+            "zipCode": 30303
+        },
+        {
+            "id": 252,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "San Rafael",
+            "zipCode": 30304
+        },
+        {
+            "id": 253,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "Concepción",
+            "zipCode": 30305
+        },
+        {
+            "id": 254,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "Dulce Nombre",
+            "zipCode": 30306
+        },
+        {
+            "id": 255,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "San Ramón",
+            "zipCode": 30307
+        },
+        {
+            "id": 256,
+            "province": "Cartago",
+            "canton": "La Unión",
+            "district": "Río Azul",
+            "zipCode": 30308
+        },
+        {
+            "id": 257,
+            "province": "Cartago",
+            "canton": "Jiménez",
+            "district": "Juan Viñas",
+            "zipCode": 30401
+        },
+        {
+            "id": 258,
+            "province": "Cartago",
+            "canton": "Jiménez",
+            "district": "Tucurrique",
+            "zipCode": 30402
+        },
+        {
+            "id": 259,
+            "province": "Cartago",
+            "canton": "Jiménez",
+            "district": "Pejibaye",
+            "zipCode": 30403
+        },
+        {
+            "id": 260,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Turrialba",
+            "zipCode": 30501
+        },
+        {
+            "id": 261,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "La Suiza",
+            "zipCode": 30502
+        },
+        {
+            "id": 262,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Peralta",
+            "zipCode": 30503
+        },
+        {
+            "id": 263,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Santa Cruz",
+            "zipCode": 30504
+        },
+        {
+            "id": 264,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Santa Teresita",
+            "zipCode": 30505
+        },
+        {
+            "id": 265,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Pavones",
+            "zipCode": 30506
+        },
+        {
+            "id": 266,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Tuis",
+            "zipCode": 30507
+        },
+        {
+            "id": 267,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Tayutic",
+            "zipCode": 30508
+        },
+        {
+            "id": 268,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Santa Rosa",
+            "zipCode": 30509
+        },
+        {
+            "id": 269,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Tres Equis",
+            "zipCode": 30510
+        },
+        {
+            "id": 270,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "La Isabel",
+            "zipCode": 30511
+        },
+        {
+            "id": 271,
+            "province": "Cartago",
+            "canton": "Turrialba",
+            "district": "Chirripó",
+            "zipCode": 30512
+        },
+        {
+            "id": 272,
+            "province": "Cartago",
+            "canton": "Alvarado",
+            "district": "Pacayas",
+            "zipCode": 30601
+        },
+        {
+            "id": 273,
+            "province": "Cartago",
+            "canton": "Alvarado",
+            "district": "Cervantes",
+            "zipCode": 30602
+        },
+        {
+            "id": 274,
+            "province": "Cartago",
+            "canton": "Alvarado",
+            "district": "Capellades",
+            "zipCode": 30603
+        },
+        {
+            "id": 275,
+            "province": "Cartago",
+            "canton": "Oreamuno",
+            "district": "San Rafael",
+            "zipCode": 30701
+        },
+        {
+            "id": 276,
+            "province": "Cartago",
+            "canton": "Oreamuno",
+            "district": "Cot",
+            "zipCode": 30702
+        },
+        {
+            "id": 277,
+            "province": "Cartago",
+            "canton": "Oreamuno",
+            "district": "Potrero Cerrado",
+            "zipCode": 30703
+        },
+        {
+            "id": 278,
+            "province": "Cartago",
+            "canton": "Oreamuno",
+            "district": "Cipreses",
+            "zipCode": 30704
+        },
+        {
+            "id": 279,
+            "province": "Cartago",
+            "canton": "Oreamuno",
+            "district": "Santa Rosa",
+            "zipCode": 30705
+        },
+        {
+            "id": 280,
+            "province": "Cartago",
+            "canton": "El Guarco",
+            "district": "El Tejar",
+            "zipCode": 30801
+        },
+        {
+            "id": 281,
+            "province": "Cartago",
+            "canton": "El Guarco",
+            "district": "San Isidro",
+            "zipCode": 30802
+        },
+        {
+            "id": 282,
+            "province": "Cartago",
+            "canton": "El Guarco",
+            "district": "Tobosi",
+            "zipCode": 30803
+        },
+        {
+            "id": 283,
+            "province": "Cartago",
+            "canton": "El Guarco",
+            "district": "Patio de Agua",
+            "zipCode": 30804
+        },
+        {
+            "id": 284,
+            "province": "Heredia",
+            "canton": "Heredia",
+            "district": "Heredia",
+            "zipCode": 40101
+        },
+        {
+            "id": 285,
+            "province": "Heredia",
+            "canton": "Heredia",
+            "district": "Mercedes",
+            "zipCode": 40102
+        },
+        {
+            "id": 286,
+            "province": "Heredia",
+            "canton": "Heredia",
+            "district": "San Francisco",
+            "zipCode": 40103
+        },
+        {
+            "id": 287,
+            "province": "Heredia",
+            "canton": "Heredia",
+            "district": "Ulloa",
+            "zipCode": 40104
+        },
+        {
+            "id": 288,
+            "province": "Heredia",
+            "canton": "Heredia",
+            "district": "Varablanca",
+            "zipCode": 40105
+        },
+        {
+            "id": 289,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "Barva",
+            "zipCode": 40201
+        },
+        {
+            "id": 290,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "San Pedro",
+            "zipCode": 40202
+        },
+        {
+            "id": 291,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "San Pablo",
+            "zipCode": 40203
+        },
+        {
+            "id": 292,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "San Roque",
+            "zipCode": 40204
+        },
+        {
+            "id": 293,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "Santa Lucía",
+            "zipCode": 40205
+        },
+        {
+            "id": 294,
+            "province": "Heredia",
+            "canton": "Barva",
+            "district": "San José de la Montaña",
+            "zipCode": 40206
+        },
+        {
+            "id": 295,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Santo Domingo",
+            "zipCode": 40301
+        },
+        {
+            "id": 296,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "San Vicente",
+            "zipCode": 40302
+        },
+        {
+            "id": 297,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "San Miguel",
+            "zipCode": 40303
+        },
+        {
+            "id": 298,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Paracito",
+            "zipCode": 40304
+        },
+        {
+            "id": 299,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Santo Tomás",
+            "zipCode": 40305
+        },
+        {
+            "id": 300,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Santa Rosa",
+            "zipCode": 40306
+        },
+        {
+            "id": 301,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Tures",
+            "zipCode": 40307
+        },
+        {
+            "id": 302,
+            "province": "Heredia",
+            "canton": "Santo Domingo",
+            "district": "Para",
+            "zipCode": 40308
+        },
+        {
+            "id": 303,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "Santa Bárbara",
+            "zipCode": 40401
+        },
+        {
+            "id": 304,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "San Pedro",
+            "zipCode": 40402
+        },
+        {
+            "id": 305,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "San Juan",
+            "zipCode": 40403
+        },
+        {
+            "id": 306,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "Jesús",
+            "zipCode": 40404
+        },
+        {
+            "id": 307,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "Santo Domingo",
+            "zipCode": 40405
+        },
+        {
+            "id": 308,
+            "province": "Heredia",
+            "canton": "Santa Bárbara",
+            "district": "Puraba",
+            "zipCode": 40406
+        },
+        {
+            "id": 309,
+            "province": "Heredia",
+            "canton": "San Rafael",
+            "district": "San Rafael",
+            "zipCode": 40501
+        },
+        {
+            "id": 310,
+            "province": "Heredia",
+            "canton": "San Rafael",
+            "district": "San Josécito",
+            "zipCode": 40502
+        },
+        {
+            "id": 311,
+            "province": "Heredia",
+            "canton": "San Rafael",
+            "district": "Santiago",
+            "zipCode": 40503
+        },
+        {
+            "id": 312,
+            "province": "Heredia",
+            "canton": "San Rafael",
+            "district": "Los Ángeles",
+            "zipCode": 40504
+        },
+        {
+            "id": 313,
+            "province": "Heredia",
+            "canton": "San Rafael",
+            "district": "Concepción",
+            "zipCode": 40505
+        },
+        {
+            "id": 314,
+            "province": "Heredia",
+            "canton": "San Isidro",
+            "district": "San Isidro",
+            "zipCode": 40601
+        },
+        {
+            "id": 315,
+            "province": "Heredia",
+            "canton": "San Isidro",
+            "district": "San José",
+            "zipCode": 40602
+        },
+        {
+            "id": 316,
+            "province": "Heredia",
+            "canton": "San Isidro",
+            "district": "Concepción",
+            "zipCode": 40603
+        },
+        {
+            "id": 317,
+            "province": "Heredia",
+            "canton": "San Isidro",
+            "district": "San Francisco",
+            "zipCode": 40604
+        },
+        {
+            "id": 318,
+            "province": "Heredia",
+            "canton": "Belén",
+            "district": "San Antonio",
+            "zipCode": 40701
+        },
+        {
+            "id": 319,
+            "province": "Heredia",
+            "canton": "Belén",
+            "district": "La Ribera",
+            "zipCode": 40702
+        },
+        {
+            "id": 320,
+            "province": "Heredia",
+            "canton": "Belén",
+            "district": "La Asunción",
+            "zipCode": 40703
+        },
+        {
+            "id": 321,
+            "province": "Heredia",
+            "canton": "Flores",
+            "district": "San Joaquín de Flores",
+            "zipCode": 40801
+        },
+        {
+            "id": 322,
+            "province": "Heredia",
+            "canton": "Flores",
+            "district": "Barrantes",
+            "zipCode": 40802
+        },
+        {
+            "id": 323,
+            "province": "Heredia",
+            "canton": "Flores",
+            "district": "Llorente",
+            "zipCode": 40803
+        },
+        {
+            "id": 324,
+            "province": "Heredia",
+            "canton": "San Pablo",
+            "district": "San Pablo",
+            "zipCode": 40901
+        },
+        {
+            "id": 325,
+            "province": "Heredia",
+            "canton": "San Pablo",
+            "district": "Rincón de Sabanilla",
+            "zipCode": 40902
+        },
+        {
+            "id": 326,
+            "province": "Heredia",
+            "canton": "Sarapiquí",
+            "district": "Puerto Viejo",
+            "zipCode": 41001
+        },
+        {
+            "id": 327,
+            "province": "Heredia",
+            "canton": "Sarapiquí",
+            "district": "La Virgen",
+            "zipCode": 41002
+        },
+        {
+            "id": 328,
+            "province": "Heredia",
+            "canton": "Sarapiquí",
+            "district": "Horquetas",
+            "zipCode": 41003
+        },
+        {
+            "id": 329,
+            "province": "Heredia",
+            "canton": "Sarapiquí",
+            "district": "Llanuras del Gaspar",
+            "zipCode": 41004
+        },
+        {
+            "id": 330,
+            "province": "Heredia",
+            "canton": "Sarapiquí",
+            "district": "Cureña",
+            "zipCode": 41005
+        },
+        {
+            "id": 331,
+            "province": "Guanacaste",
+            "canton": "Liberia",
+            "district": "Liberia",
+            "zipCode": 50101
+        },
+        {
+            "id": 332,
+            "province": "Guanacaste",
+            "canton": "Liberia",
+            "district": "Cañas Dulces",
+            "zipCode": 50102
+        },
+        {
+            "id": 333,
+            "province": "Guanacaste",
+            "canton": "Liberia",
+            "district": "Mayorga",
+            "zipCode": 50103
+        },
+        {
+            "id": 334,
+            "province": "Guanacaste",
+            "canton": "Liberia",
+            "district": "Nacascolo",
+            "zipCode": 50104
+        },
+        {
+            "id": 335,
+            "province": "Guanacaste",
+            "canton": "Liberia",
+            "district": "Curubande",
+            "zipCode": 50105
+        },
+        {
+            "id": 336,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Nicoya",
+            "zipCode": 50201
+        },
+        {
+            "id": 337,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Mansion",
+            "zipCode": 50202
+        },
+        {
+            "id": 338,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "San Antonio",
+            "zipCode": 50203
+        },
+        {
+            "id": 339,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Quebrada Honda",
+            "zipCode": 50204
+        },
+        {
+            "id": 340,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Samara",
+            "zipCode": 50205
+        },
+        {
+            "id": 341,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Nosara",
+            "zipCode": 50206
+        },
+        {
+            "id": 342,
+            "province": "Guanacaste",
+            "canton": "Nicoya",
+            "district": "Belén de Nosarita",
+            "zipCode": 50207
+        },
+        {
+            "id": 343,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Santa Cruz",
+            "zipCode": 50301
+        },
+        {
+            "id": 344,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Bolson",
+            "zipCode": 50302
+        },
+        {
+            "id": 345,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Veintisiete de Abril",
+            "zipCode": 50303
+        },
+        {
+            "id": 346,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Tempate",
+            "zipCode": 50304
+        },
+        {
+            "id": 347,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Cartagena",
+            "zipCode": 50305
+        },
+        {
+            "id": 348,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Cuajiniquil",
+            "zipCode": 50306
+        },
+        {
+            "id": 349,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Diria",
+            "zipCode": 50307
+        },
+        {
+            "id": 350,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Cabo Velas",
+            "zipCode": 50308
+        },
+        {
+            "id": 351,
+            "province": "Guanacaste",
+            "canton": "Santa Cruz",
+            "district": "Tamarindo",
+            "zipCode": 50309
+        },
+        {
+            "id": 352,
+            "province": "Guanacaste",
+            "canton": "Bagaces",
+            "district": "Bagaces",
+            "zipCode": 50401
+        },
+        {
+            "id": 353,
+            "province": "Guanacaste",
+            "canton": "Bagaces",
+            "district": "Fortuna",
+            "zipCode": 50402
+        },
+        {
+            "id": 354,
+            "province": "Guanacaste",
+            "canton": "Bagaces",
+            "district": "Mogote",
+            "zipCode": 50403
+        },
+        {
+            "id": 355,
+            "province": "Guanacaste",
+            "canton": "Bagaces",
+            "district": "Río Naranjo",
+            "zipCode": 50404
+        },
+        {
+            "id": 356,
+            "province": "Guanacaste",
+            "canton": "Carrillo",
+            "district": "Filadelfia",
+            "zipCode": 50501
+        },
+        {
+            "id": 357,
+            "province": "Guanacaste",
+            "canton": "Carrillo",
+            "district": "Palmira",
+            "zipCode": 50502
+        },
+        {
+            "id": 358,
+            "province": "Guanacaste",
+            "canton": "Carrillo",
+            "district": "Sardinal",
+            "zipCode": 50503
+        },
+        {
+            "id": 359,
+            "province": "Guanacaste",
+            "canton": "Carrillo",
+            "district": "Belén",
+            "zipCode": 50504
+        },
+        {
+            "id": 360,
+            "province": "Guanacaste",
+            "canton": "Cañas",
+            "district": "Cañas",
+            "zipCode": 50601
+        },
+        {
+            "id": 361,
+            "province": "Guanacaste",
+            "canton": "Cañas",
+            "district": "Palmira",
+            "zipCode": 50602
+        },
+        {
+            "id": 362,
+            "province": "Guanacaste",
+            "canton": "Cañas",
+            "district": "San Miguel",
+            "zipCode": 50603
+        },
+        {
+            "id": 363,
+            "province": "Guanacaste",
+            "canton": "Cañas",
+            "district": "Bebedero",
+            "zipCode": 50604
+        },
+        {
+            "id": 364,
+            "province": "Guanacaste",
+            "canton": "Cañas",
+            "district": "Porozal",
+            "zipCode": 50605
+        },
+        {
+            "id": 365,
+            "province": "Guanacaste",
+            "canton": "Abangares",
+            "district": "Juntas",
+            "zipCode": 50701
+        },
+        {
+            "id": 366,
+            "province": "Guanacaste",
+            "canton": "Abangares",
+            "district": "Sierra",
+            "zipCode": 50702
+        },
+        {
+            "id": 367,
+            "province": "Guanacaste",
+            "canton": "Abangares",
+            "district": "San Juan",
+            "zipCode": 50703
+        },
+        {
+            "id": 368,
+            "province": "Guanacaste",
+            "canton": "Abangares",
+            "district": "Colorado",
+            "zipCode": 50704
+        },
+        {
+            "id": 369,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Tilarán",
+            "zipCode": 50801
+        },
+        {
+            "id": 370,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Quebrada Grande",
+            "zipCode": 50802
+        },
+        {
+            "id": 371,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Tronadora",
+            "zipCode": 50803
+        },
+        {
+            "id": 372,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Santa Rosa",
+            "zipCode": 50804
+        },
+        {
+            "id": 373,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Líbano",
+            "zipCode": 50805
+        },
+        {
+            "id": 374,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Tierras Morenas",
+            "zipCode": 50806
+        },
+        {
+            "id": 375,
+            "province": "Guanacaste",
+            "canton": "Tilarán",
+            "district": "Arenal",
+            "zipCode": 50807
+        },
+        {
+            "id": 376,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "Carmona",
+            "zipCode": 50901
+        },
+        {
+            "id": 377,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "Santa Rita",
+            "zipCode": 50902
+        },
+        {
+            "id": 378,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "Zapotal",
+            "zipCode": 50903
+        },
+        {
+            "id": 379,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "San Pablo",
+            "zipCode": 50904
+        },
+        {
+            "id": 380,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "Porvenir",
+            "zipCode": 50905
+        },
+        {
+            "id": 381,
+            "province": "Guanacaste",
+            "canton": "Nandayure",
+            "district": "Bejuco",
+            "zipCode": 50906
+        },
+        {
+            "id": 382,
+            "province": "Guanacaste",
+            "canton": "La Cruz",
+            "district": "La Cruz",
+            "zipCode": 51001
+        },
+        {
+            "id": 383,
+            "province": "Guanacaste",
+            "canton": "La Cruz",
+            "district": "Santa Cecilia",
+            "zipCode": 51002
+        },
+        {
+            "id": 384,
+            "province": "Guanacaste",
+            "canton": "La Cruz",
+            "district": "Garita",
+            "zipCode": 51003
+        },
+        {
+            "id": 385,
+            "province": "Guanacaste",
+            "canton": "La Cruz",
+            "district": "Santa Elena",
+            "zipCode": 51004
+        },
+        {
+            "id": 386,
+            "province": "Guanacaste",
+            "canton": "Hojancha",
+            "district": "Hojancha",
+            "zipCode": 51101
+        },
+        {
+            "id": 387,
+            "province": "Guanacaste",
+            "canton": "Hojancha",
+            "district": "Monte Romo",
+            "zipCode": 51102
+        },
+        {
+            "id": 388,
+            "province": "Guanacaste",
+            "canton": "Hojancha",
+            "district": "Puerto Carrillo",
+            "zipCode": 51103
+        },
+        {
+            "id": 389,
+            "province": "Guanacaste",
+            "canton": "Hojancha",
+            "district": "Huacas",
+            "zipCode": 51104
+        },
+        {
+            "id": 390,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Puntarenas",
+            "zipCode": 60101
+        },
+        {
+            "id": 391,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Pitahaya",
+            "zipCode": 60102
+        },
+        {
+            "id": 392,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Chomes",
+            "zipCode": 60103
+        },
+        {
+            "id": 393,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Lepanto",
+            "zipCode": 60104
+        },
+        {
+            "id": 394,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Paquera",
+            "zipCode": 60105
+        },
+        {
+            "id": 395,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Manzanillo",
+            "zipCode": 60106
+        },
+        {
+            "id": 396,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Guacimal",
+            "zipCode": 60107
+        },
+        {
+            "id": 397,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Barranca",
+            "zipCode": 60108
+        },
+        {
+            "id": 398,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Monte Verde",
+            "zipCode": 60109
+        },
+        {
+            "id": 399,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Isla del Coco",
+            "zipCode": 60110
+        },
+        {
+            "id": 400,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Cobano",
+            "zipCode": 60111
+        },
+        {
+            "id": 401,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Chacarita",
+            "zipCode": 60112
+        },
+        {
+            "id": 402,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Chira",
+            "zipCode": 60113
+        },
+        {
+            "id": 403,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Acapulco",
+            "zipCode": 60114
+        },
+        {
+            "id": 404,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "El Roble",
+            "zipCode": 60115
+        },
+        {
+            "id": 405,
+            "province": "Puntarenas",
+            "canton": "Puntarenas",
+            "district": "Arancibia",
+            "zipCode": 60116
+        },
+        {
+            "id": 406,
+            "province": "Puntarenas",
+            "canton": "Esparza",
+            "district": "Espiritu Santo",
+            "zipCode": 60201
+        },
+        {
+            "id": 407,
+            "province": "Puntarenas",
+            "canton": "Esparza",
+            "district": "San Juan Grande",
+            "zipCode": 60202
+        },
+        {
+            "id": 408,
+            "province": "Puntarenas",
+            "canton": "Esparza",
+            "district": "Macacona",
+            "zipCode": 60203
+        },
+        {
+            "id": 409,
+            "province": "Puntarenas",
+            "canton": "Esparza",
+            "district": "San Rafael",
+            "zipCode": 60204
+        },
+        {
+            "id": 410,
+            "province": "Puntarenas",
+            "canton": "Esparza",
+            "district": "San Jerónimo",
+            "zipCode": 60205
+        },
+        {
+            "id": 411,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Buenos Aires",
+            "zipCode": 60301
+        },
+        {
+            "id": 412,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Volcan",
+            "zipCode": 60302
+        },
+        {
+            "id": 413,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Potrero Grande",
+            "zipCode": 60303
+        },
+        {
+            "id": 414,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Boruca",
+            "zipCode": 60304
+        },
+        {
+            "id": 415,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Pilas",
+            "zipCode": 60305
+        },
+        {
+            "id": 416,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Colinas",
+            "zipCode": 60306
+        },
+        {
+            "id": 417,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Changena",
+            "zipCode": 60307
+        },
+        {
+            "id": 418,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Briolley",
+            "zipCode": 60308
+        },
+        {
+            "id": 419,
+            "province": "Puntarenas",
+            "canton": "Buenos Aires",
+            "district": "Brunka",
+            "zipCode": 60309
+        },
+        {
+            "id": 420,
+            "province": "Puntarenas",
+            "canton": "Montes de Oro",
+            "district": "Miramar",
+            "zipCode": 60401
+        },
+        {
+            "id": 421,
+            "province": "Puntarenas",
+            "canton": "Montes de Oro",
+            "district": "La Unión",
+            "zipCode": 60402
+        },
+        {
+            "id": 422,
+            "province": "Puntarenas",
+            "canton": "Montes de Oro",
+            "district": "San Isidro",
+            "zipCode": 60403
+        },
+        {
+            "id": 423,
+            "province": "Puntarenas",
+            "canton": "Osa",
+            "district": "Puerto Cortes",
+            "zipCode": 60501
+        },
+        {
+            "id": 424,
+            "province": "Puntarenas",
+            "canton": "Osa",
+            "district": "Palmar",
+            "zipCode": 60502
+        },
+        {
+            "id": 425,
+            "province": "Puntarenas",
+            "canton": "Osa",
+            "district": "Sierpe",
+            "zipCode": 60503
+        },
+        {
+            "id": 426,
+            "province": "Puntarenas",
+            "canton": "Osa",
+            "district": "Bahia Ballena",
+            "zipCode": 60504
+        },
+        {
+            "id": 427,
+            "province": "Puntarenas",
+            "canton": "Osa",
+            "district": "Piedras Blancas",
+            "zipCode": 60505
+        },
+        {
+            "id": 428,
+            "province": "Puntarenas",
+            "canton": "Aguirre",
+            "district": "Quepos",
+            "zipCode": 60601
+        },
+        {
+            "id": 429,
+            "province": "Puntarenas",
+            "canton": "Aguirre",
+            "district": "Savegre",
+            "zipCode": 60602
+        },
+        {
+            "id": 430,
+            "province": "Puntarenas",
+            "canton": "Aguirre",
+            "district": "Naranjito",
+            "zipCode": 60603
+        },
+        {
+            "id": 431,
+            "province": "Puntarenas",
+            "canton": "Golfito",
+            "district": "Golfito",
+            "zipCode": 60701
+        },
+        {
+            "id": 432,
+            "province": "Puntarenas",
+            "canton": "Golfito",
+            "district": "Puerto Jiménez",
+            "zipCode": 60702
+        },
+        {
+            "id": 433,
+            "province": "Puntarenas",
+            "canton": "Golfito",
+            "district": "Guaycara",
+            "zipCode": 60703
+        },
+        {
+            "id": 434,
+            "province": "Puntarenas",
+            "canton": "Golfito",
+            "district": "Pavon",
+            "zipCode": 60704
+        },
+        {
+            "id": 435,
+            "province": "Puntarenas",
+            "canton": "Coto Brus",
+            "district": "San Vito",
+            "zipCode": 60801
+        },
+        {
+            "id": 436,
+            "province": "Puntarenas",
+            "canton": "Coto Brus",
+            "district": "Sabalito",
+            "zipCode": 60802
+        },
+        {
+            "id": 437,
+            "province": "Puntarenas",
+            "canton": "Coto Brus",
+            "district": "Aguabuena",
+            "zipCode": 60803
+        },
+        {
+            "id": 438,
+            "province": "Puntarenas",
+            "canton": "Coto Brus",
+            "district": "Limóncito",
+            "zipCode": 60804
+        },
+        {
+            "id": 439,
+            "province": "Puntarenas",
+            "canton": "Coto Brus",
+            "district": "Pittier",
+            "zipCode": 60805
+        },
+        {
+            "id": 440,
+            "province": "Puntarenas",
+            "canton": "Parrita",
+            "district": "Parrita",
+            "zipCode": 60901
+        },
+        {
+            "id": 441,
+            "province": "Puntarenas",
+            "canton": "Corredores",
+            "district": "Corredor",
+            "zipCode": 61001
+        },
+        {
+            "id": 442,
+            "province": "Puntarenas",
+            "canton": "Corredores",
+            "district": "La Cuesta",
+            "zipCode": 61002
+        },
+        {
+            "id": 443,
+            "province": "Puntarenas",
+            "canton": "Corredores",
+            "district": "Canoas",
+            "zipCode": 61003
+        },
+        {
+            "id": 444,
+            "province": "Puntarenas",
+            "canton": "Corredores",
+            "district": "Laurel",
+            "zipCode": 61004
+        },
+        {
+            "id": 445,
+            "province": "Puntarenas",
+            "canton": "Garabito",
+            "district": "Jacó",
+            "zipCode": 61101
+        },
+        {
+            "id": 446,
+            "province": "Puntarenas",
+            "canton": "Garabito",
+            "district": "Tarcoles",
+            "zipCode": 61102
+        },
+        {
+            "id": 447,
+            "province": "Limón",
+            "canton": "Limón",
+            "district": "Limón",
+            "zipCode": 70101
+        },
+        {
+            "id": 448,
+            "province": "Limón",
+            "canton": "Limón",
+            "district": "Valle La Estrella",
+            "zipCode": 70102
+        },
+        {
+            "id": 449,
+            "province": "Limón",
+            "canton": "Limón",
+            "district": "Río Blanco",
+            "zipCode": 70103
+        },
+        {
+            "id": 450,
+            "province": "Limón",
+            "canton": "Limón",
+            "district": "Matama",
+            "zipCode": 70104
+        },
+        {
+            "id": 451,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Guapiles",
+            "zipCode": 70201
+        },
+        {
+            "id": 452,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Jiménez",
+            "zipCode": 70202
+        },
+        {
+            "id": 453,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Rita",
+            "zipCode": 70203
+        },
+        {
+            "id": 454,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Roxana",
+            "zipCode": 70204
+        },
+        {
+            "id": 455,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Cariari",
+            "zipCode": 70205
+        },
+        {
+            "id": 456,
+            "province": "Limón",
+            "canton": "Pococí",
+            "district": "Colorado",
+            "zipCode": 70206
+        },
+        {
+            "id": 457,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Siquirres",
+            "zipCode": 70301
+        },
+        {
+            "id": 458,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Pacuarito",
+            "zipCode": 70302
+        },
+        {
+            "id": 459,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Florida",
+            "zipCode": 70303
+        },
+        {
+            "id": 460,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Germania",
+            "zipCode": 70304
+        },
+        {
+            "id": 461,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Cairo",
+            "zipCode": 70305
+        },
+        {
+            "id": 462,
+            "province": "Limón",
+            "canton": "Siquirres",
+            "district": "Alegria",
+            "zipCode": 70306
+        },
+        {
+            "id": 463,
+            "province": "Limón",
+            "canton": "Talamanca",
+            "district": "Bratsi",
+            "zipCode": 70401
+        },
+        {
+            "id": 464,
+            "province": "Limón",
+            "canton": "Talamanca",
+            "district": "Sixaola",
+            "zipCode": 70402
+        },
+        {
+            "id": 465,
+            "province": "Limón",
+            "canton": "Talamanca",
+            "district": "Cahuita",
+            "zipCode": 70403
+        },
+        {
+            "id": 466,
+            "province": "Limón",
+            "canton": "Talamanca",
+            "district": "Telire",
+            "zipCode": 70404
+        },
+        {
+            "id": 467,
+            "province": "Limón",
+            "canton": "Matina",
+            "district": "Matina",
+            "zipCode": 70501
+        },
+        {
+            "id": 468,
+            "province": "Limón",
+            "canton": "Matina",
+            "district": "Battan",
+            "zipCode": 70502
+        },
+        {
+            "id": 469,
+            "province": "Limón",
+            "canton": "Matina",
+            "district": "Carrandi",
+            "zipCode": 70503
+        },
+        {
+            "id": 470,
+            "province": "Limón",
+            "canton": "Guácimo",
+            "district": "Guácimo",
+            "zipCode": 70601
+        },
+        {
+            "id": 471,
+            "province": "Limón",
+            "canton": "Guácimo",
+            "district": "Mercedes",
+            "zipCode": 70602
+        },
+        {
+            "id": 472,
+            "province": "Limón",
+            "canton": "Guácimo",
+            "district": "Pocora",
+            "zipCode": 70603
+        },
+        {
+            "id": 473,
+            "province": "Limón",
+            "canton": "Guácimo",
+            "district": "Río Jiménez",
+            "zipCode": 70604
+        },
+        {
+            "id": 474,
+            "province": "Limón",
+            "canton": "Guácimo",
+            "district": "Duacari",
+            "zipCode": 70605
+        }
+    ]
+}

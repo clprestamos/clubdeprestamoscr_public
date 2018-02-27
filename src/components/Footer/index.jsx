@@ -7,7 +7,7 @@ const Footer = (props) => {
   const footerComponent = !props.hide ? (
     <footer>
       <div className="left-content">
-        <p className="copyright">Club de Préstamos © 2017 San José, Costa Rica</p>
+        <p className="copyright">Club de Préstamos © 2018 San José, Costa Rica</p>
         <p className="footer-links"><Link to="/terminosycondiciones">Términos y condiciones | Políticas de Privacidad</Link></p>
       </div>
       <div className="right-content">

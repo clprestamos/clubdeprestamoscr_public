@@ -22,13 +22,15 @@ class OpportunitiesComponent extends Component {
   render() {
     const { activeItem } = this.state;
     const { loans } = this.props.opportunities;
-    const availables = _.filter(loans, { stateId: 4, investorId: null });
-    const waiting = _.filter(loans, (loan) => {
-      if (loan.stateId === 4 && loan.investorId !== null) {
+    const availables = _.chain(loans).filter({ stateId: 4 }).filter((loan) => {
+      return loan.investPercentage < 100;
+    }).value();
+    const waiting = _.chain(loans).filter((loan) => {
+      if (loan.stateId === 4) {
         return loan;
       }
       return null;
-    });
+    }).uniqBy('loanId').value();
     return (
       <Card className="menuItems">
         <Card.Content>
