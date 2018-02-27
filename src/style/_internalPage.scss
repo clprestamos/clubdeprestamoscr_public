@@ -100,10 +100,7 @@
     background: none;
     justify-content: flex-start;
     min-height: 88vh;
-    padding-top: 12.5vh;
-    @media all and (max-width: 1280px) {
-      padding-top: 10.5vh;
-    }
+    padding-top: 10.5vh;
     &.investor {
       @media all and (aspect-ratio: 40/71) {
         padding-top: 15vh;
