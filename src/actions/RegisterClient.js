@@ -161,12 +161,12 @@ export function registerNewLoan(userId) {
           userId,
           loanId: response.body.id,
         }));
-        dispatch(sendEmailAdmin({
-          name,
-          lastName,
-          email,
-          loanId: response.body.id,
-        }));
+        // dispatch(sendEmailAdmin({
+        //  name,
+        //  lastName,
+        //  email,
+        //  loanId: response.body.id,
+        // }));
       })
       .catch(error => dispatch(registerNewLoanError(error)));
   };
@@ -268,7 +268,7 @@ export function registerUserClient() {
     })
       .then((response) => {
         dispatch(registerNewUserSuccess());
-        dispatch(sendEmailClient({ email }))
+        // dispatch(sendEmailClient({ email }))
         return response.body[0].id;
       })
       .then((userId) => {
