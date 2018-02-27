@@ -139,8 +139,51 @@ export function registerUserInvestor() {
     })
       .then((response) => {
         dispatch(registerNewInvestorSuccess());
+        dispatch(sendEmailAdmin({ name, lastName, email }));
+        dispatch(sendEmailInvestor({ email }));
         return response.body[0].id;
       })
       .catch(error => dispatch(registerNewInvestorError(error.status)));
   };
+}
+export function sendEmailInvestor(data) {
+  const { REACT_APP_HOST } = process.env;
+  const emailData = {
+    message: `Bienvenido al Club de Préstamos\n Ingrese con su correo y contraseña a ${REACT_APP_HOST}/login para ver el estado de su cuenta.`,
+    sender: data.email,
+    subject: 'Club de Préstamos - Bienvenido',
+  };
+  return service.post({
+    endpoint: '/sendmailto',
+    payload: emailData,
+  })
+    .then((response) => {
+      if (response.status === 250) {
+        return data;
+      }
+      return false;
+    })
+    .catch(error => error);
+}
+export function sendEmailAdmin({
+  name,
+  lastName,
+  email,
+}) {
+  const emailData = {
+    message: `Nuevo usuario al Club de Préstamos\n Nombre: ${name} ${lastName}\n Email: ${email}\nTipo de usuario: Inversionista`,
+    sender: 'info@clubdeprestamos.cr',
+    subject: 'Club de Préstamos - Nuevo Usuario',
+  };
+  return service.post({
+    endpoint: '/sendmailto',
+    payload: emailData,
+  })
+    .then((response) => {
+      if (response.status === 250) {
+        return data;
+      }
+      return false;
+    })
+    .catch(error => error);
 }
