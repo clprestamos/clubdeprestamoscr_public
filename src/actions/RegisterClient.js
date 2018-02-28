@@ -162,7 +162,7 @@ export function registerNewLoan(userId) {
           userId,
           loanId: response.body.id,
         }));
-        const { REACT_APP_HOST, REACT_APP_ADMIN_EMAIL } = process.env;
+        const { REACT_APP_HOST, REACT_APP_ADMIN_EMAIL, REACT_APP_ADMIN_HOST } = process.env;
         const emailData = {
           message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/login para ver el estado de su préstamo.\nPor favor complete la información en su perfil.`,
           sender: email,
@@ -170,7 +170,7 @@ export function registerNewLoan(userId) {
         };
         dispatch(GeneralActions.sendEmail(emailData));
         const emailAdminData = {
-          message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/dashboard/prestamos/${response.body.id} para ver el estado del préstamo.`,
+          message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_ADMIN_HOST}/dashboard/prestamos/${response.body.id} para ver el estado del préstamo.`,
           sender: REACT_APP_ADMIN_EMAIL,
           subject: 'Club de Préstamos - Nuevo Cliente',
         };
@@ -276,7 +276,6 @@ export function registerUserClient() {
     })
       .then((response) => {
         dispatch(registerNewUserSuccess());
-        // dispatch(sendEmailClient({ email }))
         return response.body[0].id;
       })
       .then((userId) => {
