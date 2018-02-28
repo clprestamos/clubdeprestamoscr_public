@@ -1,4 +1,5 @@
 import * as types from '../constants';
+import * as service from '../service';
 
 export function loadingInit() {
   return dispatch => dispatch({
@@ -66,5 +67,45 @@ export function investorChangeCurrentStep(currentStep) {
       type: types.INVESTOR_CHANGE_CURRENT_STEP,
       payload,
     });
+  };
+}
+export function sendEmailInit() {
+  return {
+    type: types.SEND_EMAIL_INIT,
+    payload: { isLoading: true },
+  };
+}
+export function sendEmailError(error) {
+  return {
+    type: types.SEND_EMAIL_ERROR,
+    payload: {
+      isLoading: false,
+      error,
+    },
+  };
+}
+export function sendEmailSuccess(response) {
+  return {
+    type: types.SEND_EMAIL_SUCCESS,
+    payload: {
+      isLoading: false,
+      response,
+    },
+  };
+}
+export function sendEmail(emailData) {
+  return (dispatch) => {
+    dispatch(sendEmailInit());
+    return service.post({
+      endpoint: '/sendmailto',
+      payload: emailData,
+    })
+      .then((response) => {
+        if (response.status === 250) {
+          return dispatch(sendEmailSuccess(response.body));
+        }
+        return dispatch(sendEmailError(response.body));
+      })
+      .catch(error => dispatch(sendEmailError(error)));
   };
 }
