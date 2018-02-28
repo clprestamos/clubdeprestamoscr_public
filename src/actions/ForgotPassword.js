@@ -1,5 +1,6 @@
 import * as types from '../constants';
 import * as service from '../service';
+import * as GeneralActions from './';
 
 export function forgotPasswordInit() {
   return {
@@ -41,25 +42,6 @@ export function setEmail(email) {
     },
   });
 }
-export function sendEmail(data) {
-  const { REACT_APP_HOST } = process.env;
-  const emailData = {
-    message: `Buenas\nDe click en el siguiente link ${REACT_APP_HOST}/cambiar-password/${data.passwordKey} para cambiar su contraseña.`,
-    sender: data.email,
-    subject: 'Club de Préstamos - Cambiar contraseña',
-  };
-  return service.post({
-    endpoint: '/sendmailto',
-    payload: emailData,
-  })
-    .then((response) => {
-      if (response.status === 250) {
-        return data;
-      }
-      return false;
-    })
-    .catch(error => error);
-}
 export function requestNewPassword() {
   return (dispatch, getState) => {
     dispatch(forgotPasswordInit());
@@ -72,7 +54,13 @@ export function requestNewPassword() {
     })
       .then((response) => {
         const data = response.body.results.data[0];
-        return sendEmail(data);
+        const { REACT_APP_HOST } = process.env;
+        const emailData = {
+          message: `Buenas\nDe click en el siguiente link ${REACT_APP_HOST}/cambiar-password/${data.passwordKey} para cambiar su contraseña.`,
+          sender: data.email,
+          subject: 'Club de Préstamos - Cambiar contraseña',
+        };
+        return dispatch(GeneralActions.sendEmail(emailData));
       })
       .then((data) => {
         if (data) {

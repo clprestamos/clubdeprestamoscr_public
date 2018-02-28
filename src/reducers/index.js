@@ -13,11 +13,13 @@ import userProfile from './userProfile';
 import loan from './loan';
 import opportunities from './opportunities';
 import myinvests from './myinvests';
+import email from './email';
 
 export default combineReducers({
   routing: routerReducer,
   main,
   user,
+  email,
   recaptcha,
   forgotPassword,
   clientSubscription,
