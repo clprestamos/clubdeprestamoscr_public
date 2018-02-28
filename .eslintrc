@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "plugin:import/react", "plugin:import/errors",
+  "extends": ["standard", "plugin:import/react", "plugin:import/errors",
   "plugin:import/warnings"],
   "parserOptions":{
     "ecmaVersion": 6,
@@ -34,7 +34,9 @@
     "import/namespace": 2,
     "import/default": 2,
     "import/export": 2,
-    "jsx-a11y/anchor-is-valid": [ "error", { "components": [] }]
+    "jsx-a11y/anchor-is-valid": [ "error", { "components": [] }],
+    "semi": 0,
+    "space-before-function-paren": 0
   },
   "settings": {
     "import/resolver": {

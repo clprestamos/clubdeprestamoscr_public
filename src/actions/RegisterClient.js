@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as types from '../constants';
 import * as service from '../service';
+import * as GeneralActions from './';
 
 export function clearErrorSubscription() {
   return {
@@ -161,12 +162,19 @@ export function registerNewLoan(userId) {
           userId,
           loanId: response.body.id,
         }));
-        // dispatch(sendEmailAdmin({
-        //  name,
-        //  lastName,
-        //  email,
-        //  loanId: response.body.id,
-        // }));
+        const { REACT_APP_HOST, REACT_APP_ADMIN_EMAIL } = process.env;
+        const emailData = {
+          message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/login para ver el estado de su préstamo.\nPor favor complete la información en su perfil.`,
+          sender: email,
+          subject: 'Club de Préstamos - Bienvenido',
+        };
+        dispatch(GeneralActions.sendEmail(emailData));
+        const emailAdminData = {
+          message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/dashboard/prestamos/${response.body.id} para ver el estado del préstamo.`,
+          sender: REACT_APP_ADMIN_EMAIL,
+          subject: 'Club de Préstamos - Nuevo Cliente',
+        };
+        dispatch(GeneralActions.sendEmail(emailAdminData));
       })
       .catch(error => dispatch(registerNewLoanError(error)));
   };
@@ -431,48 +439,4 @@ export function clientChangeCurrentStep(currentStep) {
       payload,
     });
   };
-}
-
-export function sendEmailClient(data) {
-  const { REACT_APP_HOST } = process.env;
-  const emailData = {
-    message: `Bienvenido al Club de Préstamos\n Ingrese con su correo y contraseña a ${REACT_APP_HOST}/login para ver el estado de su préstamo.`,
-    sender: data.email,
-    subject: 'Club de Préstamos - Bienvenido',
-  };
-  return service.post({
-    endpoint: '/sendmailto',
-    payload: emailData,
-  })
-    .then((response) => {
-      if (response.status === 250) {
-        return response;
-      }
-      return false;
-    })
-    .catch(error => error);
-}
-
-export function sendEmailAdmin({
-  name,
-  lastName,
-  email,
-  loanId,
-}) {
-  const emailData = {
-    message: `Nuevo usuario al Club de Préstamos\n Nombre: ${name} ${lastName}\n Email: ${email}\nTipo de usuario: Cliente\n https://admin.clubdeprestamos.cr/dashboard/prestamos/${loanId}`,
-    sender: 'info@clubdeprestamos.cr',
-    subject: 'Club de Préstamos - Nuevo Usuario',
-  };
-  return service.post({
-    endpoint: '/sendmailto',
-    payload: emailData,
-  })
-    .then((response) => {
-      if (response.status === 250) {
-        return response;
-      }
-      return false;
-    })
-    .catch(error => error);
 }

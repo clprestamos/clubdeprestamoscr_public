@@ -539,10 +539,7 @@ button {
     background: none;
     justify-content: flex-start;
     min-height: 88vh;
-    padding-top: 12.5vh; }
-    @media all and (max-width: 1280px) {
-      .internal-page.register {
-        padding-top: 10.5vh; } }
+    padding-top: 10.5vh; }
     @media all and (aspect-ratio: 40 / 71) {
       .internal-page.register.investor {
         padding-top: 15vh; } }

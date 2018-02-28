@@ -138,13 +138,19 @@ export function registerUserInvestor() {
     })
       .then((response) => {
         dispatch(registerNewInvestorSuccess());
-        const { REACT_APP_HOST } = process.env;
+        const { REACT_APP_HOST, REACT_APP_ADMIN_EMAIL } = process.env;
         const emailData = {
           message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/login para ver las oportunidades de inversión.`,
           sender: email,
           subject: 'Club de Préstamos - Bienvenido',
         };
         dispatch(GeneralActions.sendEmail(emailData));
+        const emailAdminData = {
+          message: `Bienvenido Señor ${name} ${lastName}\nDe click en el siguiente link ${REACT_APP_HOST}/login para ver el estado del inversionista.`,
+          sender: REACT_APP_ADMIN_EMAIL,
+          subject: 'Club de Préstamos - Nuevo Inversionista',
+        };
+        dispatch(GeneralActions.sendEmail(emailAdminData));
         return response.body[0].id;
       })
       .catch(error => dispatch(registerNewInvestorError(error.status)));
