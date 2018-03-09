@@ -22,9 +22,9 @@ class MyInvestsComponent extends Component {
   render() {
     const { activeItem } = this.state;
     const { loans } = this.props.myinvests;
-    const formalized = _.filter(loans, { stateId: 3 });
+    const formalized = _.filter(loans, { stateId: '3' });
     const waiting = _.filter(loans, (loan) => {
-      if (loan.stateId === 4 && loan.investorId !== null) {
+      if (loan.stateId === '4' && loan.investorId !== null) {
         return loan;
       }
       return null;

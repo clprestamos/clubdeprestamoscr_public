@@ -22,11 +22,11 @@ class OpportunitiesComponent extends Component {
   render() {
     const { activeItem } = this.state;
     const { loans } = this.props.opportunities;
-    const availables = _.chain(loans).filter({ stateId: 4 }).filter((loan) => {
+    const availables = _.chain(loans).filter({ stateId: '4' }).filter((loan) => {
       return loan.investPercentage < 100;
     }).value();
     const waiting = _.chain(loans).filter((loan) => {
-      if (loan.stateId === 4) {
+      if (loan.stateId === '4' && loan.investPercentage > 0) {
         return loan;
       }
       return null;

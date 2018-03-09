@@ -26,8 +26,8 @@ class Home extends Component {
     dispatch(MyInvestsActions.getMyInvests(userId));
   }
   render() {
-    const waitingLoans = _.filter(this.props.opportunities.loans, { stateId: 4 });
-    const formalized = _.filter(this.props.myinvests, { stateId: 3 });
+    const waitingLoans = _.filter(this.props.opportunities.loans, { stateId: '4' });
+    const formalized = _.filter(this.props.myinvests, { stateId: '3' });
     const cards = [
       {
         icon: 'credit card',
